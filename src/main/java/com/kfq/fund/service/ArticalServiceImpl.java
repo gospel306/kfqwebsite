@@ -18,8 +18,8 @@ public class ArticalServiceImpl implements IArticalService{
 	}
 
 	@Override
-	public List<ArticalVO> selectArticalByCategory(String art_category) {
-		return dao.selectArticalByCategory(art_category);
+	public List<ArticalVO> selectArticalByCategory(String category) {
+		return dao.selectArticalByCategory(category);
 	}
 
 }

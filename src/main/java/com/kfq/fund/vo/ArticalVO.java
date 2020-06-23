@@ -1,5 +1,6 @@
 package com.kfq.fund.vo;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 public class ArticalVO {
@@ -7,8 +8,8 @@ public class ArticalVO {
 	private String notice;
 	private String title;
 	private String author;
-	private LocalDateTime createdat;
-	public ArticalVO(String category, String notice, String title, String author, LocalDateTime createdat) {
+	private Timestamp createdat;
+	public ArticalVO(String category, String notice, String title, String author, Timestamp createdat) {
 		super();
 		this.category = category;
 		this.notice = notice;
@@ -40,10 +41,10 @@ public class ArticalVO {
 	public void setAuthor(String author) {
 		this.author = author;
 	}
-	public LocalDateTime getCreatedat() {
+	public Timestamp getCreatedat() {
 		return createdat;
 	}
-	public void setCreatedat(LocalDateTime createdat) {
+	public void setCreatedat(Timestamp createdat) {
 		this.createdat = createdat;
 	}
 	@Override

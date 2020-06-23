@@ -5,5 +5,5 @@ import java.util.List;
 import com.kfq.fund.vo.ArticalVO;
 
 public interface IArticalService {
-	public List<ArticalVO> selectArticalByCategory(String art_category);
+	public List<ArticalVO> selectArticalByCategory(String category);
 }

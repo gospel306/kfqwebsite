@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kfq.fund.dao.IArticalDAO">
+	<select id="selectArticalByCategory" parameterType="String" resultType="com.kfq.fund.vo.ArticalVO">
+		SELECT CATEGORY, NOTICE, TITLE, AUTHOR, CREATEDAT
+		FROM ARTICAL
+		<if test="value != null">
+		WHERE CATEGORY = #{value}
+		</if>
+		ORDER BY CATEGORY,'공지' DESC, CREATEDAT DESC
+	</select>
+</mapper>
