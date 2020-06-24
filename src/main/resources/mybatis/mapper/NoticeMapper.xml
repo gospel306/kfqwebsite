@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kfq.fund.dao.INoticeDAO">
+	<!--select -->
+	<select id="getNoticeListCnt" resultType="Integer">
+		SELECT COUNT(*) AS LISTCNT
+		FROM NOTICE
+	</select>
+	<!-- 공지사항 목록 -->
+	<select id="getNoticeList" parameterType="com.kfq.fund.vo.Pagination" resultType="com.kfq.fund.vo.NoticeVO">
+		SELECT NO, TITLE, AUTHOR, CREATEDAT
+		FROM NOTICE
+		WHERE NO BETWEEN  #{startList} AND #{listSize}
+		ORDER BY NO DESC
+	</select>
+	
+	<!-- 공지사항 내용 -->
+	<select id="getNoticeByNo" parameterType="String" resultType="com.kfq.fund.vo.NoticeVO">
+		SELECT TITLE, AUTHOR, CREATEDAT, CONTEXT
+		FROM NOTICE
+		WHERE NO = #{value}
+	</select>
+	
+	
+	<!-- insert -->
+	
+	<!-- update -->
+	
+	<!-- delete -->
+</mapper>

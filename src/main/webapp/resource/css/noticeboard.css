@@ -1,0 +1,62 @@
+@charset "UTF-8";
+body{
+	font-family:'Noto Sans KR','NanumGothic','나눔고딕','Nanum Gothic','맑은 고딕','Malgun Gothic',Dotum
+}
+.benner{
+	background: url(../img/design.png);
+	position: relative;
+	padding: 70px 0 70px;
+	background-size: cover;
+	color:#fff;
+}
+.benner .bg{
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	clear: both;
+	z-index: 2;
+	margin-bottom: 0;
+	background-color:rgba(0,0,0,.5); 
+	width: 100%;
+	height: 100%;
+}
+.benner .title{
+	font-size: 24px;
+	z-index: 3;
+	text-align: center;
+	color: #fff;
+}
+.benner .title h1{
+	font-size: 40px;
+	font-weight:bold;
+	position: relative;
+	z-index: 4
+}
+.section{
+	margin: 0 auto;
+	padding: 0;
+	overflow: hidden;
+}
+.section .listwrap{
+	margin-top: 35px;
+	margin-bottom: 50px;
+	margin-left: 20px;
+}
+.section .listwrap table{
+	margin-left: 1px!important;
+	border-top: 1px solid #ddd;
+	font-size: 14px;
+}
+.section .listwrap table th{
+	text-align: center;
+	height: 45px;
+	color: #555;
+	background: #f1f1f1;
+	font-weight: 400;
+	box-sizing: border-box;
+}
+.section .listwrap table td{
+	text-align: center;
+	height: 45px;
+}

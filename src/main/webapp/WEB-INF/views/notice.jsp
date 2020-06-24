@@ -10,62 +10,23 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
 	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
 	crossorigin="anonymous">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<link rel="stylesheet" href="<%=request.getContextPath() %>/resource/css/board.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/noticeboard.css">
 </head>
 <body>
-	<main class="board">
-		<div class="ui-header">
-			<h2 class="title">공지사항</h2>
+	<div class="container-fluid benner d-xs-none">
+		<div class="bg"></div>
+		<div class="title">
+			<h1>고객센터<small>${category.title}</small></h1>
+			<p>${category.content}</p>
 		</div>
-		<div class="ui-tabs">
-			<ul>
-			<c:choose>
-				<c:when test="${empty category}">
-					<li class="active"><a href="notice">전체</a></li>
-				</c:when>
-				<c:otherwise>
-					<li><a href="notice">전체</a></li>
-				</c:otherwise>
-			</c:choose>
-			<c:choose>
-				<c:when test="${category eq '공지'}">
-					<li class="active"><a href="notice?category=공지">공지</a></li>
-				</c:when>
-				<c:otherwise>
-					<li><a href="notice?category=공지">공지</a></li>
-				</c:otherwise>
-			</c:choose>
-				
-				<c:choose>
-				<c:when test="${category eq '이벤트'}">
-					<li class="active"><a href="notice?category=이벤트">이벤트</a></li>
-				</c:when>
-				<c:otherwise>
-					<li><a href="notice?category=이벤트">이벤트</a></li>
-				</c:otherwise>
-			</c:choose>
-			
-			</ul>
+	</div>
+	<div class="container">
+		<div class="cttop">
+			<a href="notice" class="ct_back">
+				<i class="fa fa-angle-left" aria-hidden="true"></i>
+			</a>
 		</div>
-		<div class="board-main">
-			<ul id="list" data-role="listview" data-theme="a" data-filter="true">
-			<c:forEach items="${articals}" var="articall">
-				<li>
-					<a class="article" href="">
-						<em class="category">${articall.category}</em>
-						<em class="notice">${articall.notice}</em>
-						<div class="info">
-							<h3 class="title">${articall.title}</h3>
-							<span class="author">${articall.author}</span>
-							<span class="created-at">${articall.createdat}</span>
-						</div>
-					</a>
-				</li>
-			</c:forEach>
-			</ul>
-		</div>
-	</main>
+	</div>
 </body>
 </html>

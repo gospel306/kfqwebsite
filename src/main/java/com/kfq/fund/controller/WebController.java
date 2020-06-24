@@ -27,16 +27,16 @@ public class WebController {
 		this.artical_service = artical_service;
 	}
 	
-	@RequestMapping(value ="/notice", method = RequestMethod.GET)
-	public ModelAndView selectArticalByCategory(HttpServletRequest request) {
-		ModelAndView mv = new ModelAndView();
-		List<ArticalVO> articals = new ArrayList<ArticalVO>();
-		String category = request.getParameter("category");
-		articals = artical_service.selectArticalByCategory(category);
-		mv.addObject("articals",articals);
-		mv.addObject("category",category);
-		mv.setViewName("notice");
-		return mv;
-	}
-	
+//	@RequestMapping(value ="/notice", method = RequestMethod.GET)
+//	public ModelAndView selectArticalByCategory(HttpServletRequest request) {
+//		ModelAndView mv = new ModelAndView();
+//		List<ArticalVO> articals = new ArrayList<ArticalVO>();
+//		String category = request.getParameter("category");
+//		articals = artical_service.selectArticalByCategory(category);
+//		mv.addObject("articals",articals);
+//		mv.addObject("category",category);
+//		mv.setViewName("notice");
+//		
+//		return mv;
+//	}
 }
