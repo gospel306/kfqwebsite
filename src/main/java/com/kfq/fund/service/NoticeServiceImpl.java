@@ -1,5 +1,6 @@
 package com.kfq.fund.service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,11 @@ public class NoticeServiceImpl implements INoticeService {
 	@Override
 	public int getNoticeListCnt() {
 		return dao.getNoticeListCnt();
+	}
+
+	@Override
+	public BigDecimal insertNotice(NoticeVO notice) {
+		return dao.insertNotice(notice);
 	}
 
 }

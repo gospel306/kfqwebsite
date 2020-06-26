@@ -1,5 +1,6 @@
 package com.kfq.fund.controller;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -43,17 +44,29 @@ public class NoticeController {
 		HashMap<String, String> category = new HashMap<>();
 		category.put("title","공지사항");
 		category.put("content","라우드소싱의 최근 소식을 만나보세요.");
-		ModelAndView mv = new ModelAndView("noticeboard");
+		ModelAndView mv = new ModelAndView("notice/noticeboard");
 		mv.addObject("pagination",pagination);
 		mv.addObject("notices",notices);
 		mv.addObject("category",category);
 		return mv;
 	}
 	@RequestMapping(value = "/notice/idx-{num}", method = RequestMethod.GET)
-	public ModelAndView seleNoticedetail(@PathVariable String num) {
-		ModelAndView mv = new ModelAndView("notice");
+	public ModelAndView selectNoticedetail(@PathVariable String num) {
+		ModelAndView mv = new ModelAndView("notice/notice");
 		NoticeVO notice = notice_service.getNoticeByNo(num);
 		mv.addObject("notice",notice);
 		return mv;
+	}
+	@RequestMapping(value = "/notice/insert")
+	public ModelAndView insertNotice() {
+		ModelAndView mv = new ModelAndView("noticeinsert");
+		return mv;
+	}
+	@RequestMapping(value = "insertnotice.do")
+	public String insertnotice(HttpServletRequest request) {
+		NoticeVO notice = null;
+		notice_service.insertNotice(notice);
+		BigDecimal num = null;
+		return "redirect:/notice/idx-"+num;
 	}
 }

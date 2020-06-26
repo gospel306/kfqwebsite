@@ -1,0 +1,153 @@
+/* 기본 css 설정 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: myFirstFont;
+}
+a:hover,a:focus,a:visited {
+    text-decoration: none;
+    outline: none;
+}
+
+
+
+.content_block{
+    min-height: 700px;
+}
+
+.input_Search_icon {
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    background-color: white;
+    border-right: none;
+}
+
+.input_Search {
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border-left: none;
+    width: 200px;
+}
+
+.nav-link {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: black;
+}
+
+.navbar-light .navbar-nav .active>.nav-link,
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .nav-link.show,
+.navbar-light .navbar-nav .show>.nav-link {
+    color: #00b2b2;
+}
+
+.navbar-brand {
+    font-size: 30px;
+    font-weight: bold;
+}
+.nav-item{
+    min-width: 104px;
+}
+.navsub{
+    margin: 0 20px;
+}
+.nav_sm{
+    display: none;
+}
+
+.login_button,
+.login_button:active,
+.login_button:visited .login_button:hover {
+    color: rgb(170, 154, 154);
+    font-size: 17px;
+    margin-right: 10px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.sginin_button,
+.sginin_button:active,
+.sginin_button:visited .sginin_button:hover {
+    color: black;
+    font-size: 17px;
+    margin-right: 10px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.nav_container {
+    padding: 0 5%;
+}
+
+.submenu_item ,
+.submenu_item:hover,.submenu_item:visited{
+    color: #60656a;
+    font-size: 20px;
+
+}
+.submenu_item.active{
+    border-bottom: black solid 3px;
+    color: black;
+}
+
+/* 카테고리 스크롤 */
+
+
+
+
+.dropdown-menu {
+    min-width: 60px !important;
+}
+/* footer css */
+
+.footer_title{
+    font-size: 13px;
+    font-weight: bolder;
+    color: black;
+}
+.footer_num{
+    font-size: 18px;
+    font-weight: 1000;
+    color: black;
+}
+.footer_content{
+    font-size: 11px;
+    font-weight: 700;
+    color: #60656a;
+    margin-bottom: 5px;
+}
+
+
+/* 위로 가는 버튼 */
+.goTop {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 20px; /* Place the button at the bottom of the page */
+    right: 30px; /* Place the button 30px from the right */
+    z-index: 999; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: gray; /* Set a background color */
+    color: white; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 15px; /* Some padding */
+    border-radius: 50px; /* Rounded corners */
+    font-size: 20px; /* Increase font size */
+  }
+  
+  #goTop:hover {
+    background-color: #555; /* Add a dark-grey background on hover */
+  }
+
+
+
+
+  

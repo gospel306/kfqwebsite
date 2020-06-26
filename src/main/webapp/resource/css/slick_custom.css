@@ -1,0 +1,41 @@
+.slider {
+    width: 50%;
+    margin: 100px auto;
+}
+
+.slick-slide {
+    margin: 0px 20px;
+}
+
+.slick-slide img {
+    width: 55px;
+}
+
+.slick-prev:before,
+.slick-next:before {
+    color: black;
+}
+
+
+.slick-slide {
+    transition: all ease-in-out .3s;
+    opacity: 1;
+}
+
+.slick-active {
+    opacity: 1;
+}
+
+.slick-current {
+    opacity: 1;
+}
+
+.category_list>a:hover, .category_list>a:visited .category_list>a:focus{
+    color: black;
+}
+
+.category_text{
+    font-size: 12px;
+    width: 60px;
+    color: black;
+}

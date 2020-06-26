@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <link rel="stylesheet" href="css/custom.css">
+
+    <link rel="stylesheet" type="text/css" href="css/slick.css" />
+    <link rel="stylesheet" type="text/css" href="css/slick-theme.css" />
+    <link rel="stylesheet" href="css/slick_custom.css">
+
+    <style>
+        .container{
+            width: 100%;
+            max-width: 400px;
+        }
+        .btn_login{
+        padding-top:6px;
+        padding-left:12px;
+        padding-right:12px;
+        padding-bottom:6px;
+        height:50px;
+        }
+        
+        .btn{
+        height:50px;
+        }
+        
+        #exampleInputEmail1::placeholder {
+                  color: #BDBDBD;
+        }
+        #exampleInputPassword1::placeholder {
+                  color: #BDBDBD;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- content -->
+    <div class="container content_block"> 
+        <div class="mt-5">
+			<h1 class="font-weight-bold">로그인</h1>
+			<form>
+			  <div class="form-group mt-4">
+			    <input type="email" class="form-control rounded-0" style="height:50px" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="아이디">
+			  </div>
+			  <div class="form-group">
+			    <input type="password" class="form-control rounded-0" style="height:50px" id="exampleInputPassword1" placeholder="비밀번호">
+			  </div>
+			  <div class="form-group form-check">
+				  <div class="row">
+				    <div class="col-6">
+				    	<input type="checkbox" class="form-check-input" id="exampleCheck1">
+			    		<label class="form-check-label" for="exampleCheck1" style="color:#747474">아이디 저장</label>
+				    </div>
+				    <div class="col-6" style="color:#747474">
+				    	<a href="#" class="text-reset">아이디/비밀번호 찾기</a>
+				    </div>
+				  </div>
+			  </div>
+			  	<button type="submit" class="btn_login rounded-0 w-100 border-0 mt-3 text-white font-weight-bold" style="background-color:#3DB7CC">로그인</button>
+			  
+			  <div class="row row-cols-4 my-3">
+			    <div class="col-5"><HR size="1" align="center"></div>
+			    <div class="col-2" style="color:#747474;">또는</div>
+			    <div class="col-5"><HR size="1" align="center"></div>
+			  </div>
+			  
+			    <button type="submit" class="btn btn-primary rounded-0 font-weight-bold w-100" style="background-color:#050099">
+			    	<img src="../../../resource/img/login/facebook.png" alt="...">
+				  	페이스북으로 로그인
+				</button>
+			    
+			  <div class="mt-4"></div>
+				  <div class="row">
+				    <div class="col">
+				    	<button type="submit" class="btn btn-light bg-transparent rounded-0 w-100" style="border: 1px solid #c9c9c9">
+				    		<img src="../../../resource/img/login\kakao.png" alt="...">
+				    		&ensp;카카오
+				    	</button>
+				    </div>
+				    <div class="col">
+						<button type="submit" class="btn btn-light bg-transparent rounded-0 w-100" style="border: 1px solid #c9c9c9">
+							<img src="../../../resource/img/login\naver.png" alt="..." style="width:35px; height:35px;">
+							네이버
+						</button>
+					</div>
+				    <div class="w-100"></div>
+				    <div class="my-2"></div>
+				    <div class="col">
+				    	<button type="submit" class="btn btn-light bg-transparent rounded-0 w-100" style="border: 1px solid #c9c9c9">
+				    	<img src="../../../resource/img/login\google.png" alt="...">
+				    	&ensp;구글</button>
+				    </div>
+				    <div class="col">
+				    	<button type="submit" class="btn btn-light bg-transparent rounded-0 w-100" style="border: 1px solid #c9c9c9">
+				    	<img src="../../../resource/img/login\twitter.png" alt="...">
+				    	&ensp;트위터</button>
+				    </div>
+				  </div>
+				<div class="mt-4">
+					<p class="text-center">아직 FUNd 계정이 없나요?&emsp;<a href="#" style="color:#3DB7CC"><U>회원가입</U></a></p>
+				</div>
+				 
+			</form>
+		</div>
+    </div>
+
+        
+</body>
+
+</html>
