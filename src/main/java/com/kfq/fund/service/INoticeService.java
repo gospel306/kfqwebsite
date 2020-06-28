@@ -10,5 +10,5 @@ public interface INoticeService {
 	public List<NoticeVO> getNoticeList(Pagination pagination);
 	public NoticeVO getNoticeByNo(String no);
 	public int getNoticeListCnt();
-	public BigDecimal insertNotice(NoticeVO notice);
+	public int insertNotice(NoticeVO notice);
 }

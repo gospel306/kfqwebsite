@@ -36,7 +36,7 @@ public class NoticeServiceImpl implements INoticeService {
 	}
 
 	@Override
-	public BigDecimal insertNotice(NoticeVO notice) {
+	public int insertNotice(NoticeVO notice) {
 		return dao.insertNotice(notice);
 	}
 
