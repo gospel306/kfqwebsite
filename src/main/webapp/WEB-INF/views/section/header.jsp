@@ -29,7 +29,6 @@
                             <a class="nav-link" href="#">고객센터</a>
                         </li>
                     </ul>
-
                     <!-- 검색과 로그인 -->
                     <div class="">
                         <div class="pl-5 row">
@@ -47,12 +46,34 @@
                             </div>
                             <div class="col-12 col-lg-4 ml-auto">
                                 <div class="d-flex justify-content-center">
-                                    <div class="pt-1" style="min-width: 70px;">
-                                        <a class="login_button" data-toggle="modal" data-target="#myModal" id="btn_signin" href="#" style="color:gray;">로그인</a>
-                                    </div>
-                                    <div class="pt-1" style="min-width: 80px;">
-                                        <a class="sginin_button" id="btn_signup" href="#" style="color:gray;">회원가입</a>
-                                    </div>
+                                	<c:choose>
+                                	<c:when test="${empty sessionScope.useremail}">
+                                    	<div class="pt-1" style="min-width: 70px;">
+                                        	<a class="login_button" data-toggle="modal" data-target="#myModal" id="btn_signin" href="#" style="color:gray;">로그인</a>
+                                    	</div>
+                                    	<div class="pt-1" style="min-width: 80px;">
+                                        	<a class="sginin_button" id="btn_signup" href="select" style="color:gray;">회원가입</a>
+                                    	</div>
+									</c:when>
+									<c:otherwise>
+										<div class="pt-1" style="min-width: 80px;">
+											${sessionScope.nickname }
+										</div>
+										<div class="pt-1" style="min-width: 80px;">
+											<form name="logout" action="logout.do" method="post" style="visibility:hidden">
+												<input type="text" style="visibility:hidden;display:none" name="link">
+											</form>
+											<a class="logout_button" id="btn_logout" href="javascript:goPage()" style="color:gray;">로그아웃</a>
+											<script type="text/javascript">
+											function goPage(){
+												var f = document.logout;
+												f.link.value = document.location.pathname.split("/")[1];
+												f.submit();
+											}
+											</script>
+										</div>
+									</c:otherwise>
+                                    </c:choose>
                                 </div>
 
 
@@ -81,7 +102,7 @@
         </div>
     </div>
     <div class="modal fade modal--align-top" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		<div class="modal-dialog">
+		<div class="modal-dialog" style="width:auto;">
 			<div class="modal-content">
 				<div class="modal-header" style="border-bottom:none">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>

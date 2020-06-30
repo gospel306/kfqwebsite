@@ -3,16 +3,37 @@
 
 <mapper namespace="com.kfq.fund.dao.IMemberDAO">
 	<!-- select -->
-	<select id="" >
-	
+	<!-- logincheck -->
+	<select id="loginCheck" parameterType="com.kfq.fund.vo.MemberVO" resultType="String">
+		SELECT EMAIL
+		FROM MEMBER
+		WHERE EMAIL = #{email} AND PASSWD = #{passwd} AND USERKEY = "Y"
 	</select>
-	
+	<!-- memberdata -->
+	<select id="viewMember" parameterType="com.kfq.fund.vo.MemberVO" resultType="com.kfq.fund.vo.MemberVO">
+		SELECT EMAIL, NICKNAME, DATE
+		FROM MEMBER
+		WHERE EMAIL = #{email} AND PASSWD = #{passwd}
+	</select>
 	<!-- insert -->
 	<insert id="insertMember" parameterType="com.kfq.fund.vo.MemberVO">
-		INSERT INTO MEMBER(EMAIL,PASSWD,USERCLASS,NICKNAME,USERKEY) 
-		VALUES(#{email},#{passwd},#{userclass},#{nickname},#{userkey})
+		INSERT INTO MEMBER(EMAIL,PASSWD,USERCLASS,NICKNAME,DATE) 
+		VALUES(#{email},#{passwd},#{userclass},#{nickname},CURDATE())
 	</insert>
 	<!-- update -->
-	
+	<update id="GetKey" parameterType="Map">
+		UPDATE MEMBER
+		SET USERKEY = #{userkey}
+		WHERE EMAIL = #{email}
+	</update>
+	<update id="updateUserkey" parameterType="Map">
+		UPDATE MEMBER
+		SET USERKEY = "Y"
+		WHERE EMAIL = #{email} AND USERKEY = #{key}
+	</update>
 	<!-- delete -->
+	<delete id="deleteMember" parameterType="String">
+		DELETE FROM MEMBER
+		WHERE EMAIL=#{value}	
+	</delete>
 </mapper>

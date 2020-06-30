@@ -29,17 +29,59 @@
                   color: #BDBDBD;
         }
     </style>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+    	$("#btnLogin").click(function(){
+    		var useremail = $("#userEmail").val();
+    		var userpasswd = $("#userPw").val();
+    		if(useremail == ""){
+    			alert("이메일을 입력하세요.");
+    			$("#userEmail").focus();
+    			return;
+    		}
+    		if(userPw==""){
+    			alert("비밀번호를 입력하세요.");
+    			$("#userPw").focus();
+    			return;
+    		}
+    		var form_data ={
+					email:useremail,
+					passwd:userpasswd,
+				};
+			$.ajax({
+				type : "POST",
+				url : "loginCheck.do",
+				data : form_data,
+				success : function(data){
+					if(data){
+	    				document.getElementById("link").value = document.location.pathname.split("/")[1];
+	    				document.login.action="login.do";
+	    				document.login.submit();
+					}else{
+						alert("아이디나 비밀번호가 맞지 않습니다.")
+					}
+				},
+				error : function(error){
+					alert("error");
+				}
+			});
+    	});
+    		
+    	
+    });
+    </script>
 </head>
 <body>
 	<div class="container content_block logincontainer">     
         <div>
 			<h1 class="font-weight-bold">로그인</h1>
-			<form>
+			<form name="login" method="post">
 				<div class="form-group mt-4">
-			    	<input type="email" class="form-control rounded-0" style="height:50px" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="아이디">
+			    	<input type="email" class="form-control rounded-0" style="height:50px" id="userEmail" name="email" aria-describedby="emailHelp" placeholder="아이디">
 			  	</div>
 			  	<div class="form-group">
-			    	<input type="password" class="form-control rounded-0" style="height:50px" id="exampleInputPassword1" placeholder="비밀번호">
+			    	<input type="password" class="form-control rounded-0" style="height:50px" id="userPw" name="passwd" placeholder="비밀번호">
 			  	</div>
 			  	<div class="form-group form-check">
 				  	<div class="row">
@@ -52,7 +94,8 @@
 				    	</div>
 				  	</div>
 			  	</div>
-			  	<button type="submit" class="btn_login rounded-0 w-100 border-0 mt-3 text-white font-weight-bold" style="background-color:#3DB7CC">로그인</button>
+			  	<input type="text" style="display:none" id="link" name="link">
+			  	<button type="button" id="btnLogin" class="btn_login rounded-0 w-100 border-0 mt-3 text-white font-weight-bold" style="background-color:#3DB7CC">로그인</button>
 			</form>
 			<div class="row row-cols-4 my-3">
 			    <div class="col-5"><HR size="1" align="center"></div>

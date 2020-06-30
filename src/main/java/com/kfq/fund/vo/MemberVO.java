@@ -1,13 +1,25 @@
 package com.kfq.fund.vo;
 
+import java.sql.Date;
+
 public class MemberVO {
 	private String email;
 	private String passwd;
 	private String userclass;
 	private String nickname;
 	private String userkey;
+	private Date date;
 	
-	public MemberVO(String email, String passwd, String userclass, String nickname, String userkey) {
+	public MemberVO(String email, String passwd) { // logincheck
+		this.email = email;
+		this.passwd = passwd;
+	}
+	public MemberVO(String email, String nickname, Date date) {
+		this.email = email;
+		this.nickname = nickname;
+		this.date = date;
+	}
+	public MemberVO(String email, String passwd, String userclass, String nickname) {
 		super();
 		this.email = email;
 		this.passwd = passwd;
@@ -44,5 +56,11 @@ public class MemberVO {
 	}
 	public void setUserkey(String userkey) {
 		this.userkey = userkey;
+	}
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
 	}
 }
