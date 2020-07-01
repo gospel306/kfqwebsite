@@ -1,25 +1,21 @@
 package com.kfq.fund.service;
 
-import java.util.Random;
 
-import javax.mail.internet.MimeMessage;
-import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
-
-import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.MailSender;
 import org.springframework.stereotype.Service;
 
 import com.kfq.fund.dao.IMemberDAO;
 import com.kfq.fund.vo.MemberVO;
+import com.kfq.fund.vo.Pagination;
 
 @Service
 public class MemberServiceImpl implements IMemberService {
 	@Autowired
 	private IMemberDAO dao;
-	private SqlSessionTemplate sqlSession;
-	private MailSender mailSender;
 	
 	public void setDao(IMemberDAO dao) {
 		this.dao = dao;
@@ -53,5 +49,20 @@ public class MemberServiceImpl implements IMemberService {
 	public int updateUserkey(String email,String key) {
 		return dao.updateUserkey(email,key);
 	}
+
+	@Override
+	public void deleteMember(String email) {
+		dao.deleteMember(email);
+	}
+
+	@Override
+	public int getMemberlistCnt(HashMap<String, String> map) {
+		return dao.getMemberlistCnt(map);
+	}
+	@Override
+	public List<MemberVO> listMember(String orderOption, String sortOption, Pagination page) {
+		return dao.listMember(orderOption, sortOption, page.getStartList(),page.getListSize());
+	}
+
 
 }

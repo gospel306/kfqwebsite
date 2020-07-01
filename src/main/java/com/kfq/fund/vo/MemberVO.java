@@ -19,13 +19,18 @@ public class MemberVO {
 		this.nickname = nickname;
 		this.date = date;
 	}
+	public MemberVO(String email, String userclass, String nickname, Date date) {
+		this.email = email;
+		this.userclass = userclass;
+		this.nickname = nickname;
+		this.date = date;
+	}
 	public MemberVO(String email, String passwd, String userclass, String nickname) {
 		super();
 		this.email = email;
 		this.passwd = passwd;
 		this.userclass = userclass;
 		this.nickname = nickname;
-		this.userkey = userkey;
 	}
 	public String getEmail() {
 		return email;

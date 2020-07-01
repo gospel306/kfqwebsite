@@ -1,5 +1,8 @@
 package com.kfq.fund.dao;
 
+import java.util.HashMap;
+import java.util.List;
+
 import com.kfq.fund.vo.MemberVO;
 
 public interface IMemberDAO {
@@ -15,6 +18,11 @@ public interface IMemberDAO {
 	
 	//비밀번호 찾기
 	public int searchPassword(String email, String key);
+	//회원인원 갯수
+	public int getMemberlistCnt(HashMap<String, String> map);
+	//회원리스트
+	public List<MemberVO> listMember(String orderOption,String sortOption, int startlist,int listsize); 
+	
 	
 	//회원 삭제
 	public void deleteMember(String email);

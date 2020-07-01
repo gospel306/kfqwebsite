@@ -1,5 +1,8 @@
 package com.kfq.fund.controller;
 
+import java.util.HashMap;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -13,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.kfq.fund.service.IMemberService;
 import com.kfq.fund.service.UserMailSendService;
 import com.kfq.fund.vo.MemberVO;
+import com.kfq.fund.vo.Pagination;
 
 @Controller
 public class MemberController {
@@ -75,5 +79,34 @@ public class MemberController {
 		String userkey = request.getParameter("userkey");
 		mailsender.alter_userKey_service(email, userkey);
 		return new ModelAndView("");
+	}
+	
+	//맴버 리스트
+	@RequestMapping(value = "memberlist", method = RequestMethod.GET)
+	public ModelAndView memberlist(HttpServletRequest request) {
+		String orderOption = request.getParameter("orderOption");
+		String sortOption = request.getParameter("sortOption");
+		String searchOption = request.getParameter("searchOption");
+		HashMap<String, String> map = new HashMap<>();
+		if(searchOption == "DATE") {
+			String startdate = request.getParameter("startdate");
+			String enddate = request.getParameter("enddate");
+			map.put("startdate", startdate);
+			map.put("enddate", enddate);
+		}else {
+			String keyword = request.getParameter("keyword");
+			map.put("keyword",keyword);
+		}
+		String pagenum = request.getParameter("pagenum");
+		int page = 1;
+		if(pagenum != null)
+			page = Integer.parseInt(pagenum);
+		Pagination pagination = new Pagination();
+		int listCnt = member_service.getMemberlistCnt(map);
+		pagination.pageInfo(page, listCnt);
+		List<MemberVO> memberlist = member_service.listMember(orderOption, sortOption, pagination);
+		ModelAndView mv = new ModelAndView("memberlist");
+		mv.addObject("memberlist",memberlist);
+		return mv;
 	}
 }

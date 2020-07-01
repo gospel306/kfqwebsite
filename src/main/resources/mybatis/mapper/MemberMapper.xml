@@ -15,6 +15,46 @@
 		FROM MEMBER
 		WHERE EMAIL = #{email} AND PASSWD = #{passwd}
 	</select>
+	<select id="getMemberlistCnt" parameterType="Map" resultType="Integer">
+		SELECT COUNT(*) AS LISTCNT
+		FROM MEMBER
+		<if test="searchOption == 'EMAIL'">
+			WHERE EMAIL LIKE CONCAT('%',#{keyword},'%')
+		</if>
+		<if test="searchOption == 'NICKNAME'">
+			WHERE NICKNAME LIKE CONCAT('%',#{keyword},'%')
+		</if>
+		<if test="searchOption == 'USERCLASS'">
+			WHERE USERCLASS == #{keyword}
+		</if>
+		<if test="searchOption == 'DATE'">
+			WHERE DATE BETWEEN #{startdate} AND #{enddate}
+		</if>
+	</select>
+	<!-- Memberlist(option) -->
+	<select id="listMember" parameterType="Map" resultType="com.kfq.fund.vo.MemberVO">
+		SELECT EMAIL, NICKNAME, USERCLASS, DATE
+		FROM MEMBER
+		<if test="orderOption == 'EMAIL' and sortOption == 'ASC'">
+			ORDER BY EAMIL
+		</if>
+		<if test="orderOption == 'EMAIL' and sortOption == 'DESC'">
+			ORDER BY EMAIL DESC
+		</if>
+		<if test="orderOption == 'NICKNAME' and sortOption == 'ASC'">
+			ORDER BY NICKNAME
+		</if>
+		<if test="orderOption == 'NICKNAME' and sortOption == 'DESC'">
+			ORDER BY NICKNAME DESC
+		</if>
+		<if test="orderOption == 'DATE' and sortOption == 'ASC'">
+			ORDER BY DATE
+		</if>
+		<if test="orderOption == 'DATE' and sortOption == 'DESC'">
+			ORDER BY DATE DESC
+		</if>
+		LIMIT #{startlist}, #{listsize}
+	</select>
 	<!-- insert -->
 	<insert id="insertMember" parameterType="com.kfq.fund.vo.MemberVO">
 		INSERT INTO MEMBER(EMAIL,PASSWD,USERCLASS,NICKNAME,DATE) 
