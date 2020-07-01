@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+<style>
+	.container{
+		width: 100%;
+		max-width:1000px;
+	}
+	h2{
+		margin-bottom:50px;
+		text-align:center;
+		font-weight:bold;
+	}
+	.hr1{
+		border:solid;
+		height:2px;
+		background-color:#DEDEDE;
+		margin-top:3px;
+	}
+	.header{
+		font-weight:bold;
+		color:#DEDEDE;
+	}
+	.inner{
+	    margin-left:60px;
+	    margin-right:60px;
+	    padding-top:50px;
+	    padding-bottom:40px;
+	}
+	.text_type{
+		font-weight:bold;
+		font-size:33px; 
+		padding-top:30px;
+		margin:5px;
+		font-alignment:left;
+	}
+	.text_add{
+		font-alignment:left;
+		margin-left:5px;
+		font-size:15px;
+		font-weight:bold;
+	}
+	.subtype{
+		border-style:none;
+		background-color:#F05F53;
+		padding:10px;
+		font-weight:bold;
+		text-align:center;
+		color:white;
+		font-size:13px;
+		width:100%;
+	}
+	.subtype1{
+		border-style:none;
+		background-color:black;
+		padding:10px;
+		margin-left:70%;
+		margin-top:15px;
+		font-weight:bold;
+		text-align:center;
+		color:white;
+		font-size:15px;
+		width:30%;
+	}
+	.subtype1:hover{
+		background-color:#676767;
+	}
+	.subtype2{
+		border-style:none;
+		background-color:#676767;
+		padding:10px;
+		font-weight:bold;
+		text-align:center;
+		color:white;
+		font-size:13px;
+		width:35%;
+	}
+	.subtype2:hover{
+		background-color:#F05F53;
+	}
+	.sub3{
+		font-size:11px;
+		color:RED;
+		font-weight:bold;
+		margin-top:15px;
+	}
+	.title{
+		display:inline-block;
+	}
+	#exampleInputEmail1 {
+		width:40%;
+	}
+	#exampleInputPassword1 {
+		width:40%;
+	}
+	#exampleInputPassword2 {
+		width:40%;
+	}
+	#exampleInputEmail2 {
+		width:80%;
+	}
+	.input{
+		font-weight:bold;
+		font-size:20px;
+		margin-bottom:5px;
+	}
+	.sub_input{
+		font-size:11px;
+		font-weight:bold;
+	}
+	.form-control1 {
+   		display: inline;
+	    height: calc(1.5em + .75rem + 2px);
+	    padding: .375rem .75rem;
+	    font-size: 1rem;
+	    font-weight: 400;
+	    line-height: 1.5;
+	    color: #495057;
+	    background-color: #fff;
+	    background-clip: padding-box;
+	    border: 1px solid #ced4da;
+	    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+	}
+	.text_agree{
+		font-weight:bold;
+		font-size:14px;
+	}
+	.text_agree1{
+		font-size:12px;
+		margin-left:13px;
+		font-weight:bold;
+	}
+	#defaultCheck1{
+		margin-left:0px;
+	}
+	.agree_more{
+		color:red;
+		font-size:12px;
+		text-decoration:underline;
+	}
+	.agree_more:hover{
+		color:red;
+	}
+</style>
+
+</head>
+<body>
+	<!-- header -->
+	<div>
+	
+	</div>
+	
+	<!-- content -->
+	<div>
+		<div class="container mt-5">
+			<h2>디자인 콘테스트를 개최합니다.</h2>	
+			<div class="header">
+				 <div class="row">
+				    <div class="col">
+				    	1. 카테고리 선택
+				    	<hr class="hr1">
+				    </div>
+				    <div class="col" style="color:red;">
+				    	2. 브리핑 작성
+				    	<hr class="hr1" style="background-color:red;">
+				    	</div>
+				    <div class="col">
+				    	3. 상금&옵션 선택
+				    	<hr class="hr1">
+				    </div>
+				    <div class="col">
+				    	4. 결제 및 등록완료
+				    	<hr class="hr1">	
+				    </div>
+				 </div>
+			</div>
+			 
+			 <div class="my-5" style="background-color:#EAEAEA; width:100%;">
+				<div class="inner">
+					<div class="row">
+					    <div class="col-sm-5">
+					    	<div class="title">
+								<span class="text_type">Step 2-1</span><br>
+								<span class="text_add">기본 정보를 입력해주세요.</span>
+								<p class="sub3">* 이미 회원이신가요?</p>
+								<button type="button" onclick="location.href=#" class="subtype">로그인하기</button>
+							</div>
+					    </div>
+					    <div class="col-sm-7">
+					   	 	<form>
+							  <div class="form-group mt-4">
+							  	<p class="input">아이디</p>
+							    <input type="email" class="form-control1 rounded-0" id="exampleInputEmail1" aria-describedby="emailHelp">
+							  	<p class="sub_input" style="margin-left:3px;">아이디를 입력해주세요.</p>
+							  </div>
+							  <div class="form-group">
+							  	<p class="input">비밀번호</p>
+							    <input type="password" class="form-control1 rounded-0" id="exampleInputPassword1">
+							    <input type="password" class="form-control1 rounded-0" id="exampleInputPassword2">
+							    <p class="sub_input" style="margin-left:42%;">비밀번호 재확인</p>
+							  </div>
+							  <div class="form-group mt-4">
+							  	<p class="input">이메일</p>
+							    <input type="email" class="form-control1 rounded-0" id="exampleInputEmail2" aria-describedby="emailHelp">
+							  </div>
+							  <div class="form-group mt-4">
+							  	<p class="input">휴대폰 본인인증</p>
+							    <button type="button" onclick="location.href=#" class="subtype2">휴대폰 인증</button>
+							  </div>
+					    	</form>
+					    </div>
+					</div>
+					
+					<hr size="1" align="center" style="margin-top:30px;">
+					
+					<div class="row">
+					    <div class="col-sm-5">
+					    	<div class="title">
+								<span class="text_type">Step 2-2</span><br>
+								<span class="text_add">이용약관동의</span>
+							</div>
+					    </div>
+					    <div class="col-sm-7">
+					    	<span>&nbsp;</span>
+					    	<div class="agree">
+								<span class="text_agree">라우드소싱 이용약관</span> &emsp;&emsp;&ensp;&nbsp;
+								<a href="#" class="agree_more">자세히보기</a><br>
+								<span class="text_agree">개인정보 수집 및 이용방침</span> &ensp;
+								<a href="#" class="agree_more">자세히보기</a><br>
+								<input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+								<label class="text_agree1 form-check-label" for="defaultCheck1">
+								  &ensp;라우드 소싱의 이용약관, 개인정보 수집 및 이용방침에 동의합니다.
+								</label>
+							</div>
+					    </div>
+					</div>
+					
+					<hr size="1" align="center" style="margin-top:30px;">
+					
+					<button type="button" onclick="location.href=#" class="subtype1">다음&nbsp;&nbsp;></button>
+				</div>
+			</div>
+					
+		</div>
+	</div>
+	
+	<!-- footer -->
+	<div>
+	
+	</div>
+</body>
+</html>

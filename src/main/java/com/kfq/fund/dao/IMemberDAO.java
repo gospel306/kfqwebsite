@@ -21,7 +21,7 @@ public interface IMemberDAO {
 	//회원인원 갯수
 	public int getMemberlistCnt(HashMap<String, String> map);
 	//회원리스트
-	public List<MemberVO> listMember(String orderOption,String sortOption, int startlist,int listsize); 
+	public List<MemberVO> listMember(String searchOption,String sortOption, int startlist,int listsize); 
 	
 	
 	//회원 삭제

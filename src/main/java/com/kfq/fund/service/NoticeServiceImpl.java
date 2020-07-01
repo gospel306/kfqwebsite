@@ -10,7 +10,7 @@ import com.kfq.fund.vo.NoticeVO;
 import com.kfq.fund.vo.Pagination;
 
 @Service
-public class NoticeServiceImpl implements INoticeService {
+public class NoticeServiceImpl implements INoticeServiceImpl {
 	
 	@Autowired
 	private INoticeDAO dao;

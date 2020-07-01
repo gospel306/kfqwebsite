@@ -15,6 +15,6 @@ public interface IMemberService {
 	public void logout(HttpSession session);
 	public int updateUserkey(String email,String key);
 	public int getMemberlistCnt(HashMap<String, String> map);
-	public List<MemberVO> listMember(String orderOption,String sortOption, Pagination page);
+	public List<MemberVO> listMember(String searchOption,String sortOption, Pagination page);
 	public void deleteMember(String email);
 }

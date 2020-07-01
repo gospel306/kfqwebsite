@@ -23,12 +23,33 @@
                             <a class="nav-link" href="#">공지</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">펀딩하기</a>
+                            <a class="nav-link" href="#" onclick="check()">펀딩하기</a>
                         </li>
                         <li class="nav-item active">
                             <a class="nav-link" href="#">고객센터</a>
                         </li>
                     </ul>
+                    <script type="text/javascript">
+                    function check(){
+                    	$.ajax({
+                    		url: "existContest.do",
+                    		type:"POST",
+                    		data: null,
+                    		dataType:'json',
+                    		success:function(data){
+                    			if(data == true){
+                    				if(confirm("이미 작성하고 있는 페이지가 있습니다. 이어서 작성하시겠습니까?")==true){
+                    					location.href = "launch";
+                    				}else{
+                    					location.href = "launch";
+                    				}
+                    			}else{
+                    				location.href = "launch";
+                    			}
+                    		}
+                    	});
+                    }
+                    </script>
                     <!-- 검색과 로그인 -->
                     <div class="">
                         <div class="pl-5 row">

@@ -84,7 +84,6 @@ public class MemberController {
 	//맴버 리스트
 	@RequestMapping(value = "memberlist", method = RequestMethod.GET)
 	public ModelAndView memberlist(HttpServletRequest request) {
-		String orderOption = request.getParameter("orderOption");
 		String sortOption = request.getParameter("sortOption");
 		String searchOption = request.getParameter("searchOption");
 		HashMap<String, String> map = new HashMap<>();
@@ -97,6 +96,8 @@ public class MemberController {
 			String keyword = request.getParameter("keyword");
 			map.put("keyword",keyword);
 		}
+		if(sortOption == null)
+			sortOption = "ASC";
 		String pagenum = request.getParameter("pagenum");
 		int page = 1;
 		if(pagenum != null)
@@ -104,7 +105,7 @@ public class MemberController {
 		Pagination pagination = new Pagination();
 		int listCnt = member_service.getMemberlistCnt(map);
 		pagination.pageInfo(page, listCnt);
-		List<MemberVO> memberlist = member_service.listMember(orderOption, sortOption, pagination);
+		List<MemberVO> memberlist = member_service.listMember(searchOption, sortOption, pagination);
 		ModelAndView mv = new ModelAndView("memberlist");
 		mv.addObject("memberlist",memberlist);
 		return mv;

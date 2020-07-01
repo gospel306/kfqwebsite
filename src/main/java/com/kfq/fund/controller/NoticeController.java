@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.kfq.fund.service.INoticeService;
+import com.kfq.fund.service.INoticeServiceImpl;
 import com.kfq.fund.vo.NoticeVO;
 import com.kfq.fund.vo.Pagination;
 
@@ -21,9 +21,9 @@ import com.kfq.fund.vo.Pagination;
 @Controller
 public class NoticeController {
 	@Autowired
-	private INoticeService notice_service;
+	private INoticeServiceImpl notice_service;
 	
-	public void setNotice_service(INoticeService notice_service) {
+	public void setNotice_service(INoticeServiceImpl notice_service) {
 		this.notice_service = notice_service;
 	}
 	

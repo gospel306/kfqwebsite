@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kfq.fund.dao.IContestDAO">
+	<!-- select -->
+	<select id="existContest" parameterType="String" resultType="Integer">
+		SELECT EXISTS(
+		SELECT *
+		FROM CONTEST
+		WHERE MEMBEREMAIL = #{email} AND PAYED = FALSE)
+	</select>
+	<!-- insert -->
+	<insert id="insertContest" parameterType="com.kfq.fund.vo.ContestVO">
+		INSERT INTO CONTEST(MEMBEREMAIL, CONTESTTYPE,NAME,COMPANY,SERVICEINFO,SECTOR,IDEA,BRIEFING,PAYED)
+		VALUES(#{memberemail},#{contesttype},#{name},#{company},#{serviceinfo},#{sector},#{idea},#{briefing},FALSE)
+		<selectKey keyProperty="id" resultType="Integer">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+	<!-- update -->
+	<!-- delete -->
+</mapper>

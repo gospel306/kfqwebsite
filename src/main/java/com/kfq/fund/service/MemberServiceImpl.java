@@ -60,9 +60,7 @@ public class MemberServiceImpl implements IMemberService {
 		return dao.getMemberlistCnt(map);
 	}
 	@Override
-	public List<MemberVO> listMember(String orderOption, String sortOption, Pagination page) {
-		return dao.listMember(orderOption, sortOption, page.getStartList(),page.getListSize());
+	public List<MemberVO> listMember(String searchOption, String sortOption, Pagination page) {
+		return dao.listMember(searchOption, sortOption, page.getStartList(),page.getListSize());
 	}
-
-
 }
