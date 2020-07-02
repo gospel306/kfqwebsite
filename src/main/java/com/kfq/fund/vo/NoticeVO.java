@@ -1,24 +1,15 @@
 package com.kfq.fund.vo;
 
-import java.math.BigDecimal;
-import java.sql.Timestamp;
+import java.sql.Date;
 
 public class NoticeVO {
-	private String no;
+	private int no;
 	private String title;
 	private String author;
-	private Timestamp createdat;
+	private Date createdat;
 	private String context;
 	
-	public NoticeVO(BigDecimal no, String title, String author, Timestamp createdat) {
-		super();
-		this.no = String.valueOf(no);
-		this.title = title;
-		this.author = author;
-		this.createdat = createdat;
-	}
-
-	public NoticeVO(String title, String author, Timestamp createdat, String context) {
+	public NoticeVO(String title, String author, Date createdat, String context) {
 		super();
 		this.title = title;
 		this.author = author;
@@ -26,10 +17,18 @@ public class NoticeVO {
 		this.context = context;
 	}
 	
-	public String getNo() {
+	public NoticeVO(Integer no, String title, String author, Date createdat) {
+		super();
+		this.no = no;
+		this.title = title;
+		this.author = author;
+		this.createdat = createdat;
+	}
+
+	public int getNo() {
 		return no;
 	}
-	public void setNo(String no) {
+	public void setNo(int no) {
 		this.no = no;
 	}
 	public String getTitle() {
@@ -44,10 +43,10 @@ public class NoticeVO {
 	public void setAuthor(String author) {
 		this.author = author;
 	}
-	public Timestamp getCreatedat() {
+	public Date getCreatedat() {
 		return createdat;
 	}
-	public void setCreatedat(Timestamp createdat) {
+	public void setCreatedat(Date createdat) {
 		this.createdat = createdat;
 	}
 	public String getContext() {

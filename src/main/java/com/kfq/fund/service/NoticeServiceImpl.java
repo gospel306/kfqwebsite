@@ -10,7 +10,7 @@ import com.kfq.fund.vo.NoticeVO;
 import com.kfq.fund.vo.Pagination;
 
 @Service
-public class NoticeServiceImpl implements INoticeService {
+public class NoticeServiceImpl implements INoticeServiceImpl {
 	
 	@Autowired
 	private INoticeDAO dao;
@@ -32,6 +32,11 @@ public class NoticeServiceImpl implements INoticeService {
 	@Override
 	public int getNoticeListCnt() {
 		return dao.getNoticeListCnt();
+	}
+
+	@Override
+	public int insertNotice(NoticeVO notice) {
+		return dao.insertNotice(notice);
 	}
 
 }

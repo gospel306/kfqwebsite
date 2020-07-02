@@ -1,0 +1,83 @@
+@charset "UTF-8";
+
+#background_div {
+	width: 700px;
+	height: 1200px;
+	margin-left: 26%;
+	padding-top: 160px;
+}
+
+#two_btn_back {
+	width: auto;
+	height: auto;
+	margin-top: 40px;
+}
+
+#upper_text {
+	font-size: 25px;
+	font-weight: bold;
+	letter-spacing: -1px;
+	text-align: center;
+}
+
+#upper_text02 {
+	font-size: 15px;
+}
+
+#pills-home-tab {
+	background-color: white;
+	color: black;
+	border: 2px solid black;
+	margin-right: 10px;
+	font-size: 15px;
+}
+
+#pills-profile-tab {
+	background-color: white;
+	color: black;
+	border: 2px solid black;
+	margin-left: 10px;
+	font-size: 15px;
+}
+
+#font123 {
+	font-weight: bold;
+	font-size: 18px;
+}
+
+#signup_div {
+	margin-top: 30px;
+}
+
+#producer_main {
+	width: 500px;
+	height: auto;
+}
+
+#producer_up_box {
+	width: 390px;
+	height: 65px;
+	background-color: #ebeff2;
+	margin-top: 30px;
+	font-size: 13px;
+	padding-top: 13px;
+}
+
+#pro_box_text {
+	font-weight: bold;
+}
+
+#sign_box {
+	width: 320px;
+	height: 65px;
+	margin-top: 20px;
+	font-weight: bold;
+	font-size: 13px;
+}
+
+#checkbox {
+	width: 320px;
+	height: 65px;
+	margin-top: 20px;
+	font-size: 13px;
+}

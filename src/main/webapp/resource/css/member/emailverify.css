@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+body {
+	margin: 0px auto;
+	text-align: center;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+.emailTopimg {
+	padding: 20px;
+}
+
+.emailTitle {
+	font-weight: bold;
+	font-size: 26px;
+	padding: 20px;
+}
+
+.emailContent {
+	width: 75%;
+	background-color: #f7f7f7;
+	margin: 0px auto;
+}
+
+.emailP {
+	padding: 20px;
+}
+
+.btn {
+	white-space: nowrap;
+}
+
+.emailBtn {
+	padding: 20px;
+}

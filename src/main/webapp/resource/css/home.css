@@ -1,0 +1,44 @@
+.carousel-indicators li {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.active .carousel_preview {
+    border: 2px #00c4c4 solid;
+}
+
+.carousel_preview {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+
+}
+
+.content_padding {
+    padding: 30px 8%;
+    padding-bottom: 50px;
+}
+.content_card_text{
+    font-size: 14px; font-weight: 700;
+}
+.content_card_percent{
+    color :#00a2a2; font-size: 12px; font-weight: 700;
+}
+.content_rank {
+    min-width: 380px; min-height: 60px;
+    margin-bottom: 20px;
+}
+.content_rank_text{
+    font-size: 0.9rem; font-weight: 550; 
+}
+.content_rank_percent{
+    color :#00a2a2; font-size: 12px; font-weight: 700;
+}
+
+@media screen and (max-width: 768px) {
+    .content_padding {
+        padding: 0 5%;
+    }
+
+}

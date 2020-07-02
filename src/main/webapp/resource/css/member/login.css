@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+.logincontainer {
+	width: 100%;
+}
+
+.btn_login {
+	padding-top: 6px;
+	padding-left: 12px;
+	padding-right: 12px;
+	padding-bottom: 6px;
+	height: 50px;
+}
+
+.btn {
+	height: 50px;
+}
+
+#exampleInputEmail1::placeholder {
+	color: #BDBDBD;
+}
+
+#exampleInputPassword1::placeholder {
+	color: #BDBDBD;
+}

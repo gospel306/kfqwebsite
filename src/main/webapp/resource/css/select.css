@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+.mainbig .mainleft {
+	margin-top: 130px;
+	margin-left: 260px;
+	width: auto;
+	height: auto;
+	float: left;
+}
+
+.mainbig .mainleft .ideasignup {
+	font-weight: bold;
+	font-size: 28px;
+}
+
+.mainbig .mainleft .ideasignup span {
+	color: tomato;
+}
+
+.signup_buttons {
+	width: 500px;
+	height: auto;
+	margin-top: 40px;
+}
+
+.signup_buttons .aaa {
+	width: 400px;
+	height: 56px;
+	margin-bottom: 10px;
+	font-size: 17px;
+	border: 1px solid black;
+}
+
+.signup_buttons .aaa span {
+	font-weight: bold;
+}
+
+.bordertop {
+	border-left: 0px !important;
+	border-right: 0px !important;
+	border-bottom: 0px !important;
+}
+
+.bordertop p {
+	font-size: 13px;
+	margin-top: 15px;
+}
+
+.bordertop p button {
+	font-weight: bold;
+	float: right;
+	font-size: 14px;
+	width: 120px;
+}
+
+.rightimg {
+	width: 490px;
+	height: 490px;
+	margin-top: 190px;
+	float: left;
+}
