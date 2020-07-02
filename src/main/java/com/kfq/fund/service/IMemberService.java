@@ -10,6 +10,9 @@ import com.kfq.fund.vo.Pagination;
 
 public interface IMemberService {
 	public void insertMember(MemberVO member);
+	public boolean findexistEmail(String email);
+	public boolean findexistNickName(String nickname);
+	public boolean memberCheck(MemberVO member);
 	public boolean loginCheck(MemberVO member,HttpSession session);
 	public MemberVO viewMember(MemberVO vo);
 	public void logout(HttpSession session);

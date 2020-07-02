@@ -6,75 +6,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Login</title>
-<style>
-        .logincontainer{
-            width: 100%;
-        }
-        .btn_login{
-        padding-top:6px;
-        padding-left:12px;
-        padding-right:12px;
-        padding-bottom:6px;
-        height:50px;
-        }
-        
-        .btn{
-        height:50px;
-        }
-        
-        #exampleInputEmail1::placeholder {
-                  color: #BDBDBD;
-        }
-        #exampleInputPassword1::placeholder {
-                  color: #BDBDBD;
-        }
-    </style>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script type="text/javascript">
-    $(document).ready(function(){
-    	$("#btnLogin").click(function(){
-    		var useremail = $("#userEmail").val();
-    		var userpasswd = $("#userPw").val();
-    		if(useremail == ""){
-    			alert("이메일을 입력하세요.");
-    			$("#userEmail").focus();
-    			return;
-    		}
-    		if(userPw==""){
-    			alert("비밀번호를 입력하세요.");
-    			$("#userPw").focus();
-    			return;
-    		}
-    		var form_data ={
-					email:useremail,
-					passwd:userpasswd,
-				};
-			$.ajax({
-				type : "POST",
-				url : "loginCheck.do",
-				data : form_data,
-				success : function(data){
-					if(data){
-	    				document.getElementById("link").value = document.location.pathname.split("/")[1];
-	    				document.login.action="login.do";
-	    				document.login.submit();
-					}else{
-						alert("아이디나 비밀번호가 맞지 않습니다.")
-					}
-				},
-				error : function(error){
-					alert("error");
-				}
-			});
-    	});
-    });
-    </script>
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/member/login.css">
+    <script src="<%=request.getContextPath()%>/resource/js/login.js"></script>
 </head>
 <body>
 	<div class="container content_block logincontainer">     
         <div>
 			<h1 class="font-weight-bold">로그인</h1>
-			<form name="login" method="post">
+			<form id="login" method="post">
 				<div class="form-group mt-4">
 			    	<input type="email" class="form-control rounded-0" style="height:50px" id="userEmail" name="email" aria-describedby="emailHelp" placeholder="아이디">
 			  	</div>

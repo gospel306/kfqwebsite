@@ -81,15 +81,26 @@
 											${sessionScope.nickname }
 										</div>
 										<div class="pt-1" style="min-width: 80px;">
-											<form name="logout" action="logout.do" method="post" style="visibility:hidden">
-												<input type="text" style="visibility:hidden;display:none" name="link">
+											<form id="logout" name="logout" method="post" style="visibility:hidden">
+												<input type="text" style="visibility:hidden;display:none" id="link" name="link">
 											</form>
 											<a class="logout_button" id="btn_logout" href="javascript:goPage()" style="color:gray;">로그아웃</a>
 											<script type="text/javascript">
 											function goPage(){
-												var f = document.logout;
-												f.link.value = document.location.pathname.split("/")[1];
-												f.submit();
+												var urlpath = "";
+												var pathname = document.location.pathname.split("/");
+												var link = "";
+									    		for(var i = 1;i <pathname.length;i++){
+									    			if(i != 1)
+									    				link += "/";
+									    			link += pathname[i];
+									    			if(i == 1)
+									    				continue;
+									    			urlpath += "../";
+									    		}
+												document.getElementById("link").value = link;
+												$("#logout").attr("action",urlpath+"logout.do");
+												$("#logout").submit();
 											}
 											</script>
 										</div>

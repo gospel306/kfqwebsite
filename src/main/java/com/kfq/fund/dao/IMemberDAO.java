@@ -9,7 +9,8 @@ public interface IMemberDAO {
 	public void insertMember(MemberVO member);
 	public String loginCheck(MemberVO member);
 	public MemberVO viewMember(MemberVO vo);
-	
+	public int findexistEmail(String email);
+	public int findexistNickName(String nickname);
 	//임의 userkey 생성후 입력
 	public int GetKey(String email, String userkey);
 	

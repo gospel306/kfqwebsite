@@ -35,8 +35,9 @@ public class MemberController {
 	}
 	@RequestMapping(value = "signin")
 	public ModelAndView signin() {
-		return new ModelAndView("member/email");
+		return new ModelAndView("member/signin");
 	}
+	//회원정보 저장
 	@RequestMapping(value = "insert.do", method = RequestMethod.POST)
 	public ModelAndView insertMember(HttpServletRequest request) {
 		String email = request.getParameter("email");
@@ -48,6 +49,30 @@ public class MemberController {
 		return new ModelAndView("member/emailverify");
 	}
 	
+	@RequestMapping(value = "insertdirect.do", method = RequestMethod.POST)
+	@ResponseBody
+	public String insertMemberdirect(HttpServletRequest request) {
+		String email = request.getParameter("email");
+		if(member_service.findexistEmail(email))
+			return "email";
+		String nickname = request.getParameter("nickname");
+		System.out.println(nickname);
+		if(member_service.findexistNickName(nickname))
+			return "nickname";
+		String passwd = request.getParameter("passwd");
+		String userclass = "requester";
+		member_service.insertMember(new MemberVO(email,passwd,userclass,nickname));
+		mailsender.mailSendWithUserKey(email, request);
+		return "success";
+	}
+	@RequestMapping(value = "memberCheck.do")
+	@ResponseBody
+	public boolean memberCheck(HttpServletRequest request) {
+		String email = request.getParameter("email");
+		String passwd = request.getParameter("passwd");
+		return member_service.memberCheck(new MemberVO(email,passwd));
+	}
+	//로그인 체크(아이디와 비밀번호가 맞는지)
 	@RequestMapping(value = "loginCheck.do", method = RequestMethod.POST)
 	@ResponseBody
 	public boolean loginMember(HttpServletRequest request,HttpSession session) {
@@ -56,12 +81,11 @@ public class MemberController {
 		boolean result = member_service.loginCheck(new MemberVO(email,passwd), session);
 		return result;
 	}
-	
+	//로그인이 확인되면 redirect
 	@RequestMapping(value = "login.do", method = RequestMethod.POST)
 	public ModelAndView login(HttpServletRequest request) {
-		ModelAndView mv = new ModelAndView();
 		String url = request.getParameter("link");
-		mv.setViewName("redirect:/"+url);
+		ModelAndView mv = new ModelAndView("redirect:"+url);
 		return mv;
 	}
 	
@@ -72,7 +96,7 @@ public class MemberController {
 		ModelAndView mv = new ModelAndView("redirect:/"+url);
 		return mv;
 	}
-	
+	//이메일 인증
 	@RequestMapping(value = "/user/key_alter",method = RequestMethod.GET)
 	public ModelAndView key_alterConfirm(HttpServletRequest request) {
 		String email = request.getParameter("email");

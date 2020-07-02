@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 
@@ -13,8 +13,11 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resource/css/categorycontest.css">
+	href="<%=request.getContextPath()%>/resource/css/contest/category.css">
 </head>
+<header>
+	<jsp:include page="../section/header.jsp"></jsp:include>
+</header>
 <body>
 	<div>
 		<div class="container mt-5">
@@ -51,11 +54,11 @@
 							</div>
 					    </div>
 					    <div class="col-sm-7">
-					    	<button type="button" onclick="location.href='briefing2.html'" class="subtype rounded w-100">
+					    	<button type="button" onclick="location.href='launch/logo'" class="subtype rounded w-100">
 					    		> 로고 디자인 <span class="sub1">(로고만 제공)</span>
 					    		<span class="startprice">상금 30만원 ~</span>
 					    	</button>
-					    	<button type="button" onclick="location.href=#" class="subtype rounded w-100">
+					    	<button type="button" onclick="location.href='launch/logo&bizcard'" class="subtype rounded w-100">
 					    		> 로고 + 명함 | <span class="sub2">10만원 차감 효과</span>
 					    		<span class="startprice" id="p1">상금 40만원 ~</span>
 					    		<div class="detail">

@@ -68,6 +68,18 @@
 		LIMIT #{startlist}, #{listsize}
 	</select>
 	<!-- searchMember -->
+	<select id="findexistEmail" parameterType="String" resultType="Integer">
+		SELECT EXISTS(
+		SELECT *
+		FROM MEMBER
+		WHERE EMAIL = #{value})
+	</select>
+	<select id="findexistNickName" parameterType="String" resultType="Integer">
+		SELECT EXISTS(
+		SELECT *
+		FROM MEMBER
+		WHERE NICKNAME = #{value})
+	</select>
 	<!-- insert -->
 	<insert id="insertMember" parameterType="com.kfq.fund.vo.MemberVO">
 		INSERT INTO MEMBER(EMAIL,PASSWD,USERCLASS,NICKNAME,DATE) 

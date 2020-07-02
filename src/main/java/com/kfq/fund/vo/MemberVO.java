@@ -5,7 +5,7 @@ import java.sql.Date;
 public class MemberVO {
 	private String email;
 	private String passwd;
-	private String userclass;
+	private String userclass;//권한
 	private String nickname;
 	private String userkey;
 	private Date date;

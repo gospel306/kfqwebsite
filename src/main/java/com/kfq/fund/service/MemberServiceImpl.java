@@ -38,6 +38,10 @@ public class MemberServiceImpl implements IMemberService {
 		return result;
 	}
 	@Override
+	public boolean memberCheck(MemberVO member) {
+		return dao.loginCheck(member) == null ? false: true;
+	}
+	@Override
 	public MemberVO viewMember(MemberVO vo) {
 		return dao.viewMember(vo);
 	}
@@ -62,5 +66,15 @@ public class MemberServiceImpl implements IMemberService {
 	@Override
 	public List<MemberVO> listMember(String searchOption, String sortOption, Pagination page) {
 		return dao.listMember(searchOption, sortOption, page.getStartList(),page.getListSize());
+	}
+
+	@Override
+	public boolean findexistEmail(String email) {
+		return dao.findexistEmail(email)==1? true:false;
+	}
+
+	@Override
+	public boolean findexistNickName(String nickname) {
+		return dao.findexistNickName(nickname)==1?true:false;
 	}
 }
