@@ -16,14 +16,13 @@ public interface IMemberDAO {
 	
 	//이메일 인증후 userkey 업데이트
 	public int updateUserkey(String email, String key);
-	
+	public void updateMember(MemberVO member);
 	//비밀번호 찾기
 	public int searchPassword(String email, String key);
 	//회원인원 갯수
 	public int getMemberlistCnt(HashMap<String, String> map);
 	//회원리스트
 	public List<MemberVO> listMember(String searchOption,String sortOption, int startlist,int listsize); 
-	
 	
 	//회원 삭제
 	public void deleteMember(String email);

@@ -31,6 +31,11 @@
 			WHERE DATE BETWEEN #{startdate} AND #{enddate}
 		</if>
 	</select>
+	<select id="getPassword" parameterType="String" resultType="String">
+		SELECT PASSWD
+		FROM MEMBER
+		WHERE EMAIL = #{value}
+	</select>
 	<!-- Memberlist(option) -->
 	<select id="listMember" parameterType="Map" resultType="com.kfq.fund.vo.MemberVO">
 		SELECT EMAIL, NICKNAME, USERCLASS, DATE
@@ -95,6 +100,11 @@
 		UPDATE MEMBER
 		SET USERKEY = "Y"
 		WHERE EMAIL = #{email} AND USERKEY = #{key}
+	</update>
+	<update id="updateMember" parameterType="com.kfq.fund.vo.MemberVO">
+		UPDATE MEMBER
+		SET PASSWD = #{passwd}, NICKNAME = #{nickname}, USERCLASS = #{userclass}
+		WHERE EMAIL = #{email}
 	</update>
 	<!-- delete -->
 	<delete id="deleteMember" parameterType="String">

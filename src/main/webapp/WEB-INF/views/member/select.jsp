@@ -17,8 +17,6 @@
 	href="<%=request.getContextPath()%>/resource/css/select.css">
 <script src="<%=request.getContextPath()%>/resource/js/goTop.js"></script>
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resource/css/notice.css">
-<link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resource/css/custom.css">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resource/css/slick.css">
@@ -50,7 +48,7 @@
 						<button type="button" class="btn btn-light aaa">
 							<span>카카오</span>로 간편하게 가입하기
 						</button>
-						<button type="button" class="btn btn-light aaa" onclick="location.href='signin'">
+						<button type="button" class="btn btn-light aaa" onclick="location.href='<%=request.getContextPath()%>/signin'">
 							<span>이메일</span>로 간편하게 가입하기
 						</button>
 						<div class="aaa bordertop">

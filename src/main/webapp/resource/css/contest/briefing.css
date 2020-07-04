@@ -206,3 +206,39 @@ h2 {
 label {
 	font-size: 14px;
 }
+
+.imgs_wrap {
+	margin-top: 50px;
+}
+
+.imgs_wrap img {
+	max-width: 200px;
+}
+
+input[type="file"] {
+	display: block;
+}
+
+.imageThumb {
+	max-height: 75px;
+	padding: 1px;
+}
+
+.pip {
+	display: inline-block;
+	margin: 10px 10px 0 0;
+}
+
+.remove {
+	display: block;
+	color: #C12020;
+	font-weight: bold;
+	text-align: right;
+	cursor: pointer;
+	font-size: 12px;
+	margin-top: 7px;
+}
+
+.remove:hover {
+	color: black;
+}

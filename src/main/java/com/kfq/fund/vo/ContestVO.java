@@ -6,12 +6,13 @@ public class ContestVO {
 	private int id;
 	private String memberemail;
 	private boolean payed;
-	private String name;
+	private String title;
 	private String contesttype;
 	private String company;
 	private String serviceinfo;
 	private String sector;
 	private String idea;
+	private String briefing;
 	private boolean show;
 	private boolean highlight;
 	private boolean secret;
@@ -22,6 +23,26 @@ public class ContestVO {
 	private int secondprize;
 	private int thirdprize;
 	
+	public ContestVO(Integer id,String title,String contesttype,String company,String serviceinfo, String sector, String idea, String briefing) {
+		this.id = id;
+		this.title = title;
+		this.contesttype = contesttype;
+		this.company = company;
+		this.serviceinfo = serviceinfo;
+		this.sector = sector;
+		this.idea = idea;
+		this.briefing = briefing;
+	}
+	public ContestVO(String memberemail,String title, String contesttype,String company,String serviceinfo,String sector,String idea,String briefing) {
+		this.memberemail = memberemail;
+		this.title = title;
+		this.contesttype = contesttype;
+		this.company = company;
+		this.serviceinfo = serviceinfo;
+		this.sector = sector;
+		this.idea = idea;
+		this.briefing = briefing;
+	}
 	
 	public int getId() {
 		return id;
@@ -29,11 +50,11 @@ public class ContestVO {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+	public String getTitle() {
+		return title;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	public String getContesttype() {
 		return contesttype;
@@ -64,6 +85,12 @@ public class ContestVO {
 	}
 	public void setIdea(String idea) {
 		this.idea = idea;
+	}
+	public String getBriefing() {
+		return briefing;
+	}
+	public void setBriefing(String briefing) {
+		this.briefing = briefing;
 	}
 	public String getMemberemail() {
 		return memberemail;
@@ -131,4 +158,12 @@ public class ContestVO {
 	public void setBenner(boolean benner) {
 		this.benner = benner;
 	}
+
+	@Override
+	public String toString() {
+		return "ContestVO [id=" + id + ", memberemail=" + memberemail + ", payed=" + payed + ", title=" + title
+				+ ", contesttype=" + contesttype + ", company=" + company + ", serviceinfo=" + serviceinfo + ", sector="
+				+ sector + ", idea=" + idea + ", briefing=" + briefing + "]";
+	}
+	
 }

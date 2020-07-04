@@ -3,137 +3,129 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
+<head>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/header.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resource/js/header.js"></script>
+</head>
 <body>
-	 <div class="border-bottom">
-        <div class="nav_container">
-            <nav class="navbar navbar-expand-lg navbar-light  bg-white">
-                <a class="navbar-brand" href="#">ConVik</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto text-center">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">소개</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">공지</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" onclick="check()">펀딩하기</a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">고객센터</a>
-                        </li>
-                    </ul>
-                    <script type="text/javascript">
-                    function check(){
-                    	$.ajax({
-                    		url: "existContest.do",
-                    		type:"POST",
-                    		data: null,
-                    		dataType:'json',
-                    		success:function(data){
-                    			if(data == true){
-                    				if(confirm("이미 작성하고 있는 페이지가 있습니다. 이어서 작성하시겠습니까?")==true){
-                    					location.href = "launch";
-                    				}else{
-                    					location.href = "launch";
-                    				}
-                    			}else{
-                    				location.href = "launch";
-                    			}
-                    		}
-                    	});
-                    }
-                    </script>
-                    <!-- 검색과 로그인 -->
-                    <div class="">
-                        <div class="pl-5 row">
-                            <div class="col-12 col-lg-2 ml-auto"></div>
-                            <div class="col-12 col-lg-6 ml-auto">
-                                <div class="input-group flex-nowrap mr-3 bd-highlight" id="btn_search"
-                                    style="min-width: 150px; ">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text input_Search_icon" style="padding-top: 6px;"
-                                            id="addon-wrapping"><i class="material-icons">search</i></span>
-                                    </div>
-                                    <input type="text" class="form-control input_Search" placeholder="Search"
-                                        aria-label="Username" aria-describedby="addon-wrapping">
-                                </div>
-                            </div>
-                            <div class="col-12 col-lg-4 ml-auto">
-                                <div class="d-flex justify-content-center">
-                                	<c:choose>
-                                	<c:when test="${empty sessionScope.useremail}">
-                                    	<div class="pt-1" style="min-width: 70px;">
-                                        	<a class="login_button" data-toggle="modal" data-target="#myModal" id="btn_signin" href="#" style="color:gray;">로그인</a>
-                                    	</div>
-                                    	<div class="pt-1" style="min-width: 80px;">
-                                        	<a class="sginin_button" id="btn_signup" href="select" style="color:gray;">회원가입</a>
-                                    	</div>
-									</c:when>
-									<c:otherwise>
-										<div class="pt-1" style="min-width: 80px;">
-											${sessionScope.nickname }
-										</div>
-										<div class="pt-1" style="min-width: 80px;">
-											<form id="logout" name="logout" method="post" style="visibility:hidden">
-												<input type="text" style="visibility:hidden;display:none" id="link" name="link">
-											</form>
-											<a class="logout_button" id="btn_logout" href="javascript:goPage()" style="color:gray;">로그아웃</a>
-											<script type="text/javascript">
-											function goPage(){
-												var urlpath = "";
-												var pathname = document.location.pathname.split("/");
-												var link = "";
-									    		for(var i = 1;i <pathname.length;i++){
-									    			if(i != 1)
-									    				link += "/";
-									    			link += pathname[i];
-									    			if(i == 1)
-									    				continue;
-									    			urlpath += "../";
-									    		}
-												document.getElementById("link").value = link;
-												$("#logout").attr("action",urlpath+"logout.do");
-												$("#logout").submit();
-											}
-											</script>
-										</div>
-									</c:otherwise>
-                                    </c:choose>
-                                </div>
-
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="">
-                        <button class="btn btn-outline-primary m-2 my-sm-0 btn_project" style="min-width: 130px;" type="button">프로젝트 신청</button>
-                    </div>
-
+   <div class="header_123">
+        <a href="<%=request.getContextPath() %>/main" class="name_page">
+            <span style="font-size: 30px;">ㅇㅏ</span>
+            <span style="font-size: 22px;">ㅇㅣ</span>
+            <span style="font-size: 28px;">ㄷㅣ</span>
+            <span>ㅇㅓ</span>
+        </a>
+        <div class="nav_content">
+            <div class="nav_content_div">
+                <div class="nav_name">
+                    <p>콘테스트 개최하기</p>
                 </div>
-            </nav>
+                <div class="nav_name">
+                    <p>진행중인 콘테스트</p>
+                </div>
+                <div class="nav_name">
+                    <p>공지 사항</p>
+                </div>
+            </div>
+            <div class="logsign">
+            	<c:choose>
+            		<c:when test="${empty sessionScope.useremail}">
+		                <p><a href="#" data-toggle="modal" data-target="#myModal" class="loglog">로그인</a></p>
+		                <p><a href="#" onclick="signin()" class="loglog">회원가입</a></p>
+            		</c:when>
+            		<c:otherwise>
+		                <p><a href="#" class="loglog">마이페이지</a></p>
+		                <p><a href="#" onclick="logout()" class="loglog">로그아웃</a></p>
+            		</c:otherwise>
+            	</c:choose>
+            </div>   
+        </div>
+        <!--우측 상단 버튼입니다.-->
+        <div class="mobile_button" id="mobile_button">
+            <a class="btn trigger" id="button_openclose" href="#">open me</a>
+        </div>
+        <div class="mobile_button_close" id="mobile_button_close">
+            <a class="btn trigger" id="button_openclose" href="#">close me</a>
         </div>
 
-        <!-- submenu -->
-        <div class="">
-            <ul class="nav justify-content-center">
-                <li class="nav-item navsub">
-                    <a class="nav-link submenu_item active" href="#">Q & A</a>
-                </li>
-                <li class="nav-item navsub">
-                    <a class="nav-link submenu_item" href="#">1대1 문의</a>
-                </li>
-            </ul>
+    </div>
+    <div class="navbar_123">
+        <p class="name_page" style="color: white;">ㅇㅏㅇㅣㄷㅣㅇㅓ</p>
+        <div class="nav_name1">
+            <p><a href="#" onclick="makecontest()">콘테스트 개최하기</a></p>
+            <p><a href="#" target="blank">가격 안내</a></p>
+        </div>
+        <div class="nav_name1">
+            <p><a href="#" target="blank">진행중인 콘테스트</a></p>
+            <p><a href="#" target="blank">심사중인 콘테스트</a></p>
+            <p><a href="#" target="blank">종료된 콘테스트</a></p>
+        </div>
+        <div class="nav_name1">
+            <p><a href="#" target="blank">공지 사항</a></p>
+            <p><a href="#" target="blank">문의하기</a></p>
+            <p><a href="#" target="blank">고객 센터</a></p>
+            <p><a href="#" target="blank">오시는 길</a></p>
         </div>
     </div>
-    <div class="modal fade modal--align-top" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+    <div id="button_all" class="modal-wrapper close">
+        <div class="button_bar">
+            <div class="row">
+                <div class="col-4">
+                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home"
+                            role="tab" aria-controls="v-pills-home" aria-selected="true"
+                            style="background-color: #c0c5ca; margin-bottom: 10px;">콘테스트 개최하기</a>
+                        <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile"
+                            role="tab" aria-controls="v-pills-profile" aria-selected="false"
+                            style="background-color: #c0c5ca; margin-bottom: 10px;">진행중인 콘테스트</a>
+                        <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages"
+                            role="tab" aria-controls="v-pills-messages" aria-selected="false"
+                            style="background-color: #c0c5ca; margin-bottom: 10px;">공지 사항</a>
+                    </div>
+                </div>
+
+                <div class="col-8">
+                    <div class="tab-content" id="v-pills-tabContent">
+                        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel"
+                            aria-labelledby="v-pills-home-tab"> <a href="#" target="blank">
+                                <p id="tab_txt">#콘테스트 개최하기</p>
+                            </a>
+                            <a href="#" target="blank">
+                                <p id="tab_txt">#가격 안내</p>
+                            </a></div>
+                        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"
+                            aria-labelledby="v-pills-profile-tab"> <a href="#" target="blank">
+                                <p id="tab_txt">#진행중인 콘테스트</p>
+                            </a> <a href="#" target="blank">
+                                <p id="tab_txt">#심사중인 콘테스트</p>
+                            </a>
+                            <a href="#" target="blank">
+                                <p id="tab_txt">#종료된 콘테스트</p>
+                            </a></div>
+                        <div class="tab-pane fade" id="v-pills-messages" role="tabpanel"
+                            aria-labelledby="v-pills-messages-tab"> <a href="#" target="blank">
+                                <p id="tab_txt">#공지 사항</p>
+                            </a>
+                            <a href="#" target="blank">
+                                <p id="tab_txt">#문의하기</p>
+                            </a>
+                            <a href="#" target="blank">
+                                <p id="tab_txt">#고객 센터</p>
+                            </a>
+                            <a href="#" target="blank">
+                                <p id="tab_txt">#오시는 길</p>
+                            </a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	<div class="modal fade modal--align-top" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		<div class="modal-dialog" style="width:auto;">
 			<div class="modal-content">
 				<div class="modal-header" style="border-bottom:none">

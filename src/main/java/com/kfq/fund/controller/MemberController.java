@@ -65,6 +65,10 @@ public class MemberController {
 		mailsender.mailSendWithUserKey(email, request);
 		return "success";
 	}
+	@RequestMapping(value = "adminpage")
+	public ModelAndView adminpage() {
+		return new ModelAndView("admin/supervisorclass");
+	}
 	@RequestMapping(value = "memberCheck.do")
 	@ResponseBody
 	public boolean memberCheck(HttpServletRequest request) {
@@ -103,6 +107,10 @@ public class MemberController {
 		String userkey = request.getParameter("userkey");
 		mailsender.alter_userKey_service(email, userkey);
 		return new ModelAndView("");
+	}
+	@RequestMapping(value = "mypage")
+	public ModelAndView mypage(HttpSession session) {
+		return new ModelAndView("member/guest_info");
 	}
 	
 	//맴버 리스트

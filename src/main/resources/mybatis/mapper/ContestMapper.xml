@@ -2,20 +2,50 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kfq.fund.dao.IContestDAO">
 	<!-- select -->
-	<select id="existContest" parameterType="String" resultType="Integer">
-		SELECT EXISTS(
-		SELECT *
+	<select id="existContest" parameterType="String" resultType="String">
+		SELECT CONTESTTYPE
 		FROM CONTEST
-		WHERE MEMBEREMAIL = #{email} AND PAYED = FALSE)
+		WHERE MEMBEREMAIL = #{email} AND PAYED = FALSE
+	</select>
+	<select id="existContestInfo" parameterType="String" resultType="com.kfq.fund.vo.ContestVO">
+		SELECT ID,TITLE,CONTESTTYPE,COMPANY,SERVICEINFO,SECTOR,IDEA,BRIEFING
+		FROM CONTEST
+		WHERE MEMBEREMAIL = #{value} AND PAYED = FALSE
+	</select>
+	<select id="insertlastContestid" parameterType="String" resultType="Integer">
+		SELECT ID
+		FROM CONTEST
+		WHERE MEMBEREMAIL = #{value}
+		ORDER BY ID DESC
+		LIMIT 1;
+	</select>
+	<select id="getFiles" parameterType="Integer" resultType="com.kfq.fund.vo.FileVO">
+		SELECT FILEORINAME, FILEURL
+		FROM CONTESTFILE
+		WHERE BNO = #{value}
 	</select>
 	<!-- insert -->
 	<insert id="insertContest" parameterType="com.kfq.fund.vo.ContestVO">
-		INSERT INTO CONTEST(MEMBEREMAIL, CONTESTTYPE,NAME,COMPANY,SERVICEINFO,SECTOR,IDEA,BRIEFING,PAYED)
-		VALUES(#{memberemail},#{contesttype},#{name},#{company},#{serviceinfo},#{sector},#{idea},#{briefing},FALSE)
-		<selectKey keyProperty="id" resultType="Integer">
-			SELECT LAST_INSERT_ID()
-		</selectKey>
+		INSERT INTO CONTEST(MEMBEREMAIL,TITLE, CONTESTTYPE,COMPANY,SERVICEINFO,SECTOR,IDEA,BRIEFING)
+		VALUES(#{memberemail},#{title},#{contesttype},#{company},#{serviceinfo},#{sector},#{idea},#{briefing})
+	</insert>
+	<insert id="insertContestFile" parameterType="com.kfq.fund.vo.FileVO">
+		INSERT INTO CONTESTFILE(BNO,FILENAME,FILEORINAME,FILEURL)
+		VALUES(#{bno},#{filename},#{fileOriName},#{fileurl})
 	</insert>
 	<!-- update -->
+	<update id="updateContest" parameterType="com.kfq.fund.vo.ContestVO">
+		UPDATE CONTEST
+		SET TITLE = #{title}, CONTESTTYPE = #{contesttype}, COMPANY = #{company}, SERVICEINFO = #{serviceinfo}, SECTOR = #{sector}, IDEA = #{idea}, BRIEFING = #{briefing}
+		WHERE ID = #{id}
+	</update>
 	<!-- delete -->
+	<delete id="deleteContest" parameterType="Integer">
+		DELETE FROM CONTEST
+		WHERE ID = #{value}
+	</delete>
+	<delete id="deleteContestFile" parameterType="Integer">
+		DELETE FROM CONTESTFILE
+		WHERE BNO = #{value}
+	</delete>
 </mapper>

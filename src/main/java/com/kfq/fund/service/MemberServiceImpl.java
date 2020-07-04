@@ -1,6 +1,7 @@
 package com.kfq.fund.service;
 
 
+import java.security.MessageDigest;
 import java.util.HashMap;
 import java.util.List;
 
@@ -23,11 +24,30 @@ public class MemberServiceImpl implements IMemberService {
 	
 	@Override
 	public void insertMember(MemberVO member) {
+		member.setPasswd(LockPassword(member.getPasswd()));
 		dao.insertMember(member);
 	}
-	
+
+	 
+	private String LockPassword(String password) {
+		StringBuffer hexString = new StringBuffer();
+		try {
+			MessageDigest digest = MessageDigest.getInstance("SHA-256");
+			byte[] hash = digest.digest(password.getBytes("UTF-8"));
+			for(int i = 0;i < hash.length;i++) {
+				String hex = Integer.toHexString(0xff&hash[i]);
+				if(hex.length() == 1)
+					hexString.append('0');
+				hexString.append(hex);
+			}
+		} catch (Exception e) {
+			e.getStackTrace();
+		}
+		return hexString.toString();
+	}
 	@Override
 	public boolean loginCheck(MemberVO member,HttpSession session) {
+		member.setPasswd(LockPassword(member.getPasswd()));
 		String name = dao.loginCheck(member);
 		boolean result = name == null ? false : true;
 		if(result) {
@@ -76,5 +96,10 @@ public class MemberServiceImpl implements IMemberService {
 	@Override
 	public boolean findexistNickName(String nickname) {
 		return dao.findexistNickName(nickname)==1?true:false;
+	}
+
+	@Override
+	public void updateMember(MemberVO member) {
+		dao.updateMember(member);
 	}
 }
