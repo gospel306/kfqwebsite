@@ -1,21 +1,28 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
-
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
-    </script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- icon css -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+   	
+    <!-- custom js -->
+    <script src="<%=request.getContextPath() %>/resource/js/section/goTop.js"></script>
+    
+    <!-- custom css -->
+	<link rel="stylesheet" href="<%=request.getContextPath() %>/resource/css/custom.css">
+	<link rel="stylesheet" href="<%=request.getContextPath() %>/resource/css/slick.css">
+	<link rel="stylesheet" href="<%=request.getContextPath() %>/resource/css/slick-theme.css">
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/slick_custom.css">
+	<style>
         #main_top {
             width: 1550px;
             height: 200px;
@@ -27,13 +34,14 @@
         }
     </style>
 </head>
-
+<header>
+	<jsp:include page="../section/header.jsp"></jsp:include>
+	<jsp:include page="../section/goTop.jsp"></jsp:include>
+</header>
 <body>
-    <div id="main_top">
-        <p style="font-size: 23px; font-weight: bold; margin-left: 17%; padding-top: 70px;">ì½˜í…ŒìŠ¤íŠ¸ ë³´ê¸°<span
-                style="font-size: 18px;"> - ì§„í–‰ì¤‘ì¸ ì½˜í…ŒìŠ¤íŠ¸</span></p>
-
-
+	   <div id="main_top">
+        <p style="font-size: 23px; font-weight: bold; margin-left: 17%; padding-top: 70px;">ÄÜÅ×½ºÆ® º¸±â<span
+                style="font-size: 18px;"> - ÁøÇàÁßÀÎ ÄÜÅ×½ºÆ®</span></p>
         <ul class="nav nav-pills mb-3" id="pills-tab123" role="tablist" style="background-color:#ededed;">
             <li class="nav-item" role="presentation"
                 style="margin-right: 10px; width: auto; background-color:white; margin-left: 17%;">
@@ -41,7 +49,7 @@
                     aria-controls="pills-home" aria-selected="true"
                     style="border-top:2px solid black; width: 140px; background-color: white;">
                     <p style="color:black; font-size: 13px; font-weight: bold; padding-top: 4px; text-align: center;">
-                        ì§„í–‰ì¤‘ì¸ ì½˜í…ŒìŠ¤íŠ¸</p>
+                        ÁøÇàÁßÀÎ ÄÜÅ×½ºÆ®</p>
                 </a>
             </li>
             <li class="nav-item" role="presentation" style="margin-right: 10px;background-color:#64636d; ">
@@ -49,7 +57,7 @@
                     aria-controls="pills-profile" aria-selected="false"
                     style="border-top:2px solid black; width: 140px;">
                     <p style="color:white; font-size: 13px; font-weight: bold; padding-top: 4px; text-align: center;">
-                        ì‹¬ì‚¬ì¤‘ì¸ ì½˜í…ŒìŠ¤íŠ¸</p>
+                        ½É»çÁßÀÎ ÄÜÅ×½ºÆ®</p>
                 </a>
             </li>
             <li class="nav-item" role="presentation" style="margin-right: 10px; background-color:#64636d;">
@@ -57,68 +65,64 @@
                     aria-controls="pills-contact" aria-selected="false"
                     style="border-top:2px solid black; width: 140px;">
                     <p style="color:white; font-size: 13px; font-weight: bold; padding-top: 4px; text-align: center;">
-                        ì¢…ë£Œëœ ì½˜í…ŒìŠ¤íŠ¸</p>
+                        Á¾·áµÈ ÄÜÅ×½ºÆ®</p>
                 </a>
             </li>
         </ul>
 
-
-        <div
-            style="background-color: white; width: 1024px; height: 385px; margin-left:17.5%; margin-right: 40px; float: left; margin-top: 40px;;">
+        <div style="background-color: white; width: 1024px; height: 385px; margin-left:17.5%; margin-right: 40px; float: left; margin-top: 40px;;">
 
 
             <div class="dropdown" style="float: left;">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    ì „ì²´ ì¹´í…Œê³ ë¦¬ë³´ê¸° (#144)
+                    ÀüÃ¼ Ä«Å×°í¸®º¸±â (#144)
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <a class="dropdown-item" href="#">ì „ì²´ ì¹´í…Œê³ ë¦¬ë³´ê¸°(#144)</a>
-                    <a class="dropdown-item" href="#">ë¡œê³  ë””ìžì¸</a>
-                    <a class="dropdown-item" href="#">íŒ¨í‚¤ì§€ ë””ìžì¸</a>
-                    <a class="dropdown-item" href="#">ì œí’ˆ ë””ìžì¸</a>
-                    <a class="dropdown-item" href="#">ì›¹/ì•± ë””ìžì¸</a>
-                    <a class="dropdown-item" href="#">ë„¤ì´ë°/ì•„ì´ë””ì–´</a>
-                    <a class="dropdown-item" href="#">ìºë¦­í„° ë””ìžì¸</a>
-                    <a class="dropdown-item" href="#">íŽ¸ì§‘/ê¸°íƒ€</a>
+                    <a class="dropdown-item" href="#">ÀüÃ¼ Ä«Å×°í¸®º¸±â(#144)</a>
+                    <a class="dropdown-item" href="#">·Î°í µðÀÚÀÎ</a>
+                    <a class="dropdown-item" href="#">ÆÐÅ°Áö µðÀÚÀÎ</a>
+                    <a class="dropdown-item" href="#">Á¦Ç° µðÀÚÀÎ</a>
+                    <a class="dropdown-item" href="#">À¥/¾Û µðÀÚÀÎ</a>
+                    <a class="dropdown-item" href="#">³×ÀÌ¹Ö/¾ÆÀÌµð¾î</a>
+                    <a class="dropdown-item" href="#">Ä³¸¯ÅÍ µðÀÚÀÎ</a>
+                    <a class="dropdown-item" href="#">ÆíÁý/±âÅ¸</a>
                 </div>
             </div>
 
             <div class="dropdown" style="float: left; margin: 0 10px 0 10px;">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    ì „ì²´ ì—…ì¢…ë³´ê¸°(#144)
+                    ÀüÃ¼ ¾÷Á¾º¸±â(#144)
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                    <a class="dropdown-item" href="#">ì—…ì¢… ì „ì²´</a>
-                    <a class="dropdown-item" href="#">ì‹ë‹¹/ì¹´íŽ˜</a>
-                    <a class="dropdown-item" href="#">ì‹í’ˆ/ê±´ê°•</a>
-                    <a class="dropdown-item" href="#">IT/ë¯¸ë””ì–´</a>
-                    <a class="dropdown-item" href="#">ë·°í‹°/íŒ¨ì…˜</a>
-                    <a class="dropdown-item" href="#">ë³‘ì›</a>
-                    <a class="dropdown-item" href="#">ì• ì™„ë™ë¬¼</a>
-                    <a class="dropdown-item" href="#">êµìœ¡/ìœ¡ì•„</a>
-                    <a class="dropdown-item" href="#">ìž¬ëŠ¥ê¸°ë¶€/ê³µê³µê¸°ê´€</a>
-                    <a class="dropdown-item" href="#">ì¼ë°˜/ê¸°íƒ€</a>
+                    <a class="dropdown-item" href="#">¾÷Á¾ ÀüÃ¼</a>
+                    <a class="dropdown-item" href="#">½Ä´ç/Ä«Æä</a>
+                    <a class="dropdown-item" href="#">½ÄÇ°/°Ç°­</a>
+                    <a class="dropdown-item" href="#">IT/¹Ìµð¾î</a>
+                    <a class="dropdown-item" href="#">ºäÆ¼/ÆÐ¼Ç</a>
+                    <a class="dropdown-item" href="#">º´¿ø</a>
+                    <a class="dropdown-item" href="#">¾Ö¿Ïµ¿¹°</a>
+                    <a class="dropdown-item" href="#">±³À°/À°¾Æ</a>
+                    <a class="dropdown-item" href="#">Àç´É±âºÎ/°ø°ø±â°ü</a>
+                    <a class="dropdown-item" href="#">ÀÏ¹Ý/±âÅ¸</a>
                 </div>
             </div>
 
             <div class="dropdown" style="float: left;">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton3"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    ê¸°ë³¸ ì •ë ¬
+                    ±âº» Á¤·Ä
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
-                    <a class="dropdown-item" href="#">ê¸°ë³¸ ì •ë ¬</a>
-                    <a class="dropdown-item" href="#">ë§ˆê°ìž„ë°• ìˆœ ì •ë ¬</a>
-                    <a class="dropdown-item" href="#">ìµœì‹ ë“±ë¡ ìˆœ ì •ë ¬</a>
-                    <a class="dropdown-item" href="#">ì°¸ì—¬ìž ìˆœ ì •ë ¬</a>
-                    <a class="dropdown-item" href="#">ì´ìƒê¸ˆ ìˆœ ì •ë ¬</a>
-                    <a class="dropdown-item" href="#">ì¡°íšŒ ìˆœ ì •ë ¬</a>
+                    <a class="dropdown-item" href="#">±âº» Á¤·Ä</a>
+                    <a class="dropdown-item" href="#">¸¶°¨ÀÓ¹Ú ¼ø Á¤·Ä</a>
+                    <a class="dropdown-item" href="#">ÃÖ½Åµî·Ï ¼ø Á¤·Ä</a>
+                    <a class="dropdown-item" href="#">Âü¿©ÀÚ ¼ø Á¤·Ä</a>
+                    <a class="dropdown-item" href="#">ÃÑ»ó±Ý ¼ø Á¤·Ä</a>
+                    <a class="dropdown-item" href="#">Á¶È¸ ¼ø Á¤·Ä</a>
                 </div>
             </div>
-
-
             <div class="input-group flex-nowrap mr-3 bd-highlight" id="btn_search" style="width: 150px; margin-left: 700px;">
                 <div class="input-group-prepend">
                     <span class="input-group-text input_Search_icon" style="padding-top: 6px;" id="addon-wrapping"><i
@@ -127,11 +131,6 @@
                 <input type="text" class="form-control input_Search" placeholder="Search" aria-label="Username"
                     aria-describedby="addon-wrapping">
             </div>
-
-
-
-
-
             <div class="tab-content" id="pills-tabContent">
 
                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
@@ -144,12 +143,10 @@
                     .51
                 </div>
             </div>
-
-
-
-
         </div>
     </div>
 </body>
-
+<footer>
+	<jsp:include page="../section/footer.jsp"></jsp:include>
+</footer>
 </html>

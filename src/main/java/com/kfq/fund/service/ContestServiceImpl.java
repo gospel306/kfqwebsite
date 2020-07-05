@@ -6,7 +6,9 @@ import java.util.List;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -14,6 +16,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.kfq.fund.dao.IContestDAO;
 import com.kfq.fund.vo.ContestVO;
 import com.kfq.fund.vo.FileVO;
+import com.kfq.fund.vo.JoinVO;
 
 @Service
 public class ContestServiceImpl implements IContestService{
@@ -65,6 +68,7 @@ public class ContestServiceImpl implements IContestService{
 		File destinationFile;
 		String destinationFileName;
 		String fileUrl = "C://kfqproject/contest/"+title+"/";
+		String url = "/contest/"+title+"/";
 		do {
 			destinationFileName = RandomStringUtils.randomAlphabetic(32)+"."+fileNameExtension;
 			destinationFile = new File(fileUrl+destinationFileName);
@@ -75,7 +79,7 @@ public class ContestServiceImpl implements IContestService{
 		file.setBno(contestnum);
 		file.setFilename(destinationFileName);
 		file.setFileOriName(fileName);
-		file.setFileurl(fileUrl);
+		file.setFileurl(url);
 		dao.insertContestFile(file);
 		return true;
 	}
@@ -106,6 +110,37 @@ public class ContestServiceImpl implements IContestService{
 	@Override
 	public List<FileVO> getFiles(int id) {
 		return dao.getFiles(id);
+	}
+	@Override
+	public JSONObject insertJoinImage(MultipartFile mpf, int contestnum) {
+		JSONObject jsonobject = new JSONObject();
+		String title = dao.ContestName(contestnum);
+		try {
+			String destinationFileName = savejoinimage(mpf,title);
+			jsonobject.put("url", "/join/"+title+"/"+destinationFileName);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return jsonobject;
+	}
+	private String savejoinimage(MultipartFile mpf, String title) throws Exception{	
+		String fileroot = "C://kfqproject/join/"+title+"/";
+		String originalFileName = mpf.getOriginalFilename();
+		String extension = FilenameUtils.getExtension(originalFileName).toLowerCase();
+		File destinationFile;
+		String destinationFileName;
+		do {
+			destinationFileName = RandomStringUtils.randomAlphabetic(32)+"."+extension;
+			destinationFile = new File(fileroot+destinationFileName);
+		}while(destinationFile.exists());
+		destinationFile.getParentFile().mkdirs();
+		mpf.transferTo(destinationFile);
+		return destinationFileName;
+	}
+	@Override
+	public void insertJoin(JoinVO join) {
+		dao.insertJoin(join);
 	}
 	
 }

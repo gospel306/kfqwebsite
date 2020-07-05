@@ -13,7 +13,7 @@ public interface IMemberDAO {
 	public int findexistNickName(String nickname);
 	//임의 userkey 생성후 입력
 	public int GetKey(String email, String userkey);
-	
+	public String checkuserclass(String email);
 	//이메일 인증후 userkey 업데이트
 	public int updateUserkey(String email, String key);
 	public void updateMember(MemberVO member);

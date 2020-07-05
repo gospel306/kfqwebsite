@@ -9,6 +9,11 @@
 		FROM MEMBER
 		WHERE EMAIL = #{email} AND PASSWD = #{passwd} AND USERKEY = "Y"
 	</select>
+	<select id="checkuserclass" parameterType="String" resultType="String">
+		SELECT USERCLASS
+		FROM MEMBER
+		WHERE EMAIL = #{value}
+	</select>
 	<!-- memberdata -->
 	<select id="viewMember" parameterType="com.kfq.fund.vo.MemberVO" resultType="com.kfq.fund.vo.MemberVO">
 		SELECT EMAIL, NICKNAME, DATE

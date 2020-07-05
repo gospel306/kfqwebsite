@@ -5,23 +5,30 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/contest/estimate.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-        crossorigin="anonymous"></script>
-<script src="<%=request.getContextPath()%>/resource/js/estimate.js"></script>
-
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- icon css -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+   	
+    <!-- custom js -->
+	<script src="<%=request.getContextPath()%>/resource/js/contest/estimate.js"></script>
+    <script src="<%=request.getContextPath() %>/resource/js/section/goTop.js"></script>
+    
+    <!-- custom css -->
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/contest/estimate.css">
+	<link rel="stylesheet" href="<%=request.getContextPath() %>/resource/css/custom.css">
+	<link rel="stylesheet" href="<%=request.getContextPath() %>/resource/css/slick.css">
+	<link rel="stylesheet" href="<%=request.getContextPath() %>/resource/css/slick-theme.css">
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/slick_custom.css">
 </head>
 <header>
 	<jsp:include page="../section/header.jsp"></jsp:include>
+	<jsp:include page="../section/goTop.jsp"></jsp:include>
 </header>
 <body>
 	<!--header-->

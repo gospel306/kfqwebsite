@@ -4,9 +4,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script src="<%=request.getContextPath() %>/resource/js/section/goTop.js"></script>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
 </head>
 <body>
-	<button onclick="topFunction()" class="fa fa-chevron-up goTop" title="Go to top"></button>
+	<div>
+		${content}
+	</div>
 </body>
 </html>

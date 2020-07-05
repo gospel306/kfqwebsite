@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+		integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+		crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+		crossorigin="anonymous"></script>
+
+	<link rel="stylesheet" type="text/css" href="css/contest_join.css">
+	<script src="./js/contestBrief.js"></script>
+
+	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+
+
+	<style>
+		body {
+			margin: 0px auto;
+			width: 100%;
+			background-color: #ebeff2;
+			min-width: 570px;
+		}
+
+		img {
+			width: 100%;
+			height: auto;
+		}
+
+		div {}
+
+		textarea {}
+
+		.display_open {
+			display: block;
+		}
+
+		.display_close {
+			display: none;
+		}
+
+		/*lay-out*/
+		.padding_zero {
+			padding: 1px;
+		}
+
+		.first_layout {
+			padding-top: 50px;
+			width: 75%;
+			margin: 0px auto;
+		}
+
+		/*lay-out*/
+
+		/*head*/
+		.main {
+			margin-top: 0px auto;
+			background-color: white;
+			padding: 5% 2%;
+		}
+
+		/*itembox*/
+		.contest_list_item {
+			padding: 0px 20px;
+			border: 1px solid #cccccc;
+		}
+
+		.item_box_tail {
+			padding: 5% 1%;
+		}
+
+		.item_price {}
+
+		.item_period {
+			padding: 5px 0px;
+		}
+
+		.item_visitCount {}
+
+		.item_price_text {
+			width: 100%;
+			text-align: center;
+			border: 0px;
+			background-color: #f4f5f6;
+			padding: 5px 10px;
+		}
+
+		.item_period_text {
+			width: 100%;
+			text-align: center;
+			border: 1px solid #cccccc;
+			border-radius: 5px;
+			padding: 5px 10px;
+			margin: 3% 0%;
+		}
+
+		.item_visitCount_text {
+			width: 100%;
+			text-align: center;
+			border: 1px solid #cccccc;
+			border-radius: 5px;
+			padding: 5px 10px;
+		}
+
+		.item_categoty {
+			color: #FF5D5D;
+			font-weight: bold;
+			width: 100%;
+			border: 0px;
+		}
+
+		.item_title {
+			font-weight: bold;
+			text-overflow: ellipsis;
+			border: 0px;
+			width: 100%;
+		}
+
+		.item_content {
+			font-weight: bold;
+			text-overflow: ellipsis;
+			border: 0px;
+			width: 100%;
+			color: black;
+			font-size: 12px;
+		}
+
+		.brief_item_category {
+			padding: 5% 5%;
+		}
+
+		.brief_item_title {
+			padding: 5% 0%;
+		}
+
+		.brief_item_content {
+			border-top: 1px solid #cccccc;
+			padding: 5% 1%;
+		}
+
+		.brief_item_img {
+			padding: 1% 0%;
+		}
+
+		.animated {
+			-webkit-transition: height 0.2s;
+			-moz-transition: height 0.2s;
+			transition: height 0.2s;
+		}
+
+		.form-control {
+			border: 0px;
+		}
+
+		.form-control:focus {
+			color: #495057;
+			background-color: #fff;
+			border-color: #80bdff;
+			outline: 0;
+			box-shadow: 0 0 0 0px rgba(0, 123, 255, .25);
+		}
+
+		.form-control:disabled,
+		.form-control[readonly] {
+			background-color: white;
+			opacity: 1;
+		}
+
+		/*itembox*/
+
+	
+
+		.font_bold {
+			font-weight: bold;
+		}
+
+		.font_red {
+			color: #FF5D5D;
+		}
+
+	
+
+		.join_step_2_top{
+			margin: 5% 0%;
+		}
+
+
+		
+		.join_step1_checkbox{
+		width:100%;
+		margin:5% 0%;
+		}
+		
+
+
+
+
+	</style>
+
+<body>
+	<!--first_layout-->
+	<div class="first_layout">
+
+		<!--main-->
+		<div class="main">
+			<!-- contest list item-->
+			<div class="contest_list_item">
+				<div class="row">
+					<div class="col-lg-8">
+						<div class="row">
+							<div class="col-sm-2 brief_item_img">
+								<img src="img/thumbimg_logo.png" alt="">
+							</div>
+							<div class="col-sm-3 brief_item_category">
+
+								<input type="text" class="item_categoty" readonly value="브랜드 SET |">
+
+							</div>
+
+							<div class="col-sm-7 brief_item_title">
+								<input type="text" class="item_title" readonly value="홍성군 평생교육 브랜드 로고 공모전(홍성군평생학습센터) ">
+
+							</div>
+
+						</div>
+
+						<div class="row">
+							<div class="col-sm-12 brief_item_content">
+								<textarea class="brief_content_item_text_4 form-control animated" readonly
+									id="brief_item_content_1">
+
+                                 </textarea>
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="col-lg-4 item_box_tail">
+						<div class="item_price">
+							<input type="text" class="item_price_text" readonly value="1등: 500만원 / 2등: 100만원">
+
+						</div>
+						<div class="item_period">
+							<input type="text" class="item_period_text" readonly value="남은기간: 13일(~07/14 24:00)">
+
+						</div>
+						<div class="item_visitCount">
+							<input type="text" class="item_visitCount_text" readonly value="조회수 : 9000">
+						</div>
+
+
+					</div>
+
+
+
+				</div>
+			</div>
+
+			<!-- contest list item-->
+
+
+
+			<div class="join_step_2" id="join_step_2">
+
+			<div class="join_step_2_top">
+				<div class="row">
+					<div class="col-lg-3"></div>
+
+					<div class="col-lg-6">
+						<img class="join_step_2_img" src="img/img_step02.png" alt="">
+					</div>
+					<div class="col-lg-3"></div>
+
+				</div>
+			</div>
+				<div class="join_step_2_editor">
+					<div class="row">
+
+						<div class="col-lg-1"></div>
+
+						<div class="col-lg-10">
+
+							<div id="join_editor">
+
+								<div id="summernote"></div>
+
+							</div>
+						</div>
+						<div class="col-lg-1"></div>
+					</div>
+
+				</div>
+			</div>
+
+			
+
+			
+            <div class="row">
+                <div class="col-lg-4"></div>
+
+                <div class="col-lg-4">
+                    <button class="learn-more join_step1_checkbox"   id="join_step1_check"> 콘테스트 제출</button>
+							
+
+                </div>
+                <div class="col-lg-4"></div>
+
+            </div>
+
+					
+
+		</div>
+		<!--main-->
+
+
+
+
+
+
+
+	</div>
+	<!--first_layout-->
+
+
+
+</body>
+<script>
+
+	$('#summernote').summernote({
+      
+        tabsize: 2,
+        height: 300
+      });
+
+
+	$(document)
+		.ready(
+			function () {
+
+				var bci1 = "60이츠 '붐' 캐릭터디자인 의뢰";
+
+				var bci2 = "쌤기획";
+
+				var bci3 = "60이츠는 간편하게 어린이 간식이나 안주, 식사대용으로 먹을 수 있는 닭고기 식품을 판매하는 홈페이지입니다.연예인 '붐'님의 캐릭터로 대중에게 친근하게 다가갈 수 있도록 캐릭터 디자인을 의뢰합니다.";
+
+				var bci4 = "* 공모주제 : 홍성군평생학습센터 브랜드 이미지 * 활용범위 : 홈페이지, 현수막, 배너, 안내판, 현판, 수료증 등 * 개발방향 : 평생교육사업 취지와 친근감을 주고 기억하기 쉬우며 학습 참여 동기를 유발할 수 있는 이미지, 온·오프라인 홍보에 응용이 가능하고 사업 현장에 적용할 수 있는 단순하고 간결한 디자인";
+
+				document.getElementById("brief_item_content_1").value = bci4;
+
+				// $("#brief_content_item_4").text("60이츠는 간편하게 어린이 간식이나 안주, 식사대용으로 먹을 수 있는 닭고기 식품을 판매하는 홈페이지입니다.연예인 붐 님의 캐릭터로 대중에게 친근하게 다가갈 수 있도록 캐릭터 디자인을 의뢰합니다.");
+
+				$(function () {
+					$('.normal').autosize();
+					$('.animated').autosize({
+						append: "\n"
+					});
+				});
+
+
+
+				$('#join_step1_check').on('click', function(){
+					location.href="http://localhost:9097/Project/contestBrief.html";
+
+				})
+			});
+</script>
+
+</html>

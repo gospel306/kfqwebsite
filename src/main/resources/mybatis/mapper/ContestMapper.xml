@@ -12,6 +12,11 @@
 		FROM CONTEST
 		WHERE MEMBEREMAIL = #{value} AND PAYED = FALSE
 	</select>
+	<select id="ContestName" parameterType="Integer" resultType="String">
+		SELECT TITLE
+		FROM CONTEST
+		WHERE ID = #{value}
+	</select>
 	<select id="insertlastContestid" parameterType="String" resultType="Integer">
 		SELECT ID
 		FROM CONTEST
@@ -32,6 +37,10 @@
 	<insert id="insertContestFile" parameterType="com.kfq.fund.vo.FileVO">
 		INSERT INTO CONTESTFILE(BNO,FILENAME,FILEORINAME,FILEURL)
 		VALUES(#{bno},#{filename},#{fileOriName},#{fileurl})
+	</insert>
+	<insert id="insertJoin" parameterType="com.kfq.fund.vo.JoinVO">
+		INSERT INTO WORK(CONTEST_ID, MEMBER_EMAIL, CONTENT)
+		VALUES(#{contest_id},#{email},#{content})
 	</insert>
 	<!-- update -->
 	<update id="updateContest" parameterType="com.kfq.fund.vo.ContestVO">

@@ -2,10 +2,13 @@ package com.kfq.fund.service;
 
 import java.util.List;
 
+import org.json.simple.JSONObject;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.kfq.fund.vo.ContestVO;
 import com.kfq.fund.vo.FileVO;
+import com.kfq.fund.vo.JoinVO;
 
 public interface IContestService {
 
@@ -17,6 +20,9 @@ public interface IContestService {
 	//insert
 	public void insertContest(ContestVO contest);
 	public void insertContestFile(MultipartHttpServletRequest request,int contestnum);
+	public void insertJoin(JoinVO join);
+	
+	public JSONObject insertJoinImage(MultipartFile file,int contestnum);
 	
 	//update
 	public void updateContest(ContestVO contest);

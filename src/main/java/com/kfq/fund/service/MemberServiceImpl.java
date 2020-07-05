@@ -102,4 +102,9 @@ public class MemberServiceImpl implements IMemberService {
 	public void updateMember(MemberVO member) {
 		dao.updateMember(member);
 	}
+
+	@Override
+	public String checkuserclass(String email) {
+		return dao.checkuserclass(email);
+	}
 }

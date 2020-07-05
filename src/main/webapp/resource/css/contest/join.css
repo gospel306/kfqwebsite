@@ -1,0 +1,214 @@
+@charset "UTF-8";
+
+body {
+	margin: 0px auto;
+	width: 100%;
+	background-color: #ebeff2;
+	min-width: 570px;
+}
+
+img {
+	width: 100%;
+	height: auto;
+}
+
+div {
+	
+}
+
+textarea {
+	
+}
+
+.display_open {
+	display: block;
+}
+
+.display_close {
+	display: none;
+}
+
+/*lay-out*/
+.padding_zero {
+	padding: 1px;
+}
+
+.first_layout {
+	padding-top: 50px;
+	width: 75%;
+	margin: 0px auto;
+}
+
+/*lay-out*/
+
+/*head*/
+.main {
+	margin-top: 0px auto;
+	background-color: white;
+	padding: 5% 2%;
+}
+
+/*itembox*/
+.contest_list_item {
+	padding: 0px 20px;
+	border: 1px solid #cccccc;
+}
+
+.item_box_tail {
+	padding: 5% 1%;
+}
+
+.item_price {
+	
+}
+
+.item_period {
+	padding: 5px 0px;
+}
+
+.item_visitCount {
+	
+}
+
+.item_price_text {
+	width: 100%;
+	text-align: center;
+	border: 0px;
+	background-color: #f4f5f6;
+	padding: 5px 10px;
+}
+
+.item_period_text {
+	width: 100%;
+	text-align: center;
+	border: 1px solid #cccccc;
+	border-radius: 5px;
+	padding: 5px 10px;
+	margin: 3% 0%;
+}
+
+.item_visitCount_text {
+	width: 100%;
+	text-align: center;
+	border: 1px solid #cccccc;
+	border-radius: 5px;
+	padding: 5px 10px;
+}
+
+.item_categoty {
+	color: #FF5D5D;
+	font-weight: bold;
+	width: 100%;
+	border: 0px;
+}
+
+.item_title {
+	font-weight: bold;
+	text-overflow: ellipsis;
+	border: 0px;
+	width: 100%;
+}
+
+.item_content {
+	font-weight: bold;
+	text-overflow: ellipsis;
+	border: 0px;
+	width: 100%;
+	color: black;
+	font-size: 12px;
+}
+
+.brief_item_category {
+	padding: 5% 5%;
+}
+
+.brief_item_title {
+	padding: 5% 0%;
+}
+
+.brief_item_content {
+	border-top: 1px solid #cccccc;
+	padding: 5% 1%;
+}
+
+.brief_item_img {
+	padding: 1% 0%;
+}
+
+.animated {
+	-webkit-transition: height 0.2s;
+	-moz-transition: height 0.2s;
+	transition: height 0.2s;
+}
+
+.form-control {
+	border: 0px;
+}
+
+.form-control:focus {
+	color: #495057;
+	background-color: #fff;
+	border-color: #80bdff;
+	outline: 0;
+	box-shadow: 0 0 0 0px rgba(0, 123, 255, .25);
+}
+
+.form-control:disabled, .form-control[readonly] {
+	background-color: white;
+	opacity: 1;
+}
+
+/*itembox*/
+
+/*step1*/
+.join_step1 {
+	padding: 5% 5%;
+}
+
+.join_step1_content {
+	padding-top: 5%;
+}
+
+.join_step1_content_text {
+	padding-top: 5%;
+}
+
+.font_bold {
+	font-weight: bold;
+}
+
+.font_red {
+	color: #FF5D5D;
+}
+
+.join_step1_tail {
+	margin-top: 5%;
+	border-top: 1px solid #cccccc;
+	padding: 5% 0%;
+}
+
+.join_step1_tail_text {
+	text-align: left;
+}
+
+.join_step1_tail img {
+	width: 100%;
+	height: auto;
+}
+
+.join_step1_checkbox {
+	width: 100%;
+}
+
+.join_editor_size {
+	
+}
+
+@media all and (max-width:900px) {
+	body {
+		width: 700px;
+	}
+	.first_layout {
+		width: 100%;
+	}
+}

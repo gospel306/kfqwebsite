@@ -6,19 +6,23 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kfq.fund.service.IContestService;
 import com.kfq.fund.vo.ContestVO;
 import com.kfq.fund.vo.FileVO;
+import com.kfq.fund.vo.JoinVO;
 
 @Controller
 public class ContestController {
@@ -112,7 +116,7 @@ public class ContestController {
 	}
 	@RequestMapping(value ="launch/{contesttype}/result")
 	public ModelAndView contestResult(@PathVariable String contesttype,HttpServletRequest request) {
-		return new ModelAndView("contest/result");
+		return new ModelAndView("contest/result");//step4.html
 	}
 	
 	@RequestMapping(value = "deleteContest.do")
@@ -120,5 +124,35 @@ public class ContestController {
 	public void deleteContest(HttpSession session) {
 		ContestVO contest = contest_service.existContestInfo((String) session.getAttribute("useremail"));
 		contest_service.deleteContest(contest.getId());
+	}
+	@RequestMapping(value = "contest/list")
+	public ModelAndView showContestList() {
+		return new ModelAndView("contest/list");//ingcontest.html
+	}
+	@RequestMapping(value = "contest/{contestidx}")
+	public ModelAndView showContest(HttpServletRequest request) {
+		return new ModelAndView("contest/contest");//contest_done.jsp,contestbrief.jsp
+	}
+	@RequestMapping(value = "contest/{contestidx}/join")
+	public ModelAndView joinContest() {
+		return new ModelAndView("contest/join");//contest_join.html
+	}
+	@RequestMapping(value = "contest/{contestidx}/joininfo")
+	public ModelAndView joininfoContest() {
+		return new ModelAndView("join/joininfo");//contest_join2.html
+	}
+	@RequestMapping(value = "contest/{contestidx}/viewjoininfo", method=RequestMethod.POST)
+	public ModelAndView insertjoininfo(HttpServletRequest request,@PathVariable int contestidx,HttpSession session) {
+		String email = (String) session.getAttribute("useremail");
+		System.out.println(request.getParameter("content"));
+		contest_service.insertJoin(new JoinVO(contestidx,email,request.getParameter("content")));
+		ModelAndView mv = new ModelAndView("join/view");	
+		return mv;//
+	}
+	@RequestMapping(value = "contest/{contestidx}/uploadImageJoin", method=RequestMethod.POST)
+	@ResponseBody
+	public JSONObject uploadImageJoin(@RequestParam("file") MultipartFile file,@PathVariable int contestidx) {
+		System.out.println("success");
+		return contest_service.insertJoinImage(file, contestidx);
 	}
 }

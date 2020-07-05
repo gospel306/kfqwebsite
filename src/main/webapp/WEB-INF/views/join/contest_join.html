@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+		integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="css/contest_join.css">
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+		crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+		crossorigin="anonymous"></script>
+	<script src="./js/contestBrief.js"></script>
+
+
+	<style>
+		body {
+			margin: 0px auto;
+			width: 100%;
+			background-color: #ebeff2;
+			min-width: 570px;
+		}
+
+		img {
+			width: 100%;
+			height: auto;
+		}
+
+		div {}
+
+		textarea {}
+
+		.display_open {
+			display: block;
+		}
+
+		.display_close {
+			display: none;
+		}
+
+		/*lay-out*/
+		.padding_zero {
+			padding: 1px;
+		}
+
+		.first_layout {
+			padding-top: 50px;
+			width: 75%;
+			margin: 0px auto;
+		}
+
+		/*lay-out*/
+
+		/*head*/
+		.main {
+			margin-top: 0px auto;
+			background-color: white;
+			padding: 5% 2%;
+		}
+
+		/*itembox*/
+		.contest_list_item {
+			padding: 0px 20px;
+			border: 1px solid #cccccc;
+		}
+
+		.item_box_tail {
+			padding: 5% 1%;
+		}
+
+		.item_price {}
+
+		.item_period {
+			padding: 5px 0px;
+		}
+
+		.item_visitCount {}
+
+		.item_price_text {
+			width: 100%;
+			text-align: center;
+			border: 0px;
+			background-color: #f4f5f6;
+			padding: 5px 10px;
+		}
+
+		.item_period_text {
+			width: 100%;
+			text-align: center;
+			border: 1px solid #cccccc;
+			border-radius: 5px;
+			padding: 5px 10px;
+			margin: 3% 0%;
+		}
+
+		.item_visitCount_text {
+			width: 100%;
+			text-align: center;
+			border: 1px solid #cccccc;
+			border-radius: 5px;
+			padding: 5px 10px;
+		}
+
+		.item_categoty {
+			color: #FF5D5D;
+			font-weight: bold;
+			width: 100%;
+			border: 0px;
+		}
+
+		.item_title {
+			font-weight: bold;
+			text-overflow: ellipsis;
+			border: 0px;
+			width: 100%;
+		}
+
+		.item_content {
+			font-weight: bold;
+			text-overflow: ellipsis;
+			border: 0px;
+			width: 100%;
+			color: black;
+			font-size: 12px;
+		}
+
+		.brief_item_category {
+			padding: 5% 5%;
+		}
+
+		.brief_item_title {
+			padding: 5% 0%;
+		}
+
+		.brief_item_content {
+			border-top: 1px solid #cccccc;
+			padding: 5% 1%;
+		}
+
+		.brief_item_img {
+			padding: 1% 0%;
+		}
+
+		.animated {
+			-webkit-transition: height 0.2s;
+			-moz-transition: height 0.2s;
+			transition: height 0.2s;
+		}
+
+		.form-control {
+			border: 0px;
+		}
+
+		.form-control:focus {
+			color: #495057;
+			background-color: #fff;
+			border-color: #80bdff;
+			outline: 0;
+			box-shadow: 0 0 0 0px rgba(0, 123, 255, .25);
+		}
+
+		.form-control:disabled,
+		.form-control[readonly] {
+			background-color: white;
+			opacity: 1;
+		}
+
+		/*itembox*/
+
+		/*step1*/
+		.join_step1 {
+			padding: 5% 5%;
+		}
+
+		.join_step1_content {
+			padding-top: 5%;
+		}
+
+		.join_step1_content_text {
+			padding-top: 5%;
+		}
+
+		.font_bold {
+			font-weight: bold;
+		}
+
+		.font_red {
+			color: #FF5D5D;
+		}
+
+		.join_step1_tail {
+			margin-top: 5%;
+			border-top: 1px solid #cccccc;
+			padding: 5% 0%;
+		}
+
+		.join_step1_tail_text {
+			text-align: left;
+		}
+
+		.join_step1_tail img {
+			width: 100%;
+			height: auto;
+		}
+
+		.join_step1_checkbox {
+			width: 100%;
+		}
+
+		.join_editor_size {
+			
+		}
+	
+
+
+		@media all and (max-width:900px) {
+			body{
+				width: 700px;
+			}
+
+			.first_layout{
+				width: 100%;
+			}
+		}
+	</style>
+
+<body>
+	<!--first_layout-->
+	<div class="first_layout">
+
+		<!--main-->
+		<div class="main">
+			<!-- contest list item-->
+			<div class="contest_list_item">
+				<div class="row">
+					<div class="col-lg-8">
+						<div class="row">
+							<div class="col-sm-2 brief_item_img">
+								<img src="img/thumbimg_logo.png" alt="">
+							</div>
+							<div class="col-sm-3 brief_item_category">
+
+								<input type="text" class="item_categoty" readonly value="브랜드 SET |">
+
+							</div>
+
+							<div class="col-sm-7 brief_item_title">
+								<input type="text" class="item_title" readonly value="홍성군 평생교육 브랜드 로고 공모전(홍성군평생학습센터) ">
+
+							</div>
+
+						</div>
+
+						<div class="row">
+							<div class="col-sm-12 brief_item_content">
+								<textarea class="brief_content_item_text_4 form-control animated" readonly
+									id="brief_item_content_1">
+
+                                 </textarea>
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="col-lg-4 item_box_tail">
+						<div class="item_price">
+							<input type="text" class="item_price_text" readonly value="1등: 500만원 / 2등: 100만원">
+
+						</div>
+						<div class="item_period">
+							<input type="text" class="item_period_text" readonly value="남은기간: 13일(~07/14 24:00)">
+
+						</div>
+						<div class="item_visitCount">
+							<input type="text" class="item_visitCount_text" readonly value="조회수 : 9000">
+						</div>
+
+
+					</div>
+
+
+
+				</div>
+			</div>
+
+			<!-- contest list item-->
+
+			<!--join step1-->
+			<div class="join_step1" id="join_step1">
+
+
+				<div class="row">
+					<div class="col-lg-3"></div>
+
+					<div class="col-lg-6">
+						<img class="join_step1_img" src="img/img_step01.png" alt="">
+					</div>
+					<div class="col-lg-3"></div>
+
+				</div>
+
+				<!--join step1-->
+
+				<!--join step2-->
+				<div class="join_step1_content">
+					<div class="join_step1_content_img">
+						<img src="img/join_info1.png" alt="">
+					</div>
+
+					<div class="join_step1_content_text">
+						<span class="font_bold">1</span>. <span class="font_bold font_red">로고,
+							일러스트 콘테스트에는 어떠한 스톡이미지, 프리벡터, 클립아트도 사용해서는 안 됩니다.</span><br> 상업적 사용이
+						제한되는 폰트, 스톡이미지의 사용 규정 및 범위를 위반할 시, 계정이 영구적으로 삭제될 수 있습니다.<br>
+						작품에 유료 폰트, 스톡이미지, 프리벡터 등을 사용한 경우에는 반드시 의뢰자에게 저작권 문제가 없음을 확인하고
+						명시해야만 합니다.
+
+					</div>
+
+					<div class="join_step1_content_text">
+						<span class="font_bold"> 2</span>. <span class="font_bold font_red">아이디어의 판단 하에 본 디자인이 다른 디자이너의
+							작품을
+							도용한 것으로 판단되는 경우,<br> 아이디어는 해당 디자이너의 활동을 제지 혹은 금지할 수 있습니다.
+						</span><br> 또한 상금이 지급되었을 경우 아이디어는 디자이너에게 전액 환불을 요구할 수 있으며,<br>
+						이에서 파생되는 의뢰자와의 분쟁 및 손해에 관해서는 관련법규에 따라 디자이너에게 배상의 의무가 부여될 수 있습니다.<br>
+						<span class="font_bold"> 반드시 자신의 디자인만 등록해 주세요</span>
+					</div>
+					<div class="join_step1_content_text">
+						<span class="font_bold"> 3</span>. <span class="font_bold">로고,
+							일러스트</span> 등의 디자인은 반드시 <span class="font_bold font_red">벡터 형태</span>로
+						작업해야 합니다. 이를 어길 시 이용정지 처리될 수 있습니다.
+					</div>
+					<div class="join_step1_content_text">
+						<span class="font_bold"> 4</span>. 잘못된 디자인으로 인해 법적인 문제에 휘말리게 될 경우,
+						모든 법적 그리고 금전적인 손실에 대한 책임은 디자이너 측에 있습니다.
+
+					</div>
+					<div class="join_step1_content_text">
+						<span class="font_bold"> 5</span>. 아이디어는 실제 상업적으로 사용될 디자인을 의뢰하는 전문
+						디자이너 플랫폼입니다.<br> 동일 디자이너의 시안에 대해 의뢰자의 불만이 지속적으로 발생 시, 아이디어는
+						내부 검수를 통해 참여가 제한될 수 있습니다.
+					</div>
+
+
+
+				</div>
+
+				<div class="join_step1_tail">
+					<div class="join_step1_tail_text">
+						* 콘테스트 참여 시 반드시<span class="font_bold"> [법률 제 11110호 -
+							저작권법]</span>을 준수하여야 합니다.
+					</div>
+
+				</div>
+				<div class="join_step1_check">
+					<div class="row">
+
+
+						<div class="col-lg-3"></div>
+						<div class="col-lg-6">
+
+
+							<button class="learn-more join_step1_checkbox"   id="join_step1_check">동의 하십니까?</button>
+							
+
+						</div>
+						<div class="col-lg-3"></div>
+
+					</div>
+
+				</div>
+
+			</div>
+			<!--join step1-->
+
+
+		</div>
+		<!--main-->
+
+
+
+
+
+
+
+	</div>
+	<!--first_layout-->
+
+
+
+</body>
+<script>
+
+
+	$(document)
+		.ready(
+			function () {
+
+				var bci1 = "60이츠 '붐' 캐릭터디자인 의뢰";
+
+				var bci2 = "쌤기획";
+
+				var bci3 = "60이츠는 간편하게 어린이 간식이나 안주, 식사대용으로 먹을 수 있는 닭고기 식품을 판매하는 홈페이지입니다.연예인 '붐'님의 캐릭터로 대중에게 친근하게 다가갈 수 있도록 캐릭터 디자인을 의뢰합니다.";
+
+				var bci4 = "* 공모주제 : 홍성군평생학습센터 브랜드 이미지 * 활용범위 : 홈페이지, 현수막, 배너, 안내판, 현판, 수료증 등 * 개발방향 : 평생교육사업 취지와 친근감을 주고 기억하기 쉬우며 학습 참여 동기를 유발할 수 있는 이미지, 온·오프라인 홍보에 응용이 가능하고 사업 현장에 적용할 수 있는 단순하고 간결한 디자인";
+
+				document.getElementById("brief_item_content_1").value = bci4;
+
+				// $("#brief_content_item_4").text("60이츠는 간편하게 어린이 간식이나 안주, 식사대용으로 먹을 수 있는 닭고기 식품을 판매하는 홈페이지입니다.연예인 붐 님의 캐릭터로 대중에게 친근하게 다가갈 수 있도록 캐릭터 디자인을 의뢰합니다.");
+
+				$(function () {
+					$('.normal').autosize();
+					$('.animated').autosize({
+						append: "\n"
+					});
+				});
+
+				$('#join_step1_check').on('click', function(){
+					location.href="http://localhost:9097/Project/contest_join_2.html";
+
+				})
+			
+
+			});
+</script>
+
+</html>
