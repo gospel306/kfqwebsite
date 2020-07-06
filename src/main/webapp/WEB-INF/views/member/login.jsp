@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Login</title>
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/member/login.css">
     <script src="<%=request.getContextPath()%>/resource/js/member/login.js"></script>
 </head>

@@ -43,9 +43,7 @@
 				<p>${category.content}</p>
 			</div>
 		</div>
-		<div class="container-fluid">
-			<jsp:include page="noticenav.jsp"></jsp:include>
-		</div>
+		
 		<div class="container section">
 			<div class="listwrap">
 				<table style="width:100%">

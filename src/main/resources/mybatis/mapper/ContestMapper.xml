@@ -17,6 +17,45 @@
 		FROM CONTEST
 		WHERE ID = #{value}
 	</select>
+	<select id="ContestInfo" parameterType="Integer" resultType="com.kfq.fund.vo.ContestVO">
+		SELECT TITLE, CONTESTTYPE, COMPANY, SERVICEINFO, STARTDATE, ENDDATE, 
+		FIRSTPRIZE, SECONDPRIZE, THIRDPRIZE, BENNER, HIGHTLIGHT,ENDCONTEST, VIEWS
+		FROM CONTEST
+		WHERE ID = #{value}
+	</select>
+	<select id="listContest" parameterType="Map" resultType="com.kfq.fund.vo.ContestVO">
+		SELECT TITLE, CONTESTTYPE, COMPANY, SERVICEINFO, STARTDATE, ENDDATE, 
+		FIRSTPRIZE, SECONDPRIZE, THIRDPRIZE, BENNER, HIGHTLIGHT,ENDCONTEST, VIEWS
+		FROM CONTEST
+		<if test="searchOption == 'proceeding'">
+			WHERE ENDDATE > CURDATE()
+		</if>
+		<if test="searchOption == 'decision'">
+			WHERE CURDATE() > ENDDATE AND ENDCONTEST = 0
+		</if>
+		<if test="searchOption == 'end'">
+			WHERE ENDCONTEST = 1
+		</if>
+		ORDERBY STARTDATE, SHOW
+		LIMIT #{startlist}, #{listsize}
+	</select>
+	<select id="getTop5" parameterType="String" resultType="com.kfq.fund.vo.ContestVO">
+		SELECT CONTEST.ID, CONTEST.TITLE, COUNT(WORK.CONTEST_ID), DATEDIFF(CONTEST.ENDDATE,CONTEST.STARTDATE)
+		FROM CONTEST LEFT JOIN WORK
+		ON CONTEST.ID = WORK.CONTEST_ID
+		GROUP BY WORK.CONTEST_ID
+		<if test="value == 'win'">
+		ORDER BY COUNT(WORK.CONTEST_ID)
+		</if>
+		<if test="value == 'cost'">
+		ORDER BY CONTEST.FIRSTPRIZE DESC
+		</if>
+		<if test="value == 'last'">
+		ORDER BY CONTEST.STARTDATE DESC
+		</if>
+		LIMIT 5
+	</select>
+	
 	<select id="insertlastContestid" parameterType="String" resultType="Integer">
 		SELECT ID
 		FROM CONTEST

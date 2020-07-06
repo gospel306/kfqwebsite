@@ -22,6 +22,10 @@ public class ContestVO {
 	private int firstprize;
 	private int secondprize;
 	private int thirdprize;
+	private int views;
+	
+	private long people;
+	private int day;
 	
 	public ContestVO(Integer id,String title,String contesttype,String company,String serviceinfo, String sector, String idea, String briefing) {
 		this.id = id;
@@ -43,7 +47,26 @@ public class ContestVO {
 		this.idea = idea;
 		this.briefing = briefing;
 	}
-	
+	public ContestVO(String title, String contesttype, String company, String serviceinfo, Date startdate, Date enddate, int firstprize, int secondprize, int thirdprize, boolean benner, boolean hightlight, int views) {
+		this.title = title;
+		this.contesttype = contesttype;
+		this.company = company;
+		this.serviceinfo = serviceinfo;
+		this.startdate = startdate;
+		this.enddate = enddate;
+		this.benner = benner;
+		this.firstprize = firstprize;
+		this.secondprize = secondprize;
+		this.thirdprize = thirdprize;
+		this.highlight = hightlight;
+		this.views = views;
+	}
+	public ContestVO(Integer id, String title, Long count, Integer day) {
+		this.id = id;
+		this.title = title;
+		this.people = count;
+		this.day = day;
+	}
 	public int getId() {
 		return id;
 	}
@@ -158,7 +181,24 @@ public class ContestVO {
 	public void setBenner(boolean benner) {
 		this.benner = benner;
 	}
-
+	public int getViews() {
+		return views;
+	}
+	public void setViews(int views) {
+		this.views = views;
+	}
+	public long getPeople() {
+		return people;
+	}
+	public void setPeople(long people) {
+		this.people = people;
+	}
+	public int getDay() {
+		return day;
+	}
+	public void setDay(int day) {
+		this.day = day;
+	}
 	@Override
 	public String toString() {
 		return "ContestVO [id=" + id + ", memberemail=" + memberemail + ", payed=" + payed + ", title=" + title

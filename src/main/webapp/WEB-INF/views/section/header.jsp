@@ -4,11 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/header.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="<%=request.getContextPath()%>/resource/js/section/header.js"></script>
 </head>
 <body>
@@ -57,17 +53,17 @@
         <p class="name_page" style="color: white;">ㅇㅏㅇㅣㄷㅣㅇㅓ</p>
         <div class="nav_name1">
             <p><a href="#" onclick="makecontest()">콘테스트 개최하기</a></p>
-            <p><a href="#" target="blank">가격 안내</a></p>
+            <p><a href="" target="blank">가격 안내</a></p>
         </div>
         <div class="nav_name1">
-            <p><a href="#" target="blank">진행중인 콘테스트</a></p>
-            <p><a href="#" target="blank">심사중인 콘테스트</a></p>
-            <p><a href="#" target="blank">종료된 콘테스트</a></p>
+            <p><a href="<%=request.getContextPath()%>/contestlist?searchOption='proceeding'" target="blank">진행중인 콘테스트</a></p>
+            <p><a href="<%=request.getContextPath()%>/contestlist?searchOption='decision'" target="blank">심사중인 콘테스트</a></p>
+            <p><a href="<%=request.getContextPath()%>/contestlist?searchOption='end'" target="blank">종료된 콘테스트</a></p>
         </div>
         <div class="nav_name1">
-            <p><a href="#" target="blank" onclick="<%=request.getContextPath()%>/notice">공지 사항</a></p>
+            <p><a href="<%=request.getContextPath()%>/notice" target="blank">공지 사항</a></p>
             <p><a href="#" target="blank">문의하기</a></p>
-            <p><a href="#" target="blank">고객 센터</a></p>
+            <p><a href="<%=request.getContextPath()%>/faq" target="blank">고객 센터</a></p>
             <p><a href="#" target="blank">오시는 길</a></p>
         </div>
     </div>

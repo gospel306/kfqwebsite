@@ -1,37 +1,456 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
+
 <head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<!-- icon css -->
+
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
    	
-    <!-- custom js -->
-    <script src="<%=request.getContextPath() %>/resource/js/section/goTop.js"></script>
-    
-    <!-- custom css -->
-	<link rel="stylesheet" href="<%=request.getContextPath() %>/resource/css/custom.css">
-	<link rel="stylesheet" href="<%=request.getContextPath() %>/resource/css/slick.css">
-	<link rel="stylesheet" href="<%=request.getContextPath() %>/resource/css/slick-theme.css">
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/slick_custom.css">
-	<style>
-        #main_top {
-            width: 1550px;
-            height: 200px;
-            background-color: #ebeff2
+   	<script src="<%=request.getContextPath() %>/resource/js/section/goTop.js"></script>
+   	<link rel="stylesheet" href="<%=request.getContextPath() %>/resource/css/custom.css">
+  
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        body {
+            margin: 0px auto;
+        }
+        
+        div{
+            
         }
 
-        #pills-tab123 {
+
+        img {
+          
+            height: auto;
+        }
+
+        #pills-Proceeding img {
+            width: auto;
+            height: auto;
+            vertical-align: middle;
+        }
+
+        #pills-Scoring img {
+            width: auto;
+            height: auto;
+            vertical-align: middle;
+        }
+
+        #pills-Done 
+    
+
+
+
+
+
+        .top_width {
+            background-color: #ebeff2;
+
+        }
+
+        .list_Tap {}
+
+
+        .content_top {
+
+            width: 100%;
+            margin: 0px auto;
+
+        }
+
+       .list_Tap .nav-pills {
             padding-top: 20px;
         }
+
+        .list_Tap .nav-link {
+            padding: 0px;
+            text-align: center;
+
+
+        }
+
+        .list_Tap .nav-pills .nav-link {
+            background-color: #64636d;
+            color: white;
+            padding: 10px 0px;
+            font-size:18px;
+        }
+
+        .list_Tap .nav-pills .nav-link.active,
+      .list_Tap  .nav-pills .nav-link.active:hover,
+       .list_Tap .nav-pills .nav-link.active:focus {
+            background-color: white;
+            color: #64636d;
+            border-top: 2px solid #64636d;
+
+
+        }
+
+
+
+        .list_Top {
+            width: 75%;
+            padding-top: 76px;
+            margin: 0px auto;
+
+        }
+
+        .list_maintitle {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .List_ScoringTap_subTitle {
+            display: none;
+        }
+
+        .List_DoneTap_subTitle {
+            display: none;
+        }
+
+        .list_content {
+            width: 75%;
+            margin: 0px auto;
+        }
+
+        .list_Tap_sub {
+            width: 100%;
+            padding: 20px 0px 0px 20px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .list_Title {
+
+            padding: 20px 0px 0px 0px;
+        }
+
+        .padding_zero {
+            padding: 1px;
+        }
+
+
+
+        .btn {
+            font-weight: bold;
+        }
+
+        .dropdown:hover #dropdownKind1 {
+            display: block;
+        }
+
+        .dropdown:hover #dropdownKind2 {
+            display: block;
+        }
+
+        .dropdown:hover #dropdownKind3 {
+            display: block;
+        }
+
+        .dropbox-inline {
+            padding: 10px;
+            margin-top: 50px;
+        }
+
+
+        .dropdown-menu {
+            background-color: #444;
+
+        }
+
+        .dropdown-item {
+            color: white;
+            font-weight: bold;
+        }
+
+        .dropdown-item:hover {
+            background-color: black;
+            color: white;
+        }
+
+        .text_red {
+            color: #FF5D5D;
+           
+
+        }
+
+        .width75 {
+            width: 75%;
+        }
+
+        #btnKind1 {
+            width: 100%;
+        }
+
+        .list_tab_content {
+            width: 75%;
+            margin: 0px auto;
+            padding-top: 50px;
+        }
+
+
+
+        .list_rank_title {
+            text-align: center;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #CCCCCC;
+        }
+
+        .btn-secondary {
+            background-color: white;
+            color: #64636d;
+            ;
+        }
+
+        .contest_rank_text {
+            text-overflow: ellipsis;
+            border: 0px solid white;
+            width: 100%;
+        }
+
+        .contest_rank_text:hover {
+            color: #FF5D5D;
+        }
+
+        .contest_rank_tail {
+
+            border: 1px solid #f4f5f6;
+            border-radius: 8px;
+
+
+            background-color: #CCCCCC;
+            text-align: center;
+        }
+
+        .rank_list_width {
+            width: 80%;
+
+        }
+
+        .list_rank_content {
+            font-size: 12px;
+        }
+
+
+        .item_box_tail{
+            padding-top: 1%;
+            padding-bottom: 1%;
+        }
+        .item_price{
+            
+      
+        }
+        .item_period{
+            
+            padding: 5px 0px;
+    
+        }
+        .item_visitCount{
+            
+           
+        }
+
+
+
+
+        .item_price_text{
+            
+            width: 100%;
+            text-align: center;
+            border: 0px;
+            background-color: #f4f5f6;
+            padding: 5px 10px;
+        }
+        .item_period_text{
+            
+            width: 100%;
+            text-align: center;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            padding: 5px 10px;
+        }
+        .item_visitCount_text{
+            
+            width: 100%;
+            text-align: center;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            padding: 5px 10px;
+        }
+/*item_box*/
+.contest_list_item_roof {
+        margin-top: 5%;
+
+
+    }
+
+    .contest_list_item {
+        
+        border: 1px solid #cccccc;
+        border-radius: 5px;
+        padding: 10px;
+    }
+
+    .item_box_category {
+        color: #FF5D5D;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .item_box_contestTitle {
+
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+    }
+
+    .item_box_userId{
+       
+    }
+
+    .item_content_roof {
+        margin-top: 5%;
+    }
+
+
+    .item_content_tail_roof {
+        margin-top: 5%;
+    }
+
+    .item_box_contestReward {
+        text-align: center;
+        
+        border: 1px solid #ebeff2;
+        border-radius: 5px;
+        background-color: #ebeff2;
+        padding: 1%;
+       
+    }
+
+    .item_box_contestPeriod {
+        text-align: center;
+        
+        border: 1px solid #ebeff2;
+        border-radius: 5px;
+        background-color: #ebeff2;
+        padding: 1%;
+
+    }
+
+    .item_box_joinCount {
+        text-align: center;
+        border: 1px solid #ebeff2;
+        border-radius: 5px;
+        background-color: #ebeff2;
+        padding: 1%;
+
+
+    }
+    .box_label{
+        padding: 1% 5% 1% 1%;
+
+    }
+    .box_label img{
+       
+    }
+
+
+    /*item_box*/
+    /*add_item_box*/
+    .last_item_size{
+        width: 90%;
+        height: 100%;
+        overflow: hidden;
+        margin-left: 5%;
+    }
+
+    .contest_list_Doneitem{
+        border: 1px solid #cccccc;
+        border-radius: 5px;
+        padding: 10px;
+    }
+    .Done_Categoty_img{
+        width: auto;
+    }
+    .padding_bottom{
+        padding-bottom: 5%;
+    }
+
+        /* carousel*/
+        @media (max-width: 768px) {
+            .carousel-inner .carousel-item>div {
+                display: none;
+            }
+
+            .carousel-inner .carousel-item>div:first-child {
+                display: block;
+            }
+        }
+
+        .carousel-inner .carousel-item.active,
+        .carousel-inner .carousel-item-next,
+        .carousel-inner .carousel-item-prev {
+            display: flex;
+        }
+
+        /* display 3 */
+        @media (min-width: 768px) {
+
+            .carousel-inner .carousel-item-right.active,
+            .carousel-inner .carousel-item-next {
+               transform: translateX(50.000%);
+            }
+
+            .carousel-inner .carousel-item-left.active,
+            .carousel-inner .carousel-item-prev {
+                transform: translateX(-50.00%);
+            }
+        }
+
+        .carousel-inner .carousel-item-right,
+        .carousel-inner .carousel-item-left {
+            transform: translateX(0);
+        }
+        .card{
+            border: 0px solid white;
+        }
+
+
+
+        /* carousel*/
+        @media (max-width :1000px){
+            #pills-Proceeding  .brief_item_img img{
+                width: 60px;
+                height: 60px;
+            }
+        }
+
+        @media (max-width :640px){
+            #pills-Proceeding  .brief_item_img img{
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        .contest_list_Doneitem{
+            min-width: 770px;
+        }
+   
+
     </style>
 </head>
 <header>
@@ -39,114 +458,1426 @@
 	<jsp:include page="../section/goTop.jsp"></jsp:include>
 </header>
 <body>
-	   <div id="main_top">
-        <p style="font-size: 23px; font-weight: bold; margin-left: 17%; padding-top: 70px;">���׽�Ʈ ����<span
-                style="font-size: 18px;"> - �������� ���׽�Ʈ</span></p>
-        <ul class="nav nav-pills mb-3" id="pills-tab123" role="tablist" style="background-color:#ededed;">
-            <li class="nav-item" role="presentation"
-                style="margin-right: 10px; width: auto; background-color:white; margin-left: 17%;">
-                <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
-                    aria-controls="pills-home" aria-selected="true"
-                    style="border-top:2px solid black; width: 140px; background-color: white;">
-                    <p style="color:black; font-size: 13px; font-weight: bold; padding-top: 4px; text-align: center;">
-                        �������� ���׽�Ʈ</p>
-                </a>
-            </li>
-            <li class="nav-item" role="presentation" style="margin-right: 10px;background-color:#64636d; ">
-                <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
-                    aria-controls="pills-profile" aria-selected="false"
-                    style="border-top:2px solid black; width: 140px;">
-                    <p style="color:white; font-size: 13px; font-weight: bold; padding-top: 4px; text-align: center;">
-                        �ɻ����� ���׽�Ʈ</p>
-                </a>
-            </li>
-            <li class="nav-item" role="presentation" style="margin-right: 10px; background-color:#64636d;">
-                <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab"
-                    aria-controls="pills-contact" aria-selected="false"
-                    style="border-top:2px solid black; width: 140px;">
-                    <p style="color:white; font-size: 13px; font-weight: bold; padding-top: 4px; text-align: center;">
-                        ����� ���׽�Ʈ</p>
-                </a>
-            </li>
-        </ul>
+    <div class="content_top" id="content_top">
+        <div class="top_width">
+            <!-- list_Top -->
+            <div class="list_Top">
 
-        <div style="background-color: white; width: 1024px; height: 385px; margin-left:17.5%; margin-right: 40px; float: left; margin-top: 40px;;">
+                <div class="list_Title">
+                    <div class="row">
+                        <div class="col-lg-3 list_maintitle">
+                            콘테스트 보기
+                        </div>
+                        <div class="col-lg-3 list_subtitle">
+                            <div class="List_ProceedingTap_subTitle">
+                                <small>- 진행중인 콘테스트</small>
+                            </div>
 
 
-            <div class="dropdown" style="float: left;">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    ��ü ī�װ������� (#144)
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <a class="dropdown-item" href="#">��ü ī�װ�������(#144)</a>
-                    <a class="dropdown-item" href="#">�ΰ� ������</a>
-                    <a class="dropdown-item" href="#">��Ű�� ������</a>
-                    <a class="dropdown-item" href="#">��ǰ ������</a>
-                    <a class="dropdown-item" href="#">��/�� ������</a>
-                    <a class="dropdown-item" href="#">���̹�/���̵��</a>
-                    <a class="dropdown-item" href="#">ĳ���� ������</a>
-                    <a class="dropdown-item" href="#">����/��Ÿ</a>
+                            <div class="List_ScoringTap_subTitle">
+                                <small>- 심사중인 콘테스트</small>
+                            </div>
+
+                            <div class="List_DoneTap_subTitle">
+                                <small>- 종료된 콘테스트</small>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-3"></div>
+                        <div class="col-lg-3"></div>
+
+                    </div>
+
+
+
+
+                    <!-- list_Tap -->
+                    <div class="list_Tap">
+
+                        <ul class="nav nav-pills" id="pills-tab123" role="tablist">
+                            <div class="list_Tap_sub">
+                                <div class="row">
+                                    <div class="col-sm-2 padding_zero">
+
+                                        <li class="nav-item" role="presentation">
+                                            <a class="nav-link active" id="pills-Proceeding-tab" data-toggle="pill"
+                                                href="#pills-Proceeding" role="tab" aria-controls="pills-Proceeding"
+                                                aria-selected="true">
+
+                                                진행중인 콘테스트
+                                            </a>
+                                        </li>
+                                    </div>
+                                    <div class="col-sm-2 padding_zero">
+                                        <li class="nav-item" role="presentation">
+                                            <a class="nav-link" id="pills-Scoring-tab" data-toggle="pill"
+                                                href="#pills-Scoring" role="tab" aria-controls="pills-Scoring"
+                                                aria-selected="false">
+
+                                                심사중인 콘테스트
+                                            </a>
+                                        </li>
+                                    </div>
+                                    <div class="col-sm-2 padding_zero">
+                                        <li class="nav-item" role="presentation">
+                                            <a class="nav-link" id="pills-Done-tab" data-toggle="pill"
+                                                href="#pills-Done" role="tab" aria-controls="pills-Done"
+                                                aria-selected="false">
+
+                                                종료된 콘테스트
+                                            </a>
+                                        </li>
+                                    </div>
+                                    <div class="col-sm-2 padding_zero"></div>
+                                    <div class="col-sm-2 padding_zero"></div>
+                                    <div class="col-sm-2 padding_zero"></div>
+                                </div>
+                            </div>
+                        </ul>
+
+                    </div>
+                    <!-- list_Tap -->
                 </div>
             </div>
+            <!-- list_Top -->
+        </div>
 
-            <div class="dropdown" style="float: left; margin: 0 10px 0 10px;">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    ��ü ��������(#144)
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                    <a class="dropdown-item" href="#">���� ��ü</a>
-                    <a class="dropdown-item" href="#">�Ĵ�/ī��</a>
-                    <a class="dropdown-item" href="#">��ǰ/�ǰ�</a>
-                    <a class="dropdown-item" href="#">IT/�̵��</a>
-                    <a class="dropdown-item" href="#">��Ƽ/�м�</a>
-                    <a class="dropdown-item" href="#">����</a>
-                    <a class="dropdown-item" href="#">�ֿϵ���</a>
-                    <a class="dropdown-item" href="#">����/����</a>
-                    <a class="dropdown-item" href="#">��ɱ��/�������</a>
-                    <a class="dropdown-item" href="#">�Ϲ�/��Ÿ</a>
-                </div>
-            </div>
+        <div class="list_content">
+            <div class="dropbox-inline">
+                <div class="row">
 
-            <div class="dropdown" style="float: left;">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton3"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    �⺻ ����
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
-                    <a class="dropdown-item" href="#">�⺻ ����</a>
-                    <a class="dropdown-item" href="#">�����ӹ� �� ����</a>
-                    <a class="dropdown-item" href="#">�ֽŵ�� �� ����</a>
-                    <a class="dropdown-item" href="#">������ �� ����</a>
-                    <a class="dropdown-item" href="#">�ѻ�� �� ����</a>
-                    <a class="dropdown-item" href="#">��ȸ �� ����</a>
-                </div>
-            </div>
-            <div class="input-group flex-nowrap mr-3 bd-highlight" id="btn_search" style="width: 150px; margin-left: 700px;">
-                <div class="input-group-prepend">
-                    <span class="input-group-text input_Search_icon" style="padding-top: 6px;" id="addon-wrapping"><i
-                            class="material-icons">search</i></span>
-                </div>
-                <input type="text" class="form-control input_Search" placeholder="Search" aria-label="Username"
-                    aria-describedby="addon-wrapping">
-            </div>
-            <div class="tab-content" id="pills-tabContent">
+                    <div class="col-lg-4">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="btnKind1"
+                                aria-haspopup="true" aria-expanded="false">
+                                전체 카테고리보기 (#144)
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="btnKind1" id="dropdownKind1">
+                                <a class="dropdown-item text_red" href="#">전체 카테고리보기(#144)</a>
+                                <a class="dropdown-item" href="#">로고 디자인</a>
+                                <a class="dropdown-item" href="#">패키지 디자인</a>
+                                <a class="dropdown-item" href="#">제품 디자인</a>
+                                <a class="dropdown-item" href="#">웹/앱 디자인</a>
+                                <a class="dropdown-item" href="#">네이밍/아이디어</a>
+                                <a class="dropdown-item" href="#">캐릭터 디자인</a>
+                                <a class="dropdown-item" href="#">편집/기타</a>
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                    123
-                </div>
-                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                    14
-                </div>
-                <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                    .51
+                    <div class="col-lg-3">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="btnKind2"
+                                aria-haspopup="true" aria-expanded="false">
+                                전체 업종보기(#144)
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="btnKind2" id="dropdownKind2">
+                                <a class="dropdown-item text_red" href="#">업종 전체</a>
+                                <a class="dropdown-item" href="#">식당/카페</a>
+                                <a class="dropdown-item" href="#">식품/건강</a>
+                                <a class="dropdown-item" href="#">IT/미디어</a>
+                                <a class="dropdown-item" href="#">뷰티/패션</a>
+                                <a class="dropdown-item" href="#">병원</a>
+                                <a class="dropdown-item" href="#">애완동물</a>
+                                <a class="dropdown-item" href="#">교육/육아</a>
+                                <a class="dropdown-item" href="#">재능기부/공공기관</a>
+                                <a class="dropdown-item" href="#">일반/기타</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="btnKind3"
+                                aria-haspopup="true" aria-expanded="false">
+                                기본 정렬
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="btnKind13" id="dropdownKind3">
+                                <a class="dropdown-item text_red" href="#">기본 정렬</a>
+                                <a class="dropdown-item" href="#">마감임박 순 정렬</a>
+                                <a class="dropdown-item" href="#">최신등록 순 정렬</a>
+                                <a class="dropdown-item" href="#">참여자 순 정렬</a>
+                                <a class="dropdown-item" href="#">총상금 순 정렬</a>
+                                <a class="dropdown-item" href="#">조회 순 정렬</a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="input-group flex-nowrap mr-3 bd-highlight" id="btn_search">
+
+                            <input type="text" class="form-control input_Search" placeholder="콘테스트 검색"
+                                aria-label="Username" aria-describedby="addon-wrapping"
+                                onkeydown="if (event.keyCode == 13) ">
+
+
+                            <div class="input-icon">
+
+                                <img src="img/bt_magnifying-glass.png" alt="" onclick="">
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
             </div>
         </div>
+
+
+        <div class="list_tab_content">
+            <div class="tab-content" id="pills-tabContent">
+
+                <!-- 진행중 콘테스트-->
+                <div class="tab-pane fade show active" id="pills-Proceeding" role="tabpanel"
+                    aria-labelledby="pills-Proceeding-tab">
+
+                    <div class="row ">
+                        <div class="col-lg-4">
+                            <div class="list_rank_title">
+                                <img src="img/22_pimg.png" alt=""> 우승 확률이 높은 콘테스트
+                            </div>
+                            <!--  content-->
+                            <div class="list_rank_content">
+							<c:forEach items="${wins}" var="win" varStatus="status"></c:forEach>
+                                <div class="list_rank_content_li">
+                                    <div class="row">
+                                        <div class="col-sm-1 ">
+                                            <strong> ${status.count}</strong>
+                                        </div>
+                                        <div class="col-sm-6 padding_zero">
+                                            <input type="text" class="contest_rank_text" value="열정분식소 BI 리뉴얼 디자인 의뢰 "
+                                                readonly>
+                                        </div>
+
+                                        <div class="col-sm-4 contest_rank_tail padding_zero">
+
+                                            <img src="img/people.png" alt="">&nbsp; <strong>3</strong>명 |<strong>
+                                                D</strong>- 0
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="list_rank_content_li">
+                                    <div class="row">
+                                        <div class="col-sm-1 ">
+                                            <strong> 2</strong>
+                                        </div>
+                                        <div class="col-sm-6 padding_zero">
+                                            <input type="text" class="contest_rank_text" value="강인함 로고 디자인 의뢰 "
+                                                readonly>
+                                        </div>
+
+                                        <div class="col-sm-4 contest_rank_tail padding_zero">
+
+                                            <img src="img/people.png" alt="">&nbsp; <strong>3</strong>명 |<strong>
+                                                D</strong>- 0
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="list_rank_content_li">
+                                    <div class="row">
+                                        <div class="col-sm-1 ">
+                                            <strong> 3</strong>
+                                        </div>
+                                        <div class="col-sm-6 padding_zero">
+                                            <input type="text" class="contest_rank_text" value=" 페이스리퍼블릭 마스크팩 패키지 디자인 "
+                                                readonly>
+                                        </div>
+
+                                        <div class="col-sm-4 contest_rank_tail padding_zero">
+
+                                            <img src="img/people.png" alt="">&nbsp; <strong>3</strong>명 |<strong>
+                                                D</strong>- 0
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="list_rank_content_li">
+                                    <div class="row">
+                                        <div class="col-sm-1 ">
+                                            <strong> 4</strong>
+                                        </div>
+                                        <div class="col-sm-6 padding_zero">
+                                            <input type="text" class="contest_rank_text" value="60이츠 '붐' 캐릭터디자인 의뢰"
+                                                readonly>
+                                        </div>
+
+                                        <div class="col-sm-4 contest_rank_tail padding_zero">
+
+                                            <img src="img/people.png" alt="">&nbsp; <strong>3</strong>명 |<strong>
+                                                D</strong>- 0
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="list_rank_content_li">
+                                    <div class="row">
+                                        <div class="col-sm-1 ">
+                                            <strong> 5</strong>
+                                        </div>
+                                        <div class="col-sm-6 padding_zero">
+                                            <input type="text" class="contest_rank_text" value="엠케이메디바이오 기업 로고 디자인 의뢰  "
+                                                readonly>
+                                        </div>
+
+                                        <div class="col-sm-4 contest_rank_tail padding_zero">
+
+                                            <img src="img/people.png" alt="">&nbsp; <strong>3</strong>명 |<strong>
+                                                D</strong>- 0
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <!--  content-->
+
+                        </div>
+
+
+
+                        <div class="col-lg-4">
+
+                            <div class="list_rank_title">
+                                <img src="img/22_mimg.png" alt=""> 최대 상금 콘테스트
+                            </div>
+                            <!--  content-->
+                            <div class="list_rank_content">
+
+                                <div class="list_rank_content_li">
+                                    <div class="row">
+                                        <div class="col-sm-1 ">
+                                            <strong> 1</strong>
+                                        </div>
+                                        <div class="col-sm-6 padding_zero">
+                                            <input type="text" class="contest_rank_text" value="열정분식소 BI 리뉴얼 디자인 의뢰 "
+                                                readonly>
+                                        </div>
+
+                                        <div class="col-sm-4 contest_rank_tail padding_zero">
+
+                                            <img src="img/people.png" alt="">&nbsp; <strong>3</strong>명 |<strong>
+                                                D</strong>- 0
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="list_rank_content_li">
+                                    <div class="row">
+                                        <div class="col-sm-1 ">
+                                            <strong> 2</strong>
+                                        </div>
+                                        <div class="col-sm-6 padding_zero">
+                                            <input type="text" class="contest_rank_text" value="강인함 로고 디자인 의뢰 "
+                                                readonly>
+                                        </div>
+
+                                        <div class="col-sm-4 contest_rank_tail padding_zero">
+
+                                            <img src="img/people.png" alt="">&nbsp; <strong>3</strong>명 |<strong>
+                                                D</strong>- 0
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="list_rank_content_li">
+                                    <div class="row">
+                                        <div class="col-sm-1 ">
+                                            <strong> 3</strong>
+                                        </div>
+                                        <div class="col-sm-6 padding_zero">
+                                            <input type="text" class="contest_rank_text" value=" 페이스리퍼블릭 마스크팩 패키지 디자인 "
+                                                readonly>
+                                        </div>
+
+                                        <div class="col-sm-4 contest_rank_tail padding_zero">
+
+                                            <img src="img/people.png" alt="">&nbsp; <strong>3</strong>명 |<strong>
+                                                D</strong>- 0
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="list_rank_content_li">
+                                    <div class="row">
+                                        <div class="col-sm-1 ">
+                                            <strong> 4</strong>
+                                        </div>
+                                        <div class="col-sm-6 padding_zero">
+                                            <input type="text" class="contest_rank_text" value="60이츠 '붐' 캐릭터디자인 의뢰"
+                                                readonly>
+                                        </div>
+
+                                        <div class="col-sm-4 contest_rank_tail padding_zero">
+
+                                            <img src="img/people.png" alt="">&nbsp; <strong>3</strong>명 |<strong>
+                                                D</strong>- 0
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="list_rank_content_li">
+                                    <div class="row">
+                                        <div class="col-sm-1 ">
+                                            <strong> 5</strong>
+                                        </div>
+                                        <div class="col-sm-6 padding_zero">
+                                            <input type="text" class="contest_rank_text" value="엠케이메디바이오 기업 로고 디자인 의뢰  "
+                                                readonly>
+                                        </div>
+
+                                        <div class="col-sm-4 contest_rank_tail padding_zero">
+
+                                            <img src="img/people.png" alt="">&nbsp; <strong>3</strong>명 |<strong>
+                                                D</strong>- 0
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <!--  content-->
+
+                        </div>
+
+                        <div class="col-lg-4">
+
+                            <div class="list_rank_title">
+
+                                <img src="img/22_nimg.png" alt=""> 최신 등록 콘테스트
+                            </div>
+
+
+                            <!--  content-->
+                            <div class="list_rank_content">
+
+                                <div class="list_rank_content_li">
+                                    <div class="row">
+                                        <div class="col-sm-1 ">
+                                            <strong> 1</strong>
+                                        </div>
+                                        <div class="col-sm-6 padding_zero">
+                                            <input type="text" class="contest_rank_text" value="열정분식소 BI 리뉴얼 디자인 의뢰 "
+                                                readonly>
+                                        </div>
+
+                                        <div class="col-sm-4 contest_rank_tail padding_zero">
+
+                                            <img src="img/people.png" alt="">&nbsp; <strong>3</strong>명 |<strong>
+                                                D</strong>- 0
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="list_rank_content_li">
+                                    <div class="row">
+                                        <div class="col-sm-1 ">
+                                            <strong> 2</strong>
+                                        </div>
+                                        <div class="col-sm-6 padding_zero">
+                                            <input type="text" class="contest_rank_text" value="강인함 로고 디자인 의뢰 "
+                                                readonly>
+                                        </div>
+
+                                        <div class="col-sm-4 contest_rank_tail padding_zero">
+
+                                            <img src="img/people.png" alt="">&nbsp; <strong>3</strong>명 |<strong>
+                                                D</strong>- 0
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="list_rank_content_li">
+                                    <div class="row">
+                                        <div class="col-sm-1 ">
+                                            <strong> 3</strong>
+                                        </div>
+                                        <div class="col-sm-6 padding_zero">
+                                            <input type="text" class="contest_rank_text" value=" 페이스리퍼블릭 마스크팩 패키지 디자인 "
+                                                readonly>
+                                        </div>
+
+                                        <div class="col-sm-4 contest_rank_tail padding_zero">
+
+                                            <img src="img/people.png" alt="">&nbsp; <strong>3</strong>명 |<strong>
+                                                D</strong>- 0
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="list_rank_content_li">
+                                    <div class="row">
+                                        <div class="col-sm-1 ">
+                                            <strong> 4</strong>
+                                        </div>
+                                        <div class="col-sm-6 padding_zero">
+                                            <input type="text" class="contest_rank_text" value="60이츠 '붐' 캐릭터디자인 의뢰"
+                                                readonly>
+                                        </div>
+
+                                        <div class="col-sm-4 contest_rank_tail padding_zero">
+
+                                            <img src="img/people.png" alt="">&nbsp; <strong>3</strong>명 |<strong>
+                                                D</strong>- 0
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="list_rank_content_li">
+                                    <div class="row">
+                                        <div class="col-sm-1 ">
+                                            <strong> 5</strong>
+                                        </div>
+                                        <div class="col-sm-6 padding_zero">
+                                            <input type="text" class="contest_rank_text" value="엠케이메디바이오 기업 로고 디자인 의뢰  "
+                                                readonly>
+                                        </div>
+
+                                        <div class="col-sm-4 contest_rank_tail padding_zero">
+
+                                            <img src="img/people.png" alt="">&nbsp; <strong>3</strong>명 |<strong>
+                                                D</strong>- 0
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <!--  content-->
+
+                        </div>
+
+                    </div>
+                    <!--carousel-->
+                    <div class="container text-center my-3">
+                        <h2 class="font-weight-light"></h2>
+                        <div class="row mx-auto my-auto">
+                            <div id="recipeCarousel" class="carousel slide w-100" data-ride="carousel">
+                                <div class="carousel-inner w-100" role="listbox">
+                                    <div class="carousel-item active">
+                                        <div class="col-md-3">
+                                            <div class="card card-body">
+                                                <img class="img-fluid" src="img/202006160550340616_HongSeong.png">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="col-md-3">
+                                            <div class="card card-body">
+                                                <img class="img-fluid" src="img/202006180209170618_Smetro.png">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="col-md-3">
+                                            <div class="card card-body">
+                                                <img class="img-fluid" src="img/20200619052718bn_mhh.png">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="col-md-3">
+                                            <div class="card card-body">
+                                                <img class="img-fluid" src="img/202006290443410629_chicken.png">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="col-md-3">
+                                            <div class="card card-body">
+                                                <img class="img-fluid" src="img/202006300204230630.png">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a class="carousel-control-prev w-auto" href="#recipeCarousel" role="button"
+                                    data-slide="prev">
+                                    <span class="carousel-control-prev-icon bg-dark border border-dark rounded-circle"
+                                        aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next w-auto" href="#recipeCarousel" role="button"
+                                    data-slide="next">
+                                    <span class="carousel-control-next-icon bg-dark border border-dark rounded-circle"
+                                        aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </div>
+                        <h5 class="mt-2"></h5>
+                    </div>
+                    <!--carousel-->
+
+            <!-- contest list item-->
+            <div class="contest_list_item contest_list_item_roof">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="row">
+                            <div class="col-sm-2 brief_item_img">
+                                <img src="img/thumbimg_logo.png" alt="">
+                            </div>
+                            <div class="col-sm-3">
+
+                                <div class=" item_box_category" id="item_box_category">
+
+                                </div>
+                                <div class="item_box_userId" id="item_box_userId">
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-sm-7">
+                                <div class="item_box_contestTitle">
+                                    <span id="item_box_contestTitle"></span>
+                                </div>
+                                <div class='item_box_userName' id='item_box_userName'>
+
+                                </div>
+                                <div class='item_box_optionImage' id='item_box_optionImage'>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+
+                        <div class="row item_content_roof">
+                            <div class="col-sm-12 item_box_contestContent" id="item_box_contestContent">
+
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-4 item_box_tail">
+
+                        <div class="box_label row justify-content-end">
+                            <div class="col-sm-3">
+                            <img src="img/label_premium.png" alt="">
+                             </div>
+                           
+                             <div class="col-sm-3">
+                                <img src="img/label_100.png" alt="">
+                             </div>
+                        </div>
+
+                        <div></div>
+
+                        <div class="item_box_contestReward item_content_tail_roof" id="item_box_contestReward">
+
+
+
+                        </div>
+
+
+                        <div class="item_box_contestPeriod item_content_tail_roof" id="item_box_contestPeriod">
+
+
+                        </div>
+
+                        <div class="item_box_joinCount item_content_tail_roof" id="item_box_joinCount">
+
+                        </div>
+
+
+                    </div>
+
+
+
+                </div>
+            </div>
+
+            <!-- contest list item-->
+
+
+                </div>
+                <!-- 진행중 콘테스트-->
+                
+                <!-- 심사중인 콘테스트-->
+                <div class="tab-pane fade" id="pills-Scoring" role="tabpanel" aria-labelledby="pills-Scoring-tab">
+                    <div>
+                        
+                    </div>
+                    <div class="row ">
+                        <div class="col-lg-4">
+                            <div class="list_rank_title">
+                                <img src="img/22_pimg.png" alt=""> 우승 확률이 높은 콘테스트
+                            </div>
+                            <!--  content-->
+                            <div class="list_rank_content">
+
+                                <div class="list_rank_content_li">
+                                    <div class="row">
+                                        <div class="col-sm-1 ">
+                                            <strong> 1</strong>
+                                        </div>
+                                        <div class="col-sm-6 padding_zero">
+                                            <input type="text" class="contest_rank_text" value="열정분식소 BI 리뉴얼 디자인 의뢰 "
+                                                readonly>
+                                        </div>
+
+                                        <div class="col-sm-4 contest_rank_tail padding_zero">
+
+                                            <img src="img/people.png" alt="">&nbsp; <strong>3</strong>명 |<strong>
+                                                D</strong>- 0
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="list_rank_content_li">
+                                    <div class="row">
+                                        <div class="col-sm-1 ">
+                                            <strong> 2</strong>
+                                        </div>
+                                        <div class="col-sm-6 padding_zero">
+                                            <input type="text" class="contest_rank_text" value="강인함 로고 디자인 의뢰 "
+                                                readonly>
+                                        </div>
+
+                                        <div class="col-sm-4 contest_rank_tail padding_zero">
+
+                                            <img src="img/people.png" alt="">&nbsp; <strong>3</strong>명 |<strong>
+                                                D</strong>- 0
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="list_rank_content_li">
+                                    <div class="row">
+                                        <div class="col-sm-1 ">
+                                            <strong> 3</strong>
+                                        </div>
+                                        <div class="col-sm-6 padding_zero">
+                                            <input type="text" class="contest_rank_text" value=" 페이스리퍼블릭 마스크팩 패키지 디자인 "
+                                                readonly>
+                                        </div>
+
+                                        <div class="col-sm-4 contest_rank_tail padding_zero">
+
+                                            <img src="img/people.png" alt="">&nbsp; <strong>3</strong>명 |<strong>
+                                                D</strong>- 0
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="list_rank_content_li">
+                                    <div class="row">
+                                        <div class="col-sm-1 ">
+                                            <strong> 4</strong>
+                                        </div>
+                                        <div class="col-sm-6 padding_zero">
+                                            <input type="text" class="contest_rank_text" value="60이츠 '붐' 캐릭터디자인 의뢰"
+                                                readonly>
+                                        </div>
+
+                                        <div class="col-sm-4 contest_rank_tail padding_zero">
+
+                                            <img src="img/people.png" alt="">&nbsp; <strong>3</strong>명 |<strong>
+                                                D</strong>- 0
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="list_rank_content_li">
+                                    <div class="row">
+                                        <div class="col-sm-1 ">
+                                            <strong> 5</strong>
+                                        </div>
+                                        <div class="col-sm-6 padding_zero">
+                                            <input type="text" class="contest_rank_text" value="엠케이메디바이오 기업 로고 디자인 의뢰  "
+                                                readonly>
+                                        </div>
+
+                                        <div class="col-sm-4 contest_rank_tail padding_zero">
+
+                                            <img src="img/people.png" alt="">&nbsp; <strong>3</strong>명 |<strong>
+                                                D</strong>- 0
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <!--  content-->
+
+                        </div>
+
+
+
+                        <div class="col-lg-4">
+
+                            <div class="list_rank_title">
+                                <img src="img/22_mimg.png" alt=""> 최대 상금 콘테스트
+                            </div>
+                            <!--  content-->
+                            <div class="list_rank_content">
+
+                                <div class="list_rank_content_li">
+                                    <div class="row">
+                                        <div class="col-sm-1 ">
+                                            <strong> 1</strong>
+                                        </div>
+                                        <div class="col-sm-6 padding_zero">
+                                            <input type="text" class="contest_rank_text" value="열정분식소 BI 리뉴얼 디자인 의뢰 "
+                                                readonly>
+                                        </div>
+
+                                        <div class="col-sm-4 contest_rank_tail padding_zero">
+
+                                            <img src="img/people.png" alt="">&nbsp; <strong>3</strong>명 |<strong>
+                                                D</strong>- 0
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="list_rank_content_li">
+                                    <div class="row">
+                                        <div class="col-sm-1 ">
+                                            <strong> 2</strong>
+                                        </div>
+                                        <div class="col-sm-6 padding_zero">
+                                            <input type="text" class="contest_rank_text" value="강인함 로고 디자인 의뢰 "
+                                                readonly>
+                                        </div>
+
+                                        <div class="col-sm-4 contest_rank_tail padding_zero">
+
+                                            <img src="img/people.png" alt="">&nbsp; <strong>3</strong>명 |<strong>
+                                                D</strong>- 0
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="list_rank_content_li">
+                                    <div class="row">
+                                        <div class="col-sm-1 ">
+                                            <strong> 3</strong>
+                                        </div>
+                                        <div class="col-sm-6 padding_zero">
+                                            <input type="text" class="contest_rank_text" value=" 페이스리퍼블릭 마스크팩 패키지 디자인 "
+                                                readonly>
+                                        </div>
+
+                                        <div class="col-sm-4 contest_rank_tail padding_zero">
+
+                                            <img src="img/people.png" alt="">&nbsp; <strong>3</strong>명 |<strong>
+                                                D</strong>- 0
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="list_rank_content_li">
+                                    <div class="row">
+                                        <div class="col-sm-1 ">
+                                            <strong> 4</strong>
+                                        </div>
+                                        <div class="col-sm-6 padding_zero">
+                                            <input type="text" class="contest_rank_text" value="60이츠 '붐' 캐릭터디자인 의뢰"
+                                                readonly>
+                                        </div>
+
+                                        <div class="col-sm-4 contest_rank_tail padding_zero">
+
+                                            <img src="img/people.png" alt="">&nbsp; <strong>3</strong>명 |<strong>
+                                                D</strong>- 0
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="list_rank_content_li">
+                                    <div class="row">
+                                        <div class="col-sm-1 ">
+                                            <strong> 5</strong>
+                                        </div>
+                                        <div class="col-sm-6 padding_zero">
+                                            <input type="text" class="contest_rank_text" value="엠케이메디바이오 기업 로고 디자인 의뢰  "
+                                                readonly>
+                                        </div>
+
+                                        <div class="col-sm-4 contest_rank_tail padding_zero">
+
+                                            <img src="img/people.png" alt="">&nbsp; <strong>3</strong>명 |<strong>
+                                                D</strong>- 0
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <!--  content-->
+
+                        </div>
+
+                        <div class="col-lg-4">
+
+                            <div class="list_rank_title">
+
+                                <img src="img/22_nimg.png" alt=""> 최신 등록 콘테스트
+                            </div>
+
+
+                            <!--  content-->
+                            <div class="list_rank_content">
+
+                                <div class="list_rank_content_li">
+                                    <div class="row">
+                                        <div class="col-sm-1 ">
+                                            <strong> 1</strong>
+                                        </div>
+                                        <div class="col-sm-6 padding_zero">
+                                            <input type="text" class="contest_rank_text" value="열정분식소 BI 리뉴얼 디자인 의뢰 "
+                                                readonly>
+                                        </div>
+
+                                        <div class="col-sm-4 contest_rank_tail padding_zero">
+
+                                            <img src="img/people.png" alt="">&nbsp; <strong>3</strong>명 |<strong>
+                                                D</strong>- 0
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="list_rank_content_li">
+                                    <div class="row">
+                                        <div class="col-sm-1 ">
+                                            <strong> 2</strong>
+                                        </div>
+                                        <div class="col-sm-6 padding_zero">
+                                            <input type="text" class="contest_rank_text" value="강인함 로고 디자인 의뢰 "
+                                                readonly>
+                                        </div>
+
+                                        <div class="col-sm-4 contest_rank_tail padding_zero">
+
+                                            <img src="img/people.png" alt="">&nbsp; <strong>3</strong>명 |<strong>
+                                                D</strong>- 0
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="list_rank_content_li">
+                                    <div class="row">
+                                        <div class="col-sm-1 ">
+                                            <strong> 3</strong>
+                                        </div>
+                                        <div class="col-sm-6 padding_zero">
+                                            <input type="text" class="contest_rank_text" value=" 페이스리퍼블릭 마스크팩 패키지 디자인 "
+                                                readonly>
+                                        </div>
+
+                                        <div class="col-sm-4 contest_rank_tail padding_zero">
+
+                                            <img src="img/people.png" alt="">&nbsp; <strong>3</strong>명 |<strong>
+                                                D</strong>- 0
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="list_rank_content_li">
+                                    <div class="row">
+                                        <div class="col-sm-1 ">
+                                            <strong> 4</strong>
+                                        </div>
+                                        <div class="col-sm-6 padding_zero">
+                                            <input type="text" class="contest_rank_text" value="60이츠 '붐' 캐릭터디자인 의뢰"
+                                                readonly>
+                                        </div>
+
+                                        <div class="col-sm-4 contest_rank_tail padding_zero">
+
+                                            <img src="img/people.png" alt="">&nbsp; <strong>3</strong>명 |<strong>
+                                                D</strong>- 0
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="list_rank_content_li">
+                                    <div class="row">
+                                        <div class="col-sm-1 ">
+                                            <strong> 5</strong>
+                                        </div>
+                                        <div class="col-sm-6 padding_zero">
+                                            <input type="text" class="contest_rank_text" value="엠케이메디바이오 기업 로고 디자인 의뢰  "
+                                                readonly>
+                                        </div>
+
+                                        <div class="col-sm-4 contest_rank_tail padding_zero">
+
+                                            <img src="img/people.png" alt="">&nbsp; <strong>3</strong>명 |<strong>
+                                                D</strong>- 0
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <!--  content-->
+
+                        </div>
+
+                    </div>
+                    <!--carousel-->
+                    <div class="container text-center my-3">
+                        <h2 class="font-weight-light"></h2>
+                        <div class="row mx-auto my-auto">
+                            <div id="recipeCarousel" class="carousel slide w-100" data-ride="carousel">
+                                <div class="carousel-inner w-100" role="listbox">
+                                    <div class="carousel-item active">
+                                        <div class="col-md-3">
+                                            <div class="card card-body">
+                                                <img class="img-fluid" src="img/20200619052718bn_mhh.png">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="col-md-3">
+                                            <div class="card card-body">
+                                                <img class="img-fluid" src="img/20200619052718bn_mhh.png">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="col-md-3">
+                                            <div class="card card-body">
+                                                <img class="img-fluid" src="img/20200619052718bn_mhh.png">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="col-md-3">
+                                            <div class="card card-body">
+                                                <img class="img-fluid" src="img/20200619052718bn_mhh.png">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="col-md-3">
+                                            <div class="card card-body">
+                                                <img class="img-fluid" src="img/20200619052718bn_mhh.png">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a class="carousel-control-prev w-auto" href="#recipeCarousel" role="button"
+                                    data-slide="prev">
+                                    <span class="carousel-control-prev-icon bg-dark border border-dark rounded-circle"
+                                        aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next w-auto" href="#recipeCarousel" role="button"
+                                    data-slide="next">
+                                    <span class="carousel-control-next-icon bg-dark border border-dark rounded-circle"
+                                        aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </div>
+                        <h5 class="mt-2"></h5>
+                    </div>
+                    <!--carousel-->
+
+                  
+            <!-- contest list item-->
+            <div class="contest_list_item contest_list_item_roof">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="row">
+                            <div class="col-sm-2 brief_item_img">
+                                <img src="img/thumbimg_logo.png" alt="">
+                            </div>
+                            <div class="col-sm-3">
+
+                                <div class=" item_box_category" id="item_box_2_category">
+
+                                </div>
+                                <div class="item_box_userId" id="item_box_2_userId">
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-sm-7">
+                                <div class="item_box_contestTitle">
+                                    <span id="item_box_contestTitle"></span>
+                                </div>
+                                <div class='item_box_userName' id='item_box_2_userName'>
+
+                                </div>
+                                <div class='item_box_optionImage' id='item_box_2_optionImage'>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+
+                        <div class="row item_content_roof">
+                            <div class="col-sm-12 item_box_contestContent" id="item_box_2_contestContent">
+
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-4 item_box_tail">
+
+                        <div class="box_label row justify-content-end">
+                            <div class="col-sm-3">
+                            <img src="img/label_premium.png" alt="">
+                             </div>
+                           
+                             <div class="col-sm-3">
+                                <img src="img/label_100.png" alt="">
+                             </div>
+                        </div>
+
+                        <div></div>
+
+                        <div class="item_box_contestReward item_content_tail_roof" id="item_box_2_contestReward">
+
+
+
+                        </div>
+
+
+                        <div class="item_box_contestPeriod item_content_tail_roof" id="item_box_2_contestPeriod">
+
+
+                        </div>
+
+                        <div class="item_box_joinCount item_content_tail_roof" id="item_box_2_joinCount">
+
+                        </div>
+
+
+                    </div>
+
+
+
+                </div>
+            </div>
+
+            <!-- contest list item-->
+        
+        
+
+
+
+                </div>
+                <!-- 심사중인 콘테스트-->
+
+                <!-- 종료된 콘테스트-->
+                <div class="tab-pane fade" id="pills-Done" role="tabpanel" aria-labelledby="pills-Done-tab">
+                    <div>
+                        
+                    </div>
+
+                   
+                    <!-- Done contest list item-->
+
+            <div class="contest_list_Doneitem contest_list_item_roof">
+                <div class="row">
+                    <div class="col-lg-3 padding_zero">
+                        <img  class="last_item_size" src="img/order_sub_2496070_1_200626221826.jpg" alt="">
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="row padding_bottom"> 
+                            <div class="col-sm-2">
+                                <img class="Done_Categoty_img" src="img/thumbimg_logo.png" alt="">
+                            </div>
+                            <div class="col-sm-3">
+
+                                <div class=" item_box_category" id="item_box_3_category">
+
+                                </div>
+                                <div class="item_box_userId" id="item_box_3_userId">
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-sm-7">
+                                <div class="item_box_contestTitle">
+                                    <span id="item_box_3_contestTitle"></span>
+                                </div>
+                                <div class='item_box_userName' id='item_box_3_userName'>
+
+                                </div>
+                                <div class='item_box_optionImage' id='item_box_3_optionImage'>
+
+                                </div>
+                            </div>        
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 item_box_contestContent" id="item_box_3_contestContent">
+
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="col-lg-3 item_box_tail">
+                        <div class="box_label row justify-content-end">
+                            <div class="col-sm-3">
+                            <img src="img/label_premium.png" alt="">
+                             </div>
+                           
+                             <div class="col-sm-3">
+                                <img src="img/label_100.png" alt="">
+                             </div>
+                        </div>
+
+
+
+                         <div class="item_box_contestReward item_content_tail_roof" id="item_box_3_contestReward">
+
+
+
+                        </div>
+
+                        <div class="item_box_contestPeriod item_content_tail_roof" id="item_box_3_contestPeriod">
+
+
+                        </div>
+                        <div class="item_box_joinCount item_content_tail_roof" id="item_box_3_joinCount">
+
+                        </div>
+
+
+                    </div>
+
+                    
+
+                </div>
+            </div>
+            <!-- Done contest list item-->
+
+
+                </div>
+                <!-- 종료된 콘테스트-->
+
+                <div style="margin: 5% 0%;"></div>
+            </div>
+        </div>
+
+       
+
+
     </div>
 </body>
-<footer>
-	<jsp:include page="../section/footer.jsp"></jsp:include>
-</footer>
+<script>
+
+    $(document).ready(function () {
+
+
+                var categoryName = '브랜딩SET |'
+                var contestTitle = '홍성군 평생교육 브랜드 로고 공모전(홍성군평생학습센터)'
+                var userId = 'userId'
+                var userName = 'userName'
+                var contestContent = "* 공모주제 : 홍성군평생학습센터 브랜드 이미지 * 활용범위 : 홈페이지, 현수막, 배너, 안내판, 현판, 수료증 등 * 개발방향 : 평생교육사업 취지와 친근감을 주고 기억하기 쉬우며 학습 참여 동기를 유발할 수 있는 이미지, 온·오프라인 홍보에 응용이 가능하고 사업 현장에 적용할 수 있는 단순하고 간결한 디자인";
+                var item_box_contestReward = "contestReward"
+                var item_box_contestPeriod = "item_box_contestPeriod"
+                var item_box_joinCount = "item_box_joinCount"
+
+
+                //document.getElementById("brief_item_content_1").value = bci4;
+                $('#item_box_category').text(categoryName);
+                $('#item_box_contestTitle').text(contestTitle);
+                $('#item_box_userId').text(userId);
+                $('#item_box_userName').text(userName);
+                $('#item_box_contestContent').text(contestContent);
+                $('#item_box_contestReward').text(item_box_contestReward);
+                $('#item_box_contestPeriod').text(item_box_contestPeriod);
+                $('#item_box_joinCount').text(item_box_joinCount);
+
+
+                
+                
+                $('#item_box_category_image').append(" <img src='img/thumbimg_logo.png'>");
+                $('#item_box_optionImage').append("<img src='img/22_mimg.png'>");
+
+
+
+
+
+                $('#item_box_2_category').text(categoryName);
+                $('#item_box_2_contestTitle').text(contestTitle);
+                $('#item_box_2_userId').text(userId);
+                $('#item_box_2_userName').text(userName);
+                $('#item_box_2_contestContent').text(contestContent);
+                $('#item_box_2_contestReward').text(item_box_contestReward);
+                $('#item_box_2_contestPeriod').text(item_box_contestPeriod);
+                $('#item_box_2_joinCount').text(item_box_joinCount);
+
+
+                
+                
+                $('#item_box_2_category_image').append(" <img src='img/thumbimg_logo.png'>");
+                $('#item_box_2_optionImage').append("<img src='img/22_mimg.png'>");
+
+
+
+
+                $('#item_box_3_category').text(categoryName);
+                $('#item_box_3_contestTitle').text(contestTitle);
+                $('#item_box_3_userId').text(userId);
+                $('#item_box_3_userName').text(userName);
+                $('#item_box_3_contestContent').text(contestContent);
+                $('#item_box_3_contestReward').text(item_box_contestReward);
+                $('#item_box_3_contestPeriod').text(item_box_contestPeriod);
+                $('#item_box_3_joinCount').text(item_box_joinCount);
+
+
+                
+                
+                $('#item_box_3_category_image').append(" <img src='img/thumbimg_logo.png'>");
+                $('#item_box_3_optionImage').append("<img src='img/22_mimg.png'>");
+
+
+
+
+
+        //list tap 초기화
+        function list_initial() {
+            $(".List_ScoringTap_subTitle").attr('style', "display:none;");
+            $(".List_DoneTap_subTitle").attr('style', "display:none;");
+            $(".List_ProceedingTap_subTitle").attr('style', "display:none;");
+            $('#pills-Proceeding-tab').attr('aria-selected', false);
+            $('#pills-Scoring-tab').attr('aria-selected', false);
+            $('#pills-Done-tab').attr('aria-selected', false);
+            $('#pills-Proceeding-tab').removeClass('active');
+            $('#pills-Scoring-tab').removeClass('active');
+            $('#pills-Done-tab').removeClass('active');
+
+
+        };
+        function dropdown_initial() {
+
+
+            $("#dropdownKind1").attr('style', "display:none;");
+            $("#dropdownKind2").attr('style', "display:none;");
+            $("#dropdownKind3").attr('style', "display:none;");
+        }
+
+
+        //list tap
+        $("#pills-Proceeding-tab").on('click', function () {
+            list_initial();
+            $(".List_ProceedingTap_subTitle").attr('style', "display:block;");
+            $('#pills-Proceeding-tab').attr('aria-selected', true);
+
+        })
+
+
+        $("#pills-Scoring-tab").on('click', function () {
+            list_initial();
+            $(".List_ScoringTap_subTitle").attr('style', "display:block;");
+            $('#pills-Scoring-tab').attr('aria-selected', true);
+        })
+
+
+        $("#pills-Done-tab").on('click', function () {
+            list_initial();
+            $(".List_DoneTap_subTitle").attr('style', "display:block;");
+            $('#pills-Done-tab').attr('aria-selected', true);
+        })
+
+        //list tap
+        $("#btnkind1").on('click', function () {
+            dropdown_initial();
+        })
+
+
+
+        $("#btnKind1").hover(function () {
+           
+            // $("#dropdownKind1").attr('style', "display:block;");
+            //$('#dropdownKind1').addClass('show');
+            //$('#dropdownKind1').addClass('show');
+        })
+
+
+
+        //carousel
+
+        $('#recipeCarousel').carousel({
+            interval: 2000
+        })
+
+        $('.carousel .carousel-item').each(function () {
+            var minPerSlide = 4;
+            var next = $(this).next();
+            if (!next.length) {
+                next = $(this).siblings(':first');
+            }
+            next.children(':first-child').clone().appendTo($(this));
+
+            for (var i = 0; i < minPerSlide; i++) {
+                next = next.next();
+                if (!next.length) {
+                    next = $(this).siblings(':first');
+                }
+
+                next.children(':first-child').clone().appendTo($(this));
+            }
+        });
+
+        //carousel
+
+
+
+    });
+
+</script>
 </html>

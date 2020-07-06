@@ -251,7 +251,7 @@
 }(window.jQuery || window.$)); // jQuery or jQuery-like library, such as Zepto
 
 //custom
-$(document).ready(function () {
+/*$(document).ready(function () {
 
     var categoryName = '브랜딩SET |'
     var contestTitle = '홍성군 평생교육 브랜드 로고 공모전(홍성군평생학습센터)';
@@ -331,7 +331,4 @@ $(document).ready(function () {
         $('.animated').autosize({ append: "\n" });
     });
     
-    $('#join_step1_check').on('click', function(){
-		location.href="http://localhost:9097/Project/contest_join.html";
-	});
-});
+});*/

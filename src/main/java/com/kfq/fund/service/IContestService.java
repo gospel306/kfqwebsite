@@ -16,7 +16,7 @@ public interface IContestService {
 	public ContestVO existContestInfo(String email);
 	public int insertlastContestid(String email);
 	public List<FileVO> getFiles(int id);
-	
+	public List<ContestVO> getTop5(String search);
 	//insert
 	public void insertContest(ContestVO contest);
 	public void insertContestFile(MultipartHttpServletRequest request,int contestnum);

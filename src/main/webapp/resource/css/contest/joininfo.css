@@ -7,7 +7,7 @@ body {
 	min-width: 570px;
 }
 
-img {
+.img {
 	width: 100%;
 	height: auto;
 }
@@ -141,7 +141,7 @@ textarea {
 	transition: height 0.2s;
 }
 
-.form-control {
+.form-control-join {
 	border: 0px;
 }
 

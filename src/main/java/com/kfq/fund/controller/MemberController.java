@@ -93,7 +93,7 @@ public class MemberController {
 		ModelAndView mv = new ModelAndView();
 		String userclass = member_service.checkuserclass(email);
 		mv.addObject("userclass",userclass);
-		mv.setViewName("mailauth");
+		mv.setViewName("member/mailauth");
 		return mv;
 	}
 	@RequestMapping(value = "mypage")

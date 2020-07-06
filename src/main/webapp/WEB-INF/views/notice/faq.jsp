@@ -16,8 +16,8 @@
    	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
    	
     <!-- custom js -->
-	<script src="<%=request.getContextPath() %>/resource/js/faq.js"></script>
-    <script src="<%=request.getContextPath() %>/resource/js/goTop.js"></script>
+	<script src="<%=request.getContextPath() %>/resource/js/notice/faq.js"></script>
+    <script src="<%=request.getContextPath() %>/resource/js/section/goTop.js"></script>
     
     <!-- custom css -->
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/notice/faq.css">

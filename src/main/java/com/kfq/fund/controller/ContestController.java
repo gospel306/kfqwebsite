@@ -47,7 +47,11 @@ public class ContestController {
 	
 	@RequestMapping(value = "contestlist")
 	public ModelAndView contestlist() {
-		return new ModelAndView("contestlist");
+		ModelAndView mv = new ModelAndView("contest/listcontest");
+		mv.addObject("wins",contest_service.getTop5("win"));
+		mv.addObject("costs",contest_service.getTop5("cost"));
+		mv.addObject("lasts",contest_service.getTop5("last"));
+		return mv;
 	}
 	
 	@RequestMapping(value = "launch")
@@ -135,7 +139,7 @@ public class ContestController {
 	}
 	@RequestMapping(value = "contest/{contestidx}/join")
 	public ModelAndView joinContest() {
-		return new ModelAndView("contest/join");//contest_join.html
+		return new ModelAndView("join/join");//contest_join.html
 	}
 	@RequestMapping(value = "contest/{contestidx}/joininfo")
 	public ModelAndView joininfoContest() {

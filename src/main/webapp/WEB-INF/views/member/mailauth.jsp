@@ -24,26 +24,27 @@
 	 <div id="mail_head" class="d-flex justify-content-center">
         <p id="mail_head_txt">메일 인증이 <br>완료되었습니다!
             <br><span style="font-size: 20px;">ㅇㅏㅇㅣㄷㅣㅇㅓ와 함께<br>세상을 빛낼 아이디어를 소개해주세요!</span></p>
-        <img src="image/idea_email.webp">
+        <img src="<%=request.getContextPath()%>/resource/img/contest/idea_email.webp">
     </div>
     <div id="button_button" class="d-flex justify-content-center">
-        <!-- Button One -->
+
         <c:choose>
         <c:when test="${userclass eq 'requester'}">
         <div class="btn-perspective" style="float: left;">
             <a href="launch"> <button class="btn btn-3d btn-one">컨테스트 개최하기</button></a>
         </div>
 		</c:when>
-        <!-- Button Two -->
         <c:when test="${userclass eq 'participant'}">
         	<div class="btn-perspective" style="float: left;">
             	<a href="#"><button class="btn btn-3d btn-two">컨테스트 참가하기</button></a>
         	</div>
         </c:when>
+        <c:otherwise>
+        </c:otherwise>
 		</c:choose>
         <!-- Button Three -->
         <div class="btn-perspective">
-            <a href="main"><button class="btn btn-3d btn-three">컨테스트 보러가기</button></a>
+            <a href="../main"><button class="btn btn-3d btn-three">컨테스트 보러가기</button></a>
         </div>
     </div>
 </body>

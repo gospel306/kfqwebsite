@@ -12,6 +12,7 @@ public interface IContestDAO {
 	public int insertlastContestid(String email);
 	public List<FileVO> getFiles(int id);
 	public String ContestName(int id);
+	public List<ContestVO> getTop5(String search);
 	//insert
 	public void insertContest(ContestVO contest);
 	public void insertContestFile(FileVO file);

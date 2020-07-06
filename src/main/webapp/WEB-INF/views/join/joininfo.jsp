@@ -64,9 +64,11 @@
     
     </script>
 </head>
+<header>
+	<jsp:include page="../section/header.jsp"></jsp:include>
+</header>
 <body>
 	<div class="first_layout">
-
 		<!--main-->
 		<div class="main">
 			<!-- contest list item-->
@@ -75,7 +77,7 @@
 					<div class="col-lg-8">
 						<div class="row">
 							<div class="col-sm-2 brief_item_img">
-								<img src="img/thumbimg_logo.png" alt="">
+								<img class="img" src="img/thumbimg_logo.png" alt="">
 							</div>
 							<div class="col-sm-3 brief_item_category">
 								<input type="text" class="item_categoty" readonly value="브랜드 SET |">
@@ -87,7 +89,7 @@
 
 						<div class="row">
 							<div class="col-sm-12 brief_item_content">
-								<textarea class="brief_content_item_text_4 form-control animated" readonly
+								<textarea class="brief_content_item_text_4 form-control-join animated" readonly
 									id="brief_item_content_1">
                                  </textarea>
 							</div>
@@ -114,7 +116,7 @@
 					<div class="col-lg-3"></div>
 
 					<div class="col-lg-6">
-						<img class="join_step_2_img" src="img/img_step02.png" alt="">
+						<img class="join_step_2_img img" src="img/img_step02.png" alt="">
 					</div>
 					<div class="col-lg-3"></div>
 				</div>
@@ -146,4 +148,7 @@
 		<!--main-->
 	</div>
 </body>
+<footer>
+	<jsp:include page="../section/footer.jsp"></jsp:include>
+</footer>
 </html>

@@ -142,5 +142,9 @@ public class ContestServiceImpl implements IContestService{
 	public void insertJoin(JoinVO join) {
 		dao.insertJoin(join);
 	}
+	@Override
+	public List<ContestVO> getTop5(String search) {
+		return dao.getTop5(search);
+	}
 	
 }

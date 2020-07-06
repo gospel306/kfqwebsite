@@ -16,7 +16,7 @@
    	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
    	
     <!-- custom js -->
-	<script src="<%=request.getContextPath() %>/resource/js/member/briefing.js"></script>
+	<script src="<%=request.getContextPath() %>/resource/js/contest/briefing.js"></script>
     <script src="<%=request.getContextPath() %>/resource/js/section/goTop.js"></script>
     
     <!-- custom css -->
@@ -85,7 +85,7 @@
 							  	<p class="input">서비스 설명</p>
 							  	<div class="control-group">
 	                                <div class="form-group floating-label-form-group controls mb-0 pb-2">
-	                                    <textarea name="service" class="form-control2" id="service" rows="7" required="required" data-validation-required-message="내용을 입력하세요">${contest.serviceinfo}</textarea>
+	                                    <textarea name="service" class="form-control2 content" id="service" rows="7" required="required" data-validation-required-message="내용을 입력하세요">${contest.serviceinfo}</textarea>
 	                                </div>
                             	</div>
                             	<p class="sub_input">예시> XXX은 국내 최초 디자인 오픈마켓 입니다. 디자인이 필요한 고객이 상금을 걸고 콘테스트를 개최하면 수 많은 디자이 너들이 콘테스트에 참여하고, 고객은 제출된 시안 중 가장 마음에 드는 디자인을 선택합니다. 저희 타겟층은 디자인이 필요한 기업, 자영업자, 창업자 및 개인 입니다.</p>
@@ -118,7 +118,7 @@
 					    <div class="col-sm-7">
 					    	<div class="control-group">
 	                        	<div class="form-group floating-label-form-group controls mb-0 pb-2">
-	                            	<textarea class="form-control2" id="idea" name="idea" rows="13" required="required" data-validation-required-message="내용을 입력하세요">${contest.idea}</textarea>
+	                            	<textarea class="form-control2 content" id="idea" name="idea" rows="13" required="required" data-validation-required-message="내용을 입력하세요">${contest.idea}</textarea>
 	                            </div>
                             </div>
 					    </div>
@@ -154,7 +154,7 @@
 					    <div class="col-sm-7">
 					    	<div class="control-group">
 	                        	<div class="form-group floating-label-form-group controls mb-0 pb-2">
-	                            	<textarea class="form-control2" id="briefing" name="briefing" rows="13" required="required" data-validation-required-message="내용을 입력하세요">${contest.briefing}</textarea>
+	                            	<textarea class="form-control2 content" id="briefing" name="briefing" rows="13" required="required" data-validation-required-message="내용을 입력하세요">${contest.briefing}</textarea>
 	                            </div>
                             </div>
                             <p class="sub_input">좋은 아이디어를 얻기 위해 가장 중요한 부분입니다. 고객님의 설명이 세부적이고 명확할수록 마음에 꼭 드는 아이디어를 받아보실 확률이 높아지므로, 최대한 자세히 작성해 주세요. 브리핑 작성과 관련해서 도움이 필요하시면 언제든지 1599-4952으로 전화해 주세요.</p>
