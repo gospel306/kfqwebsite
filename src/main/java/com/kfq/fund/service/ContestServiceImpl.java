@@ -1,6 +1,8 @@
 package com.kfq.fund.service;
 
 import java.io.File;
+import java.sql.Date;
+import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 
@@ -17,6 +19,7 @@ import com.kfq.fund.dao.IContestDAO;
 import com.kfq.fund.vo.ContestVO;
 import com.kfq.fund.vo.FileVO;
 import com.kfq.fund.vo.JoinVO;
+import com.kfq.fund.vo.Pagination;
 
 @Service
 public class ContestServiceImpl implements IContestService{
@@ -143,8 +146,101 @@ public class ContestServiceImpl implements IContestService{
 		dao.insertJoin(join);
 	}
 	@Override
-	public List<ContestVO> getTop5(String search) {
+	public List<ContestVO> getTop5(int search) {
 		return dao.getTop5(search);
 	}
+	@Override
+	public int listCnt(int num) {
+		return dao.listCnt(num);
+	}
+	@Override
+	public List<ContestVO> listProceeding(Pagination page) {
+		List<ContestVO> list = dao.listProceeding(page);
+		for(int i = 0;i < list.size();i++) {
+			String contesttype=list.get(i).getContesttype();	
+			list.get(i).setImgurl(imgurl(contesttype));
+			list.get(i).setContesttype(contesttype(contesttype));
+		}
+		return list;
+	}
+	@Override
+	public List<ContestVO> listDecision(Pagination page) {
+		Calendar cal = Calendar.getInstance();
+ 		List<ContestVO> list = dao.listDecision(page);
+		for(int i = 0;i < list.size();i++) {
+			cal.setTime(list.get(i).getEnddate());
+			cal.add(Calendar.DATE, 7);
+			list.get(i).setEnddate((Date) cal.getTime());
+			String contesttype=list.get(i).getContesttype();
+			list.get(i).setImgurl(imgurl(contesttype));
+			list.get(i).setContesttype(contesttype(contesttype));
+		}
+		return list;
+	}
+	@Override
+	public List<ContestVO> listEndContest(Pagination page) {
+		List<ContestVO> list = dao.listEndContest(page);
+		for(int i = 0;i < list.size();i++) {
+			list.get(i).setImgurl(dao.imgurl(list.get(i).getId()));
+			String contesttype=list.get(i).getContesttype();
+			list.get(i).setContesttype(contesttype(contesttype));
+			System.out.println(list.get(i).getFullprize());
+		}
+		return list;
+	}
 	
+	private String imgurl(String contesttype) {
+		if(contesttype.contains("logo")||contesttype.equals("branding"))
+			return "logo.png";
+		else if(contesttype.equals("idea"))
+			return "idea.png";
+		else if(contesttype.equals("designpackage")||contesttype.equals("labeldesign")||contesttype.equals("productdesign"))
+			return "package.png";
+		else if(contesttype.equals("poster")||contesttype.equals("brochure")||contesttype.equals("bizcard"))
+			return "print.png";
+		else if(contesttype.equals("homepage")||contesttype.equals("app")||contesttype.equals("landingpage")||contesttype.equals("benner"))
+			return "web.png";
+		else
+			return "etc.png";
+	}
+	private String contesttype(String contesttype) {
+		switch(contesttype) {
+		case "logo":
+			return "로고 디자인 |";
+		case "logo&bizcard":
+			return "로고 + 명함 |";
+		case "logo&sign":
+			return "로고 + 간판 |";
+		case "branding":
+			return "브랜딩 SET |";
+		case "idea":
+			return "네이밍/아이디어 |";
+		case "designpackage":
+			return "페키징 디자인 |";
+		case "labeldesign":
+			return "라벨 디자인 |";
+		case "productdesign":
+			return "제품 디자인 |";
+		case "poster":
+			return "포스터/전단지 |";
+		case "brochure":
+			return "브로셔/리플렛 |";
+		case "bizcard":
+			return "명함/봉투 |";
+		case "homepage":
+			return "웹사이트 |";
+		case "app":
+			return "모바일 앱 |";
+		case "landingpage":
+			return "상세 페이지 |";
+		case "benner":
+			return "배너광고 디자인 |";
+		case "character":
+			return "캐릭터 디자인 |";
+		case "illust":
+			return "일러스트 |";
+		default:
+			return "기타 디자인 |";
+		}
+	}
 }

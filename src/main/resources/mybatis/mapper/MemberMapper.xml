@@ -75,7 +75,7 @@
 		<if test="searchOption == 'DATE' and sortOption == 'DESC'">
 			ORDER BY DATE DESC
 		</if>
-		LIMIT #{startlist}, #{listsize}
+		LIMIT #{startList}, #{listSize}
 	</select>
 	<!-- searchMember -->
 	<select id="findexistEmail" parameterType="String" resultType="Integer">
@@ -110,6 +110,11 @@
 		UPDATE MEMBER
 		SET PASSWD = #{passwd}, NICKNAME = #{nickname}, USERCLASS = #{userclass}
 		WHERE EMAIL = #{email}
+	</update>
+	<update id="winnerMember" parameterType="String">
+		UPDATE MEMBER
+		SET WIN = WIN + 1
+		WHERE EMAIL = #{value}
 	</update>
 	<!-- delete -->
 	<delete id="deleteMember" parameterType="String">

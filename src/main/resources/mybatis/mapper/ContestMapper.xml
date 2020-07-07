@@ -23,39 +23,71 @@
 		FROM CONTEST
 		WHERE ID = #{value}
 	</select>
-	<select id="listContest" parameterType="Map" resultType="com.kfq.fund.vo.ContestVO">
-		SELECT TITLE, CONTESTTYPE, COMPANY, SERVICEINFO, STARTDATE, ENDDATE, 
-		FIRSTPRIZE, SECONDPRIZE, THIRDPRIZE, BENNER, HIGHTLIGHT,ENDCONTEST, VIEWS
-		FROM CONTEST
-		<if test="searchOption == 'proceeding'">
-			WHERE ENDDATE > CURDATE()
-		</if>
-		<if test="searchOption == 'decision'">
-			WHERE CURDATE() > ENDDATE AND ENDCONTEST = 0
-		</if>
-		<if test="searchOption == 'end'">
-			WHERE ENDCONTEST = 1
-		</if>
-		ORDERBY STARTDATE, SHOW
-		LIMIT #{startlist}, #{listsize}
-	</select>
 	<select id="getTop5" parameterType="String" resultType="com.kfq.fund.vo.ContestVO">
-		SELECT CONTEST.ID, CONTEST.TITLE, COUNT(WORK.CONTEST_ID), DATEDIFF(CONTEST.ENDDATE,CONTEST.STARTDATE)
+		SELECT CONTEST.ID, CONTEST.TITLE, COUNT(WORK.CONTEST_ID), DATEDIFF(CONTEST.ENDDATE,CURDATE())
 		FROM CONTEST LEFT JOIN WORK
 		ON CONTEST.ID = WORK.CONTEST_ID
+		WHERE ENDDATE > CURDATE()
 		GROUP BY WORK.CONTEST_ID
-		<if test="value == 'win'">
+		<if test="value == 1">
 		ORDER BY COUNT(WORK.CONTEST_ID)
 		</if>
-		<if test="value == 'cost'">
+		<if test="value == 2">
 		ORDER BY CONTEST.FIRSTPRIZE DESC
 		</if>
-		<if test="value == 'last'">
-		ORDER BY CONTEST.STARTDATE DESC
+		<if test="value == 3">
+		ORDER BY CONTEST.STARTDATE 	DESC
 		</if>
 		LIMIT 5
 	</select>
-	
+	<select id="listCnt" parameterType="Integer" resultType="Integer">
+		SELECT COUNT(*)
+		FROM CONTEST
+		<if test="value == 1">
+			WHERE ENDDATE > CURDATE()
+		</if>
+		<if test="value == 2">
+			WHERE CURDATE() > CONTEST.ENDDATE AND WINNER IS NULL
+		</if>
+		<if test="value == 3">
+			WHERE WINNER IS NOT NULL
+		</if>
+	</select>
+	<select id="listProceeding" parameterType="com.kfq.fund.vo.Pagination" resultType="com.kfq.fund.vo.ContestVO">
+		SELECT CONTEST.TITLE, CONTEST.CONTESTTYPE, MEMBER.NICKNAME, CONTEST.COMPANY,
+		CONTEST.SERVICEINFO, CONTEST.VIEWS, DATEDIFF(CONTEST.ENDDATE, CURDATE()),
+		CONTEST.ENDDATE, CONTEST.FIRSTPRIZE, CONTEST.SECONDPRIZE, CONTEST.THIRDPRIZE,
+		CONTEST.HIGHLIGHT,CONTEST.FULLPRIZE
+		FROM CONTEST, MEMBER
+		WHERE CONTEST.MEMBEREMAIL = MEMBER.EMAIL AND CONTEST.ENDDATE > CURDATE()
+		ORDER BY CONTEST.SHOW DESC, CONTEST.STARTDATE DESC
+		<!--LIMIT #{startList}, #{listSize}-->
+	</select>
+	<select id="listDecision" parameterType="com.kfq.fund.vo.Pagination" resultType="com.kfq.fund.vo.ContestVO">
+		SELECT CONTEST.TITLE, CONTEST.CONTESTTYPE, MEMBER.NICKNAME, CONTEST.COMPANY,
+		CONTEST.SERVICEINFO, CONTEST.VIEWS, DATEDIFF(CONTEST.ENDDATE, CURDATE()),
+		CONTEST.ENDDATE, CONTEST.FIRSTPRIZE, CONTEST.SECONDPRIZE, CONTEST.THIRDPRIZE,
+		CONTEST.HIGHLIGHT,CONTEST.FULLPRIZE
+		FROM CONTEST, MEMBER
+		WHERE CONTEST.MEMBEREMAIL = MEMBER.EMAIL AND CURDATE() > CONTEST.ENDDATE AND WINNER IS NULL
+		ORDER BY CONTEST.SHOW DESC, CONTEST.ENDDATE DESC
+		LIMIT #{startList}, #{listSize}
+	</select>
+	<select id="listEndContest" parameterType="com.kfq.fund.vo.Pagination" resultType="com.kfq.fund.vo.ContestVO">
+		SELECT CONTEST.TITLE, CONTEST.CONTESTTYPE, MEMBER.NICKNAME, CONTEST.COMPANY,
+		CONTEST.SERVICEINFO, CONTEST.VIEWS, DATEDIFF(CONTEST.ENDDATE, CONTEST.STARTDATE),
+		CONTEST.ENDDATE, CONTEST.FIRSTPRIZE, CONTEST.SECONDPRIZE, CONTEST.THIRDPRIZE,
+		CONTEST.HIGHLIGHT, CONTEST.FULLPRIZE
+		FROM CONTEST, MEMBER
+		WHERE CONTEST.MEMBEREMAIL = MEMBER.EMAIL AND WINNER IS NOT NULL
+		ORDER BY CONTEST.STARTDATE DESC
+		LIMIT #{startList}, #{listSize}
+	</select>
+	<select id="imgurl" parameterType="Integer" resultType="String">
+		SELECT IMGURL
+		FROM CONTEST
+		WHERE ID = #{value}
+	</select>
 	<select id="insertlastContestid" parameterType="String" resultType="Integer">
 		SELECT ID
 		FROM CONTEST
@@ -63,6 +95,7 @@
 		ORDER BY ID DESC
 		LIMIT 1;
 	</select>
+	
 	<select id="getFiles" parameterType="Integer" resultType="com.kfq.fund.vo.FileVO">
 		SELECT FILEORINAME, FILEURL
 		FROM CONTESTFILE
@@ -78,13 +111,24 @@
 		VALUES(#{bno},#{filename},#{fileOriName},#{fileurl})
 	</insert>
 	<insert id="insertJoin" parameterType="com.kfq.fund.vo.JoinVO">
-		INSERT INTO WORK(CONTEST_ID, MEMBER_EMAIL, CONTENT)
-		VALUES(#{contest_id},#{email},#{content})
+		INSERT INTO WORK(CONTEST_ID, MEMBER_EMAIL,TITLE, CONTENT, THUMBNAILURL)
+		VALUES(#{contest_id},#{email},#{title},#{content},#{thumbnailurl})
 	</insert>
 	<!-- update -->
 	<update id="updateContest" parameterType="com.kfq.fund.vo.ContestVO">
 		UPDATE CONTEST
 		SET TITLE = #{title}, CONTESTTYPE = #{contesttype}, COMPANY = #{company}, SERVICEINFO = #{serviceinfo}, SECTOR = #{sector}, IDEA = #{idea}, BRIEFING = #{briefing}
+		WHERE ID = #{id}
+	</update>
+	<update id="updateContestprize" parameterType="Map">
+		UPDATE CONTEST
+		SET SHOW = #{show}, HIGHLIGHT = #{highlight}, BENNER = #{benner}, STARTDATE = #{startdate},
+		ENDDATE = #{enddate}, FIRSTPRIZE = #{first}, SECONDPRIZE = #{second}, THIRDPRIZE = #{third}, FULLPRIZE = #{fullprize}
+		WHERE ID = #{id}
+	</update>
+	<update id="updateWinner" parameterType="Map">
+		UPDATE CONTEST
+		SET WINNER = #{winner}, IMGURL = #{imgurl}
 		WHERE ID = #{id}
 	</update>
 	<!-- delete -->

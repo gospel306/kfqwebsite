@@ -56,9 +56,9 @@
             <p><a href="" target="blank">가격 안내</a></p>
         </div>
         <div class="nav_name1">
-            <p><a href="<%=request.getContextPath()%>/contestlist?searchOption='proceeding'" target="blank">진행중인 콘테스트</a></p>
-            <p><a href="<%=request.getContextPath()%>/contestlist?searchOption='decision'" target="blank">심사중인 콘테스트</a></p>
-            <p><a href="<%=request.getContextPath()%>/contestlist?searchOption='end'" target="blank">종료된 콘테스트</a></p>
+            <p><a href="<%=request.getContextPath()%>/contestlist/proceeding" target="blank">진행중인 콘테스트</a></p>
+            <p><a href="<%=request.getContextPath()%>/contestlist/decision" target="blank">심사중인 콘테스트</a></p>
+            <p><a href="<%=request.getContextPath()%>/contestlist/endcontest" target="blank">종료된 콘테스트</a></p>
         </div>
         <div class="nav_name1">
             <p><a href="<%=request.getContextPath()%>/notice" target="blank">공지 사항</a></p>

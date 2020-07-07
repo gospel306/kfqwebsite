@@ -1,5 +1,6 @@
 package com.kfq.fund.controller;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -23,6 +24,7 @@ import com.kfq.fund.service.IContestService;
 import com.kfq.fund.vo.ContestVO;
 import com.kfq.fund.vo.FileVO;
 import com.kfq.fund.vo.JoinVO;
+import com.kfq.fund.vo.Pagination;
 
 @Controller
 public class ContestController {
@@ -45,12 +47,35 @@ public class ContestController {
 		return result;
 	}
 	
-	@RequestMapping(value = "contestlist")
-	public ModelAndView contestlist() {
+	@RequestMapping(value = {"contestlist/{listtype}","contestlist/{listtype}/p-{idx}"})
+	public ModelAndView contestlist(@PathVariable String listtype, @PathVariable(required = false) String idx) {
 		ModelAndView mv = new ModelAndView("contest/listcontest");
-		mv.addObject("wins",contest_service.getTop5("win"));
-		mv.addObject("costs",contest_service.getTop5("cost"));
-		mv.addObject("lasts",contest_service.getTop5("last"));
+		mv.addObject("listtype",listtype);
+		int pagenum = 1, listCnt;
+		if(idx != null)
+			pagenum = Integer.parseInt(idx);
+		Pagination page = new Pagination();
+		List<ContestVO> list = new ArrayList<>();
+		if(!listtype.equals("endcontest")) {
+			mv.addObject("wins",contest_service.getTop5(1));
+			mv.addObject("costs",contest_service.getTop5(2));
+			mv.addObject("lasts",contest_service.getTop5(3));
+			if(listtype.equals("proceeding")) {
+				listCnt = contest_service.listCnt(1);
+				page.pageInfo(pagenum, listCnt);
+				list = contest_service.listProceeding(page);
+			}else {
+				listCnt = contest_service.listCnt(2);
+				page.pageInfo(pagenum, listCnt);
+				list = contest_service.listDecision(page);
+			}
+		}else {
+			listCnt = contest_service.listCnt(3);
+			page.pageInfo(pagenum, listCnt);
+			list = contest_service.listEndContest(page);
+		}
+		mv.addObject("pagination",page);
+		mv.addObject("lists",list);
 		return mv;
 	}
 	

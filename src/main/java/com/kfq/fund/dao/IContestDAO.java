@@ -5,6 +5,7 @@ import java.util.List;
 import com.kfq.fund.vo.ContestVO;
 import com.kfq.fund.vo.FileVO;
 import com.kfq.fund.vo.JoinVO;
+import com.kfq.fund.vo.Pagination;
 
 public interface IContestDAO {
 	public String existContest(String email);
@@ -12,7 +13,12 @@ public interface IContestDAO {
 	public int insertlastContestid(String email);
 	public List<FileVO> getFiles(int id);
 	public String ContestName(int id);
-	public List<ContestVO> getTop5(String search);
+	public List<ContestVO> getTop5(int search);
+	public int listCnt(int num);
+	public List<ContestVO> listProceeding(Pagination page);
+	public List<ContestVO> listDecision(Pagination page);
+	public List<ContestVO> listEndContest(Pagination page);
+	public String imgurl(int id);
 	//insert
 	public void insertContest(ContestVO contest);
 	public void insertContestFile(FileVO file);

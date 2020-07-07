@@ -13,16 +13,18 @@ public class ContestVO {
 	private String sector;
 	private String idea;
 	private String briefing;
-	private boolean show;
-	private boolean highlight;
-	private boolean secret;
-	private boolean benner;
+	private int show;
+	private int highlight;
+	private int secret;
+	private int benner;
 	private Date startdate;
 	private Date enddate;
 	private int firstprize;
 	private int secondprize;
 	private int thirdprize;
+	private int fullprize;
 	private int views;
+	private String imgurl;
 	
 	private long people;
 	private int day;
@@ -47,19 +49,21 @@ public class ContestVO {
 		this.idea = idea;
 		this.briefing = briefing;
 	}
-	public ContestVO(String title, String contesttype, String company, String serviceinfo, Date startdate, Date enddate, int firstprize, int secondprize, int thirdprize, boolean benner, boolean hightlight, int views) {
+	
+	public ContestVO(String title, String contesttype,String nickname, String company, String serviceinfo, Integer views, Long day, Date enddate, Integer firstprize, Integer secondprize, Integer thirdprize, Integer hightlight,Integer fullprize) {
 		this.title = title;
 		this.contesttype = contesttype;
+		this.memberemail = nickname; //nickname 대체
 		this.company = company;
 		this.serviceinfo = serviceinfo;
-		this.startdate = startdate;
+		this.views = views;
+		this.day = (int)(long)day;
 		this.enddate = enddate;
-		this.benner = benner;
 		this.firstprize = firstprize;
 		this.secondprize = secondprize;
 		this.thirdprize = thirdprize;
 		this.highlight = hightlight;
-		this.views = views;
+		this.fullprize = fullprize;
 	}
 	public ContestVO(Integer id, String title, Long count, Integer day) {
 		this.id = id;
@@ -121,22 +125,22 @@ public class ContestVO {
 	public void setMemberemail(String memberemail) {
 		this.memberemail = memberemail;
 	}
-	public boolean isShow() {
+	public int getShow() {
 		return show;
 	}
-	public void setShow(boolean show) {
+	public void setShow(int show) {
 		this.show = show;
 	}
-	public boolean isHighlight() {
+	public int getHighlight() {
 		return highlight;
 	}
-	public void setHighlight(boolean highlight) {
+	public void setHighlight(int highlight) {
 		this.highlight = highlight;
 	}
-	public boolean isSecret() {
+	public int getSecret() {
 		return secret;
 	}
-	public void setSecret(boolean secret) {
+	public void setSecret(int secret) {
 		this.secret = secret;
 	}
 	public Date getStartdate() {
@@ -169,16 +173,16 @@ public class ContestVO {
 	public void setThirdprize(int thirdprize) {
 		this.thirdprize = thirdprize;
 	}
-	public boolean isPayed() {
+	public boolean getPayed() {
 		return payed;
 	}
 	public void setPayed(boolean payed) {
 		this.payed = payed;
 	}
-	public boolean isBenner() {
+	public int getBenner() {
 		return benner;
 	}
-	public void setBenner(boolean benner) {
+	public void setBenner(int benner) {
 		this.benner = benner;
 	}
 	public int getViews() {
@@ -204,6 +208,18 @@ public class ContestVO {
 		return "ContestVO [id=" + id + ", memberemail=" + memberemail + ", payed=" + payed + ", title=" + title
 				+ ", contesttype=" + contesttype + ", company=" + company + ", serviceinfo=" + serviceinfo + ", sector="
 				+ sector + ", idea=" + idea + ", briefing=" + briefing + "]";
+	}
+	public int getFullprize() {
+		return fullprize;
+	}
+	public void setFullprize(int fullprize) {
+		this.fullprize = fullprize;
+	}
+	public String getImgurl() {
+		return imgurl;
+	}
+	public void setImgurl(String imgurl) {
+		this.imgurl = imgurl;
 	}
 	
 }
