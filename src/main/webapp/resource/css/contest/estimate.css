@@ -1,0 +1,732 @@
+@charset "UTF-8";
+
+body {
+	margin: 0px auto;
+	width: 100%;
+	text-align: left;
+	vertical-align: middle;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+p {
+	margin: 0px;
+}
+
+div {
+	
+}
+
+a, a:link {
+	color: #000;
+	text-decoration: none;
+	font-family: 'Noto Sans KR', 'NanumGothic', '나눔고딕', 'Nanum Gothic',
+		'맑은 고딕', 'Malgun Gothic', Dotum;
+}
+
+a:hover, a:active {
+	text-decoration: none;
+}
+
+label {
+	margin: 0px;
+}
+
+input[id=bronzecheck] {
+	display: none;
+}
+
+input[id=bronzecheck]+label {
+	display: inline-block;
+	cursor: pointer;
+}
+
+input[id=bronzecheck]+label:before {
+	content: "\2713";
+	display: inline-block;
+	/* 컨텐츠 크기가  다르면  블록의 크기가 달라진다. 그러므로  같은 블록을 선언하고 색상을 배경값을 줘 none */
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0);
+	font-size: 18px;
+	color: white;
+	font-weight: bold;
+	width: 28px;
+	height: 28px;
+	border: solid 1px #cccccc;
+	background-color: white;
+	border-radius: 5px;
+}
+
+input[id=bronzecheck]:checked+label:before {
+	display: inline-block;
+	content: "\2713";
+	/* 체크모양 */
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+	font-size: 18px;
+	font-weight: bold;
+	color: #7e5a27;
+	text-align: center;
+}
+
+input[id=silvercheck] {
+	display: none;
+}
+
+input[id=silvercheck]+label {
+	display: inline-block;
+	cursor: pointer;
+}
+
+input[id=silvercheck]+label:before {
+	content: "\2713";
+	display: inline-block;
+	/* 컨텐츠 크기가  다르면  블록의 크기가 달라진다. 그러므로  같은 블록을 선언하고 색상을 배경값을 줘 none */
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0);
+	font-size: 18px;
+	color: white;
+	font-weight: bold;
+	width: 28px;
+	height: 28px;
+	border: solid 1px #cccccc;
+	background-color: white;
+	border-radius: 5px;
+}
+
+input[id=silvercheck]:checked+label:before {
+	display: inline-block;
+	content: "\2713";
+	/* 체크모양 */
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+	font-size: 18px;
+	font-weight: bold;
+	color: #666666;
+	text-align: center;
+}
+
+input[id=goldcheck] {
+	display: none;
+}
+
+input[id=goldcheck]+label {
+	display: inline-block;
+	cursor: pointer;
+}
+
+input[id=goldcheck]+label:before {
+	content: "\2713";
+	display: inline-block;
+	/* 컨텐츠 크기가  다르면  블록의 크기가 달라진다. 그러므로  같은 블록을 선언하고 색상을 배경값을 줘 none */
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0);
+	font-size: 18px;
+	color: white;
+	font-weight: bold;
+	width: 28px;
+	height: 28px;
+	border: solid 1px #cccccc;
+	background-color: white;
+	border-radius: 5px;
+}
+
+input[id=goldcheck]:checked+label:before {
+	display: inline-block;
+	content: "\2713";
+	/* 체크모양 */
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+	font-size: 18px;
+	font-weight: bold;
+	color: #ff9600;
+	text-align: center;
+}
+
+input[id=primecheck] {
+	display: none;
+}
+
+input[id=primecheck]+label {
+	display: inline-block;
+	cursor: pointer;
+}
+
+input[id=primecheck]+label:before {
+	content: "\2713";
+	display: inline-block;
+	/* 컨텐츠 크기가  다르면  블록의 크기가 달라진다. 그러므로  같은 블록을 선언하고 색상을 배경값을 줘 none */
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0);
+	font-size: 18px;
+	color: white;
+	font-weight: bold;
+	width: 28px;
+	height: 28px;
+	border: solid 1px #cccccc;
+	background-color: white;
+	border-radius: 5px;
+}
+
+input[id=primecheck]:checked+label:before {
+	display: inline-block;
+	content: "\2713";
+	/* 체크모양 */
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+	font-size: 18px;
+	font-weight: bold;
+	color: #6e78fe;
+	text-align: center;
+}
+
+input[type=checkbox] {
+	display: none;
+}
+
+input[type=checkbox]+label {
+	display: inline-block;
+	cursor: pointer;
+}
+
+input[type=checkbox]+label:before {
+	content: "\2713";
+	display: inline-block;
+	/* 컨텐츠 기본 크기가  다르면  블록의 크기가 달라진다.   그러므로  같은 컨텐츠를 선언하고 색상을 배경값을 줘 none */
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0);
+	font-size: 14px;
+	color: white;
+	font-weight: bold;
+	width: 24px;
+	height: 24px;
+	border: solid 1px #cccccc;
+	background-color: white;
+	border-radius: 5px;
+}
+
+input[type=checkbox]:checked+label:before {
+	display: inline-block;
+	content: "\2713";
+	/* 체크모양 */
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+	font-size: 14px;
+	font-weight: bold;
+	color: #cccccc;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.head_title {
+	font-size: 2rem;
+	font-weight: bold;
+	letter-spacing: -1.5px;
+	color: #000000;
+	margin-bottom: 19px;
+	line-height: 1.73;
+}
+
+.main {
+	margin: 0px auto;
+	background-color: #f8f8f8;
+	padding: 2rem;
+	width: 75%;
+}
+
+.est_category_title {
+	text-align: left;
+	vertical-align: middle;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.est_category_contents {
+	font-size: 12px;
+	text-align: left;
+	padding: 10px 20px;
+}
+
+.btn {
+	display: inline-block;
+	font-weight: 400;
+	color: #212529;
+	text-align: center;
+	vertical-align: middle;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background-color: transparent;
+	border: 1px solid transparent;
+	padding: 1rem .75rem;
+	font-size: 1rem;
+	line-height: 1.5;
+	border-radius: .25rem;
+	transition: color .15s ease-in-out, background-color .15s ease-in-out,
+		border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+	width: 100%;
+}
+
+.btn-white {
+	background-color: white;
+	color: black;
+	border: 2px solid #cccccc;
+	border-radius: 10px;
+}
+
+.btn-primary {
+	font-size: 20px;
+	background-color: white;
+	color: #2b2c35;
+	border: 2px solid #cccccc;
+	border-radius: 10px;
+}
+
+.btn-secondary {
+	font-size: 20px;
+	background-color: #2b2c35;
+	color: white;
+	border: 2px solid #cccccc;
+	border-radius: 10px;
+}
+
+.btn-white:hover {
+	border: 2px solid gray;
+}
+
+.ChampPriceOption {
+	padding-bottom: 20px;
+}
+
+.ChampPriceOption_title {
+	font-size: 1.2rem;
+	font-weight: bold;
+	padding-bottom: 20px;
+}
+
+.ChampPriceOption_check {
+	background-color: white;
+	color: black;
+	border: 2px solid #cccccc;
+	border-radius: 10px;
+	padding: 20px;
+	font-size: 18px;
+}
+
+.ChampPriceOption_content {
+	padding: 0px;
+	font-size: 14px;
+	color: #6c6c6c;
+	;
+}
+
+.contestTotal {
+	border-bottom: 2px solid #cccccc;
+	border-top: 2px solid #cccccc;
+	padding-top: 40px;
+}
+
+.align_left {
+	text-align: left;
+}
+
+.est_option {
+	border: 2px solid #cccccc;
+	border-radius: 10px;
+	padding: 18px 25px;
+	margin-bottom: 10px;
+}
+
+.est_option_disabled {
+	opacity: 0.5;
+}
+
+.est_option_title {
+	text-align: left;
+	font-weight: bold;
+	font-size: 1.1rem;
+}
+
+.est_option_price {
+	font-weight: 500;
+}
+
+.est_option_text {
+	padding: 0px 30px;
+}
+
+.total_set {
+	border-bottom: 1px solid black;
+}
+
+.est_price_title {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.est_price_content {
+	font-size: 16px;
+	text-align: right;
+}
+
+.est_price_total {
+	text-align: right;
+	font-weight: bold;
+}
+
+.est_total {
+	border: 2px solid #cccccc;
+	padding-bottom: 50px;
+	margin-bottom: 30px;
+	padding: 22px 45px;
+}
+
+.total_price_color {
+	color: #fd6569;
+	font-size: 20px;
+	font-weight: 700;
+}
+
+.category_toggle_align {
+	text-align: right;
+}
+
+.dropdown-menu {
+	border: 2px solid #cccccc;
+	border-radius: 10px;
+	width: 100%;
+	max-height: 400px;
+	overflow-y: scroll;
+}
+
+.category_drop {
+	text-align: left;
+	font-size: 18px;
+}
+
+.drop_title {
+	background-color: #cccccc;
+	font-size: 12px;
+	font-weight: bold;
+	padding-left: 23px;
+	;
+}
+
+.dropdown-item {
+	font-size: 16px;
+	font-weight: bold;
+	letter-spacing: -0.4px;
+}
+
+.dropdown-item>a, a:link {
+	color: #666666;
+	padding: 17px 10px 17px 43px;
+}
+
+.dropdown-item>a, a:link:hover {
+	color: white;
+	background-color: #363542;
+	;
+}
+
+.spacing_bottom {
+	padding-bottom: 30px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 64px;
+}
+
+.est_category_title>img {
+	margin: 10px;
+}
+
+.grade_box_padding {
+	padding: 0px;
+	margin: 0px auto;
+	text-align: center;
+}
+
+.gradeChoice_bronze {
+	vertical-align: middle;
+	text-align: right;
+	font-size: 24px;
+	color: #7e5a27;
+}
+
+.gradeChoice_silver {
+	vertical-align: middle;
+	text-align: right;
+	font-size: 24px;
+	color: #666666;
+}
+
+.gradeChoice_gold {
+	vertical-align: middle;
+	text-align: right;
+	font-size: 24px;
+	color: #ff9600;
+}
+
+.gradeChoice_prime {
+	vertical-align: middle;
+	text-align: right;
+	font-size: 24px;
+	color: #6e78fe;
+}
+
+.contestPrice {
+	text-align: center;
+	font-size: 24px;
+	padding: 20px;
+	margin: 20px 15%;
+	background-color: white;
+	color: black;
+	border: 2px solid #cccccc;
+	border-radius: 10px;
+}
+
+.contestPeriod {
+	padding: 20px 0px;
+}
+
+.selected_grade {
+	border: 2px solid #ff9600;
+	border-radius: 10px;
+	padding: 20px;
+	margin: 5px;
+}
+
+.contest_category {
+	padding: 20px 0px;
+}
+
+.contestRank {
+	margin: 20px 0px;
+	padding: 20px 0px;
+}
+
+.contestExtra {
+	margin: 20px 0px;
+}
+
+.contestFooter {
+	padding: 40px 0px;
+}
+
+.est_totalprice {
+	padding-top: 20px;
+	border-top: 2px solid #cccccc;
+}
+
+#bronzebox:hover {
+	border: 2px solid #7e5a27;
+	border-radius: 10px;
+	padding: 20px;
+	margin: 5px;
+}
+
+.bronzebox {
+	border: 2px solid #cccccc;
+	border-radius: 10px;
+	padding: 20px;
+	margin: 5px;
+	background-color: white;
+}
+
+.bronzebox_checked {
+	border: 2px solid #7e5a27;
+	border-radius: 10px;
+	padding: 20px;
+	margin: 5px;
+}
+
+#silverbox:hover {
+	border: 2px solid #666666;
+	border-radius: 10px;
+	padding: 20px;
+	margin: 5px;
+}
+
+.silverbox {
+	border: 2px solid #cccccc;
+	border-radius: 10px;
+	padding: 20px;
+	margin: 5px;
+	background-color: white;
+}
+
+.silverbox_checked {
+	border: 2px solid #666666;
+	border-radius: 10px;
+	padding: 20px;
+	margin: 5px;
+}
+
+#goldbox:hover {
+	border: 2px solid #ff9600;
+	border-radius: 10px;
+	padding: 20px;
+	margin: 5px;
+}
+
+.goldbox {
+	border: 2px solid #cccccc;
+	border-radius: 10px;
+	padding: 20px;
+	margin: 5px;
+	background-color: white;
+}
+
+.goldbox_checked {
+	border: 2px solid #ff9600;
+	border-radius: 10px;
+	padding: 20px;
+	margin: 5px;
+}
+
+#primebox:hover {
+	border: 2px solid #6e78fe;
+	border-radius: 10px;
+	padding: 20px;
+	margin: 5px;
+}
+
+.primebox {
+	border: 2px solid #cccccc;
+	border-radius: 10px;
+	padding: 20px;
+	margin: 5px;
+	background-color: white;
+}
+
+.primebox_checked {
+	border: 2px solid #6e78fe;
+	border-radius: 10px;
+	padding: 20px;
+	margin: 5px;
+}
+
+.contest_price_input {
+	display: none;
+}
+
+.optionList {
+	
+}
+
+.optionList_title {
+	font-size: 1.2rem;
+	font-weight: bold;
+	padding-bottom: 20px;
+}
+
+.totalReadonly {
+	border: 0px solid #f8f8f8;
+	text-align: right;
+	background-color: #f8f8f8;
+	width: 100%;
+}
+
+.contestPriceList {
+	padding-bottom: 20px;
+}
+
+.padding_20 {
+	padding: 20px 0px;
+	margin: 0px auto;
+}
+
+.gradebox_list {
+	padding-bottom: 3rem;
+	text-align: left;
+	font-size: 14px;
+}
+
+#btn1 {
+	border: 1px solid #CCCCCC;
+}
+
+#btn1:hover {
+	border: 1px solid #fd6569;
+}
+
+.header_st {
+	padding-bottom: 2rem;
+	text-align: center;
+}
+
+.header_p_st {
+	color: #31323b;
+}
+
+.padding_top_5 {
+	padding-top: 0.5rem;
+}
+
+.span_st_1 {
+	vertical-align: middle;
+	color: #636363;
+	font-size: 16px;
+}
+
+.span_st_2 {
+	vertical-align: middle;
+	color: #636363;
+	font-size: 14px;
+}
+
+.box_price_bronze {
+	background-color: #f8f8f8;
+	font-size: 18px;
+	margin: 0px;
+	text-align: right;
+	color: #7e5a27;
+	padding-top: 1rem;
+}
+
+.box_price_silver {
+	background-color: #f8f8f8;
+	font-size: 18px;
+	margin: 0px;
+	text-align: right;
+	color: #666666;
+	padding-top: 1rem;
+}
+
+.box_price_gold {
+	background-color: #f8f8f8;
+	font-size: 18px;
+	margin: 0px;
+	text-align: right;
+	color: #ff9600;
+	padding-top: 1rem;
+}
+
+.box_price_prime {
+	background-color: #f8f8f8;
+	font-size: 18px;
+	margin: 0px;
+	text-align: right;
+	color: #6e78fe;
+	padding-top: 1rem;
+}
+
+.p_pad_bot {
+	padding-bottom: 0.6rem;
+}
+
+.font_bold {
+	font-weight: bold;
+}
+
+.span_st_20 {
+	text-decoration: line-through;
+	color: red;
+}
+
+.span_st_4 {
+	font-size: 12px;
+}
+
+.span_st_5 {
+	color: black;
+	font-weight: bold;
+}
+
+.span_st_6 {
+	color: red;
+	font-weight: bold;
+}

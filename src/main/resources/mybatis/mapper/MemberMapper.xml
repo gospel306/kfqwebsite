@@ -9,6 +9,11 @@
 		FROM MEMBER
 		WHERE EMAIL = #{email} AND PASSWD = #{passwd} AND USERKEY = "Y"
 	</select>
+	<select id="checkuserclass" parameterType="String" resultType="String">
+		SELECT USERCLASS
+		FROM MEMBER
+		WHERE EMAIL = #{value}
+	</select>
 	<!-- memberdata -->
 	<select id="viewMember" parameterType="com.kfq.fund.vo.MemberVO" resultType="com.kfq.fund.vo.MemberVO">
 		SELECT EMAIL, NICKNAME, DATE
@@ -30,6 +35,11 @@
 		<if test="searchOption == 'DATE'">
 			WHERE DATE BETWEEN #{startdate} AND #{enddate}
 		</if>
+	</select>
+	<select id="getPassword" parameterType="String" resultType="String">
+		SELECT PASSWD
+		FROM MEMBER
+		WHERE EMAIL = #{value}
 	</select>
 	<!-- Memberlist(option) -->
 	<select id="listMember" parameterType="Map" resultType="com.kfq.fund.vo.MemberVO">
@@ -65,7 +75,7 @@
 		<if test="searchOption == 'DATE' and sortOption == 'DESC'">
 			ORDER BY DATE DESC
 		</if>
-		LIMIT #{startlist}, #{listsize}
+		LIMIT #{startList}, #{listSize}
 	</select>
 	<!-- searchMember -->
 	<select id="findexistEmail" parameterType="String" resultType="Integer">
@@ -95,6 +105,16 @@
 		UPDATE MEMBER
 		SET USERKEY = "Y"
 		WHERE EMAIL = #{email} AND USERKEY = #{key}
+	</update>
+	<update id="updateMember" parameterType="com.kfq.fund.vo.MemberVO">
+		UPDATE MEMBER
+		SET PASSWD = #{passwd}, NICKNAME = #{nickname}, USERCLASS = #{userclass}
+		WHERE EMAIL = #{email}
+	</update>
+	<update id="winnerMember" parameterType="String">
+		UPDATE MEMBER
+		SET WIN = WIN + 1
+		WHERE EMAIL = #{value}
 	</update>
 	<!-- delete -->
 	<delete id="deleteMember" parameterType="String">

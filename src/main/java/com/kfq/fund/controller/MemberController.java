@@ -49,21 +49,9 @@ public class MemberController {
 		return new ModelAndView("member/emailverify");
 	}
 	
-	@RequestMapping(value = "insertdirect.do", method = RequestMethod.POST)
-	@ResponseBody
-	public String insertMemberdirect(HttpServletRequest request) {
-		String email = request.getParameter("email");
-		if(member_service.findexistEmail(email))
-			return "email";
-		String nickname = request.getParameter("nickname");
-		System.out.println(nickname);
-		if(member_service.findexistNickName(nickname))
-			return "nickname";
-		String passwd = request.getParameter("passwd");
-		String userclass = "requester";
-		member_service.insertMember(new MemberVO(email,passwd,userclass,nickname));
-		mailsender.mailSendWithUserKey(email, request);
-		return "success";
+	@RequestMapping(value = "adminpage")
+	public ModelAndView adminpage() {
+		return new ModelAndView("admin/supervisorclass");
 	}
 	@RequestMapping(value = "memberCheck.do")
 	@ResponseBody
@@ -102,8 +90,17 @@ public class MemberController {
 		String email = request.getParameter("email");
 		String userkey = request.getParameter("userkey");
 		mailsender.alter_userKey_service(email, userkey);
-		return new ModelAndView("");
+		ModelAndView mv = new ModelAndView();
+		String userclass = member_service.checkuserclass(email);
+		mv.addObject("userclass",userclass);
+		mv.setViewName("member/mailauth");
+		return mv;
 	}
+	@RequestMapping(value = "mypage")
+	public ModelAndView mypage(HttpSession session) {
+		return new ModelAndView("member/guest_info");//guest_info.jsp
+	}
+	
 	
 	//맴버 리스트
 	@RequestMapping(value = "memberlist", method = RequestMethod.GET)

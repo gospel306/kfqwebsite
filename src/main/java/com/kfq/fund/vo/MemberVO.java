@@ -9,6 +9,8 @@ public class MemberVO {
 	private String nickname;
 	private String userkey;
 	private Date date;
+	private String imgurl;
+	private int win;
 	
 	public MemberVO(String email, String passwd) { // logincheck
 		this.email = email;
@@ -67,5 +69,17 @@ public class MemberVO {
 	}
 	public void setDate(Date date) {
 		this.date = date;
+	}
+	public String getImgurl() {
+		return imgurl;
+	}
+	public void setImgurl(String imgurl) {
+		this.imgurl = imgurl;
+	}
+	public int getWin() {
+		return win;
+	}
+	public void setWin(int win) {
+		this.win = win;
 	}
 }

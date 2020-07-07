@@ -6,26 +6,23 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resource/css/select.css">
-<script src="<%=request.getContextPath()%>/resource/js/goTop.js"></script>
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resource/css/notice.css">
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resource/css/custom.css">
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resource/css/slick.css">
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resource/css/slick-theme.css">
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resource/css/slick_custom.css">
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- icon css -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+   	
+    <!-- custom js -->
+    <script src="<%=request.getContextPath() %>/resource/js/section/goTop.js"></script>
+    
+    <!-- custom css -->
+	<link rel="stylesheet"href="<%=request.getContextPath()%>/resource/css/select.css">
+	<link rel="stylesheet" href="<%=request.getContextPath() %>/resource/css/custom.css">
+	<link rel="stylesheet" href="<%=request.getContextPath() %>/resource/css/slick.css">
+	<link rel="stylesheet" href="<%=request.getContextPath() %>/resource/css/slick-theme.css">
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/slick_custom.css">
 </head>
 <header>
 	<jsp:include page="../section/header.jsp"></jsp:include>
@@ -50,7 +47,7 @@
 						<button type="button" class="btn btn-light aaa">
 							<span>카카오</span>로 간편하게 가입하기
 						</button>
-						<button type="button" class="btn btn-light aaa" onclick="location.href='signin'">
+						<button type="button" class="btn btn-light aaa" onclick="location.href='<%=request.getContextPath()%>/signin'">
 							<span>이메일</span>로 간편하게 가입하기
 						</button>
 						<div class="aaa bordertop">

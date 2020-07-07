@@ -8,9 +8,7 @@
 <title>${category.title}</title>
 	<!-- bootstrap -->
 	<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
-	crossorigin="anonymous">
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
    	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
    	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
@@ -21,8 +19,8 @@
    	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
    	
     <!-- custom js -->
-	<script src="<%=request.getContextPath()%>/resource/js/pagination.js"></script>
-    <script src="<%=request.getContextPath() %>/resource/js/goTop.js"></script>
+	<script src="<%=request.getContextPath()%>/resource/js/notice/pagination.js"></script>
+    <script src="<%=request.getContextPath() %>/resource/js/section/goTop.js"></script>
     
     <!-- custom css -->
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/notice.css">
@@ -45,9 +43,7 @@
 				<p>${category.content}</p>
 			</div>
 		</div>
-		<div class="container-fluid">
-			<jsp:include page="noticenav.jsp"></jsp:include>
-		</div>
+		
 		<div class="container section">
 			<div class="listwrap">
 				<table style="width:100%">

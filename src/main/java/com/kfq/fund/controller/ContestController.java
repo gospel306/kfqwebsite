@@ -1,18 +1,30 @@
 package com.kfq.fund.controller;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
 
 import com.kfq.fund.service.IContestService;
+import com.kfq.fund.vo.ContestVO;
+import com.kfq.fund.vo.FileVO;
+import com.kfq.fund.vo.JoinVO;
+import com.kfq.fund.vo.Pagination;
 
 @Controller
 public class ContestController {
@@ -25,16 +37,53 @@ public class ContestController {
 	
 	@RequestMapping(value = "existContest.do")
 	@ResponseBody
-	public boolean existContest(HttpSession session) {
-		int check = contest_service.existContest((String) session.getAttribute("useremail"));
-		if(check == 1)
-			return true;
-		return false;
+	public String existContest(HttpSession session) {
+		if(session.getAttribute("useremail") == null)
+			return "false";
+		
+		String result = contest_service.existContest((String) session.getAttribute("useremail"));
+		if(result == null)
+			result = "false";
+		return result;
 	}
+	
+	@RequestMapping(value = {"contestlist/{listtype}","contestlist/{listtype}/p-{idx}"})
+	public ModelAndView contestlist(@PathVariable String listtype, @PathVariable(required = false) String idx) {
+		ModelAndView mv = new ModelAndView("contest/listcontest");
+		mv.addObject("listtype",listtype);
+		int pagenum = 1, listCnt;
+		if(idx != null)
+			pagenum = Integer.parseInt(idx);
+		Pagination page = new Pagination();
+		List<ContestVO> list = new ArrayList<>();
+		if(!listtype.equals("endcontest")) {
+			mv.addObject("wins",contest_service.getTop5(1));
+			mv.addObject("costs",contest_service.getTop5(2));
+			mv.addObject("lasts",contest_service.getTop5(3));
+			if(listtype.equals("proceeding")) {
+				listCnt = contest_service.listCnt(1);
+				page.pageInfo(pagenum, listCnt);
+				list = contest_service.listProceeding(page);
+			}else {
+				listCnt = contest_service.listCnt(2);
+				page.pageInfo(pagenum, listCnt);
+				list = contest_service.listDecision(page);
+			}
+		}else {
+			listCnt = contest_service.listCnt(3);
+			page.pageInfo(pagenum, listCnt);
+			list = contest_service.listEndContest(page);
+		}
+		mv.addObject("pagination",page);
+		mv.addObject("lists",list);
+		return mv;
+	}
+	
 	@RequestMapping(value = "launch")
 	public ModelAndView launchContest() {
 		return new ModelAndView("contest/category");
 	}
+	
 	@RequestMapping(value = "launch/{contesttype}")
 	public ModelAndView contestDetail(@PathVariable String contesttype,HttpSession session,HttpServletRequest request) {
 		String link = request.getParameter("link");
@@ -46,21 +95,93 @@ public class ContestController {
 			mv.setViewName("contest/privacy");
 		return mv;
 	}
+	
 	@RequestMapping(value ="launch/{contesttype}/briefing")
-	public ModelAndView briefing(@PathVariable String contesttype) {
-		return new ModelAndView("contest/briefing");
+	public ModelAndView briefing(@PathVariable String contesttype,HttpSession session) {
+		ContestVO contest = contest_service.existContestInfo((String) session.getAttribute("useremail"));
+		ModelAndView mv = new ModelAndView("contest/briefing");
+		if(contest != null) {
+			mv.addObject("contest",contest);
+			List<FileVO> filelist = contest_service.getFiles(contest.getId());
+			if(filelist != null)
+				mv.addObject("files",filelist);
+		}
+		return mv;
 	}
-	@RequestMapping(value ="launch/{contesttype}/price")
-	public ModelAndView contestprice(@PathVariable String contesttype,HttpServletRequest request) {
+	
+	@RequestMapping(value= "briefing.do")
+	@ResponseBody
+	public boolean insertbriefing(MultipartHttpServletRequest request,HttpSession session) {
+		ContestVO contest = contest_service.existContestInfo((String) session.getAttribute("useremail"));
 		String title = request.getParameter("title");
+		String contesttype= request.getParameter("contesttype");
 		String company = request.getParameter("company");
 		String service = request.getParameter("service");
+		String sector = request.getParameter("sector");
 		String idea = request.getParameter("idea");
 		String briefing = request.getParameter("briefing");
-		return new ModelAndView("contest/price");
+		if(contest != null) {
+			contest.setTitle(title);
+			contest.setContesttype(contesttype);
+			contest.setCompany(company);
+			contest.setServiceinfo(service);
+			contest.setSector(sector);
+			contest.setIdea(idea);
+			contest.setBriefing(briefing);
+			contest_service.updateContest(contest);
+			
+		}else{
+			contest_service.insertContest(new ContestVO((String) session.getAttribute("useremail"), title, contesttype,company, service, sector, idea, briefing));
+		}
+		int check = contest_service.insertlastContestid((String) session.getAttribute("useremail"));
+		contest_service.insertContestFile(request, check);
+		
+		return true;
+	}
+	
+	@RequestMapping(value ="launch/{contesttype}/price", method=RequestMethod.GET)
+	public ModelAndView contestprice(@PathVariable String contesttype,HttpServletRequest request,HttpSession session) {
+		return new ModelAndView("contest/estimate");
 	}
 	@RequestMapping(value ="launch/{contesttype}/result")
 	public ModelAndView contestResult(@PathVariable String contesttype,HttpServletRequest request) {
-		return new ModelAndView();
+		return new ModelAndView("contest/result");//step4.html
+	}
+	
+	@RequestMapping(value = "deleteContest.do")
+	@ResponseBody
+	public void deleteContest(HttpSession session) {
+		ContestVO contest = contest_service.existContestInfo((String) session.getAttribute("useremail"));
+		contest_service.deleteContest(contest.getId());
+	}
+	@RequestMapping(value = "contest/list")
+	public ModelAndView showContestList() {
+		return new ModelAndView("contest/list");//ingcontest.html
+	}
+	@RequestMapping(value = "contest/{contestidx}")
+	public ModelAndView showContest(HttpServletRequest request) {
+		return new ModelAndView("contest/contest");//contest_done.jsp,contestbrief.jsp
+	}
+	@RequestMapping(value = "contest/{contestidx}/join")
+	public ModelAndView joinContest() {
+		return new ModelAndView("join/join");//contest_join.html
+	}
+	@RequestMapping(value = "contest/{contestidx}/joininfo")
+	public ModelAndView joininfoContest() {
+		return new ModelAndView("join/joininfo");//contest_join2.html
+	}
+	@RequestMapping(value = "contest/{contestidx}/viewjoininfo", method=RequestMethod.POST)
+	public ModelAndView insertjoininfo(HttpServletRequest request,@PathVariable int contestidx,HttpSession session) {
+		String email = (String) session.getAttribute("useremail");
+		System.out.println(request.getParameter("content"));
+		contest_service.insertJoin(new JoinVO(contestidx,email,request.getParameter("content")));
+		ModelAndView mv = new ModelAndView("join/view");	
+		return mv;//
+	}
+	@RequestMapping(value = "contest/{contestidx}/uploadImageJoin", method=RequestMethod.POST)
+	@ResponseBody
+	public JSONObject uploadImageJoin(@RequestParam("file") MultipartFile file,@PathVariable int contestidx) {
+		System.out.println("success");
+		return contest_service.insertJoinImage(file, contestidx);
 	}
 }

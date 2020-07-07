@@ -20,4 +20,6 @@ public interface IMemberService {
 	public int getMemberlistCnt(HashMap<String, String> map);
 	public List<MemberVO> listMember(String searchOption,String sortOption, Pagination page);
 	public void deleteMember(String email);
+	public void updateMember(MemberVO member);
+	public String checkuserclass(String email);
 }

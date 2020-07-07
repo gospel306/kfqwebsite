@@ -1,0 +1,74 @@
+CREATE TABLE `contest` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `memberemail` varchar(50) NOT NULL,
+  `contesttype` varchar(50) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `company` varchar(100) NOT NULL,
+  `serviceinfo` text NOT NULL,
+  `sector` varchar(45) NOT NULL,
+  `idea` text NOT NULL,
+  `briefing` text NOT NULL,
+  `payed` tinyint NOT NULL DEFAULT '0',
+  `show` tinyint DEFAULT '0',
+  `highlight` tinyint DEFAULT '0',
+  `benner` tinyint DEFAULT NULL,
+  `startdate` date DEFAULT NULL,
+  `enddate` date DEFAULT NULL,
+  `firstprize` int DEFAULT '0',
+  `secondprize` int DEFAULT '0',
+  `thirdprize` int DEFAULT '0',
+  `fullprize` tinyint DEFAULT '0',
+  `views` int NOT NULL DEFAULT '0',
+  `winner` int DEFAULT NULL,
+  `imgurl` varchar(500) DEFAULT NULL,
+  `paytype` varchar(45) DEFAULT 'bronze',
+  PRIMARY KEY (`id`),
+  KEY `memberemail_idx` (`memberemail`),
+  CONSTRAINT `memberemail` FOREIGN KEY (`memberemail`) REFERENCES `member` (`email`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `contestfile` (
+  `fno` int NOT NULL AUTO_INCREMENT,
+  `bno` int DEFAULT NULL,
+  `filename` varchar(200) DEFAULT NULL,
+  `fileoriname` varchar(300) DEFAULT NULL,
+  `fileurl` varchar(500) DEFAULT NULL,
+  PRIMARY KEY (`fno`),
+  KEY `bno_idx` (`bno`),
+  CONSTRAINT `bno` FOREIGN KEY (`bno`) REFERENCES `contest` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `member` (
+  `email` varchar(50) NOT NULL,
+  `passwd` varchar(100) DEFAULT NULL,
+  `userclass` varchar(45) NOT NULL,
+  `nickname` varchar(45) NOT NULL,
+  `userkey` varchar(45) DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `imgurl` varchar(500) DEFAULT NULL,
+  `win` int DEFAULT NULL,
+  PRIMARY KEY (`email`),
+  UNIQUE KEY `nickname_UNIQUE` (`nickname`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `notice` (
+  `no` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(100) NOT NULL,
+  `author` varchar(50) NOT NULL,
+  `createdat` date NOT NULL,
+  `context` longtext,
+  PRIMARY KEY (`no`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+CREATE TABLE `work` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `contest_id` int NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `title` varchar(100) DEFAULT NULL,
+  `content` longtext,
+  `thumbnailurl` varchar(300) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `contest_id_idx` (`contest_id`),
+  KEY `email_idx` (`email`),
+  CONSTRAINT `contest_id` FOREIGN KEY (`contest_id`) REFERENCES `contest` (`id`),
+  CONSTRAINT `email` FOREIGN KEY (`email`) REFERENCES `member` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;

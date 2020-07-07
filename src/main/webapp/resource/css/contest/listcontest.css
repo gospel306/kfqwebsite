@@ -1,0 +1,352 @@
+@charset "UTF-8";
+
+body {
+	margin: 0px auto;
+}
+
+div {
+	
+}
+
+img {
+	height: auto;
+}
+
+#pills-Proceeding img {
+	width: auto;
+	height: auto;
+	vertical-align: middle;
+}
+
+#pills-Scoring img {
+	width: auto;
+	height: auto;
+	vertical-align: middle;
+}
+
+.top_width {
+	background-color: #ebeff2;
+}
+
+.list_Tap {
+	
+}
+
+.content_top {
+	width: 100%;
+	margin: 0px auto;
+}
+
+.nav-pills {
+	padding-top: 20px;
+}
+
+.nav-link {
+	padding: 0px;
+	text-align: center;
+}
+
+.nav-pills .nav-link {
+	background-color: #64636d;
+	color: white;
+	padding: 10px 0px;
+}
+
+.nav-pills .nav-link.active, .nav-pills .nav-link.active:hover,
+	.nav-pills .nav-link.active:focus {
+	background-color: white;
+	color: #64636d;
+	border-top: 2px solid #64636d;
+}
+
+.list_Top {
+	width: 75%;
+	padding-top: 76px;
+	margin: 0px auto;
+}
+
+.list_maintitle {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.List_ScoringTap_subTitle {
+	display: none;
+}
+
+.List_DoneTap_subTitle {
+	display: none;
+}
+
+.list_content {
+	width: 75%;
+	margin: 0px auto;
+}
+
+.list_Tap_sub {
+	width: 100%;
+	padding: 20px 0px 0px 20px;
+	font-size: 13px;
+	font-weight: bold;
+}
+
+.list_Title {
+	padding: 20px 0px 0px 0px;
+}
+
+.padding_zero {
+	padding: 1px;
+}
+
+.btn {
+	font-weight: bold;
+}
+
+.dropdown:hover #dropdownKind1 {
+	display: block;
+}
+
+.dropdown:hover #dropdownKind2 {
+	display: block;
+}
+
+.dropdown:hover #dropdownKind3 {
+	display: block;
+}
+
+.dropbox-inline {
+	padding: 10px;
+	margin-top: 50px;
+}
+
+.dropdown-menu {
+	background-color: #444;
+}
+
+.dropdown-item {
+	color: white;
+	font-weight: bold;
+}
+
+.dropdown-item:hover {
+	background-color: black;
+	color: white;
+}
+
+.text_red {
+	color: #FF5D5D;
+}
+
+.width75 {
+	width: 75%;
+}
+
+#btnKind1 {
+	width: 100%;
+}
+
+.list_tab_content {
+	width: 75%;
+	margin: 0px auto;
+	padding-top: 50px;
+}
+
+.list_rank_title {
+	text-align: center;
+	padding-bottom: 30px;
+	border-bottom: 2px solid #CCCCCC;
+}
+
+.btn-secondary {
+	background-color: white;
+	color: #64636d;
+	;
+}
+
+.contest_rank_text {
+	text-overflow: ellipsis;
+	border: 0px solid white;
+	width: 100%;
+}
+
+.contest_rank_text:hover {
+	color: #FF5D5D;
+}
+
+.contest_rank_tail {
+	border: 1px solid #f4f5f6;
+	border-radius: 8px;
+	background-color: #CCCCCC;
+	text-align: center;
+}
+
+.rank_list_width {
+	width: 80%;
+}
+
+.list_rank_content {
+	font-size: 12px;
+}
+
+.item_box_tail {
+	padding-top: 1%;
+	padding-bottom: 1%;
+}
+
+.item_price {
+	
+}
+
+.item_period {
+	padding: 5px 0px;
+}
+
+.item_visitCount {
+	
+}
+
+.item_price_text {
+	width: 100%;
+	text-align: center;
+	border: 0px;
+	background-color: #f4f5f6;
+	padding: 5px 10px;
+}
+
+.item_period_text {
+	width: 100%;
+	text-align: center;
+	border: 1px solid #cccccc;
+	border-radius: 5px;
+	padding: 5px 10px;
+}
+
+.item_visitCount_text {
+	width: 100%;
+	text-align: center;
+	border: 1px solid #cccccc;
+	border-radius: 5px;
+	padding: 5px 10px;
+}
+/*item_box*/
+.contest_list_item_roof {
+	margin-top: 5%;
+}
+
+.contest_list_item {
+	border: 1px solid #cccccc;
+	border-radius: 5px;
+	padding: 10px;
+}
+
+.item_box_category {
+	color: #FF5D5D;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.item_box_contestTitle {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.item_box_userId {
+	
+}
+
+.item_content_roof {
+	margin-top: 5%;
+}
+
+.item_box_tail {
+	padding: 5% 1%;
+}
+
+.item_content_tail_roof {
+	margin-top: 5%;
+}
+
+.item_box_contestReward {
+	text-align: center;
+	border: 1px solid #ebeff2;
+	border-radius: 5px;
+	background-color: #ebeff2;
+	padding: 1%;
+}
+
+.item_box_contestPeriod {
+	text-align: center;
+	border: 1px solid #ebeff2;
+	border-radius: 5px;
+	background-color: #ebeff2;
+	padding: 1%;
+}
+
+.item_box_joinCount {
+	text-align: center;
+	border: 1px solid #ebeff2;
+	border-radius: 5px;
+	background-color: #ebeff2;
+	padding: 1%;
+}
+
+/*item_box*/
+/*add_item_box*/
+.last_item_size {
+	width: 90%;
+	height: 100%;
+	overflow: hidden;
+	margin-left: 5%;
+}
+
+.contest_list_Doneitem {
+	border: 1px solid #cccccc;
+	border-radius: 5px;
+	padding: 10px;
+}
+
+.Done_Categoty_img {
+	width: 100%;
+}
+
+.padding_bottom {
+	padding-bottom: 5%;
+}
+
+/* carousel*/
+@media ( max-width : 768px) {
+	.carousel-inner .carousel-item>div {
+		display: none;
+	}
+	.carousel-inner .carousel-item>div:first-child {
+		display: block;
+	}
+}
+
+.carousel-inner .carousel-item.active, .carousel-inner .carousel-item-next,
+	.carousel-inner .carousel-item-prev {
+	display: flex;
+}
+
+/* display 3 */
+@media ( min-width : 768px) {
+	.carousel-inner .carousel-item-right.active, .carousel-inner .carousel-item-next
+		{
+		transform: translateX(50.000%);
+	}
+	.carousel-inner .carousel-item-left.active, .carousel-inner .carousel-item-prev
+		{
+		transform: translateX(-50.00%);
+	}
+}
+
+.carousel-inner .carousel-item-right, .carousel-inner .carousel-item-left
+	{
+	transform: translateX(0);
+}
+
+.card {
+	border: 0px solid white;
+}

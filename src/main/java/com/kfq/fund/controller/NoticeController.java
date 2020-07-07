@@ -64,4 +64,12 @@ public class NoticeController {
 		BigDecimal num = null;
 		return "redirect:/notice/idx-"+num;
 	}
+	@RequestMapping(value = "/notice/update")
+	public ModelAndView updateNotice(HttpServletRequest request) {
+		return new ModelAndView();
+	}
+	@RequestMapping(value = "faq")
+	public ModelAndView faq() {
+		return new ModelAndView("notice/faq");
+	}
 }
