@@ -8,19 +8,19 @@
 <meta charset="UTF-8">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-<script src="<%=request.getContextPath()%>/resource/js/section/pagination.js"></script>
 <script
 	src="<%=request.getContextPath()%>/resource/js/section/goTop.js"></script>
 <link rel="stylesheet"
@@ -359,6 +359,20 @@ img {
 }
 
 /* carousel*/
+.img_index_z {
+	position: relative;
+	z-index: 0;
+}
+.text_index_z{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+transform: translate( -50%, -50% );
+	font-weight:bold;
+	font-size:2rem;
+	background-color: white
+}
+
 @media ( max-width : 768px) {
 	.carousel-inner .carousel-item>div {
 		display: none;
@@ -428,18 +442,7 @@ img {
 					<div class="row">
 						<div class="col-lg-3 list_maintitle">콘테스트 보기</div>
 						<div class="col-lg-3 list_subtitle">
-							<div class="List_ProceedingTap_subTitle">
-								<small>- 진행중인 콘테스트</small>
-							</div>
-
-
-							<div class="List_ScoringTap_subTitle">
-								<small>- 심사중인 콘테스트</small>
-							</div>
-
-							<div class="List_DoneTap_subTitle">
-								<small>- 종료된 콘테스트</small>
-							</div>
+							
 						</div>
 						<div class="col-lg-3"></div>
 						<div class="col-lg-3"></div>
@@ -452,17 +455,17 @@ img {
 								<div class="row">
 									<div class="col-sm-2 padding_zero">
 										<li class="nav-item" role="presentation">
-											<a class="nav-link" id="proceeding" href="<%=request.getContextPath()%>/contestlist/proceeding">진행중인 콘테스트 </a>
+											<a class="nav-link" id="proceeding" href="proceeding">진행중인 콘테스트 </a>
 										</li>
 									</div>
 									<div class="col-sm-2 padding_zero">
 										<li class="nav-item" role="presentation">
-											<a class="nav-link" id="decision" href="<%=request.getContextPath()%>/contestlist/decision"> 심사중인 콘테스트 </a>
+											<a class="nav-link" id="decision" href="decision"> 심사중인 콘테스트 </a>
 										</li>
 									</div>
 									<div class="col-sm-2 padding_zero">
 										<li class="nav-item" role="presentation">
-											<a class="nav-link" id="endcontest" href="<%=request.getContextPath()%>/contestlist/endcontest"> 종료된 콘테스트 </a>
+											<a class="nav-link" id="endcontest" href="endcontest"> 종료된 콘테스트 </a>
 										</li>
 									</div>
 									<div class="col-sm-2 padding_zero"></div>
@@ -545,7 +548,7 @@ img {
 							<input type="text" class="form-control input_Search"
 								placeholder="콘테스트 검색" aria-label="Username"
 								aria-describedby="addon-wrapping"
-								onkeydown="if (event.keyCode == 13) ">
+								>
 							<div class="input-icon">
 
 								<img src="img/bt_magnifying-glass.png" alt="" onclick="">
@@ -572,7 +575,7 @@ img {
 							<!--  content-->
 							<div class="list_rank_content">
 								<c:forEach items="${wins}" var="win" varStatus="status">
-								<div class="list_rank_content_li" onclick="location.href='<%=request.getContextPath()%>/contest/${win.id}'">
+								<div class="list_rank_content_li">
 									<div class="row">
 										<div class="col-sm-1 ">
 											<strong> ${status.count}</strong>
@@ -598,7 +601,7 @@ img {
 							<!--  content-->
 							<div class="list_rank_content">
 								<c:forEach items="${costs}" var="cost" varStatus="status">
-									<div class="list_rank_content_li" onclick="location.href='<%=request.getContextPath()%>/contest/${cost.id}'">
+									<div class="list_rank_content_li">
 										<div class="row">
 											<div class="col-sm-1 ">
 												<strong> ${status.count}</strong>
@@ -624,7 +627,7 @@ img {
 							<!--  content-->
 							<div class="list_rank_content">
 								<c:forEach items="${lasts}" var="last" varStatus="status">
-									<div class="list_rank_content_li" onclick="location.href='<%=request.getContextPath()%>/contest/${last.id}'">
+									<div class="list_rank_content_li">
 										<div class="row">
 											<div class="col-sm-1 ">
 												<strong> ${status.count}</strong>
@@ -661,36 +664,40 @@ img {
                                                 <div class="img_index_z"><img class="img-fluid " src="<%=request.getContextPath()%>/resource/img/contest/20200619052718bn_mhh.png"></div>
                                                 <div class= "text_index_z" >텍스트검열 </div>
                                             </div>
+											
+											
 										</div>
 									</div>
 									<div class="carousel-item">
 										<div class="col-md-3">
 											<div class="card card-body">
-												<img class="img-fluid"
-													src="img/202006180209170618_Smetro.png">
-											</div>
+                                                <div class="img_index_z"><img class="img-fluid " src="<%=request.getContextPath()%>/resource/img/contest/20200619052718bn_mhh.png"></div>
+                                                <div class= "text_index_z" >텍스트검열 </div>
+                                            </div>
 										</div>
 									</div>
 									<div class="carousel-item">
 										<div class="col-md-3">
 											<div class="card card-body">
-												<img class="img-fluid" src="img/20200619052718bn_mhh.png">
-											</div>
+                                                <div class="img_index_z"><img class="img-fluid " src="<%=request.getContextPath()%>/resource/img/contest/20200619052718bn_mhh.png"></div>
+                                                <div class= "text_index_z" >텍스트검열 </div>
+                                            </div>
 										</div>
 									</div>
 									<div class="carousel-item">
 										<div class="col-md-3">
 											<div class="card card-body">
-												<img class="img-fluid"
-													src="img/202006290443410629_chicken.png">
-											</div>
+                                                <div class="img_index_z"><img class="img-fluid " src="<%=request.getContextPath()%>/resource/img/contest/20200619052718bn_mhh.png"></div>
+                                                <div class= "text_index_z" >텍스트검열 </div>
+                                            </div>
 										</div>
 									</div>
 									<div class="carousel-item">
 										<div class="col-md-3">
-											<div class="card card-body">
-												<img class="img-fluid" src="img/202006300204230630.png">
-											</div>
+										<div class="card card-body">
+                                                <div class="img_index_z"><img class="img-fluid " src="<%=request.getContextPath()%>/resource/img/contest/20200619052718bn_mhh.png"></div>
+                                                <div class= "text_index_z" >텍스트검열 </div>
+                                            </div>
 										</div>
 									</div>
 								</div>
@@ -714,7 +721,7 @@ img {
 		</c:if>
 		<div class="contest_list_item_roof">
 			<c:forEach items="${lists}" var="list">
-			<div class="contest_list_item" onclick="location.href='<%=request.getContextPath()%>/contest/${list.id}'">
+			<div class="contest_list_item">
 				<div class="row">
                     <div class="col-lg-3 padding_zero">
                     <c:choose>
@@ -734,21 +741,22 @@ img {
                             </div>
                             <div class="col-sm-7">
                                 <div class="item_box_contestTitle">
-                                    <span id="item_box_3_contestTitle">${list.title}</span>
+                                    <span id="item_box_3_contestTitle"></span>
                                 </div>
+                                <div class='item_box_userName' id='item_box_3_userName'></div>
+                                <div class='item_box_optionImage' id='item_box_3_optionImage'></div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-12 item_box_contestContent" id="item_box_3_contestContent">${list.serviceinfo }</div>
+                            <div class="col-sm-12 item_box_contestContent" id="item_box_3_contestContent"></div>
                         </div>
                     </div>
                     <div class="col-lg-3 item_box_tail">
                         <div class="box_label row justify-content-end">
-                        	<c:if test="${list.paytype eq 'primecheck' }">
                             <div class="col-sm-3">
-                            	<img src="<%=request.getContextPath()%>/resource/img/contest/label_premium.png" alt="">
+                            	<img src="img/label_premium.png" alt="">
                             </div>  
-                            </c:if>
+                            
                             <c:if test="${list.fullprize eq 1}">
                             <div class="col-sm-3">
                                 <img src="<%=request.getContextPath()%>/resource/img/contest/label_100.png" alt="">
@@ -758,42 +766,14 @@ img {
                         <div class="item_box_contestReward item_content_tail_roof" id="item_box_3_contestReward">
                         	1등: ${list.firstprize} 만원
                         <c:if test="${list.secondprize ne 0}">
-                        	/2등: ${list.secondprize} 만원
+                        	&ensp;2등: ${list.secondprize} 만원
                         </c:if>
                         <c:if test="${list.thirdprize ne 0}">
-                        	/3등: ${list.thirdprize} 만원
+                        	&ensp;3등: ${list.thirdprize} 만원
                         </c:if>
                         </div>
-                        <div class="item_box_contestPeriod item_content_tail_roof" id="item_box_3_contestPeriod">
-                        <c:choose>
-                    	<c:when test="${listtype ne 'endcontest'}">
-                    		남은 기간: 
-                    		<c:choose>
-                    			<c:when test="${listtype eq 'proceeding'}">
-                    				${list.day}일
-                    			</c:when>
-                    			<c:otherwise>
-                    				심사중
-                    			</c:otherwise>
-                    		</c:choose>
-                    		(~${list.enddate})
-                    	</c:when>
-                    	<c:otherwise>
-                    		진행기간: ${list.day}일
-                    	</c:otherwise>
-                    	</c:choose>
-                        </div>
-                        <div class="item_box_joinCount item_content_tail_roof" id="item_box_3_joinCount">
-                        <c:choose>
-                        	<c:when test="${listtype eq 'proceeding'}">
-                        		조회수: ${list.views }
-                        	</c:when>
-                        	<c:otherwise>
-                        		참여자: ${list.people }
-                        	</c:otherwise>
-                        </c:choose>
-                        	
-                        </div>
+                        <div class="item_box_contestPeriod item_content_tail_roof" id="item_box_3_contestPeriod"></div>
+                        <div class="item_box_joinCount item_content_tail_roof" id="item_box_3_joinCount"></div>
                     </div>
                 </div>
 			</div>
@@ -821,19 +801,72 @@ img {
 		<div style="margin: 5% 0%;"></div>
 	</div>
 </body>
-<footer>
-	<jsp:include page="../section/footer.jsp"></jsp:include>
-</footer>
 <script>
 	$(document).ready(function() {
-						
+						var categoryName = '브랜딩SET |'
+						var contestTitle = '홍성군 평생교육 브랜드 로고 공모전(홍성군평생학습센터)'
+						var userId = 'userId'
+						var userName = 'userName'
+						var contestContent = "* 공모주제 : 홍성군평생학습센터 브랜드 이미지 * 활용범위 : 홈페이지, 현수막, 배너, 안내판, 현판, 수료증 등 * 개발방향 : 평생교육사업 취지와 친근감을 주고 기억하기 쉬우며 학습 참여 동기를 유발할 수 있는 이미지, 온·오프라인 홍보에 응용이 가능하고 사업 현장에 적용할 수 있는 단순하고 간결한 디자인";
+						var item_box_contestReward = "contestReward"
+						var item_box_contestPeriod = "item_box_contestPeriod"
+						var item_box_joinCount = "item_box_joinCount"
+
+						//document.getElementById("brief_item_content_1").value = bci4;
+						$('#item_box_category').text(categoryName);
+						$('#item_box_contestTitle').text(contestTitle);
+						$('#item_box_userId').text(userId);
+						$('#item_box_userName').text(userName);
+						$('#item_box_contestContent').text(contestContent);
+						$('#item_box_contestReward').text(
+								item_box_contestReward);
+						$('#item_box_contestPeriod').text(
+								item_box_contestPeriod);
+						$('#item_box_joinCount').text(item_box_joinCount);
+
+						$('#item_box_category_image').append(
+								" <img src='img/thumbimg_logo.png'>");
+						$('#item_box_optionImage').append(
+								"<img src='img/22_mimg.png'>");
+
+						$('#item_box_2_category').text(categoryName);
+						$('#item_box_2_contestTitle').text(contestTitle);
+						$('#item_box_2_userId').text(userId);
+						$('#item_box_2_userName').text(userName);
+						$('#item_box_2_contestContent').text(contestContent);
+						$('#item_box_2_contestReward').text(
+								item_box_contestReward);
+						$('#item_box_2_contestPeriod').text(
+								item_box_contestPeriod);
+						$('#item_box_2_joinCount').text(item_box_joinCount);
+
+						$('#item_box_2_category_image').append(
+								" <img src='img/thumbimg_logo.png'>");
+						$('#item_box_2_optionImage').append(
+								"<img src='img/22_mimg.png'>");
+
+						$('#item_box_3_category').text(categoryName);
+						$('#item_box_3_contestTitle').text(contestTitle);
+						$('#item_box_3_userId').text(userId);
+						$('#item_box_3_userName').text(userName);
+						$('#item_box_3_contestContent').text(contestContent);
+						$('#item_box_3_contestReward').text(
+								item_box_contestReward);
+						$('#item_box_3_contestPeriod').text(
+								item_box_contestPeriod);
+						$('#item_box_3_joinCount').text(item_box_joinCount);
+
+						$('#item_box_3_category_image').append(
+								" <img src='img/thumbimg_logo.png'>");
+						$('#item_box_3_optionImage').append(
+								"<img src='img/22_mimg.png'>");
 						var searchOption = document.location.pathname.split("/")[2];
 						if(searchOption == "proceeding"){
 							$("#proceeding").addClass("active");
 						}else if(searchOption == "decision"){
 							$("#decision").addClass("active");
 						}else{
-							$("#endContest").addClass("active");
+							$("#endcontest").addClass("active");
 						}
 						function dropdown_initial() {
 							$("#dropdownKind1").attr('style', "display:none;");

@@ -20,7 +20,7 @@
 	<script src="<%=request.getContextPath()%>/resource/js/section/goTop.js"></script>
 	
 	<!-- custom css -->
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/contest/contest_done.css">
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/contest/contestbrief.css">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/custom.css">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/slick.css">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/slick-theme.css">
@@ -111,7 +111,7 @@
 					<div class="col-lg-8">
 						<div class="row">
 							<div class="col-sm-2 brief_item_img">
-								<img src="img/thumbimg_logo.png" alt="">
+								<img src="<%=request.getContextPath()%>/" alt="">
 							</div>
 							<div class="col-sm-3">
 								<div class=" item_box_category" id="item_box_category"></div>
@@ -189,7 +189,7 @@
 
 				<div class="col-lg-4">
 					<button class="learn-more join_step1_checkbox"
-						id="join_step1_check">콘테스트 참여</button>
+						id="join_step1_check" onclick="location.href='<%=request.getContextPath()%>/contest/${idx}/join'">콘테스트 참여</button>
 				</div>
 				<div class="col-lg-4"></div>
 			</div>
