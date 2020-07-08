@@ -30,6 +30,10 @@
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/slick-theme.css">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/slick_custom.css">
 </head>
+<header>
+	<jsp:include page="../section/header.jsp"></jsp:include>
+	<jsp:include page="../section/goTop.jsp"></jsp:include>
+</header>
 <body>
 	<div class="first_layout">
 		<div class="contest_done_head">
@@ -179,4 +183,7 @@
 		</div>
 	</div>
 </body>
+<footer>
+	<jsp:include page="../section/footer.jsp"></jsp:include>
+</footer>
 </html>

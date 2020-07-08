@@ -1,42 +1,58 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<!-- icon css -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-   	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-   	
-    <!-- custom js -->
-	<script src="<%=request.getContextPath()%>/resource/js/contest/estimate.js"></script>
-    <script src="<%=request.getContextPath() %>/resource/js/section/goTop.js"></script>
-    
-    <!-- custom css -->
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/contest/estimate.css">
-	<link rel="stylesheet" href="<%=request.getContextPath() %>/resource/css/custom.css">
-	<link rel="stylesheet" href="<%=request.getContextPath() %>/resource/css/slick.css">
-	<link rel="stylesheet" href="<%=request.getContextPath() %>/resource/css/slick-theme.css">
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/slick_custom.css">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- icon css -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<!-- custom js -->
+<script
+	src="<%=request.getContextPath()%>/resource/js/contest/estimate.js"></script>
+<script
+	src="<%=request.getContextPath() %>/resource/js/section/goTop.js"></script>
+
+<!-- custom css -->
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resource/css/contest/estimate.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath() %>/resource/css/custom.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath() %>/resource/css/slick.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath() %>/resource/css/slick-theme.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resource/css/slick_custom.css">
 </head>
 <header>
 	<jsp:include page="../section/header.jsp"></jsp:include>
 	<jsp:include page="../section/goTop.jsp"></jsp:include>
 </header>
 <body>
-	<!--header-->
 	<div class="header_st">
-		<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-paper.png">
-		<!--ÀÎ¶óÀÎ ¿ä¼Ò¸¦ ºí·ÏÈ­ ½ÃÅ°°í ¸¶Áø-->
-		<h1 class="head_title">ÄÜÅ×½ºÆ® °ßÀû¼­ È®ÀÎ</h1>
-		<p class="header_p_st">ÄÜÅ×½ºÆ® °³ÃÖÀü °áÁ¦ ±Ý¾×À» °ßÀû¼­¸¦ ÅëÇØ ¹Ì¸® È®ÀÎÇØº¸¼¼¿ä.</p>
+
+		<img src="<%=request.getContextPath() %>/img/ic-paper.png">
+		<!--ì¸ë¼ì¸ ìš”ì†Œë¥¼ ë¸”ë¡í™” ì‹œí‚¤ê³  ë§ˆì§„-->
+		<h1 class="head_title">ì½˜í…ŒìŠ¤íŠ¸ ê²¬ì ì„œ í™•ì¸</h1>
+		<p class="header_p_st">ì½˜í…ŒìŠ¤íŠ¸ ê°œìµœì „ ê²°ì œ ê¸ˆì•¡ì„ ê²¬ì ì„œë¥¼ í†µí•´ ë¯¸ë¦¬ í™•ì¸í•´ë³´ì„¸ìš”.</p>
+
+
 	</div>
 	<!--header end-->
 
@@ -47,117 +63,131 @@
 		<div class="spacing_bottom">
 			<div class="row">
 				<div class="col-sm-4 est_category_title">
-					<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-arrowpoint.png"> Ä«Å×°í¸® ¼±ÅÃ
+					<img src="<%=request.getContextPath() %>/img/ic-arrowpoint.png"> ì¹´í…Œê³ ë¦¬ ì„ íƒ
 				</div>
+
 				<div class="col-sm-8">
+
 					<div>
 						<div class="dropdown">
-							<div class="btn btn-white" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+							<div class="btn btn-white" id="dropdownMenuButton"
+								data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 								<div class="row ">
 									<div class="col-sm-11 category_drop">
-										<strong>·Î°íµðÀÚÀÎ</strong> ·Î°í¸¸ Á¦°ø
+										<strong>ë¡œê³ ë””ìžì¸</strong> ë¡œê³ ë§Œ ì œê³µ
 									</div>
 									<div class="col-sm-1 dropdown-toggle"></div>
 								</div>
+
+
+
 							</div>
+
 							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 								<div class="drop_title">LOGO/BI</div>
-								<a class="dropdown-item" href="#">·Î°í µðÀÚÀÎ (·Î°í¸¸ Á¦°ø)</a> <a
-									class="dropdown-item" href="#">·Î°í + ¸íÇÔ</a> <a
-									class="dropdown-item" href="#">·Î°í + °£ÆÇ</a> <a
-									class="dropdown-item" href="#">ºê·£µù SET</a>
+								<a class="dropdown-item" href="#">ë¡œê³  ë””ìžì¸ (ë¡œê³ ë§Œ ì œê³µ)</a> <a
+									class="dropdown-item" href="#">ë¡œê³  + ëª…í•¨</a> <a
+									class="dropdown-item" href="#">ë¡œê³  + ê°„íŒ</a> <a
+									class="dropdown-item" href="#">ë¸Œëžœë”© SET</a>
 								<div class="drop_title">LOGO/BI</div>
-								<a class="dropdown-item" href="#">·Î°í µðÀÚÀÎ (·Î°í¸¸ Á¦°ø)</a> <a
-									class="dropdown-item" href="#">·Î°í + ¸íÇÔ</a> <a
-									class="dropdown-item" href="#">·Î°í + °£ÆÇ</a> <a
-									class="dropdown-item" href="#">ºê·£µù SET</a>
+								<a class="dropdown-item" href="#">ë¡œê³  ë””ìžì¸ (ë¡œê³ ë§Œ ì œê³µ)</a> <a
+									class="dropdown-item" href="#">ë¡œê³  + ëª…í•¨</a> <a
+									class="dropdown-item" href="#">ë¡œê³  + ê°„íŒ</a> <a
+									class="dropdown-item" href="#">ë¸Œëžœë”© SET</a>
 								<div class="drop_title">LOGO/BI</div>
-								<a class="dropdown-item" href="#">·Î°í µðÀÚÀÎ (·Î°í¸¸ Á¦°ø)</a> <a
-									class="dropdown-item" href="#">·Î°í + ¸íÇÔ</a> <a
-									class="dropdown-item" href="#">·Î°í + °£ÆÇ</a> <a
-									class="dropdown-item" href="#">ºê·£µù SET</a>
+								<a class="dropdown-item" href="#">ë¡œê³  ë””ìžì¸ (ë¡œê³ ë§Œ ì œê³µ)</a> <a
+									class="dropdown-item" href="#">ë¡œê³  + ëª…í•¨</a> <a
+									class="dropdown-item" href="#">ë¡œê³  + ê°„íŒ</a> <a
+									class="dropdown-item" href="#">ë¸Œëžœë”© SET</a>
 								<div class="drop_title">LOGO/BI</div>
-								<a class="dropdown-item" href="#">·Î°í µðÀÚÀÎ (·Î°í¸¸ Á¦°ø)</a> <a
-									class="dropdown-item" href="#">·Î°í + ¸íÇÔ</a> <a
-									class="dropdown-item" href="#">·Î°í + °£ÆÇ</a> <a
-									class="dropdown-item" href="#">ºê·£µù SET</a>
+								<a class="dropdown-item" href="#">ë¡œê³  ë””ìžì¸ (ë¡œê³ ë§Œ ì œê³µ)</a> <a
+									class="dropdown-item" href="#">ë¡œê³  + ëª…í•¨</a> <a
+									class="dropdown-item" href="#">ë¡œê³  + ê°„íŒ</a> <a
+									class="dropdown-item" href="#">ë¸Œëžœë”© SET</a>
+
 							</div>
 						</div>
 					</div>
+
 				</div>
 			</div>
 		</div>
+
+
+
 		<!--2 category-->
 		<div class="contest_category">
 			<div class="row">
 				<div class="col-sm-4 est_category_title">
-					<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-arrowpoint.png"> ÄÜÅ×½ºÆ® »ó±Ý ¼±ÅÃ
+					<img src="<%=request.getContextPath() %>/img/ic-arrowpoint.png"> ì½˜í…ŒìŠ¤íŠ¸ ìƒê¸ˆ ì„ íƒ
 				</div>
 
 				<div class="col-sm-8">
-					<span class="span_st_1">ÀÇ·ÚÀÚ´Ô ¿¹»ê¿¡ ¸ÂÃç, ¾Ë¸ÂÀº »ó±ÝÀ» Ã¥Á¤ÇØÁÖ¼¼¿ä.</span><br>
-					<span class="span_st_2">(»ó¼¼ Ç×¸ñ¿¡ ¸¶¿ì½º¸¦ ´ë¸é, ÀÚ¼¼ÇÑ ¼³¸íÀÌ ³ªÅ¸³³´Ï´Ù.)</span>
+					<span class="span_st_1">ì˜ë¢°ìžë‹˜ ì˜ˆì‚°ì— ë§žì¶°, ì•Œë§žì€ ìƒê¸ˆì„ ì±…ì •í•´ì£¼ì„¸ìš”.</span><br>
+					<span class="span_st_2">(ìƒì„¸ í•­ëª©ì— ë§ˆìš°ìŠ¤ë¥¼ ëŒ€ë©´, ìžì„¸í•œ ì„¤ëª…ì´ ë‚˜íƒ€ë‚©ë‹ˆë‹¤.)</span>
 				</div>
 			</div>
 		</div>
 
 
-		<div class="row">
+		<div class="row reward_box">
 			<!--bronze-->
 
 			<div class="col-lg-3 grade_box_padding">
-				<label>
-					<div class="bronzebox" id="bronzebox">
+				<label class="reward_label">
+					<div class="bronzebox out_put_box" id="bronzebox">
 						<div class="row">
 							<div class="col-sm-3">
-								<input type="radio" name="grade" id="bronzecheck" onclick="">
-								<label for="bronzecheck"></label>
+								<input type="radio" name="grade" id="bronzecheck" onclick=""><label
+									for="bronzecheck"></label>
+
 							</div>
 							<div class="col-sm-9 gradeChoice_bronze">
-								<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-bronze.png"> Àú°¡Çü
+								<img src="<%=request.getContextPath() %>/img/ic-bronze.png"> ì €ê°€í˜•
 							</div>
 
 						</div>
 
-						<div class="box_price_bronze">30¸¸¿ø~</div>
+						<div class="box_price_bronze">30ë§Œì›~</div>
 						<div class="gradebox_list">
 							<p class="p_pad_bot">
-								<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-bronze-check.png"> 
-								<span>½ÅÁøµðÀÚÀÌ³Ê</span> 
-								<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-question.png">
+								<img src="<%=request.getContextPath() %>/img/ic-bronze-check.png"> <span>ì‹ ì§„ë””ìžì´ë„ˆ</span> <img
+									src="<%=request.getContextPath() %>/img/ic-question.png">
 							</p>
 							<p class="p_pad_bot">
-								<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-ban.png"> 
-								<span>1Â÷ Åë°úÀÛ ¼±Á¤ ºÒ°¡</span> 
-								<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-question.png">
+								<img src="<%=request.getContextPath() %>/img/ic-ban.png"> <span>1ì°¨ í†µê³¼ìž‘ ì„ ì • ë¶ˆê°€</span> <img
+									src="<%=request.getContextPath() %>/img/ic-question.png">
 							</p>
 							<p class="p_pad_bot">
-								<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-ban.png"> 
-								<span>ÀÏºÎ µðÀÚÀÌ³Ê Âü¿©Á¦ÇÑ</span> 
-								<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-question.png">
+								<img src="<%=request.getContextPath() %>/img/ic-ban.png"> <span>ì¼ë¶€ ë””ìžì´ë„ˆ ì°¸ì—¬ì œí•œ</span> <img
+									src="<%=request.getContextPath() %>/img/ic-question.png">
 							</p>
 							<p class="p_pad_bot">
-								<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-ban.png"> 
-								<span>»ó±Ý È¯ºÒ ºÒ°¡</span> 
-								<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-question.png">
+								<img src="<%=request.getContextPath() %>/img/ic-ban.png"> <span>ìƒê¸ˆ í™˜ë¶ˆ ë¶ˆê°€</span> <img
+									src="<%=request.getContextPath() %>/img/ic-question.png">
 							</p>
 							<p class="p_pad_bot">
+
 								<span> </span><br>
+
 							</p>
 							<p class="p_pad_bot">
 								<br>
 							</p>
 						</div>
 						<div>
-							<p class="font_bold">Á÷Á¢ÀÔ·Â</p>
-							<div class="input-group" class="padding_top_5">
-								<input type="text" class="form-control" id="bronze"
-									aria-label="Dollar amount (with dot and two decimal places)">
-								<div class="input-group-append">
-									<span class="input-group-text">¿ø</span>
-								</div>
-							</div>
+							<p class="font_bold">ì§ì ‘ìž…ë ¥</p>
+                            <div class="input-group" class="padding_top_5">
+                                <input type="text" class="form-control box_reward" numberOnly id="bronze_reward"
+                                    onblur="this.value=minmax(this.value,30,59)" name="box_reward"
+                                    aria-label="Dollar amount (with dot and two decimal places)">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">ë§Œì›</span>
+                                </div>
+
+                            </div>
 						</div>
+
 					</div>
 				</label>
 			</div>
@@ -165,38 +195,36 @@
 			<!--bronze end-->
 			<!--silver-->
 			<div class="col-lg-3 grade_box_padding">
-				<label>
-					<div class="silverbox" id="silverbox">
+				<label class="reward_label">
+					<div class="silverbox out_put_box" id="silverbox">
 						<div class="row">
 							<div class="col-sm-3">
-								<input type="radio" name="grade" id="silvercheck">
-								<label for="silvercheck"></label>
+								<input type="radio" name="grade" id="silvercheck"><label
+									for="silvercheck"></label>
 							</div>
 							<div class="col-sm-9 gradeChoice_silver">
-								<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-silver.png"> ÀÏ¹ÝÇü
+								<img src="<%=request.getContextPath() %>/img/ic-silver.png"> ì¼ë°˜í˜•
 							</div>
+
 						</div>
-						<div class="box_price_silver">60¸¸¿ø~</div>
+
+						<div class="box_price_silver">60ë§Œì›~</div>
 						<div class="gradebox_list">
 							<p class="p_pad_bot">
-								<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-silver-check.png"> 
-								<span>°æ·ÂµðÀÚÀÌ³Ê</span> 
-								<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-question.png">
+								<img src="<%=request.getContextPath() %>/img/ic-silver-check.png"> <span>ê²½ë ¥ë””ìžì´ë„ˆ</span> <img
+									src="<%=request.getContextPath() %>/img/ic-question.png">
 							</p>
 							<p class="p_pad_bot">
-								<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-silver-check.png"> 
-								<span>1Â÷ Åë°úÀÛ ¼±Á¤ °¡´É</span> 
-								<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-question.png">
+								<img src="<%=request.getContextPath() %>/img/ic-silver-check.png"> <span>1ì°¨ í†µê³¼ìž‘ ì„ ì •
+									ê°€ëŠ¥</span> <img src="<%=request.getContextPath() %>/img/ic-question.png">
 							</p>
 							<p class="p_pad_bot">
-								<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-silver-check.png"> 
-								<span>¸ðµç µðÀÚÀÌ³Ê Âü¿© °¡´É</span> 
-								<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-question.png">
+								<img src="<%=request.getContextPath() %>/img/ic-silver-check.png"> <span>ëª¨ë“  ë””ìžì´ë„ˆ
+									ì°¸ì—¬ ê°€ëŠ¥</span> <img src="<%=request.getContextPath() %>/img/ic-question.png">
 							</p>
 							<p class="p_pad_bot">
-								<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-ban.png"> 
-								<span>»ó±Ý È¯ºÒ ºÒ°¡</span> 
-								<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-question.png">
+								<img src="<%=request.getContextPath() %>/img/ic-ban.png"> <span>ìƒê¸ˆ í™˜ë¶ˆ ë¶ˆê°€</span> <img
+									src="<%=request.getContextPath() %>/img/ic-question.png">
 							</p>
 							<p class="p_pad_bot">
 								<br>
@@ -206,70 +234,73 @@
 							</p>
 						</div>
 						<div>
-							<p class="font_bold">Á÷Á¢ÀÔ·Â</p>
-							<div class="input-group" class="padding_top_5">
-								<input type="text" class="form-control"
-									aria-label="Dollar amount (with dot and two decimal places)">
-								<div class="input-group-append">
-									<span class="input-group-text">¿ø</span>
-								</div>
-							</div>
+							<p class="font_bold">ì§ì ‘ìž…ë ¥</p>
+                           <div class="input-group" class="padding_top_5">
+                                <input type="text" class="form-control box_reward" numberOnly id="silver_reward"
+                                    onblur="this.value=minmax(this.value,60,99)" name="box_reward"
+                                    aria-label="Dollar amount (with dot and two decimal places)">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">ë§Œì›</span>
+                                </div>
+
+                            </div>
+
+
 						</div>
+
 					</div>
 				</label>
 			</div>
 			<!--silver end-->
 			<!--gold-->
 			<div class="col-lg-3 grade_box_padding">
-				<label>
-					<div class="goldbox" id="goldbox">
+				<label class="reward_label">
+					<div class="goldbox out_put_box" id="goldbox">
 						<div class="row">
 							<div class="col-sm-3">
-								<input type="radio" name="grade" id="goldcheck">
-								<label for="goldcheck"></label>
+								<input type="radio" name="grade" id="goldcheck"><label
+									for="goldcheck"></label>
 							</div>
 							<div class="col-sm-9 gradeChoice_gold">
-								<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-gold.png"> °í±ÞÇü
+								<img src="<%=request.getContextPath() %>/img/ic-gold.png"> ê³ ê¸‰í˜•
 							</div>
+
 						</div>
 
-						<div class="box_price_gold">100¸¸¿ø~</div>
+						<div class="box_price_gold">100ë§Œì›~</div>
 						<div class="gradebox_list">
 							<p class="p_pad_bot">
-								<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-gold-check.png"> <span>»óÀ§µðÀÚÀÌ³Ê</span> <img
-									src="<%=request.getContextPath()%>/resource/img/estimate/ic-question.png">
+								<img src="<%=request.getContextPath() %>/img/ic-gold-check.png"> <span>ìƒìœ„ë””ìžì´ë„ˆ</span> <img
+									src="<%=request.getContextPath() %>/img/ic-question.png">
 							</p>
 							<p class="p_pad_bot">
-								<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-gold-check.png"> 
-								<span>1Â÷ Åë°úÀÛ ¼±Á¤ °¡´É</span> 
-								<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-question.png">
+								<img src="<%=request.getContextPath() %>/img/ic-gold-check.png"> <span>1ì°¨ í†µê³¼ìž‘ ì„ ì •
+									ê°€ëŠ¥</span> <img src="<%=request.getContextPath() %>/img/ic-question.png">
 							</p>
 							<p class="p_pad_bot">
-								<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-gold-check.png"> 
-								<span>¸ðµç µðÀÚÀÌ³Ê Âü¿© °¡´É</span> 
-								<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-question.png">
+								<img src="<%=request.getContextPath() %>/img/ic-gold-check.png"> <span>ëª¨ë“  ë””ìžì´ë„ˆ ì°¸ì—¬
+									ê°€ëŠ¥</span> <img src="<%=request.getContextPath() %>/img/ic-question.png">
 							</p>
 							<p class="p_pad_bot">
-								<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-gold-check.png"> 
-								<span>»ó±Ý 50% È¯ºÒ °¡´É</span> 
-								<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-question.png">
+								<img src="<%=request.getContextPath() %>/img/ic-gold-check.png"> <span>ìƒê¸ˆ 50% í™˜ë¶ˆ
+									ê°€ëŠ¥</span> <img src="<%=request.getContextPath() %>/img/ic-question.png">
 							</p>
 							<p class="p_pad_bot">
-								<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-gold-check.png"> 
-								<span>¸®½ºÆ® »ó´Ü ³ëÃâ</span> 
-								<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-question.png">
+								<img src="<%=request.getContextPath() %>/img/ic-gold-check.png"> <span>ë¦¬ìŠ¤íŠ¸ ìƒë‹¨ ë…¸ì¶œ</span> <img
+									src="<%=request.getContextPath() %>/img/ic-question.png">
 							</p>
 							<p class="p_pad_bot">
 								<br>
 							</p>
 						</div>
 						<div>
-							<p class="font_bold">Á÷Á¢ÀÔ·Â</p>
-							<div class="input-group" class="padding_top_5">
-								<input type="text" class="form-control"
-									aria-label="Dollar amount (with dot and two decimal places)">
+							<p class="font_bold">ì§ì ‘ìž…ë ¥</p>
+                            <div class="input-group" class="padding_top_5">
+                                <input type="text" class="form-control box_reward" numberOnly id="gold_reward"
+                                    onblur="this.value=minmax(this.value,100,149)" name="box_reward"
+                                    aria-label="Dollar amount (with dot and two decimal places)">
 								<div class="input-group-append">
-									<span class="input-group-text">¿ø</span>
+									<span class="input-group-text">ë§Œì›</span>
 								</div>
 
 							</div>
@@ -284,77 +315,80 @@
 			<!--prime-->
 
 			<div class="col-lg-3 grade_box_padding">
-				<label>
-					<div class="primebox" id="primebox">
+				<label class="reward_label">
+					<div class="primebox out_put_box" id="primebox">
 						<div class="row">
 							<div class="col-sm-3">
-								<input type="radio" name="grade" id="primecheck">
-								<label for="primecheck"></label>
+								<input type="radio" name="grade" id="primecheck"><label
+									for="primecheck"></label>
 							</div>
 							<div class="col-sm-9 gradeChoice_prime">
-								<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-prime.png"> ÇÁ¸®¹Ì¾ö
+								<img src="<%=request.getContextPath() %>/img/ic-prime.png"> í”„ë¦¬ë¯¸ì—„
 							</div>
 
 						</div>
 
-						<div class="box_price_prime">150¸¸¿ø~</div>
+						<div class="box_price_prime">150ë§Œì›~</div>
 						<div class="gradebox_list">
 							<p class="p_pad_bot">
-								<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-prime-check.png"> 
-								<span>Å¾·©Å·µðÀÚÀÌ³Ê</span> 
-								<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-question.png">
+								<img src="<%=request.getContextPath() %>/img/ic-prime-check.png"> <span>íƒ‘ëž­í‚¹ë””ìžì´ë„ˆ</span> <img
+									src="<%=request.getContextPath() %>/img/ic-question.png">
 							</p>
 							<p class="p_pad_bot">
-								<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-prime-check.png"> 
-								<span>1Â÷ Åë°úÀÛ ¼±Á¤ °¡´É</span> 
-								<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-question.png">
+								<img src="<%=request.getContextPath() %>/img/ic-prime-check.png"> <span>1ì°¨ í†µê³¼ìž‘ ì„ ì •
+									ê°€ëŠ¥</span> <img src="<%=request.getContextPath() %>/img/ic-question.png">
 							</p>
 							<p class="p_pad_bot">
-								<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-prime-check.png"> 
-								<span>¸ðµç µðÀÚÀÌ³Ê Âü¿© °¡´É</span> 
-								<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-question.png">
+								<img src="<%=request.getContextPath() %>/img/ic-prime-check.png"> <span>ëª¨ë“  ë””ìžì´ë„ˆ ì°¸ì—¬
+									ê°€ëŠ¥</span> <img src="<%=request.getContextPath() %>/img/ic-question.png">
 							</p>
 							<p class="p_pad_bot">
-								<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-prime-check.png"> 
-								<span> »ó±Ý 50% È¯ºÒ °¡´É</span> 
-								<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-question.png">
+								<img src="<%=request.getContextPath() %>/img/ic-prime-check.png"> <span> ìƒê¸ˆ 50% í™˜ë¶ˆ
+									ê°€ëŠ¥</span> <img src="<%=request.getContextPath() %>/img/ic-question.png">
 							</p>
 							<p class="p_pad_bot">
-								<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-prime-check.png"> 
-								<span>ÃÖ»ó´Ü ³ëÃâ ¿É¼Ç ¹«·á</span> 
-								<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-question.png">
+								<img src="<%=request.getContextPath() %>/img/ic-prime-check.png"> <span>ìµœìƒë‹¨ ë…¸ì¶œ ì˜µì…˜
+									ë¬´ë£Œ</span> <img src="<%=request.getContextPath() %>/img/ic-question.png">
 							</p>
 							<p class="p_pad_bot">
-								<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-prime-check.png"> 
-								<span>SNS ¹«·á ÄÁÅÙÃ÷ È«º¸</span> 
-								<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-question.png">
+								<img src="<%=request.getContextPath() %>/img/ic-prime-check.png"> <span>SNS ë¬´ë£Œ ì»¨í…ì¸ 
+									í™ë³´</span> <img src="<%=request.getContextPath() %>/img/ic-question.png">
 							</p>
 						</div>
 						<div>
-							<p class="font_bold">Á÷Á¢ÀÔ·Â</p>
-							<div class="input-group" class="padding_top_5">
-								<input type="text" class="form-control"
-									aria-label="Dollar amount (with dot and two decimal places)">
-								<div class="input-group-append">
-									<span class="input-group-text">¿ø</span>
-								</div>
-							</div>
+							<p class="font_bold">ì§ì ‘ìž…ë ¥</p>
+                            <div class="input-group" class="padding_top_5">
+                                <input type="text" class="form-control box_reward" numberOnly id="prime_reward"
+                                    onblur="this.value=minmax(this.value,150,999999)" name="box_reward"
+                                    aria-label="Dollar amount (with dot and two decimal places)">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">ë§Œì›</span>
+                                </div>
+
+                            </div>
+
+
+
 						</div>
+
 					</div>
 				</label>
 			</div>
+
 			<!--prime end-->
 			<div class="padding_20">
-				<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-add.png" alt="">
+				<img src="<%=request.getContextPath() %>/img/ic-add.png" alt="">
+
 			</div>
+
+
 			<!--contestPrice-->
 		</div>
 		<div class="contestPrice">
 			<div>
-				µðÀÚÀÎ ÄÜÅ×½ºÆ® µî·Ïºñ <span class="span_st_20"> <span> 10¸¸¿ø</span></span> 
-				<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-arrowright.png" alt=""> 
-				<span class="span_st_6">
-					7¸¸¿ø &nbsp;&nbsp; <span class="span_st_4"> ½Å±ÔÈ¸¿øÇÒÀÎ </span>
+				ë””ìžì¸ ì½˜í…ŒìŠ¤íŠ¸ ë“±ë¡ë¹„ <span class="span_st_20"> <span> 10ë§Œì›</span></span> <img
+					src="<%=request.getContextPath() %>/img/ic-arrowright.png" alt=""> <span class="span_st_6">
+					7ë§Œì› &nbsp;&nbsp; <span class="span_st_4"> ì‹ ê·œíšŒì›í• ì¸</span>
 				</span>
 			</div>
 		</div>
@@ -363,216 +397,212 @@
 		<div class="contestRank">
 			<div class="row">
 				<div class="col-sm-4 est_category_title">
-					<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-arrowpoint.png"> 2À§/3À§ Ãß°¡¼±Á¤
-					<div class="est_category_contents">2, 3À§ Ãß°¡ ¼ö·ÉÀ» ¿øÇÏ½Ç °æ¿ì¿¡¸¸ »ó±ÝÀ»
-						±âÀÔÇØÁÖ¼¼¿ä. 2,3À§¸¦ Ãß°¡ÇÏ¸é ´õ ¸¹Àº Âü¿©¸¦ À¯µµÇÒ ¼ö ÀÖ½À´Ï´Ù.</div>
+					<img src="<%=request.getContextPath() %>/img/ic-arrowpoint.png"> 2ìœ„/3ìœ„ ì¶”ê°€ì„ ì •
+					<div class="est_category_contents">2, 3ìœ„ ì¶”ê°€ ìˆ˜ë ¹ì„ ì›í•˜ì‹¤ ê²½ìš°ì—ë§Œ ìƒê¸ˆì„
+						ê¸°ìž…í•´ì£¼ì„¸ìš”. 2,3ìœ„ë¥¼ ì¶”ê°€í•˜ë©´ ë” ë§Žì€ ì°¸ì—¬ë¥¼ ìœ ë„í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.</div>
 				</div>
 				<div class="col-sm-8 align_left">
 					<div>
-						<input type="checkbox" id="rank_check"> <label
-							for="rank_check"></label> 2À§/3À§ ¿ì½Â»ó±Ý¼³Á¤
+						<input type="checkbox" checked="false" id="rank_check"> <label
+							for="rank_check"></label> 2ìœ„/3ìœ„ ìš°ìŠ¹ìƒê¸ˆì„¤ì •
 					</div>
 					<div class="contest_price_input" id="rank_check_input_2">
+
 						<div class="input-group" class="padding_top_5">
-							2À§»ó±Ý <input type="text" class="form-control"
+							2ìœ„ìƒê¸ˆ <input type="text" class="form-control box_reward_add"  onblur="this.value=minmax(this.value,0,reward1-1)"
+								numberOnly id="reward_add_2" value="0"
 								aria-label="Dollar amount (with dot and two decimal places)">
 							<div class="input-group-append">
-								<span class="input-group-text">¿ø</span>
+								<span class="input-group-text">ë§Œì›</span>
 							</div>
+
 						</div>
+
 					</div>
 					<div class="contest_price_input" id="rank_check_input_3">
 						<div class="input-group" class="padding_top_5">
-							3À§»ó±Ý <input type="text" class="form-control"
+							3ìœ„ìƒê¸ˆ <input type="text" class="form-control box_reward_add" onblur="this.value=minmax(this.value,0,reward2-1)"
+								numberOnly id="reward_add_3" value="0"
 								aria-label="Dollar amount (with dot and two decimal places)">
 							<div class="input-group-append">
-								<span class="input-group-text">¿ø</span>
+								<span class="input-group-text">ë§Œì›</span>
 							</div>
+
 						</div>
+
 					</div>
 				</div>
 			</div>
 		</div>
 		<!--rank-->
 
-		<!--±â°£-->
+
+
+
+
+
+
+
+
+		<!--ê¸°ê°„-->
 		<div class="contestPeriod">
 			<div class="row">
 				<div class="col-sm-4 est_category_title">
-					<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-arrowpoint.png"> ±â°£¼³Á¤
+					<img src="<%=request.getContextPath() %>/img/ic-arrowpoint.png"> ê¸°ê°„ì„¤ì •
 				</div>
 
 				<div class="col-sm-8 align_left">
 					<div>
-						<input type="radio" name="periodeRadio" id="contestPeriod_week" checked> &nbsp;&nbsp;&nbsp;1ÁÖÀÏ
+						<input type="radio" class="periodeRadio" name="periodeRadio"
+							id="contestPeriod_week" checked> &nbsp;&nbsp;&nbsp;1ì£¼ì¼
 					</div>
 					<div>
-						<input type="radio" name="periodeRadio" id="contestPeriod_week_add"> &nbsp;&nbsp; 1ÁÖ ¿¬Àå(ÃÑ 2ÁÖ)
+						<input type="radio" class="periodeRadio" name="periodeRadio"
+							id="contestPeriod_week_add" disabled> &nbsp;&nbsp; 1ì£¼
+						ì—°ìž¥(ì´ 2ì£¼)
 					</div>
 					<div>
-						<input type="radio" name="periodeRadio" id="contestPeriod_3week_add"> &nbsp;&nbsp;&nbsp;3ÁÖ ¿¬Àå(ÃÑ 4ÁÖ)
+						<input type="radio" class="periodeRadio" name="periodeRadio"
+							id="contestPeriod_3week_add" disabled>
+						&nbsp;&nbsp;&nbsp;3ì£¼ ì—°ìž¥(ì´ 4ì£¼)
 					</div>
-					<div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ±âº» ÄÜÅ×½ºÆ® ±â°£Àº 1ÁÖÀÏÀÔ´Ï´Ù.
+					<div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ê¸°ë³¸ ì½˜í…ŒìŠ¤íŠ¸ ê¸°ê°„ì€ 1ì£¼ì¼ìž…ë‹ˆë‹¤.
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<!--Ãß°¡¿É¼Ç-->
+		<!--ì¶”ê°€ì˜µì…˜-->
 		<div class="contestExtra">
 			<div class="row">
 				<div class="col-sm-4 est_category_title">
-					<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-arrowpoint.png"> Ãß°¡¿É¼Ç¼±ÅÃ
+					<img src="<%=request.getContextPath() %>/img/ic-arrowpoint.png"> ì¶”ê°€ì˜µì…˜ì„ íƒ
 				</div>
 				<div class="col-sm-8">
-					<!--»ó±Ý¿É¼Ç-->
+					<!--ìƒê¸ˆì˜µì…˜-->
 					<div class="ChampPriceOption">
-						<div class="ChampPriceOption_title">»ó±Ý¿É¼Ç</div>
+						<div class="ChampPriceOption_title">ìƒê¸ˆì˜µì…˜</div>
 						<div class="ChampPriceOption_check">
-							<input type="checkbox" id="ChampPriceOption_check"><label
-								for="ChampPriceOption_check"></label> <strong>»ó±Ý 100%
-								Áö±Þ</strong> (»ó±Ý ¼ö¼ö·á ÀÇ·ÚÀÚ ºÎ´ã)
+							<input type="checkbox" class="fees_price"
+								id="ChampPriceOption_check"><label
+								for="ChampPriceOption_check"></label> <strong>ìƒê¸ˆ 100%
+								ì§€ê¸‰</strong> (ìƒê¸ˆ ìˆ˜ìˆ˜ë£Œ ì˜ë¢°ìž ë¶€ë‹´)
 						</div>
 						<div class="ChampPriceOption_content">
-							¶ó¿ìµå¼Ò½ÌÀº Ç¥½ÃµÈ »ó±ÝÀÇ 15%¸¦(¿ì½ÂÀÚ ¼¼±Ý Æ÷ÇÔ) ¼ö¼ö·á·Î °øÁ¦ÇÑ ÈÄ 85%°¡ µðÀÚÀÌ³Ê¿¡°Ô Áö±ÞµË´Ï´Ù.<br>
-							À§ ¿É¼ÇÀ» Ã¼Å©ÇÏ½Ã¸é ¼ö¼ö·á¸¦ °í°´´ÔÀÌ ´ë½Å ºÎ´ãÇÏ¿© »ó±ÝÀÇ 100%°¡ µðÀÚÀÌ³Ê¿¡°Ô Áö±ÞµË´Ï´Ù.<br>
-							µðÀÚÀÌ³Ê Âü¿©µµ¸¦ ³ôÀÏ ¼ö ÀÖ´Â ¿É¼ÇÀÔ´Ï´Ù
+							ë¼ìš°ë“œì†Œì‹±ì€ í‘œì‹œëœ ìƒê¸ˆì˜ 20%ë¥¼(ìš°ìŠ¹ìž ì„¸ê¸ˆ í¬í•¨) ìˆ˜ìˆ˜ë£Œë¡œ ê³µì œí•œ í›„ 80%ê°€ ë””ìžì´ë„ˆì—ê²Œ ì§€ê¸‰ë©ë‹ˆë‹¤.<br>
+							ìœ„ ì˜µì…˜ì„ ì²´í¬í•˜ì‹œë©´ ìˆ˜ìˆ˜ë£Œë¥¼ ê³ ê°ë‹˜ì´ ëŒ€ì‹  ë¶€ë‹´í•˜ì—¬ ìƒê¸ˆì˜ 100%ê°€ ë””ìžì´ë„ˆì—ê²Œ ì§€ê¸‰ë©ë‹ˆë‹¤.<br>
+							ë””ìžì´ë„ˆ ì°¸ì—¬ë„ë¥¼ ë†’ì¼ ìˆ˜ ìžˆëŠ” ì˜µì…˜ìž…ë‹ˆë‹¤
 						</div>
-					</div>
-					<!--»ó±Ý¿É¼Ç-->
 
-					<!--È«º¸ ¹× ³ëÃâ ¿É¼Ç-->
+
+					</div>
+					<!--ìƒê¸ˆì˜µì…˜-->
+
+					<!--í™ë³´ ë° ë…¸ì¶œ ì˜µì…˜-->
 					<div class="optionList">
-						<div class="optionList_title">È«º¸ ¹× ³ëÃâ ¿É¼Ç</div>
+						<div class="optionList_title">í™ë³´ ë° ë…¸ì¶œ ì˜µì…˜</div>
+
+
 						<div class="est_option option_upperPose">
 							<div class="est_option_title">
-								<input type="checkbox" name="optionBox" id="upperPose">
-								<label for="upperPose"></label> &nbsp;
-								<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-23.png"><strong>»ó´Ü³ëÃâ
-									¿É¼Ç</strong> <span class="est_option_price">(»ó±Ý ¼ö¼ö·á ÀÇ·ÚÀÚ ºÎ´ã)</span>
+								<input type="checkbox" class="upperPose_price optionList_price"
+									name="optionBox" id="upperPose"><label for="upperPose"></label>
+								&nbsp;<img src="<%=request.getContextPath() %>/img/ic-23.png"><strong>ìƒë‹¨ë…¸ì¶œ ì˜µì…˜</strong> <span
+									class="est_option_price"> (+ 100,000 ) </span>
 							</div>
 							<div>
-								<div class="est_option_text">°í°´´ÔÀÇ ÄÜÅ×½ºÆ®°¡ ¸®½ºÆ® ÃÖ»óÀ§¿¡ À§Ä¡ÇÏ°Ô µÇ¾î
-									´Ù¸¥ ÄÜÅ×½ºÆ®º¸´Ù ´õ¿í ¸¹ÀÌ ³ëÃâµË´Ï´Ù.</div>
+								<div class="est_option_text">ê³ ê°ë‹˜ì˜ ì½˜í…ŒìŠ¤íŠ¸ê°€ ë¦¬ìŠ¤íŠ¸ ìµœìƒìœ„ì— ìœ„ì¹˜í•˜ê²Œ ë˜ì–´
+									ë‹¤ë¥¸ ì½˜í…ŒìŠ¤íŠ¸ë³´ë‹¤ ë”ìš± ë§Žì´ ë…¸ì¶œë©ë‹ˆë‹¤.</div>
 							</div>
+
 						</div>
+
 						<div class="est_option">
 							<div class="est_option_title">
-								<input type="checkbox" name="optionBox" id="highlight">
-								<label for="highlight"></label> &nbsp;
-									<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-103.png">
-								<strong>ÇÏÀÌ¶óÀÌÆ®</strong> <span class="est_option_price">(+ 50,000 )</span>
+								<input type="checkbox" class="highlight_price optionList_price"
+									name="optionBox" id="highlight"><label for="highlight"></label>
+								&nbsp;<img src="<%=request.getContextPath() %>/img/ic-103.png"> <strong>í•˜ì´ë¼ì´íŠ¸</strong> <span
+									class="est_option_price">(+ 50,000 )</span>
 							</div>
 							<div>
-								<div class="est_option_text">ÄÜÅ×½ºÆ® ¸ñ·Ï¿¡¼­ ¹è°æ»ö°ú Å×µÎ¸®°¡ ÇÏÀÌ¶óÀÌÆ® µÇ¾î
-									Ç¥½ÃµË´Ï´Ù. º¸´Ù ¸¹Àº µðÀÚÀÌ³ÊÀÇ ´«±æÀ» »ç·ÎÀâÀ» ¼ö ÀÖ½À´Ï´Ù.</div>
+								<div class="est_option_text">ì½˜í…ŒìŠ¤íŠ¸ ëª©ë¡ì—ì„œ ë°°ê²½ìƒ‰ê³¼ í…Œë‘ë¦¬ê°€ í•˜ì´ë¼ì´íŠ¸ ë˜ì–´
+									í‘œì‹œë©ë‹ˆë‹¤. ë³´ë‹¤ ë§Žì€ ë””ìžì´ë„ˆì˜ ëˆˆê¸¸ì„ ì‚¬ë¡œìž¡ì„ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.</div>
 							</div>
-						</div>
-						<div class="est_option">
-							<div class="est_option_title">
-								<input type="checkbox" name="optionBox" id="secret"><label
-									for="secret"></label> &nbsp;<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-3002.png"> <strong>½ÃÅ©¸´
-									ÄÜÅ×½ºÆ®</strong> <span class="est_option_price">(+ 100,000 )</span>
-							</div>
-							<div>
-								<div class="est_option_text">ºñ¹ÐÀ¯Áö°è¾à¼­(NDA)¿¡ µ¿ÀÇÇÑ µðÀÚÀÌ³Ê È¸¿ø¸¸
-									ÄÜÅ×½ºÆ®¸¦ º¼ ¼ö ÀÖ½À´Ï´Ù. ±¸±Û, ³×ÀÌ¹ö µîÀÇ Æ÷ÅÐ°ú Æ÷Æ®Æú¸®¿À¿¡¼­µµ ³ëÃâµÇÁö ¾Ê½À´Ï´Ù. ´Ù¸¸ º¸¾ÈÀÌ ¿ì¼±½Ã
-									µÇ¹Ç·Î ¹è³Ê, ÆäÀÌ½ººÏ, ´º½º·¹ÅÍ µîÀÇ È«º¸´Â ºÒ°¡´ÉÇÕ´Ï´Ù.</div>
-							</div>
+
 						</div>
 						<div class="est_option secret_disabled">
 							<div class="est_option_title ">
-								<input type="checkbox" name="optionBox" id="banner"><label
-									for="banner"></label> &nbsp;<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-215.png"> <strong>È«º¸
-									¹è³Ê °ÔÀç*1ÁÖ </strong><span class="est_option_price">(+ 100,000 )</span>
+								<input type="checkbox" class="banner_price optionList_price"
+									name="optionBox" id="banner"><label for="banner"></label>
+								&nbsp;<img src="<%=request.getContextPath() %>/img/ic-215.png"> <strong>í™ë³´ ë°°ë„ˆ
+									ê²Œìž¬*1ì£¼ </strong><span class="est_option_price">(+ 100,000 )</span>
 							</div>
 							<div>
-								<div class="est_option_text">ÄÜÅ×½ºÆ® ¸®½ºÆ® »ó´Ü¿¡ °ø¸ðÀü È«º¸ ¹è³Ê¸¦ °ÔÀçÇÏ¿©
-									µðÀÚÀÌ³Ê Âü¿©µµ¸¦ Å©°Ô ³ôÀÔ´Ï´Ù.</div>
+								<div class="est_option_text">ì½˜í…ŒìŠ¤íŠ¸ ë¦¬ìŠ¤íŠ¸ ìƒë‹¨ì— ê³µëª¨ì „ í™ë³´ ë°°ë„ˆë¥¼ ê²Œìž¬í•˜ì—¬
+									ë””ìžì´ë„ˆ ì°¸ì—¬ë„ë¥¼ í¬ê²Œ ë†’ìž…ë‹ˆë‹¤.</div>
 							</div>
-						</div>
-						<div class="est_option secret_disabled">
-							<div class="est_option_title ">
-								<input type="checkbox" name="optionBox" id="outter"><label
-									for="outter"></label> &nbsp;<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-24.png"> <strong>ÆäÀÌ½ººÏ
-									/ µðÀÚÀÎ Ä¿¹Â´ÏÆ¼ È«º¸</strong> <span class="est_option_price">( ¹«·á )</span>
-							</div>
-							<div>
-								<div class="est_option_text">¶ó¿ìµå¼Ò½Ì¿¡¼­ ¿ÜºÎ µðÀÚÀÎ Ä¿¹Â´ÏÆ¼¿Í ÆäÀÌ½ººÏ¿¡
-									°í°´´ÔÀÇ ÄÜÅ×½ºÆ®¸¦ È«º¸ÇØµå¸³´Ï´Ù.</div>
-							</div>
-						</div>
-						<div class="est_option secret_disabled">
-							<div class="est_option_title">
-								<input type="checkbox" name="optionBox" id="sendingEmail">
-								<label for="sendingEmail"></label> &nbsp;<img
-									src="<%=request.getContextPath()%>/resource/img/estimate/ic-26.png"> <strong>ÀÌ¸ÞÀÏ ´º½º·¹ÅÍ È«º¸</strong><span
-									class="est_option_price">( ¹«·á )</span>
-							</div>
-							<div>
-								<div class="est_option_text">¸ÅÁÖ ¼ö¿äÀÏ¸¶´Ù µðÀÚÀÌ³Ê È¸¿ø¿¡°Ô ¹ß¼ÛµÇ´Â ´º½º·¹ÅÍ¿¡
-									°í°´´ÔÀÇ ÄÜÅ×½ºÆ®¸¦ È«º¸ÇØµå¸³´Ï´Ù.</div>
-							</div>
+
 						</div>
 					</div>
-					<!--È«º¸ ¹× ³ëÃâ ¿É¼Ç-->
+					<!--í™ë³´ ë° ë…¸ì¶œ ì˜µì…˜-->
 				</div>
 			</div>
 		</div>
-		<!--Ãß°¡¿É¼Ç-->
-
+		<!--ì¶”ê°€ì˜µì…˜-->
 
 		<div class="contestTotal">
 			<div class="row">
 				<div class="col-sm-4 est_category_title">
-					<img src="<%=request.getContextPath()%>/resource/img/estimate/ic-arrowpoint.png"> Total
+					<img src="<%=request.getContextPath()%>/img/ic-arrowpoint.png"> Total
 				</div>
 				<div class="col-sm-8">
 					<div class="est_total">
 						<div class="contestPriceList">
 							<div>
 								<div class="row">
-									<div class="col-sm-6 est_price_title">ÃÑ »ó±Ý</div>
+									<div class="col-sm-6 est_price_title">ì´ ìƒê¸ˆ</div>
 									<div class="col-sm-6 est_price_content">
-										<input type="text" class="totalReadonly" value="1,200,000"
-											readonly>
+										<input type="text" id="tota_reawrd"
+											class="totalReadonly reward_price_input" value="" readonly>
 									</div>
 								</div>
 							</div>
 
 							<div>
 								<div class="row">
-									<div class="col-sm-6 est_price_title">°ø¸ðÀü µî·Ïºñ</div>
+									<div class="col-sm-6 est_price_title">ê³µëª¨ì „ ë“±ë¡ë¹„</div>
 									<div class="col-sm-6 est_price_content">
-										<input type="text" class="totalReadonly" value="100,000"
-											readonly>
+										<input type="text" class="totalReadonly enroll_price_input"
+											value="0" readonly>
 									</div>
 								</div>
 							</div>
 
 							<div>
 								<div class="row">
-									<div class="col-sm-6 est_price_title">»ó±Ý ¼ö¼ö·á</div>
+									<div class="col-sm-6 est_price_title">ìƒê¸ˆ ìˆ˜ìˆ˜ë£Œ</div>
 									<div class="col-sm-6 est_price_content">
-										<input type="text" class="totalReadonly" value="" readonly>
+										<input type="text" class="totalReadonly fees_price_input "
+											value="0" readonly>
 									</div>
 								</div>
 							</div>
 
 							<div>
 								<div class="row">
-									<div class="col-sm-6 est_price_title">Ãß°¡ ¿É¼Ç</div>
+									<div class="col-sm-6 est_price_title">ì¶”ê°€ ì˜µì…˜</div>
 									<div class="col-sm-6 est_price_content">
-										<input type="text" class="totalReadonly" value="" readonly>
+										<input type="text" class="totalReadonly option_price_input"
+											value="0" readonly>
 									</div>
 								</div>
 							</div>
 
 							<div>
 								<div class="row">
-									<div class="col-sm-6 est_price_title">ºÎ°¡°¡Ä¡¼¼</div>
+									<div class="col-sm-6 est_price_title">ë¶€ê°€ê°€ì¹˜ì„¸</div>
 									<div class="col-sm-6 est_price_content">
-										<input type="text" class="totalReadonly" value="130,000"
+										<input type="text" class="totalReadonly tax_price_input"
 											readonly>
 									</div>
 								</div>
@@ -584,8 +614,10 @@
 										<br>
 									</div>
 									<div class=" col-sm-6 est_price_total">
-										ÇÕ°è <input type="text" class="totalReadonly total_price_color"
-											value="1,430,000" readonly>
+										í•©ê³„ <input type="text"
+											class="totalReadonly total_price_color total_price_input"
+											value="" readonly>
+
 									</div>
 								</div>
 							</div>
@@ -600,17 +632,21 @@
 				<div class="col-lg-4"></div>
 				<div class="col-lg-4">
 					<button type="button" class="btn btn-primary btn-lg btn-block">
-						&lt; ÀÌÀü</button>
+						&lt; ì´ì „</button>
 				</div>
 				<div class="col-lg-4">
-					<button type="button" class="btn btn-secondary btn-lg btn-block">´ÙÀ½
+					<button type="button" id="btn_next"
+						class="btn btn-secondary btn_next btn-lg btn-block">ë‹¤ìŒ
 						&gt;</button>
 				</div>
 			</div>
 		</div>
 	</div>
+	<!--main-->
+	
 </body>
+
 <footer>
-	<jsp:include page="../section/footer.jsp"></jsp:include>
+/*<jsp:include page="../section/footer.jsp"></jsp:include>
 </footer>
 </html>

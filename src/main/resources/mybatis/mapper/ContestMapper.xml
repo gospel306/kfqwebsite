@@ -17,26 +17,39 @@
 		FROM CONTEST
 		WHERE ID = #{value}
 	</select>
-	<select id="ContestInfo" parameterType="Integer" resultType="com.kfq.fund.vo.ContestVO">
-		SELECT TITLE, CONTESTTYPE, COMPANY, SERVICEINFO, STARTDATE, ENDDATE, 
-		FIRSTPRIZE, SECONDPRIZE, THIRDPRIZE, BENNER, HIGHTLIGHT,ENDCONTEST, VIEWS
+	<select id="whocontest" parameterType="Integer" resultType="String">
+		SELECT MEMBEREMAIL
 		FROM CONTEST
 		WHERE ID = #{value}
+	</select>
+	<select id="iscontestfinsh" parameterType="Integer" resultType="Integer">
+		SELECT WINNER
+		FROM CONTEST
+		WHERE ID = #{value}
+	</select>
+	<select id="ContestInfo" parameterType="Integer" resultType="com.kfq.fund.vo.ContestVO">
+		SELECT ID, CONTEST.TITLE, CONTEST.CONTESTTYPE, MEMBER.NICKNAME, CONTEST.COMPANY,
+		CONTEST.SERVICEINFO, CONTEST.VIEWS, DATEDIFF(CONTEST.ENDDATE, CURDATE()),
+		CONTEST.ENDDATE, CONTEST.FIRSTPRIZE, CONTEST.SECONDPRIZE, CONTEST.THIRDPRIZE,
+		CONTEST.HIGHLIGHT,CONTEST.FULLPRIZE, CONTEST.PAYTYPE
+		FROM CONTEST, MEMBER
+		WHERE CONTEST.MEMBEREMAIL = MEMBER.EMAIL
+		AND ID = #{value}
 	</select>
 	<select id="getTop5" parameterType="String" resultType="com.kfq.fund.vo.ContestVO">
 		SELECT CONTEST.ID, CONTEST.TITLE, COUNT(WORK.CONTEST_ID), DATEDIFF(CONTEST.ENDDATE,CURDATE())
 		FROM CONTEST LEFT JOIN WORK
 		ON CONTEST.ID = WORK.CONTEST_ID
-		WHERE ENDDATE > CURDATE()
-		GROUP BY WORK.CONTEST_ID
+		WHERE CONTEST.ENDDATE > CURDATE()
+		GROUP BY CONTEST.ID
 		<if test="value == 1">
-		ORDER BY COUNT(WORK.CONTEST_ID)
+		ORDER BY COUNT(WORK.CONTEST_ID), DATEDIFF(CONTEST.ENDDATE,CURDATE()) DESC, CONTEST.ID DESC
 		</if>
 		<if test="value == 2">
-		ORDER BY CONTEST.FIRSTPRIZE DESC
+		ORDER BY CONTEST.FIRSTPRIZE DESC, CONTEST.ID DESC
 		</if>
 		<if test="value == 3">
-		ORDER BY CONTEST.STARTDATE 	DESC
+		ORDER BY CONTEST.STARTDATE 	DESC, CONTEST.ID DESC
 		</if>
 		LIMIT 5
 	</select>
@@ -50,38 +63,45 @@
 			WHERE CURDATE() > CONTEST.ENDDATE AND WINNER IS NULL
 		</if>
 		<if test="value == 3">
-			WHERE WINNER IS NOT NULL
+			WHERE WINNER != 0
 		</if>
 	</select>
 	<select id="listProceeding" parameterType="com.kfq.fund.vo.Pagination" resultType="com.kfq.fund.vo.ContestVO">
-		SELECT CONTEST.TITLE, CONTEST.CONTESTTYPE, MEMBER.NICKNAME, CONTEST.COMPANY,
+		SELECT CONTEST.ID, CONTEST.TITLE, CONTEST.CONTESTTYPE, MEMBER.NICKNAME, CONTEST.COMPANY,
 		CONTEST.SERVICEINFO, CONTEST.VIEWS, DATEDIFF(CONTEST.ENDDATE, CURDATE()),
 		CONTEST.ENDDATE, CONTEST.FIRSTPRIZE, CONTEST.SECONDPRIZE, CONTEST.THIRDPRIZE,
-		CONTEST.HIGHLIGHT,CONTEST.FULLPRIZE
+		CONTEST.HIGHLIGHT,CONTEST.FULLPRIZE, CONTEST.PAYTYPE
 		FROM CONTEST, MEMBER
-		WHERE CONTEST.MEMBEREMAIL = MEMBER.EMAIL AND CONTEST.ENDDATE > CURDATE()
+		WHERE CONTEST.MEMBEREMAIL = MEMBER.EMAIL AND 
+		CONTEST.ENDDATE > CURDATE() AND PAYED = 1
 		ORDER BY CONTEST.SHOW DESC, CONTEST.STARTDATE DESC
-		<!--LIMIT #{startList}, #{listSize}-->
+		LIMIT #{startList}, #{listSize}
 	</select>
 	<select id="listDecision" parameterType="com.kfq.fund.vo.Pagination" resultType="com.kfq.fund.vo.ContestVO">
-		SELECT CONTEST.TITLE, CONTEST.CONTESTTYPE, MEMBER.NICKNAME, CONTEST.COMPANY,
+		SELECT CONTEST.ID, CONTEST.TITLE, CONTEST.CONTESTTYPE, MEMBER.NICKNAME, CONTEST.COMPANY,
 		CONTEST.SERVICEINFO, CONTEST.VIEWS, DATEDIFF(CONTEST.ENDDATE, CURDATE()),
 		CONTEST.ENDDATE, CONTEST.FIRSTPRIZE, CONTEST.SECONDPRIZE, CONTEST.THIRDPRIZE,
-		CONTEST.HIGHLIGHT,CONTEST.FULLPRIZE
+		CONTEST.HIGHLIGHT,CONTEST.FULLPRIZE, CONTEST.PAYTYPE
 		FROM CONTEST, MEMBER
-		WHERE CONTEST.MEMBEREMAIL = MEMBER.EMAIL AND CURDATE() > CONTEST.ENDDATE AND WINNER IS NULL
+		WHERE CONTEST.MEMBEREMAIL = MEMBER.EMAIL AND 
+		CURDATE() > CONTEST.ENDDATE AND WINNER IS NULL AND PAYED = 1
 		ORDER BY CONTEST.SHOW DESC, CONTEST.ENDDATE DESC
 		LIMIT #{startList}, #{listSize}
 	</select>
 	<select id="listEndContest" parameterType="com.kfq.fund.vo.Pagination" resultType="com.kfq.fund.vo.ContestVO">
-		SELECT CONTEST.TITLE, CONTEST.CONTESTTYPE, MEMBER.NICKNAME, CONTEST.COMPANY,
+		SELECT CONTEST.ID, CONTEST.TITLE, CONTEST.CONTESTTYPE, MEMBER.NICKNAME, CONTEST.COMPANY,
 		CONTEST.SERVICEINFO, CONTEST.VIEWS, DATEDIFF(CONTEST.ENDDATE, CONTEST.STARTDATE),
 		CONTEST.ENDDATE, CONTEST.FIRSTPRIZE, CONTEST.SECONDPRIZE, CONTEST.THIRDPRIZE,
-		CONTEST.HIGHLIGHT, CONTEST.FULLPRIZE
+		CONTEST.HIGHLIGHT, CONTEST.FULLPRIZE, CONTEST.PAYTYPE
 		FROM CONTEST, MEMBER
-		WHERE CONTEST.MEMBEREMAIL = MEMBER.EMAIL AND WINNER IS NOT NULL
+		WHERE CONTEST.MEMBEREMAIL = MEMBER.EMAIL AND WINNER != 0 AND PAYED = 1
 		ORDER BY CONTEST.STARTDATE DESC
 		LIMIT #{startList}, #{listSize}
+	</select>
+	<select id="searchworknum" parameterType="Integer" resultType="Integer">
+		SELECT COUNT(CONTEST_ID)
+		FROM WORK
+		WHERE CONTEST_ID = #{value}
 	</select>
 	<select id="imgurl" parameterType="Integer" resultType="String">
 		SELECT IMGURL
@@ -97,9 +117,14 @@
 	</select>
 	
 	<select id="getFiles" parameterType="Integer" resultType="com.kfq.fund.vo.FileVO">
-		SELECT FILEORINAME, FILEURL
+		SELECT FNO, FILEORINAME, FILEURL
 		FROM CONTESTFILE
 		WHERE BNO = #{value}
+	</select>
+	<select id="getFile" parameterType="Integer" resultType="com.kfq.fund.vo.FileVO">
+		SELECT FILENAME, FILEORINAME, FILEURL
+		FROM CONTESTFILE
+		WHERE FNO = #{value}
 	</select>
 	<!-- insert -->
 	<insert id="insertContest" parameterType="com.kfq.fund.vo.ContestVO">
@@ -120,11 +145,22 @@
 		SET TITLE = #{title}, CONTESTTYPE = #{contesttype}, COMPANY = #{company}, SERVICEINFO = #{serviceinfo}, SECTOR = #{sector}, IDEA = #{idea}, BRIEFING = #{briefing}
 		WHERE ID = #{id}
 	</update>
-	<update id="updateContestprize" parameterType="Map">
+	<update id="updateContestprize" parameterType="com.kfq.fund.vo.ContestVO">
 		UPDATE CONTEST
-		SET SHOW = #{show}, HIGHLIGHT = #{highlight}, BENNER = #{benner}, STARTDATE = #{startdate},
-		ENDDATE = #{enddate}, FIRSTPRIZE = #{first}, SECONDPRIZE = #{second}, THIRDPRIZE = #{third}, FULLPRIZE = #{fullprize}
+		SET CONTEST.SHOW = #{show}, HIGHLIGHT = #{highlight}, BENNER = #{benner}, STARTDATE = CURDATE(),
+		ENDDATE = #{enddate}, FIRSTPRIZE = #{firstprize}, SECONDPRIZE = #{secondprize}, THIRDPRIZE = #{thirdprize}, 
+		FULLPRIZE = #{fullprize},PAYTYPE = #{paytype}
 		WHERE ID = #{id}
+	</update>
+	<update id="payed" parameterType="Integer">
+		UPDATE CONTEST
+		SET PAYED = 1
+		WHERE ID = #{id}
+	</update>
+	<update id="viewincrease" parameterType="Integer">
+		UPDATE CONTEST
+		SET VIEWS = VIEWS + 1
+		WHERE ID = #{value}
 	</update>
 	<update id="updateWinner" parameterType="Map">
 		UPDATE CONTEST

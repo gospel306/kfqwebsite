@@ -2,9 +2,12 @@ package com.kfq.fund.service;
 
 import java.io.File;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -160,6 +163,7 @@ public class ContestServiceImpl implements IContestService{
 			String contesttype=list.get(i).getContesttype();	
 			list.get(i).setImgurl(imgurl(contesttype));
 			list.get(i).setContesttype(contesttype(contesttype));
+			list.get(i).setPeople(dao.searchworknum(list.get(i).getId()));
 		}
 		return list;
 	}
@@ -170,10 +174,12 @@ public class ContestServiceImpl implements IContestService{
 		for(int i = 0;i < list.size();i++) {
 			cal.setTime(list.get(i).getEnddate());
 			cal.add(Calendar.DATE, 7);
-			list.get(i).setEnddate((Date) cal.getTime());
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			list.get(i).setEnddate(java.sql.Date.valueOf(sdf.format(cal.getTime())));
 			String contesttype=list.get(i).getContesttype();
 			list.get(i).setImgurl(imgurl(contesttype));
 			list.get(i).setContesttype(contesttype(contesttype));
+			list.get(i).setPeople(dao.searchworknum(list.get(i).getId()));
 		}
 		return list;
 	}
@@ -185,6 +191,7 @@ public class ContestServiceImpl implements IContestService{
 			String contesttype=list.get(i).getContesttype();
 			list.get(i).setContesttype(contesttype(contesttype));
 			System.out.println(list.get(i).getFullprize());
+			list.get(i).setPeople(dao.searchworknum(list.get(i).getId()));
 		}
 		return list;
 	}
@@ -242,5 +249,37 @@ public class ContestServiceImpl implements IContestService{
 		default:
 			return "기타 디자인 |";
 		}
+	}
+	@Override
+	public void updateContestprize(ContestVO contest) {
+		dao.updateContestprize(contest);
+	}
+	@Override
+	public void payed(int id) {
+		dao.payed(id);
+	}
+	@Override
+	public boolean iscontestfinsh(int id) {
+		return dao.iscontestfinsh(id) == 0? false:true;
+	}
+	@Override
+	public String whocontest(int id) {
+		return dao.whocontest(id);
+	}
+	@Override
+	public FileVO getFile(int id) {
+		return dao.getFile(id);
+	}
+	@Override
+	public ContestVO ContestInfo(int id) {
+		ContestVO contest = dao.ContestInfo(id);
+		contest.setImgurl(dao.imgurl(contest.getId()));
+		String contesttype=contest.getContesttype();
+		contest.setContesttype(contesttype(contesttype));
+		return contest;
+	}
+	@Override
+	public void viewincrease(int id) {
+		dao.viewincrease(id);
 	}
 }

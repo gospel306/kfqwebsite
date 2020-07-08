@@ -1,12 +1,15 @@
-/* 기본 css 설정 */
+/* 湲곕낯 css �꽕�젙 */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
+@font-face {
+            font-family: 'NanumGothic-Regular';
+            src: url('css/fonts/NamunGothic-Regular.ttf') format('truetype');
+        }
 body {
-    font-family: myFirstFont;
+    font-family: NamunGothic-Regular;
 }
 a:hover,a:focus,a:visited {
     text-decoration: none;
@@ -19,19 +22,7 @@ a:hover,a:focus,a:visited {
     min-height: 700px;
 }
 
-.input_Search_icon {
-    border-top-left-radius: 50px;
-    border-bottom-left-radius: 50px;
-    background-color: white;
-    border-right: none;
-}
 
-.input_Search {
-    border-top-right-radius: 50px;
-    border-bottom-right-radius: 50px;
-    border-left: none;
-    width: 200px;
-}
 
 .nav-link {
     font-size: 22px;
@@ -98,7 +89,7 @@ a:hover,a:focus,a:visited {
     color: black;
 }
 
-/* 카테고리 스크롤 */
+/* 移댄뀒怨좊━ �뒪�겕濡� */
 
 
 
@@ -126,7 +117,7 @@ a:hover,a:focus,a:visited {
 }
 
 
-/* 위로 가는 버튼 */
+/* �쐞濡� 媛��뒗 踰꾪듉 */
 .goTop {
     display: none; /* Hidden by default */
     position: fixed; /* Fixed/sticky position */

@@ -25,9 +25,11 @@ public class ContestVO {
 	private int fullprize;
 	private int views;
 	private String imgurl;
+	private String paytype;
 	
 	private long people;
 	private int day;
+	
 	
 	public ContestVO(Integer id,String title,String contesttype,String company,String serviceinfo, String sector, String idea, String briefing) {
 		this.id = id;
@@ -50,7 +52,24 @@ public class ContestVO {
 		this.briefing = briefing;
 	}
 	
-	public ContestVO(String title, String contesttype,String nickname, String company, String serviceinfo, Integer views, Long day, Date enddate, Integer firstprize, Integer secondprize, Integer thirdprize, Integer hightlight,Integer fullprize) {
+	public ContestVO(Integer id,String title, String contesttype,String nickname, String company, String serviceinfo, Integer views, Integer day, Date enddate, Integer firstprize, Integer secondprize, Integer thirdprize, Integer hightlight,Integer fullprize,String paytype) {
+		this.title = title;
+		this.contesttype = contesttype;
+		this.memberemail = nickname; //nickname 대체
+		this.company = company;
+		this.serviceinfo = serviceinfo;
+		this.views = views;
+		this.day = day;
+		this.enddate = enddate;
+		this.firstprize = firstprize;
+		this.secondprize = secondprize;
+		this.thirdprize = thirdprize;
+		this.highlight = hightlight;
+		this.fullprize = fullprize;
+		this.paytype = paytype;
+		this.id = id;
+	}
+	public ContestVO(Integer id,String title, String contesttype,String nickname, String company, String serviceinfo, Integer views, Long day, Date enddate, Integer firstprize, Integer secondprize, Integer thirdprize, Integer hightlight,Integer fullprize,String paytype) {
 		this.title = title;
 		this.contesttype = contesttype;
 		this.memberemail = nickname; //nickname 대체
@@ -64,6 +83,8 @@ public class ContestVO {
 		this.thirdprize = thirdprize;
 		this.highlight = hightlight;
 		this.fullprize = fullprize;
+		this.paytype = paytype;
+		this.id = id;
 	}
 	public ContestVO(Integer id, String title, Long count, Integer day) {
 		this.id = id;
@@ -220,6 +241,12 @@ public class ContestVO {
 	}
 	public void setImgurl(String imgurl) {
 		this.imgurl = imgurl;
+	}
+	public String getPaytype() {
+		return paytype;
+	}
+	public void setPaytype(String paytype) {
+		this.paytype = paytype;
 	}
 	
 }

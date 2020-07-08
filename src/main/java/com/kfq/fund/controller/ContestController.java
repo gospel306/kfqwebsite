@@ -1,6 +1,13 @@
 package com.kfq.fund.controller;
 
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
@@ -9,6 +16,12 @@ import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -144,8 +157,109 @@ public class ContestController {
 		return new ModelAndView("contest/estimate");
 	}
 	@RequestMapping(value ="launch/{contesttype}/result")
-	public ModelAndView contestResult(@PathVariable String contesttype,HttpServletRequest request) {
-		return new ModelAndView("contest/result");//step4.html
+	public ModelAndView contestResult(@PathVariable String contesttype,HttpServletRequest request,HttpSession session) {
+		int show = Integer.parseInt(request.getParameter("show"));//상단 옵션
+		int highlight = Integer.parseInt(request.getParameter("highlight"));//하이라이트 옵션
+		int benner = Integer.parseInt(request.getParameter("benner"));//배너 옵션
+		int week = Integer.parseInt(request.getParameter("enddate"));//기간
+		int firstprize = Integer.parseInt(request.getParameter("firstprize"));//1등
+		int secondprize = Integer.parseInt(request.getParameter("secondprize"));//2등
+		int thirdprize = Integer.parseInt(request.getParameter("thirdprize"));//3등
+		int enroll_price = Integer.parseInt(request.getParameter("enroll_price"));//등록비
+		int total_price = Integer.parseInt(request.getParameter("total_price"));//전체 비용
+		int tax_price = Integer.parseInt(request.getParameter("tax_price"));
+		int fullprize = Integer.parseInt(request.getParameter("fullprize"));
+		String paytype = request.getParameter("paytype");
+		ContestVO contest = contest_service.existContestInfo((String) session.getAttribute("useremail"));
+		contest.setShow(show != 0?1:0);
+		contest.setHighlight(highlight!= 0?1:0);
+		contest.setBenner(benner!= 0?1:0);
+		Calendar cal = Calendar.getInstance();
+		cal.add(Calendar.DATE, 7*week);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		
+		contest.setEnddate(java.sql.Date.valueOf(sdf.format(cal.getTime())));
+		System.out.println(contest.getEnddate());
+		contest.setFirstprize(firstprize);
+		contest.setSecondprize(secondprize);
+		contest.setThirdprize(thirdprize);
+		contest.setFullprize(fullprize != 0?1:0);
+		contest.setPaytype(paytype);
+		contest_service.updateContestprize(contest);
+		
+		String ctype = contype(contesttype);
+		ModelAndView mv = new ModelAndView("contest/result");
+		mv.addObject("firstprize",firstprize);
+		mv.addObject("secondprize",secondprize);
+		mv.addObject("thirdprize",thirdprize);
+		mv.addObject("tax_price",tax_price);
+		mv.addObject("ctype",ctype);
+		mv.addObject("enroll",enroll_price);
+		mv.addObject("total",total_price);
+		mv.addObject("show",show);
+		mv.addObject("highlight",highlight);
+		mv.addObject("benner",benner);
+		mv.addObject("paytype",paytype);
+		return mv;//step4.html
+	}
+	private String contype(String contesttype) {
+		String ctype = "";
+		switch(contesttype) {
+		case "logo":
+			ctype = "로고 디자인 |";
+			break;
+		case "logo&bizcard":
+			ctype = "로고 + 명함 |";
+			break;
+		case "logo&sign":
+			ctype = "로고 + 간판 |";
+			break;
+		case "branding":
+			ctype = "브랜딩 SET |";
+			break;
+		case "idea":
+			ctype = "네이밍/아이디어 |";
+			break;
+		case "designpackage":
+			ctype = "페키징 디자인 |";
+			break;
+		case "labeldesign":
+			ctype = "라벨 디자인 |";
+			break;
+		case "productdesign":
+			ctype = "제품 디자인 |";
+			break;
+		case "poster":
+			ctype = "포스터/전단지 |";
+			break;
+		case "brochure":
+			ctype = "브로셔/리플렛 |";
+			break;
+		case "bizcard":
+			ctype = "명함/봉투 |";
+			break;
+		case "homepage":
+			ctype = "웹사이트 |";
+			break;
+		case "app":
+			ctype = "모바일 앱 |";
+			break;
+		case "landingpage":
+			ctype = "상세 페이지 |";
+			break;
+		case "benner":
+			ctype = "배너광고 디자인 |";
+			break;
+		case "character":
+			ctype = "캐릭터 디자인 |";
+			break;
+		case "illust":
+			ctype = "일러스트 |";
+			break;
+		default:
+			ctype = "기타 디자인 |";
+		}
+		return ctype;
 	}
 	
 	@RequestMapping(value = "deleteContest.do")
@@ -159,24 +273,78 @@ public class ContestController {
 		return new ModelAndView("contest/list");//ingcontest.html
 	}
 	@RequestMapping(value = "contest/{contestidx}")
-	public ModelAndView showContest(HttpServletRequest request) {
-		return new ModelAndView("contest/contest");//contest_done.jsp,contestbrief.jsp
+	public ModelAndView showContest(HttpServletRequest request,HttpSession session,@PathVariable String contestidx) {
+		ModelAndView mv = new ModelAndView();
+		if(contest_service.iscontestfinsh(Integer.parseInt(contestidx))) {
+			System.out.println("finshed");
+			mv.setViewName("contest/contest_done");
+		}else {
+			mv.addObject("files",contest_service.getFiles(Integer.parseInt(contestidx)));
+			mv.addObject("idx",contestidx);
+			if(session.getAttribute("useremail")!=null&&session.getAttribute("useremail").equals(contest_service.whocontest(Integer.parseInt(contestidx)))) {
+				mv.setViewName("contest/contest_done");//끝남
+			}else {
+				mv.addObject("contest",contest_service.ContestInfo(Integer.parseInt(contestidx)));
+				contest_service.viewincrease(Integer.parseInt(contestidx));
+				mv.setViewName("contest/contestbrief");//참가 여부
+			}
+		}
+		return mv;
+	}
+	@RequestMapping(value = "/download/fileName={filenum}")
+	public ResponseEntity<Resource> downloadfile(@PathVariable String filenum, HttpServletRequest request){
+		FileVO file = contest_service.getFile(Integer.parseInt(filenum));
+		if(file != null) {
+			String filepath = "C://kfqproject"+file.getFileurl();
+			File target = new File(filepath);
+			HttpHeaders header = new HttpHeaders();
+			Resource rs = null;
+			if(target.exists()) {
+				try {
+					String mimeType = Files.probeContentType(Paths.get(target.getAbsolutePath()));
+					if(mimeType == null)
+						mimeType = "octet-stream";
+					rs = new UrlResource(target.toURI());
+					header.add(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=\""+rs.getFilename()+"\"");
+					header.setCacheControl("no-cache");
+					header.setContentType(MediaType.parseMediaType(mimeType));
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+			return new ResponseEntity<>(rs,header,HttpStatus.OK);
+		}
+		return null;
 	}
 	@RequestMapping(value = "contest/{contestidx}/join")
 	public ModelAndView joinContest() {
-		return new ModelAndView("join/join");//contest_join.html
+		return new ModelAndView("join/join");//작성전
 	}
 	@RequestMapping(value = "contest/{contestidx}/joininfo")
 	public ModelAndView joininfoContest() {
-		return new ModelAndView("join/joininfo");//contest_join2.html
+		return new ModelAndView("join/joininfo");//작품 작성
 	}
 	@RequestMapping(value = "contest/{contestidx}/viewjoininfo", method=RequestMethod.POST)
-	public ModelAndView insertjoininfo(HttpServletRequest request,@PathVariable int contestidx,HttpSession session) {
+	public ModelAndView insertjoininfo(HttpServletRequest request,@PathVariable String contestidx,HttpSession session) {
 		String email = (String) session.getAttribute("useremail");
 		System.out.println(request.getParameter("content"));
-		contest_service.insertJoin(new JoinVO(contestidx,email,request.getParameter("content")));
+		contest_service.insertJoin(new JoinVO(Integer.parseInt(contestidx),email,request.getParameter("content")));
 		ModelAndView mv = new ModelAndView("join/view");	
 		return mv;//
+	}
+	@RequestMapping(value = "payed")
+	@ResponseBody
+	public HashMap<String,Object> payed(HttpSession session) {
+		ContestVO contest = contest_service.existContestInfo((String) session.getAttribute("useremail"));
+		HashMap<String,Object> map = new HashMap<>();
+		if(contest != null) {
+			map.put("idx", contest.getId());
+			contest_service.payed(contest.getId());
+			map.put("result", "success");
+			return map;
+		}
+		map.put("result","fail");
+		return map;
 	}
 	@RequestMapping(value = "contest/{contestidx}/uploadImageJoin", method=RequestMethod.POST)
 	@ResponseBody
