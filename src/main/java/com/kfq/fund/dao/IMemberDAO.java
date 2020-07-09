@@ -11,6 +11,7 @@ public interface IMemberDAO {
 	public MemberVO viewMember(MemberVO vo);
 	public int findexistEmail(String email);
 	public int findexistNickName(String nickname);
+	public MemberVO findMember(String email);
 	//임의 userkey 생성후 입력
 	public int GetKey(String email, String userkey);
 	public String checkuserclass(String email);

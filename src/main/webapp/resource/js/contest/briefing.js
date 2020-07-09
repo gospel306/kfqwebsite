@@ -1,5 +1,11 @@
 $(document).ready(function() {
 	var myFiles = [];
+	var contestTitle;
+    var trimTitle;
+  
+    contestTitle=$("#title").val();
+    trimTitle=contestTitle.trim();
+
 	$("#files").on("change",function(e) {
 		var files = e.target.files, file;
 		for (var i = 0; i < files.length; i++) {

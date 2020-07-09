@@ -5,11 +5,12 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>ㅇㅏㅇㅣㄷㅣㅇㅓ</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<!-- icon css -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -63,7 +64,7 @@
                     <div class="d-flex justify-content-center" id="producer_main">
                         <div id="sign_box">
                        		이메일
-                            <input id="input_txt" type="text" name="email" class="form-control">
+                            <input id="email" type="text" name="email" class="form-control">
                         </div>
                     </div>
                     <div class="d-flex justify-content-center pw" id="producer_main">
@@ -82,18 +83,21 @@
                     <div class="d-flex justify-content-center" id="producer_main">
                         <div id="sign_box">
                         	닉네임
-                            <input id="input_txt" type="text" name="nickname" class="form-control">
+                            <input id="nickname" type="text" name="nickname" class="form-control">
                         </div>
                     </div>
                     <div class="d-flex justify-content-center" id="producer_main">
                         <div id="checkbox">
                             <p>
                             <span style="font-weight: bold;">전체약관 동의</span><br>
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        	<label class="form-check-label" for="defaultCheck1" style="font-size:13px;">
                         	ㅇㅏㅇㅣㄷㅣㅇㅓ 서비스 이용약관(필수)
+                        	</label>
                              </p>
                         </div>
                     </div>
-                    <button type="submit">가입하기</button>
+                    <button type="submit" class="subtype1">가입하기</button>
                     </form>
                 </div>
             </div>

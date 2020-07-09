@@ -67,6 +67,7 @@ public class MemberController {
 		String email = request.getParameter("email");
 		String passwd = request.getParameter("passwd");
 		boolean result = member_service.loginCheck(new MemberVO(email,passwd), session);
+		System.out.println(result);
 		return result;
 	}
 	//로그인이 확인되면 redirect
@@ -84,6 +85,7 @@ public class MemberController {
 		ModelAndView mv = new ModelAndView("redirect:/"+url);
 		return mv;
 	}
+	
 	//이메일 인증
 	@RequestMapping(value = "/user/key_alter",method = RequestMethod.GET)
 	public ModelAndView key_alterConfirm(HttpServletRequest request) {

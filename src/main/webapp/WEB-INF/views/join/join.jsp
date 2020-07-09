@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +16,7 @@
    	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
    	
     <!-- custom js -->
-	<script src="<%=request.getContextPath()%>resource/js/contest/contestBrief.js"></script>
+	<script src="<%=request.getContextPath()%>/resource/js/contest/contestBrief.js"></script>
     <script src="<%=request.getContextPath() %>/resource/js/section/goTop.js"></script>
     
     <!-- custom css -->
@@ -41,51 +42,50 @@
 					<div class="col-lg-8">
 						<div class="row">
 							<div class="col-sm-2 brief_item_img">
-								<img src="img/thumbimg_logo.png" alt="">
+								<img src="<%=request.getContextPath()%>/${contest.imgurl}" alt="">
 							</div>
 							<div class="col-sm-3 brief_item_category">
-
-								<input type="text" class="item_categoty" readonly value="ºê·£µå SET |">
-
+								<div class="item_categoty">
+									${contest.contesttype}
+								</div>
 							</div>
-
 							<div class="col-sm-7 brief_item_title">
-								<input type="text" class="item_title" readonly value="È«¼º±º Æò»ý±³À° ºê·£µå ·Î°í °ø¸ðÀü(È«¼º±ºÆò»ýÇÐ½À¼¾ÅÍ) ">
-
+								<div class="item_title">
+									${contest.title}(${contest.company})
+								</div>
 							</div>
-
 						</div>
-
 						<div class="row">
 							<div class="col-sm-12 brief_item_content">
-								<textarea class="brief_content_item_text_4 form-control animated" readonly
-									id="brief_item_content_1">
-
-                                 </textarea>
+								<div class="brief_content_item_text_4 form-control animated" id="brief_item_content_1">
+									${contest.serviceinfo }
+                                 </div>
 							</div>
-
 						</div>
-
 					</div>
-
 					<div class="col-lg-4 item_box_tail">
 						<div class="item_price">
-							<input type="text" class="item_price_text" readonly value="1µî: 500¸¸¿ø / 2µî: 100¸¸¿ø">
-
+							<div class="item_price_text">
+								1ë“±: ${contest.firstprize}ë§Œì›
+								<c:if test="${contest.secondprize ne 0}">
+									/ 2ë“±: ${contest.secondprize}
+									<c:if test="${contest.thirdprize ne 0}">
+										/ 3ë“±: ${contest.thirdprize}
+									</c:if>
+								</c:if>
+							</div>
 						</div>
 						<div class="item_period">
-							<input type="text" class="item_period_text" readonly value="³²Àº±â°£: 13ÀÏ(~07/14 24:00)">
-
+							<div class="item_period_text">
+							ë‚¨ì€ê¸°ê°„: ${contest.day}ì¼(~${contest.enddate})
+							</div>
 						</div>
 						<div class="item_visitCount">
-							<input type="text" class="item_visitCount_text" readonly value="Á¶È¸¼ö : 9000">
+							<div class="item_visitCount_text">
+								ì¡°íšŒìˆ˜ : ${contest.views}
+							</div>
 						</div>
-
-
 					</div>
-
-
-
 				</div>
 			</div>
 
@@ -97,7 +97,7 @@
 					<div class="col-lg-3"></div>
 
 					<div class="col-lg-6">
-						<img class="join_step1_img" src="img/img_step01.png" alt="">
+						<img class="join_step1_img" src="<%=request.getContextPath()%>/resource/img/contest/img_step01.png" alt="">
 					</div>
 					<div class="col-lg-3"></div>
 
@@ -108,53 +108,53 @@
 				<!--join step2-->
 				<div class="join_step1_content">
 					<div class="join_step1_content_img">
-						<img src="img/join_info1.png" alt="">
+						<img src="<%=request.getContextPath()%>/resource/img/contest/join_info1.png" alt="">
 					</div>
 
 					<div class="join_step1_content_text">
-						<span class="font_bold">1</span>. <span class="font_bold font_red">·Î°í,
-							ÀÏ·¯½ºÆ® ÄÜÅ×½ºÆ®¿¡´Â ¾î¶°ÇÑ ½ºÅåÀÌ¹ÌÁö, ÇÁ¸®º¤ÅÍ, Å¬¸³¾ÆÆ®µµ »ç¿ëÇØ¼­´Â ¾È µË´Ï´Ù.</span><br> »ó¾÷Àû »ç¿ëÀÌ
-						Á¦ÇÑµÇ´Â ÆùÆ®, ½ºÅåÀÌ¹ÌÁöÀÇ »ç¿ë ±ÔÁ¤ ¹× ¹üÀ§¸¦ À§¹ÝÇÒ ½Ã, °èÁ¤ÀÌ ¿µ±¸ÀûÀ¸·Î »èÁ¦µÉ ¼ö ÀÖ½À´Ï´Ù.<br>
-						ÀÛÇ°¿¡ À¯·á ÆùÆ®, ½ºÅåÀÌ¹ÌÁö, ÇÁ¸®º¤ÅÍ µîÀ» »ç¿ëÇÑ °æ¿ì¿¡´Â ¹Ýµå½Ã ÀÇ·ÚÀÚ¿¡°Ô ÀúÀÛ±Ç ¹®Á¦°¡ ¾øÀ½À» È®ÀÎÇÏ°í
-						¸í½ÃÇØ¾ß¸¸ ÇÕ´Ï´Ù.
+						<span class="font_bold">1</span>. <span class="font_bold font_red">ë¡œê³ ,
+							ì¼ëŸ¬ìŠ¤íŠ¸ ì½˜í…ŒìŠ¤íŠ¸ì—ëŠ” ì–´ë– í•œ ìŠ¤í†¡ì´ë¯¸ì§€, í”„ë¦¬ë²¡í„°, í´ë¦½ì•„íŠ¸ë„ ì‚¬ìš©í•´ì„œëŠ” ì•ˆ ë©ë‹ˆë‹¤.</span><br> ìƒì—…ì  ì‚¬ìš©ì´
+						ì œí•œë˜ëŠ” í°íŠ¸, ìŠ¤í†¡ì´ë¯¸ì§€ì˜ ì‚¬ìš© ê·œì • ë° ë²”ìœ„ë¥¼ ìœ„ë°˜í•  ì‹œ, ê³„ì •ì´ ì˜êµ¬ì ìœ¼ë¡œ ì‚­ì œë  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.<br>
+						ìž‘í’ˆì— ìœ ë£Œ í°íŠ¸, ìŠ¤í†¡ì´ë¯¸ì§€, í”„ë¦¬ë²¡í„° ë“±ì„ ì‚¬ìš©í•œ ê²½ìš°ì—ëŠ” ë°˜ë“œì‹œ ì˜ë¢°ìžì—ê²Œ ì €ìž‘ê¶Œ ë¬¸ì œê°€ ì—†ìŒì„ í™•ì¸í•˜ê³ 
+						ëª…ì‹œí•´ì•¼ë§Œ í•©ë‹ˆë‹¤.
 
 					</div>
 
 					<div class="join_step1_content_text">
-						<span class="font_bold"> 2</span>. <span class="font_bold font_red">¾ÆÀÌµð¾îÀÇ ÆÇ´Ü ÇÏ¿¡ º» µðÀÚÀÎÀÌ ´Ù¸¥ µðÀÚÀÌ³ÊÀÇ
-							ÀÛÇ°À»
-							µµ¿ëÇÑ °ÍÀ¸·Î ÆÇ´ÜµÇ´Â °æ¿ì,<br> ¾ÆÀÌµð¾î´Â ÇØ´ç µðÀÚÀÌ³ÊÀÇ È°µ¿À» Á¦Áö È¤Àº ±ÝÁöÇÒ ¼ö ÀÖ½À´Ï´Ù.
-						</span><br> ¶ÇÇÑ »ó±ÝÀÌ Áö±ÞµÇ¾úÀ» °æ¿ì ¾ÆÀÌµð¾î´Â µðÀÚÀÌ³Ê¿¡°Ô Àü¾× È¯ºÒÀ» ¿ä±¸ÇÒ ¼ö ÀÖÀ¸¸ç,<br>
-						ÀÌ¿¡¼­ ÆÄ»ýµÇ´Â ÀÇ·ÚÀÚ¿ÍÀÇ ºÐÀï ¹× ¼ÕÇØ¿¡ °üÇØ¼­´Â °ü·Ã¹ý±Ô¿¡ µû¶ó µðÀÚÀÌ³Ê¿¡°Ô ¹è»óÀÇ ÀÇ¹«°¡ ºÎ¿©µÉ ¼ö ÀÖ½À´Ï´Ù.<br>
-						<span class="font_bold"> ¹Ýµå½Ã ÀÚ½ÅÀÇ µðÀÚÀÎ¸¸ µî·ÏÇØ ÁÖ¼¼¿ä</span>
+						<span class="font_bold"> 2</span>. <span class="font_bold font_red">ì•„ì´ë””ì–´ì˜ íŒë‹¨ í•˜ì— ë³¸ ë””ìžì¸ì´ ë‹¤ë¥¸ ë””ìžì´ë„ˆì˜
+							ìž‘í’ˆì„
+							ë„ìš©í•œ ê²ƒìœ¼ë¡œ íŒë‹¨ë˜ëŠ” ê²½ìš°,<br> ì•„ì´ë””ì–´ëŠ” í•´ë‹¹ ë””ìžì´ë„ˆì˜ í™œë™ì„ ì œì§€ í˜¹ì€ ê¸ˆì§€í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
+						</span><br> ë˜í•œ ìƒê¸ˆì´ ì§€ê¸‰ë˜ì—ˆì„ ê²½ìš° ì•„ì´ë””ì–´ëŠ” ë””ìžì´ë„ˆì—ê²Œ ì „ì•¡ í™˜ë¶ˆì„ ìš”êµ¬í•  ìˆ˜ ìžˆìœ¼ë©°,<br>
+						ì´ì—ì„œ íŒŒìƒë˜ëŠ” ì˜ë¢°ìžì™€ì˜ ë¶„ìŸ ë° ì†í•´ì— ê´€í•´ì„œëŠ” ê´€ë ¨ë²•ê·œì— ë”°ë¼ ë””ìžì´ë„ˆì—ê²Œ ë°°ìƒì˜ ì˜ë¬´ê°€ ë¶€ì—¬ë  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.<br>
+						<span class="font_bold"> ë°˜ë“œì‹œ ìžì‹ ì˜ ë””ìžì¸ë§Œ ë“±ë¡í•´ ì£¼ì„¸ìš”</span>
 					</div>
 					<div class="join_step1_content_text">
-						<span class="font_bold"> 3</span>. <span class="font_bold">·Î°í,
-							ÀÏ·¯½ºÆ®</span> µîÀÇ µðÀÚÀÎÀº ¹Ýµå½Ã <span class="font_bold font_red">º¤ÅÍ ÇüÅÂ</span>·Î
-						ÀÛ¾÷ÇØ¾ß ÇÕ´Ï´Ù. ÀÌ¸¦ ¾î±æ ½Ã ÀÌ¿ëÁ¤Áö Ã³¸®µÉ ¼ö ÀÖ½À´Ï´Ù.
+						<span class="font_bold"> 3</span>. <span class="font_bold">ë¡œê³ ,
+							ì¼ëŸ¬ìŠ¤íŠ¸</span> ë“±ì˜ ë””ìžì¸ì€ ë°˜ë“œì‹œ <span class="font_bold font_red">ë²¡í„° í˜•íƒœ</span>ë¡œ
+						ìž‘ì—…í•´ì•¼ í•©ë‹ˆë‹¤. ì´ë¥¼ ì–´ê¸¸ ì‹œ ì´ìš©ì •ì§€ ì²˜ë¦¬ë  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
 					</div>
 					<div class="join_step1_content_text">
-						<span class="font_bold"> 4</span>. Àß¸øµÈ µðÀÚÀÎÀ¸·Î ÀÎÇØ ¹ýÀûÀÎ ¹®Á¦¿¡ ÈÖ¸»¸®°Ô µÉ °æ¿ì,
-						¸ðµç ¹ýÀû ±×¸®°í ±ÝÀüÀûÀÎ ¼Õ½Ç¿¡ ´ëÇÑ Ã¥ÀÓÀº µðÀÚÀÌ³Ê Ãø¿¡ ÀÖ½À´Ï´Ù.
+						<span class="font_bold"> 4</span>. ìž˜ëª»ëœ ë””ìžì¸ìœ¼ë¡œ ì¸í•´ ë²•ì ì¸ ë¬¸ì œì— íœ˜ë§ë¦¬ê²Œ ë  ê²½ìš°,
+						ëª¨ë“  ë²•ì  ê·¸ë¦¬ê³  ê¸ˆì „ì ì¸ ì†ì‹¤ì— ëŒ€í•œ ì±…ìž„ì€ ë””ìžì´ë„ˆ ì¸¡ì— ìžˆìŠµë‹ˆë‹¤.
 
 					</div>
 					<div class="join_step1_content_text">
-						<span class="font_bold"> 5</span>. ¾ÆÀÌµð¾î´Â ½ÇÁ¦ »ó¾÷ÀûÀ¸·Î »ç¿ëµÉ µðÀÚÀÎÀ» ÀÇ·ÚÇÏ´Â Àü¹®
-						µðÀÚÀÌ³Ê ÇÃ·§ÆûÀÔ´Ï´Ù.<br> µ¿ÀÏ µðÀÚÀÌ³ÊÀÇ ½Ã¾È¿¡ ´ëÇØ ÀÇ·ÚÀÚÀÇ ºÒ¸¸ÀÌ Áö¼ÓÀûÀ¸·Î ¹ß»ý ½Ã, ¾ÆÀÌµð¾î´Â
-						³»ºÎ °Ë¼ö¸¦ ÅëÇØ Âü¿©°¡ Á¦ÇÑµÉ ¼ö ÀÖ½À´Ï´Ù.
+						<span class="font_bold"> 5</span>. ì•„ì´ë””ì–´ëŠ” ì‹¤ì œ ìƒì—…ì ìœ¼ë¡œ ì‚¬ìš©ë  ë””ìžì¸ì„ ì˜ë¢°í•˜ëŠ” ì „ë¬¸
+						ë””ìžì´ë„ˆ í”Œëž«í¼ìž…ë‹ˆë‹¤.<br> ë™ì¼ ë””ìžì´ë„ˆì˜ ì‹œì•ˆì— ëŒ€í•´ ì˜ë¢°ìžì˜ ë¶ˆë§Œì´ ì§€ì†ì ìœ¼ë¡œ ë°œìƒ ì‹œ, ì•„ì´ë””ì–´ëŠ”
+						ë‚´ë¶€ ê²€ìˆ˜ë¥¼ í†µí•´ ì°¸ì—¬ê°€ ì œí•œë  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.
 					</div>
 				</div>
 				<div class="join_step1_tail">
 					<div class="join_step1_tail_text">
-						* ÄÜÅ×½ºÆ® Âü¿© ½Ã ¹Ýµå½Ã<span class="font_bold"> [¹ý·ü Á¦ 11110È£ -
-							ÀúÀÛ±Ç¹ý]</span>À» ÁØ¼öÇÏ¿©¾ß ÇÕ´Ï´Ù.
+						* ì½˜í…ŒìŠ¤íŠ¸ ì°¸ì—¬ ì‹œ ë°˜ë“œì‹œ<span class="font_bold"> [ë²•ë¥  ì œ 11110í˜¸ -
+							ì €ìž‘ê¶Œë²•]</span>ì„ ì¤€ìˆ˜í•˜ì—¬ì•¼ í•©ë‹ˆë‹¤.
 					</div>
 				</div>
 				<div class="join_step1_check">
 					<div class="row">
 						<div class="col-lg-3"></div>
 						<div class="col-lg-6">
-							<button class="learn-more join_step1_checkbox"   id="join_step1_check" onclick="location.href='joininfo'">µ¿ÀÇ ÇÏ½Ê´Ï±î?</button>
+							<button class="learn-more join_step1_checkbox"   id="join_step1_check" onclick="location.href='joininfo'">ë™ì˜ í•˜ì‹­ë‹ˆê¹Œ?</button>
 						</div>
 						<div class="col-lg-3"></div>
 					</div>

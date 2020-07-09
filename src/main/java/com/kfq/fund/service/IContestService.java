@@ -28,12 +28,17 @@ public interface IContestService {
 	public ContestVO ContestInfo(int id);
 	public boolean iscontestfinsh(int id);
 	public String whocontest(int id);
+	public List<JoinVO> isworkexist(int id, String email);
+	public int allworkCnt(int id);
+	public List<JoinVO> showworks(int id, int startList,int listSize);
+	public boolean jointitleCheck(String title);
+	public List<ContestVO> showbenner(int num);
 	//insert
 	public void insertContest(ContestVO contest);
 	public void insertContestFile(MultipartHttpServletRequest request,int contestnum);
-	public void insertJoin(JoinVO join);
+	public void insertJoin(JoinVO join,MultipartFile mpf);
 	
-	public JSONObject insertJoinImage(MultipartFile file,int contestnum);
+	public JSONObject insertJoinImage(MultipartFile file,int contestnum,String worktitle);
 	
 	//update
 	public void updateContest(ContestVO contest);

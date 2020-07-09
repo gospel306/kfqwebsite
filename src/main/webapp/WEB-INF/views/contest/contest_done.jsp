@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
@@ -50,6 +52,7 @@
 					<div class="col-lg-1"></div>
 				</div>
 			</div>
+			<c:if test="${contest.winner ne 0 }">
 			<div class="contest_done_head_title">
 				<div class="row">
 					<div class="col-lg-12 contest_done_head_title">디자인 콘테스트 우승작이 선정되었습니다.</div>
@@ -59,40 +62,37 @@
 				<div class="row">
 					<div class="col-lg-1"></div>
 					<div class="col-lg-1"></div>
-					<div class="col-lg-4 contest_done_head_userName" id='contest_done_head_userName'>
-					</div>
+					<div class="col-lg-4 contest_done_head_userName" id='contest_done_head_userName'>${member.nickname}</div>
 					<div class="col-lg-4 contest_done_head_userId" id='contest_done_head_userId'>
 					</div>
 					<div class="col-lg-1"></div>
 					<div class="col-lg-1"></div>
 				</div>
 			</div>
+			</c:if>
 			<!-- Done contest list item-->
 
 			<div class="contest_list_Doneitem contest_list_item_roof">
 				<div class="row">
 					<div class="col-lg-3 padding_zero">
 						<img class="last_item_size"
-							src="img/order_sub_2496070_1_200626221826.jpg" alt="">
+							src="<%=request.getContextPath()%>/${contest.imgurl}" alt="">
 					</div>
 					<div class="col-lg-6">
 						<div class="row padding_bottom">
-							<div class="col-sm-2">
-								<img src="img/thumbimg_logo.png" alt="">
+							<div class="col-sm-1">
 							</div>
 							<div class="col-sm-3">
-								<div class=" item_box_category" id="item_box_2_category">
+								<div class=" item_box_category" id="item_box_2_category">${contest.contesttype}
 								</div>
-								<div class="item_box_userId" id="item_box_2_userId">
+								<div class="item_box_userId" id="item_box_2_userId">${contest.company}
 								</div>
 							</div>
 							<div class="col-sm-7">
 								<div class="item_box_contestTitle">
-									<span id="item_box_2_contestTitle"></span>
+									<span id="item_box_2_contestTitle">${contest.title}</span>
 								</div>
 								<div class='item_box_userName' id='item_box_2_userName'>
-								</div>
-								<div class='item_box_optionImage' id='item_box_2_optionImage'>
 								</div>
 							</div>
 
@@ -100,15 +100,43 @@
 
 						<div class="row">
 							<div class="col-sm-12 item_box_contestContent" id="item_box_2_contestContent">
+							${contest.serviceinfo}
 							</div>
 						</div>
 					</div>
 					<div class="col-lg-3 item_box_tail">
 						<div class="item_box_contestReward item_content_tail_roof" id="item_box_2_contestReward">
+							1등: ${contest.firstprize} 만원
+                        <c:if test="${contest.secondprize ne 0}">
+                        	/2등: ${contest.secondprize} 만원
+                        </c:if>
+                        <c:if test="${contest.thirdprize ne 0}">
+                        	/3등: ${contest.thirdprize} 만원
+                        </c:if>
 						</div>
+						<jsp:useBean id="now" class="java.util.Date"/>
+						<fmt:parseDate value="${contest.enddate}" pattern="yyyy-MM-dd" var="endDate"/>
 						<div class="item_box_contestPeriod item_content_tail_roof" id="item_box_2_contestPeriod">
+						남은 기간: 
+                    		<c:choose>
+                    			<c:when test="${endDate > now}">
+                    				${contest.day}일
+                    			</c:when>
+                    			<c:otherwise>
+                    				심사중
+                    			</c:otherwise>
+                    		</c:choose>
+                    		(~${contest.enddate})
 						</div>
 						<div class="item_box_joinCount item_content_tail_roof" id="item_box_2_joinCount">
+						<c:choose>
+                        	<c:when test="${endDate > now}">
+                        		조회수: ${contest.views }
+                        	</c:when>
+                        	<c:otherwise>
+                        		참여자: ${contest.people }
+                        	</c:otherwise>
+                        </c:choose>	
 						</div>
 					</div>
 				</div>
@@ -116,12 +144,12 @@
 			<!-- Done contest list item-->
 		</div>
 		<div class="codePen_Card">
-
 			<div class="row">
+			<c:forEach items="${works}" var="work">
 				<div class="col-lg-4">
 					<figure class="snip1268 ">
 						<div class="image">
-							<img src="img/order_sub_2491165_1_200621025755.jpg"
+							<img src="<%=request.getContextPath()%>/${work.thumbnailurl}"
 								alt="sq-sample4" />
 							<div class="icons ">
 								<a href="#"><i class="ion-star"></i></a> <a href="#"> <i
@@ -138,47 +166,9 @@
 						</figcaption>
 					</figure>
 				</div>
+				</c:forEach>
 
-				<div class="col-lg-4">
-					<figure class="snip1268">
-						<div class="image">
-							<img src="img/order_sub_2493968_1_200624173528.jpg"
-								alt="sq-sample17" />
-							<div class="icons">
-								<a href="#"><i class="ion-star"></i></a> <a href="#"> <i
-									class="ion-share"></i></a> <a href="#"> <i class="ion-search"></i></a>
-							</div>
-							<a href="#" class="add-to-cart">Open</a>
-						</div>
-						<figcaption>
-							<a href="#" class="userId_join">
-								<h2 id="userId_join2"></h2>
-							</a>
-							<div class="contestResult" id="contestResult2">1차 통과</div>
-						</figcaption>
-					</figure>
-
-				</div>
-
-				<div class="col-lg-4">
-					<figure class="snip1268">
-						<div class="image">
-							<img src="img/600img_lock.png" alt="sq-sample15" />
-							<div class="icons">
-								<a href="#"><i class="ion-star"></i></a> <a href="#"> <i
-									class="ion-share"></i></a> <a href="#"> <i class="ion-search"></i></a>
-							</div>
-							<a href="#" class="add-to-cart"> Open</a>
-						</div>
-						<figcaption>
-							<a href="#" class="userId_join">
-								<h2 id="userId_join3"></h2>
-							</a>
-							<div class="contestResult" id="contestResult3">1차 통과</div>
-						</figcaption>
-					</figure>
-
-				</div>
+				
 			</div>
 		</div>
 	</div>

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>ㅇㅏㅇㅣㄷㅣㅇㅓ</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
@@ -34,7 +34,7 @@
 			<div class="row mainbig d-flex justify-content-center">
 				<div class="mainleft">
 					<p class="ideasignup">
-						<span>ㅇㅏㅇㅣㄷㅣㅇㅓ</span> 회원가입
+						<span class="join">ㅇㅏㅇㅣㄷㅣㅇㅓ</span> <span class="join1">회원가입</span>
 					</p>
 					<p style="font-size: 16px;">
 						지금 바로 신규회원 가입하고<br>수많은 디자이너를 만나보세요!
@@ -64,20 +64,6 @@
 						class="card-img-top" alt="...">
 				</div>
 
-			</div>
-		</div>
-		<div class="modal fade modal--align-top" id="myModal" tabindex="-1"
-			role="dialog" aria-labelledby="myModalLabel">
-			<div class="modal-dialog" style="width: auto;">
-				<div class="modal-content">
-					<div class="modal-header" style="border-bottom: none">
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">×</span>
-						</button>
-					</div>
-					<jsp:include page="../member/login.jsp"></jsp:include>
-				</div>
 			</div>
 		</div>
 	</main>

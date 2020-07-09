@@ -34,6 +34,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.kfq.fund.service.IContestService;
+import com.kfq.fund.service.IMemberService;
 import com.kfq.fund.vo.ContestVO;
 import com.kfq.fund.vo.FileVO;
 import com.kfq.fund.vo.JoinVO;
@@ -44,8 +45,12 @@ public class ContestController {
 	@Autowired
 	private IContestService contest_service;
 	
-	public void setContestService(IContestService contest_service) {
+	@Autowired
+	private IMemberService memservice;
+	
+	public void setContestService(IContestService contest_service,IMemberService memservice) {
 		this.contest_service = contest_service;
+		this.memservice = memservice;
 	}
 	
 	@RequestMapping(value = "existContest.do")
@@ -73,6 +78,7 @@ public class ContestController {
 			mv.addObject("wins",contest_service.getTop5(1));
 			mv.addObject("costs",contest_service.getTop5(2));
 			mv.addObject("lasts",contest_service.getTop5(3));
+			mv.addObject("benners",contest_service.showbenner(10));
 			if(listtype.equals("proceeding")) {
 				listCnt = contest_service.listCnt(1);
 				page.pageInfo(pagenum, listCnt);
@@ -272,30 +278,66 @@ public class ContestController {
 	public ModelAndView showContestList() {
 		return new ModelAndView("contest/list");//ingcontest.html
 	}
-	@RequestMapping(value = "contest/{contestidx}")
-	public ModelAndView showContest(HttpServletRequest request,HttpSession session,@PathVariable String contestidx) {
+	@RequestMapping(value = {"contest/{contestidx}","contest/{contestidx}/p-{idx}"})
+	public ModelAndView showContest(HttpServletRequest request,HttpSession session,@PathVariable String contestidx,@PathVariable(required=false) String idx) {
 		ModelAndView mv = new ModelAndView();
+		ContestVO contest = contest_service.ContestInfo(Integer.parseInt(contestidx));
+		mv.addObject("contest",contest);
 		if(contest_service.iscontestfinsh(Integer.parseInt(contestidx))) {
-			System.out.println("finshed");
 			mv.setViewName("contest/contest_done");
 		}else {
 			mv.addObject("files",contest_service.getFiles(Integer.parseInt(contestidx)));
 			mv.addObject("idx",contestidx);
-			if(session.getAttribute("useremail")!=null&&session.getAttribute("useremail").equals(contest_service.whocontest(Integer.parseInt(contestidx)))) {
+			String useremail = (String) session.getAttribute("useremail");
+			if(useremail!=null) {
 				mv.setViewName("contest/contest_done");//끝남
+				List<JoinVO> work = contest_service.isworkexist(Integer.parseInt(contestidx), useremail);
+				if(useremail.equals(contest_service.whocontest(Integer.parseInt(contestidx)))){
+					Pagination page = new Pagination();
+					int listCnt = contest_service.allworkCnt(Integer.parseInt(contestidx));
+					int index = 1;
+					if(idx != null)
+						index = Integer.parseInt(idx);
+					page.pageInfo(index, listCnt);
+					work = contest_service.showworks(Integer.parseInt(contestidx), index, page.getListSize());
+					mv.addObject("works",work);
+					mv.addObject("pagination",page);
+				}else if(work.size() != 0) {
+					if(contest.getDay() < 0)
+						mv.addObject("works",work);
+					else {
+						contest_service.viewincrease(Integer.parseInt(contestidx));
+						mv.addObject("workexist",true);
+						mv.setViewName("contest/contestbrief");
+					}
+				}else {
+					contest_service.viewincrease(Integer.parseInt(contestidx));
+					mv.addObject("workexist",false);
+					mv.setViewName("contest/contestbrief");
+				}
 			}else {
-				mv.addObject("contest",contest_service.ContestInfo(Integer.parseInt(contestidx)));
 				contest_service.viewincrease(Integer.parseInt(contestidx));
+				mv.addObject("workexist",false);
 				mv.setViewName("contest/contestbrief");//참가 여부
 			}
 		}
 		return mv;
 	}
-	@RequestMapping(value = "/download/fileName={filenum}")
+	@RequestMapping(value="titleCheck.do",method=RequestMethod.POST)
+	@ResponseBody
+	public String existTitle(HttpServletRequest request) {
+		boolean result = contest_service.jointitleCheck((String)request.getParameter("title"));
+		if(result) {
+			return "false";
+		}
+		return "true";
+	}
+	@RequestMapping(value = "download/fileName={filenum}")
 	public ResponseEntity<Resource> downloadfile(@PathVariable String filenum, HttpServletRequest request){
 		FileVO file = contest_service.getFile(Integer.parseInt(filenum));
 		if(file != null) {
-			String filepath = "C://kfqproject"+file.getFileurl();
+			String filepath = "C://kfqproject"+file.getFileurl()+file.getFilename();
+			System.out.println(filepath);
 			File target = new File(filepath);
 			HttpHeaders header = new HttpHeaders();
 			Resource rs = null;
@@ -317,20 +359,35 @@ public class ContestController {
 		return null;
 	}
 	@RequestMapping(value = "contest/{contestidx}/join")
-	public ModelAndView joinContest() {
-		return new ModelAndView("join/join");//작성전
+	public ModelAndView joinContest(@PathVariable String contestidx) {
+		ModelAndView mv = new ModelAndView("join/join");
+		mv.addObject("contest",contest_service.ContestInfo(Integer.parseInt(contestidx)));
+		return mv;//작성전
 	}
 	@RequestMapping(value = "contest/{contestidx}/joininfo")
-	public ModelAndView joininfoContest() {
-		return new ModelAndView("join/joininfo");//작품 작성
+	public ModelAndView joininfoContest(@PathVariable String contestidx) {
+		ModelAndView mv = new ModelAndView("join/joininfo");
+		mv.addObject("contest",contest_service.ContestInfo(Integer.parseInt(contestidx)));
+		return mv;//작품 작성
 	}
 	@RequestMapping(value = "contest/{contestidx}/viewjoininfo", method=RequestMethod.POST)
-	public ModelAndView insertjoininfo(HttpServletRequest request,@PathVariable String contestidx,HttpSession session) {
+	public ModelAndView insertjoininfo(@RequestParam("file") MultipartFile file,HttpServletRequest request,@PathVariable String contestidx,HttpSession session) {
 		String email = (String) session.getAttribute("useremail");
-		System.out.println(request.getParameter("content"));
-		contest_service.insertJoin(new JoinVO(Integer.parseInt(contestidx),email,request.getParameter("content")));
-		ModelAndView mv = new ModelAndView("join/view");	
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+		contest_service.insertJoin(new JoinVO(Integer.parseInt(contestidx),email,title,content,""),file);
+		ModelAndView mv = new ModelAndView("redirect:/contest/"+contestidx);
 		return mv;//
+	}
+	@RequestMapping(value = "test/{contestidx}")
+	public ModelAndView test(@PathVariable String contestidx) {
+		ModelAndView mv = new ModelAndView("contest/contest_done");
+		mv.addObject("contest",contest_service.ContestInfo(Integer.parseInt(contestidx)));
+		int cnt = contest_service.allworkCnt(Integer.parseInt(contestidx));
+		Pagination page = new Pagination();
+		page.pageInfo(1,cnt);
+		mv.addObject("works",contest_service.showworks(Integer.parseInt(contestidx), page.getStartList(), page.getListSize()));
+		return mv;
 	}
 	@RequestMapping(value = "payed")
 	@ResponseBody
@@ -348,8 +405,8 @@ public class ContestController {
 	}
 	@RequestMapping(value = "contest/{contestidx}/uploadImageJoin", method=RequestMethod.POST)
 	@ResponseBody
-	public JSONObject uploadImageJoin(@RequestParam("file") MultipartFile file,@PathVariable int contestidx) {
+	public JSONObject uploadImageJoin(@RequestParam("file") MultipartFile file,@PathVariable int contestidx,HttpServletRequest request) {
 		System.out.println("success");
-		return contest_service.insertJoinImage(file, contestidx);
+		return contest_service.insertJoinImage(file, contestidx, request.getParameter("title"));
 	}
 }

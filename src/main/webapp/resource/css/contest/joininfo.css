@@ -7,7 +7,7 @@ body {
 	min-width: 570px;
 }
 
-.img {
+img {
 	width: 100%;
 	height: auto;
 }
@@ -141,9 +141,7 @@ textarea {
 	transition: height 0.2s;
 }
 
-.form-control-join {
-	border: 0px;
-}
+
 
 .form-control:focus {
 	color: #495057;
@@ -174,4 +172,24 @@ textarea {
 .join_step1_checkbox {
 	width: 100%;
 	margin: 5% 0%;
+}
+
+.join_title {
+	margin: 5% 0% 3% 0%;
+	font-weight: bold;
+	font-size: 24px;
+	border: 0px;
+}
+
+.join_title input {
+	width: 100%;
+	outline: none;
+	border: 1px solid #DEDEDE;
+	border-radius: 5px;
+	padding: 1% 1%;
+	font-size: 18px;
+}
+
+.join_title_head {
+	margin: 1% 0%;
 }
