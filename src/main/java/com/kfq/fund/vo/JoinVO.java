@@ -4,12 +4,27 @@ public class JoinVO {
 	private int id;
 	private int contest_id;
 	private String email;
+	private String title;
 	private String content;
+	private String thumbnailurl;
 	
-	public JoinVO(int contest_id,String email,String content) {
+	public JoinVO(Integer contest_id,String email,String title,String content,String thumbnailurl) {
 		this.contest_id = contest_id;
+		this.title = title;
 		this.email = email;
 		this.content = content;
+		this.thumbnailurl = thumbnailurl;
+	}
+	public JoinVO(Integer contest_id,String title,String content,String thumbnailurl) {
+		this.contest_id = contest_id;
+		this.title = title;
+		this.content = content;
+		this.thumbnailurl = thumbnailurl;
+	}
+	public JoinVO(Integer contest_id, String title, String thumbnailurl) {
+		this.contest_id = contest_id;
+		this.title = title;
+		this.thumbnailurl = thumbnailurl;
 	}
 	public int getId() {
 		return id;
@@ -34,6 +49,18 @@ public class JoinVO {
 	}
 	public void setContent(String content) {
 		this.content = content;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getThumbnailurl() {
+		return thumbnailurl;
+	}
+	public void setThumbnailurl(String thumbnailurl) {
+		this.thumbnailurl = thumbnailurl;
 	}
 	
 	

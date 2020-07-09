@@ -24,6 +24,11 @@ public interface IContestDAO {
 	public int searchworknum(int contestid);
 	public int iscontestfinsh(int id);
 	public String whocontest(int id);
+	public List<JoinVO> isworkexist(int id, String email);
+	public int allworkCnt(int id);
+	public List<JoinVO> showworks(int id, int startList,int listSize);
+	public int jointitleCheck(String title);
+	public List<ContestVO> showbenner();
 	//insert
 	public void insertContest(ContestVO contest);
 	public void insertContestFile(FileVO file);

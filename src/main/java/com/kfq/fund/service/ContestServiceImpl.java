@@ -3,9 +3,11 @@ package com.kfq.fund.service;
 import java.io.File;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 
 import javax.servlet.http.HttpSession;
 
@@ -19,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.kfq.fund.dao.IContestDAO;
+import com.kfq.fund.dao.IMemberDAO;
 import com.kfq.fund.vo.ContestVO;
 import com.kfq.fund.vo.FileVO;
 import com.kfq.fund.vo.JoinVO;
@@ -28,7 +31,11 @@ import com.kfq.fund.vo.Pagination;
 public class ContestServiceImpl implements IContestService{
 	@Autowired
 	private IContestDAO dao;
-	
+	@Autowired
+	private IMemberDAO memdao;
+	public void setmemDao(IMemberDAO dao) {
+		this.memdao = dao;
+	}
 	public void setDao(IContestDAO dao) {
 		this.dao = dao;
 	}
@@ -38,6 +45,9 @@ public class ContestServiceImpl implements IContestService{
 	}
 	@Override
 	public void insertContest(ContestVO contest) {
+		String imgurl = memdao.findMember(contest.getMemberemail()).getImgurl();
+		if(imgurl != null)
+			contest.setImgurl(imgurl);
 		dao.insertContest(contest);
 	}
 	@Override
@@ -118,24 +128,26 @@ public class ContestServiceImpl implements IContestService{
 		return dao.getFiles(id);
 	}
 	@Override
-	public JSONObject insertJoinImage(MultipartFile mpf, int contestnum) {
+	public JSONObject insertJoinImage(MultipartFile mpf, int contestnum,String worktitle) {
 		JSONObject jsonobject = new JSONObject();
 		String title = dao.ContestName(contestnum);
 		try {
-			String destinationFileName = savejoinimage(mpf,title);
-			jsonobject.put("url", "/join/"+title+"/"+destinationFileName);
+			String destinationFileName = savejoinimage(mpf,title,worktitle);
+			jsonobject.put("url", "/join/"+title+"/"+worktitle+"/"+destinationFileName);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return jsonobject;
 	}
-	private String savejoinimage(MultipartFile mpf, String title) throws Exception{	
-		String fileroot = "C://kfqproject/join/"+title+"/";
+	private String savejoinimage(MultipartFile mpf, String title,String worktitle) throws Exception{	
+		String fileroot = "C://kfqproject/join/"+title+"/"+worktitle+"/";
 		String originalFileName = mpf.getOriginalFilename();
 		String extension = FilenameUtils.getExtension(originalFileName).toLowerCase();
 		File destinationFile;
 		String destinationFileName;
+		
+		
 		do {
 			destinationFileName = RandomStringUtils.randomAlphabetic(32)+"."+extension;
 			destinationFile = new File(fileroot+destinationFileName);
@@ -145,8 +157,17 @@ public class ContestServiceImpl implements IContestService{
 		return destinationFileName;
 	}
 	@Override
-	public void insertJoin(JoinVO join) {
-		dao.insertJoin(join);
+	public void insertJoin(JoinVO join,MultipartFile mpf) {
+		String imageurl = "";
+		String title = dao.ContestName(join.getContest_id());
+		try {
+			imageurl = savejoinimage(mpf, title,join.getTitle());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		join.setThumbnailurl(imageurl);
+		dao.insertJoin(join);//이미지 일부 삭제
 	}
 	@Override
 	public List<ContestVO> getTop5(int search) {
@@ -198,17 +219,17 @@ public class ContestServiceImpl implements IContestService{
 	
 	private String imgurl(String contesttype) {
 		if(contesttype.contains("logo")||contesttype.equals("branding"))
-			return "logo.png";
+			return "resource/img/default/logo.png";
 		else if(contesttype.equals("idea"))
-			return "idea.png";
+			return "resource/img/default/idea.png";
 		else if(contesttype.equals("designpackage")||contesttype.equals("labeldesign")||contesttype.equals("productdesign"))
-			return "package.png";
+			return "resource/img/default/package.png";
 		else if(contesttype.equals("poster")||contesttype.equals("brochure")||contesttype.equals("bizcard"))
-			return "print.png";
+			return "resource/img/default/print.png";
 		else if(contesttype.equals("homepage")||contesttype.equals("app")||contesttype.equals("landingpage")||contesttype.equals("benner"))
-			return "web.png";
+			return "resource/img/default/web.png";
 		else
-			return "etc.png";
+			return "resource/img/default/etc.png";
 	}
 	private String contesttype(String contesttype) {
 		switch(contesttype) {
@@ -275,11 +296,56 @@ public class ContestServiceImpl implements IContestService{
 		ContestVO contest = dao.ContestInfo(id);
 		contest.setImgurl(dao.imgurl(contest.getId()));
 		String contesttype=contest.getContesttype();
+		if(contest.getImgurl() == null)
+			contest.setImgurl(imgurl(contesttype));
 		contest.setContesttype(contesttype(contesttype));
 		return contest;
 	}
 	@Override
 	public void viewincrease(int id) {
 		dao.viewincrease(id);
+	}
+	@Override
+	public List<JoinVO> isworkexist(int id, String email) {
+		return dao.isworkexist(id, email);
+	}
+	@Override
+	public int allworkCnt(int id) {
+		return dao.allworkCnt(id);
+	}
+	@Override
+	public List<JoinVO> showworks(int id, int startList,int listSize){
+		String name = dao.ContestName(id);
+		List<JoinVO> list = dao.showworks(id, startList, listSize);
+		String root = "/contest/"+ name+"/";
+		for(int i = 0;i < list.size();i++)
+			list.get(i).setThumbnailurl(root+list.get(i).getThumbnailurl());
+		
+		return list;
+	}
+	@Override
+	public boolean jointitleCheck(String title) {
+		return dao.jointitleCheck(title) == 0?false:true;
+	}
+	@Override
+	public List<ContestVO> showbenner(int num) {
+		List<ContestVO> list = dao.showbenner();
+		List<ContestVO> showlist = new ArrayList<>();
+		int[] a = new int[num];
+		Random r = new Random();
+		out:
+		for(int i=0;i < num;i++) {
+			a[i] = r.nextInt(list.size());
+			for(int j = 0;j < i;j++)
+				if(a[i] == a[j]) {
+					i--;
+					continue out;
+				}
+			showlist.add(list.get(a[i]));
+			if(showlist.get(i).getImgurl() == null) {
+				showlist.get(i).setImgurl(imgurl(showlist.get(i).getContesttype()));
+			}
+		}
+		return showlist;
 	}
 }

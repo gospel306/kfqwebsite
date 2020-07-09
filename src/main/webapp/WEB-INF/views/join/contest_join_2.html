@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
-	
+
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
 		integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -18,11 +18,15 @@
 		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
 		crossorigin="anonymous"></script>
 
-	<link rel="stylesheet" type="text/css" href="css/contest_join.css">
+	<link rel="stylesheet" type="text/css" href="./css/contest_join.css">
 	<script src="./js/contestBrief.js"></script>
 
+	<script src="./js/imgUploader.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/imgUploader.css">
+
+
 	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 
 
 	<style>
@@ -179,7 +183,7 @@
 
 		/*itembox*/
 
-	
+
 
 		.font_bold {
 			font-weight: bold;
@@ -189,23 +193,69 @@
 			color: #FF5D5D;
 		}
 
-	
 
-		.join_step_2_top{
+
+		.join_step_2_top {
 			margin: 5% 0%;
 		}
 
 
-		
-		.join_step1_checkbox{
-		width:100%;
-		margin:5% 0%;
+
+		.join_step1_checkbox {
+			width: 100%;
+			margin: 5% 0%;
 		}
-		
+
+		.join_title {
+			margin: 5% 0% 3% 0%;
+			font-weight: bold;
+			font-size: 24px;
+			border: 0px;
+		}
+
+		.join_title input {
+			width: 100%;
+			outline: none;
+			border: 1px solid #DEDEDE;
+			border-radius: 5px;
+			padding: 1% 1%;
+			font-size: 18px;
+		}
+
+		.join_title_head {
+			margin: 1% 0%;
+		}
 
 
+		/*img*/
 
+		.imgUP {
+			margin: 5% 0%;
+		}
 
+		.img_file_input {
+			margin: 5% 0%;
+		}
+
+		.imageThumb {}
+
+		.pip {
+			margin: 5% 0%;
+		}
+
+		.remove {
+			display: block;
+			color: #C12020;
+			font-weight: bold;
+			text-align: right;
+			cursor: pointer;
+			font-size: 12px;
+			margin-top: 7px;
+		}
+
+		.remove:hover {
+			color: black;
+		}
 	</style>
 
 <body>
@@ -274,17 +324,17 @@
 
 			<div class="join_step_2" id="join_step_2">
 
-			<div class="join_step_2_top">
-				<div class="row">
-					<div class="col-lg-3"></div>
+				<div class="join_step_2_top">
+					<div class="row">
+						<div class="col-lg-3"></div>
 
-					<div class="col-lg-6">
-						<img class="join_step_2_img" src="img/img_step02.png" alt="">
+						<div class="col-lg-6">
+							<img class="join_step_2_img" src="img/img_step02.png" alt="">
+						</div>
+						<div class="col-lg-3"></div>
+
 					</div>
-					<div class="col-lg-3"></div>
-
 				</div>
-			</div>
 				<div class="join_step_2_editor">
 					<div class="row">
 
@@ -292,11 +342,41 @@
 
 						<div class="col-lg-10">
 
+							<div class="join_title">
+
+								<div class="join_title_head">
+									콘테스트 참여 작품
+								</div>
+
+								<input type="text" class="join_title_input" placeholder="제목">
+							</div>
+
 							<div id="join_editor">
+
 
 								<div id="summernote"></div>
 
 							</div>
+
+
+
+							<!-- img-->
+							<div class="imgUP">
+								<form>
+									<div>
+										<span id="counter">0 files selected</span>
+									</div>
+									<div class="row">
+										<div class="col-lg-2">
+											<div class="img_file_input">
+												<input type="file" id="files" name="files[]" multiple /><br>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+
+							<!-- img-->
 						</div>
 						<div class="col-lg-1"></div>
 					</div>
@@ -304,22 +384,26 @@
 				</div>
 			</div>
 
-			
 
-			
-            <div class="row">
-                <div class="col-lg-4"></div>
 
-                <div class="col-lg-4">
-                    <button class="learn-more join_step1_checkbox"   id="join_step1_check"> 콘테스트 제출</button>
-							
+			<div class="row">
+				<div class="col-lg-4"></div>
 
-                </div>
-                <div class="col-lg-4"></div>
+				<div class="col-lg-4">
+					<button class="learn-more join_step1_checkbox" id="join_step1_check"> 콘테스트 제출</button>
 
-            </div>
 
-					
+				</div>
+				<div class="col-lg-4"></div>
+
+			</div>
+
+
+
+
+
+
+
 
 		</div>
 		<!--main-->
@@ -339,10 +423,12 @@
 <script>
 
 	$('#summernote').summernote({
-      
-        tabsize: 2,
-        height: 300
-      });
+
+		tabsize: 2,
+		height: 300
+	});
+
+
 
 
 	$(document)
@@ -370,11 +456,66 @@
 
 
 
-				$('#join_step1_check').on('click', function(){
-					location.href="http://localhost:9097/Project/contestBrief.html";
+				$('#join_step1_check').on('click', function () {
+					location.href = "http://localhost:9097/Project/contestBrief.html";
 
 				})
+
+				//img
+
+
+				//img
+				var myFiles = [];
+
+				$("#files").on("change", function (e) {
+					var files = e.target.files, file;
+					for (var i = 0; i < files.length; i++) {
+						file = files[i];
+						myFiles.push(file);
+						$('<div class="pip">' + '<span class="remove">X</span>' +
+							'<img class="imageThumb" ' +
+							'src="' + URL.createObjectURL(file) + '" ' +
+							'title="' + file.name + '"/>' +
+							'<br/>' +
+							'</div>')
+							.insertAfter("#files")
+							.find(".remove").click(removeFile.bind(null, file));
+					}
+					updateCounters();
+				});
+
+				$('form').on('submit', upload);
+
+				function removeFile(file, evt) {
+					$(evt.target).parent(".pip").remove();
+					myFiles.splice(myFiles.indexOf(file), 1);
+					updateCounters();
+				}
+
+				function updateCounters() {
+					$('#counter').text(myFiles.length + ' files selected');
+				}
+
+				function upload(evt) {
+					evt.preventDefault();
+					var fd = new FormData();
+					for (var i = 0; i < myFiles.length; i++) {
+						fd.append('files[]', myFiles[i]);
+					}
+
+					var xhr = new XMLHttpRequest();
+					xhr.open('POST', 'YOUR_FORM_ACTION_URL');
+					xhr.send(fd);
+				}
+
+				//img
+
+
 			});
+
+
+
+
 </script>
 
 </html>

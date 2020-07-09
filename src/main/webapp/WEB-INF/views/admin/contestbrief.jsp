@@ -1,36 +1,48 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<!-- icon css -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-	
-	<!-- custom js -->
-	<script src="<%=request.getContextPath()%>/resource/js/contest/contestBrief.js"></script>
-	<script src="<%=request.getContextPath()%>/resource/js/section/goTop.js"></script>
-	
-	<!-- custom css -->
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/contest/contestbrief.css">
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/custom.css">
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/slick.css">
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/slick-theme.css">
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/slick_custom.css">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- icon css -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<!-- custom js -->
+<script
+	src="<%=request.getContextPath()%>/resource/js/contest/contestBrief.js"></script>
+<script src="<%=request.getContextPath()%>/resource/js/section/goTop.js"></script>
+
+<!-- custom css -->
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resource/css/contest/contestvrief.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resource/css/custom.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resource/css/slick.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resource/css/slick-theme.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resource/css/slick_custom.css">
 </head>
 <header>
 	<jsp:include page="../section/header.jsp"></jsp:include>
 	<jsp:include page="../section/goTop.jsp"></jsp:include>
 </header>
+
 <body>
 	<!--first_layout-->
 	<div class="first_layout">
@@ -38,7 +50,7 @@
 		<div class="brief_head">
 			<div class="row">
 				<div class="col-lg-2 head_img">
-					<img class="head_img_1" src="<%=request.getContextPath()%>/resource/img/contest/trophy-icon2.png" alt="">
+					<img class="head_img_1" src="img/trophy-icon2.png" alt="">
 				</div>
 				<div class="col-lg-10">
 					<div class="head_title">
@@ -98,9 +110,14 @@
 								저조할 것 같을 때, 혹은 한 명의 디자이너에게 통일된 작업을 요청하고 싶을때는 [1:1 프로젝트]를 이용해보세요.
 							</div>
 						</div>
+
 					</div>
+
+
 				</div>
+
 			</div>
+
 		</div>
 		<!--brief_head-->
 
@@ -112,157 +129,231 @@
 					<div class="col-lg-8">
 						<div class="row">
 							<div class="col-sm-2 brief_item_img">
-								<img src="<%=request.getContextPath()%>/${contest.imgurl}" style="width:80px;height:80px;" alt="">
+								<img src="img/thumbimg_logo.png" alt="">
 							</div>
 							<div class="col-sm-3">
-								<div class=" item_box_category" id="item_box_category">${contest.contesttype}</div>
-								<div id="item_box_userId">${contest.company}</div>
+
+								<div class=" item_box_category" id="item_box_category"></div>
+								<div id="item_box_userId"></div>
+
 							</div>
+
 							<div class="col-sm-7">
 								<div class="item_box_contestTitle">
-									<span id="item_box_contestTitle">${contest.title}</span>
+									<span id="item_box_contestTitle"></span>
 								</div>
 								<div class='item_box_userName' id='item_box_userName'></div>
 								<div class='item_box_optionImage' id='item_box_optionImage'>
+
 								</div>
 							</div>
+
 						</div>
+
+
+
+
 						<div class="row item_content_roof">
 							<div class="col-sm-12 item_box_contestContent"
-								id="item_box_contestContent">${contest.serviceinfo}</div>
+								id="item_box_contestContent"></div>
+
 						</div>
+
 					</div>
+
 					<div class="col-lg-4 item_box_tail">
+
+						<div class="box_label row justify-content-end">
+							<div class="col-sm-3">
+								<img src="img/label_premium.png" alt="">
+							</div>
+
+							<div class="col-sm-3">
+								<img src="img/label_100.png" alt="">
+							</div>
+						</div>
+
+
 						<div class="item_box_contestReward item_content_tail_roof"
-							id="item_box_contestReward">
-								1등: ${contest.firstprize} 만원
-                        <c:if test="${contest.secondprize ne 0}">
-                        	/2등: ${contest.secondprize} 만원
-                        </c:if>
-                        <c:if test="${contest.thirdprize ne 0}">
-                        	/3등: ${contest.thirdprize} 만원
-                        </c:if>
-						</div>
-						<jsp:useBean id="now" class="java.util.Date"/>
-						<fmt:parseDate value="${contest.enddate}" pattern="yyyy-MM-dd" var="endDate"/>
+							id="item_box_contestReward"></div>
+
+
 						<div class="item_box_contestPeriod item_content_tail_roof"
-							id="item_box_contestPeriod">
-                    		남은 기간: 
-                    		<c:choose>
-                    			<c:when test="${endDate > now}">
-                    				${contest.day}일
-                    			</c:when>
-                    			<c:otherwise>
-                    				심사중
-                    			</c:otherwise>
-                    		</c:choose>
-                    		(~${contest.enddate})
-						</div>
+							id="item_box_contestPeriod"></div>
+
 						<div class="item_box_joinCount item_content_tail_roof"
-							id="item_box_joinCount">
-						<c:choose>
-                        	<c:when test="${endDate > now}">
-                        		조회수: ${contest.views }
-                        	</c:when>
-                        	<c:otherwise>
-                        		참여자: ${contest.people }
-                        	</c:otherwise>
-                        </c:choose>	
-						</div>
+							id="item_box_joinCount"></div>
+
+
 					</div>
+
+
+
 				</div>
 			</div>
 
 			<!-- contest list item-->
 
+
+
+
 			<!--briefing -->
 			<div class="briefing">
 				<!--briefing_title-->
 				<div class="briefing_title">
-					<img src="<%=request.getContextPath()%>/resource/img/contest/icon_brief1.png" alt=""> 콘테스트 브리핑 자세히보기
+					<img src="img/icon_brief1.png" alt=""> 콘테스트 브리핑 자세히보기
 				</div>
 				<!--briefing_title-->
 
 				<!--brief content-->
+
+
 				<div class="brief_content">
 					<div class="row brief_content_item_1">
 						<div class="col-lg-2 brief_content_item_title">
-							<img src="<%=request.getContextPath()%>/resource/img/contest/ic-arrowpoint.png"> 제목
+							<img src="img/ic-arrowpoint.png"> 제목
 						</div>
 						<div class="col-lg-10 contest_brief_title"
-							id="contest_brief_title">${contest.title}</div>
+							id="contest_brief_title"></div>
 					</div>
+
 					<div class="row brief_content_item_2">
 						<div class="col-lg-2 brief_content_item_title">
-							<img src="<%=request.getContextPath()%>/resource/img/contest/ic-arrowpoint.png"> 회사명
+							<img src="img/ic-arrowpoint.png"> 회사명
 						</div>
 						<div class="col-lg-10 contest_brief_userName "
-							id="contest_brief_userName">${contest.company}</div>
+							id="contest_brief_userName"></div>
 					</div>
 
 					<div class="row brief_content_item_3">
 						<div class="col-lg-2 brief_content_item_title">
-							<img src="<%=request.getContextPath()%>/resource/img/contest/ic-arrowpoint.png"> 서비스설명
+							<img src="img/ic-arrowpoint.png"> 서비스설명
 						</div>
 						<div class="col-lg-10 contest_brief_content "
-							id="contest_brief_content">${contest.serviceinfo}</div>
+							id="contest_brief_content"></div>
 					</div>
+
+
+
+
+
+
+
 				</div>
-				<!--brief content-->
 			</div>
+			<!--briefing -->
+			<div class="briefing">
+
+				<div class="briefing_title">
+					<img src="img/icon_brief1.png" alt=""> 디자인 브리핑 상세내용
+				</div>
+				<!--briefing_title-->
+
+				<!--brief content-->
+
+
+				<div class="brief_content">
+					<div class="row brief_content_item_1">
+
+						<div class="col-lg-12 design_brief_1" id="design_brief_1"></div>
+					</div>
+
+					<div class="row brief_content_item_2">
+
+						<div class="col-lg-12 design_brief_2 " id="design_brief_2">
+
+
+
+						</div>
+					</div>
+
+					<div class="row brief_content_item_3">
+
+						<div class="col-lg-12 design_brief_3" id="design_brief_3"></div>
+					</div>
+
+
+
+
+
+
+
+				</div>
+
+
+			</div>
+
+			<!--brief content-->
+
+
+
+
+
 			<div>
-				<c:if test="${!empty files }">
 				<div class="downBoxTitle">
 					<div class="briefing_title">
 						<img src="img/icon_brief7.png" alt=""> 디자이너들이 참고할 자료가 있으신가요?
 					</div>
 				</div>
-				
 				<div class="downBox">
 					<div class="row">
+
 						<div class="col-lg-6 downBorder">
 							<div class="downboxList">
-							<c:forEach items="${files}" var="file">
 								<div class="row">
-									<div class="col-sm-8 downTitle">${file.fileOriName}</div>
+									<div class="col-sm-8 downTitle">파일이름 들어갈 장소</div>
 									<div class="col-sm-4 ">
-										<a class="btn" href="<%=request.getContextPath()%>/download/fileName=${file.fno}">
+
+										<a class="btn" href="img/WebContent 0707.zip" download>
 											<button class="downBtn" type="button" value="">저장</button>
 										</a>
 									</div>
 								</div>
-							</c:forEach>
+							</div>
+							<div class="downboxList">
+								<div class="row">
+									<div class="col-sm-8 downTitle">파일이름 들어갈 장소</div>
+									<div class="col-sm-4 ">
+
+										<a class="btn" href="img/WebContent 0707.zip" download>
+											<button class="downBtn" type="button" value="">저장</button>
+										</a>
+									</div>
+								</div>
 							</div>
 						</div>
+
 						<div class="col-lg-6"></div>
+
 					</div>
 				</div>
-				</c:if>
 			</div>
-			<!--briefing -->
-			<c:if test="${endDate > now && workexist == false}">
+
 			<div class="row">
 				<div class="col-lg-4"></div>
+
 				<div class="col-lg-4">
 					<button class="learn-more join_step1_checkbox"
-						id="join_step1_check" onclick="location.href='<%=request.getContextPath()%>/contest/${idx}/join'">콘테스트 참여</button>
+						id="join_step1_check">콘테스트 참여</button>
+
+
 				</div>
 				<div class="col-lg-4"></div>
+
 			</div>
-			</c:if>
-			<c:if test="${workexist == true}">
-			<div class="row">
-				<div class="col-lg-4"></div>
-				<div class="col-lg-4">
-					<div>이미 제출하셨습니다. 좋은 결과가 있길 빕니다.</div>
-				</div>
-				<div class="col-lg-4"></div>
-			</div>
-			</c:if>
+
 		</div>
 		<!--main-->
+
+
+
+
+
+
+
 	</div>
 	<!--first_layout-->
+
 </body>
 <footer>
 	<jsp:include page="../section/footer.jsp"></jsp:include>

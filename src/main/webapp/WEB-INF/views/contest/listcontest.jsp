@@ -6,413 +6,24 @@
 
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
 <script src="<%=request.getContextPath()%>/resource/js/section/pagination.js"></script>
-<script
-	src="<%=request.getContextPath()%>/resource/js/section/goTop.js"></script>
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resource/css/custom.css">
+<script src="<%=request.getContextPath()%>/resource/js/contest/listcontest.js"></script>
+<script src="<%=request.getContextPath()%>/resource/js/section/goTop.js"></script>
+
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/contest/listcontest.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resource/css/custom.css">
 
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<style>
-body {
-	margin: 0px auto;
-}
-
-div {
-	
-}
-
-img {
-	height: auto;
-}
-
-#pills-Proceeding img {
-	width: auto;
-	height: auto;
-	vertical-align: middle;
-}
-
-#pills-Scoring img {
-	width: auto;
-	height: auto;
-	vertical-align: middle;
-}
-
-#pills-Done 
-    
-
-
-
-
-
-        .top_width {
-	background-color: #ebeff2;
-}
-
-.list_Tap {
-	
-}
-
-.content_top {
-	width: 100%;
-	margin: 0px auto;
-}
-
-.list_Tap .nav-pills {
-	padding-top: 20px;
-}
-
-.list_Tap .nav-link {
-	padding: 0px;
-	text-align: center;
-}
-
-.list_Tap .nav-pills .nav-link {
-	background-color: #64636d;
-	color: white;
-	padding: 10px 0px;
-	font-size: 18px;
-}
-
-.list_Tap .nav-pills .nav-link.active, .list_Tap  .nav-pills .nav-link.active:hover,
-	.list_Tap .nav-pills .nav-link.active:focus {
-	background-color: white;
-	color: #64636d;
-	border-top: 2px solid #64636d;
-}
-
-.list_Top {
-	width: 75%;
-	padding-top: 76px;
-	margin: 0px auto;
-}
-
-.list_maintitle {
-	font-size: 18px;
-	font-weight: bold;
-}
-
-.List_ScoringTap_subTitle {
-	display: none;
-}
-
-.List_DoneTap_subTitle {
-	display: none;
-}
-
-.list_content {
-	width: 75%;
-	margin: 0px auto;
-}
-
-.list_Tap_sub {
-	width: 100%;
-	padding: 20px 0px 0px 20px;
-	font-size: 13px;
-	font-weight: bold;
-}
-
-.list_Title {
-	padding: 20px 0px 0px 0px;
-}
-
-.padding_zero {
-	padding: 1px;
-}
-
-.btn {
-	font-weight: bold;
-}
-
-.dropdown:hover #dropdownKind1 {
-	display: block;
-}
-
-.dropdown:hover #dropdownKind2 {
-	display: block;
-}
-
-.dropdown:hover #dropdownKind3 {
-	display: block;
-}
-
-.dropbox-inline {
-	padding: 10px;
-	margin-top: 50px;
-}
-
-.dropdown-menu {
-	background-color: #444;
-}
-
-.dropdown-item {
-	color: white;
-	font-weight: bold;
-}
-
-.dropdown-item:hover {
-	background-color: black;
-	color: white;
-}
-
-.text_red {
-	color: #FF5D5D;
-}
-
-.width75 {
-	width: 75%;
-}
-
-#btnKind1 {
-	width: 100%;
-}
-
-.list_tab_content {
-	width: 75%;
-	margin: 0px auto;
-	padding-top: 50px;
-}
-
-.list_rank_title {
-	text-align: center;
-	padding-bottom: 30px;
-	border-bottom: 2px solid #CCCCCC;
-}
-
-.btn-secondary {
-	background-color: white;
-	color: #64636d;
-	;
-}
-
-.contest_rank_text {
-	text-overflow: ellipsis;
-	border: 0px solid white;
-	width: 100%;
-}
-
-.contest_rank_text:hover {
-	color: #FF5D5D;
-}
-
-.contest_rank_tail {
-	border: 1px solid #f4f5f6;
-	border-radius: 8px;
-	background-color: #CCCCCC;
-	text-align: center;
-}
-
-.rank_list_width {
-	width: 80%;
-}
-
-.list_rank_content {
-	font-size: 12px;
-}
-
-.item_box_tail {
-	padding-top: 1%;
-	padding-bottom: 1%;
-}
-
-.item_price {
-	
-}
-
-.item_period {
-	padding: 5px 0px;
-}
-
-.item_visitCount {
-	
-}
-
-.item_price_text {
-	width: 100%;
-	text-align: center;
-	border: 0px;
-	background-color: #f4f5f6;
-	padding: 5px 10px;
-}
-
-.item_period_text {
-	width: 100%;
-	text-align: center;
-	border: 1px solid #cccccc;
-	border-radius: 5px;
-	padding: 5px 10px;
-}
-
-.item_visitCount_text {
-	width: 100%;
-	text-align: center;
-	border: 1px solid #cccccc;
-	border-radius: 5px;
-	padding: 5px 10px;
-}
-/*item_box*/
-.contest_list_item_roof {
-	margin: 5% auto 0 auto;
-	width: 75%;
-}
-
-.contest_list_item {
-	border: 1px solid #cccccc;
-	border-radius: 5px;
-	padding: 10px;
-}
-
-.item_box_category {
-	color: #FF5D5D;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-
-.item_box_contestTitle {
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-
-.item_box_userId {
-	
-}
-
-.item_content_roof {
-	margin-top: 5%;
-}
-
-.item_content_tail_roof {
-	margin-top: 5%;
-}
-
-.item_box_contestReward {
-	text-align: center;
-	border: 1px solid #ebeff2;
-	border-radius: 5px;
-	background-color: #ebeff2;
-	padding: 1%;
-}
-
-.item_box_contestPeriod {
-	text-align: center;
-	border: 1px solid #ebeff2;
-	border-radius: 5px;
-	background-color: #ebeff2;
-	padding: 1%;
-}
-
-.item_box_joinCount {
-	text-align: center;
-	border: 1px solid #ebeff2;
-	border-radius: 5px;
-	background-color: #ebeff2;
-	padding: 1%;
-}
-
-.box_label {
-	padding: 1% 5% 1% 1%;
-}
-
-.box_label img {
-	
-}
-
-/*item_box*/
-/*add_item_box*/
-.last_item_size {
-	width: 90%;
-	height: 100%;
-	overflow: hidden;
-	margin-left: 5%;
-}
-
-.contest_list_Doneitem {
-	border: 1px solid #cccccc;
-	border-radius: 5px;
-	padding: 10px;
-}
-
-.Done_Categoty_img {
-	width: auto;
-}
-
-.padding_bottom {
-	padding-bottom: 5%;
-}
-
-/* carousel*/
-@media ( max-width : 768px) {
-	.carousel-inner .carousel-item>div {
-		display: none;
-	}
-	.carousel-inner .carousel-item>div:first-child {
-		display: block;
-	}
-}
-
-.carousel-inner .carousel-item.active, .carousel-inner .carousel-item-next,
-	.carousel-inner .carousel-item-prev {
-	display: flex;
-}
-
-/* display 3 */
-@media ( min-width : 768px) {
-	.carousel-inner .carousel-item-right.active, .carousel-inner .carousel-item-next
-		{
-		transform: translateX(50.000%);
-	}
-	.carousel-inner .carousel-item-left.active, .carousel-inner .carousel-item-prev
-		{
-		transform: translateX(-50.00%);
-	}
-}
-
-.carousel-inner .carousel-item-right, .carousel-inner .carousel-item-left
-	{
-	transform: translateX(0);
-}
-
-.card {
-	border: 0px solid white;
-}
-
-/* carousel*/
-@media ( max-width :1000px) {
-	#pills-Proceeding  .brief_item_img img {
-		width: 60px;
-		height: 60px;
-	}
-}
-
-@media ( max-width :640px) {
-	#pills-Proceeding  .brief_item_img img {
-		width: 40px;
-		height: 40px;
-	}
-}
-
-.contest_list_Doneitem {
-	min-width: 770px;
-}
-</style>
 </head>
 <header>
 	<jsp:include page="../section/header.jsp"></jsp:include>
@@ -583,7 +194,7 @@ img {
 										</div>
 										<div class="col-sm-4 contest_rank_tail padding_zero">
 
-											<img src="img/people.png" alt="">&nbsp; <strong>${win.people}</strong>명
+											<img src="<%=request.getContextPath()%>/resource/img/contest/people.png" alt="">&nbsp; <strong>${win.people}</strong>명
 											|<strong> D</strong>- ${win.day}
 										</div>
 									</div>
@@ -593,7 +204,7 @@ img {
 						</div>
 						<div class="col-lg-4">
 							<div class="list_rank_title">
-								<img src="img/22_mimg.png" alt=""> 최대 상금 콘테스트
+								<img src="<%=request.getContextPath()%>/resource/img/contest/22_mimg.png" alt=""> 최대 상금 콘테스트
 							</div>
 							<!--  content-->
 							<div class="list_rank_content">
@@ -608,7 +219,7 @@ img {
 													value="${cost.title}" readonly>
 											</div>
 											<div class="col-sm-4 contest_rank_tail padding_zero">
-												<img src="img/people.png" alt="">&nbsp; <strong>${cost.people}</strong>명
+												<img src="<%=request.getContextPath()%>/resource/img/contest/people.png" alt="">&nbsp; <strong>${cost.people}</strong>명
 												|<strong> D</strong>- ${cost.day}
 											</div>
 										</div>
@@ -619,7 +230,7 @@ img {
 
 						<div class="col-lg-4">
 							<div class="list_rank_title">
-								<img src="img/22_nimg.png" alt=""> 최신 등록 콘테스트
+								<img src="<%=request.getContextPath()%>/resource/img/contest/22_nimg.png" alt=""> 최신 등록 콘테스트
 							</div>
 							<!--  content-->
 							<div class="list_rank_content">
@@ -636,7 +247,7 @@ img {
 
 											<div class="col-sm-4 contest_rank_tail padding_zero">
 
-												<img src="img/people.png" alt="">&nbsp; <strong>${last.people}</strong>명
+												<img src="<%=request.getContextPath()%>/resource/img/contest/people.png" alt="">&nbsp; <strong>${last.people}</strong>명
 												|<strong> D</strong>- ${last.day}
 											</div>
 										</div>
@@ -655,45 +266,16 @@ img {
 							<div id="recipeCarousel" class="carousel slide w-100"
 								data-ride="carousel">
 								<div class="carousel-inner w-100" role="listbox">
-									<div class="carousel-item active">
+								<c:forEach items="${benners}" var="benner">
+									<div class="carousel-item">
 										<div class="col-md-3">	
-											<div class="card card-body">
-                                                <div class="img_index_z"><img class="img-fluid " src="<%=request.getContextPath()%>/resource/img/contest/20200619052718bn_mhh.png"></div>
-                                                <div class= "text_index_z" >텍스트검열 </div>
+											<div class="card card-body" onclick="location.href='<%=request.getContextPath()%>/contest/${benner.id}'">
+                                                <div class="img_index_z"><img class="img-fluid " src="<%=request.getContextPath()%>/${benner.imgurl}"></div>
+                                                <div class= "text_index_z" >${benner.title} </div>
                                             </div>
 										</div>
 									</div>
-									<div class="carousel-item">
-										<div class="col-md-3">
-											<div class="card card-body">
-												<img class="img-fluid"
-													src="img/202006180209170618_Smetro.png">
-											</div>
-										</div>
-									</div>
-									<div class="carousel-item">
-										<div class="col-md-3">
-											<div class="card card-body">
-												<img class="img-fluid" src="img/20200619052718bn_mhh.png">
-											</div>
-										</div>
-									</div>
-									<div class="carousel-item">
-										<div class="col-md-3">
-											<div class="card card-body">
-												<img class="img-fluid"
-													src="img/202006290443410629_chicken.png">
-											</div>
-										</div>
-									</div>
-									<div class="carousel-item">
-										<div class="col-md-3">
-											<div class="card card-body">
-												<img class="img-fluid" src="img/202006300204230630.png">
-											</div>
-										</div>
-									</div>
-								</div>
+								</c:forEach>
 								<a class="carousel-control-prev w-auto" href="#recipeCarousel"
 									role="button" data-slide="prev"> <span
 									class="carousel-control-prev-icon bg-dark border border-dark rounded-circle"
@@ -714,17 +296,11 @@ img {
 		</c:if>
 		<div class="contest_list_item_roof">
 			<c:forEach items="${lists}" var="list">
-			<div class="contest_list_item" onclick="location.href='<%=request.getContextPath()%>/contest/${list.id}'">
+			<div id="contestitem" class="contest_list_item" onclick="location.href='<%=request.getContextPath()%>/contest/${list.id}'">
+				<div id="highlight" class="highLight_check"style="display:none">${list.highlight}</div>
 				<div class="row">
                     <div class="col-lg-3 padding_zero">
-                    <c:choose>
-                    <c:when test="${listtype ne 'endcontest'}">
-                        <img  class="last_item_size" src="<%=request.getContextPath()%>/resource/img/default/${list.imgurl}" alt="">
-                    </c:when>
-                    <c:otherwise>
                     	<img class="last_item_size" src="<%=request.getContextPath()%>/${list.imgurl}">
-                    </c:otherwise>
-                    </c:choose>
                     </div>
                     <div class="col-lg-6">
                         <div class="row padding_bottom"> 
@@ -824,64 +400,4 @@ img {
 <footer>
 	<jsp:include page="../section/footer.jsp"></jsp:include>
 </footer>
-<script>
-	$(document).ready(function() {
-						
-						var searchOption = document.location.pathname.split("/")[2];
-						if(searchOption == "proceeding"){
-							$("#proceeding").addClass("active");
-						}else if(searchOption == "decision"){
-							$("#decision").addClass("active");
-						}else{
-							$("#endContest").addClass("active");
-						}
-						function dropdown_initial() {
-							$("#dropdownKind1").attr('style', "display:none;");
-							$("#dropdownKind2").attr('style', "display:none;");
-							$("#dropdownKind3").attr('style', "display:none;");
-						}
-
-						//list tap
-						$("#btnkind1").on('click', function() {
-							dropdown_initial();
-						})
-
-						$("#btnKind1").hover(function() {
-
-							// $("#dropdownKind1").attr('style', "display:block;");
-							//$('#dropdownKind1').addClass('show');
-							//$('#dropdownKind1').addClass('show');
-						})
-
-						//carousel
-
-						$('#recipeCarousel').carousel({
-							interval : 2000
-						})
-
-						$('.carousel .carousel-item').each(
-								function() {
-									var minPerSlide = 4;
-									var next = $(this).next();
-									if (!next.length) {
-										next = $(this).siblings(':first');
-									}
-									next.children(':first-child').clone()
-											.appendTo($(this));
-
-									for (var i = 0; i < minPerSlide; i++) {
-										next = next.next();
-										if (!next.length) {
-											next = $(this).siblings(':first');
-										}
-
-										next.children(':first-child').clone()
-												.appendTo($(this));
-									}
-								});
-
-						//carousel
-
-					});
-</script>
 </html>

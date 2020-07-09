@@ -17,6 +17,11 @@
 		FROM CONTEST
 		WHERE ID = #{value}
 	</select>
+	<select id="jointitleCheck" parameterType="String" resultType="Integer">
+		SELECT COUNT(*)
+		FROM WORK
+		WHERE TITLE = #{value}
+	</select>
 	<select id="whocontest" parameterType="Integer" resultType="String">
 		SELECT MEMBEREMAIL
 		FROM CONTEST
@@ -66,6 +71,12 @@
 			WHERE WINNER != 0
 		</if>
 	</select>
+	<select id="showbenner" resultType="com.kfq.fund.vo.ContestVO">
+		SELECT ID, TITLE,CONTESTTYPE, IMGURL
+		FROM CONTEST
+		WHERE ENDDATE > CURDATE() AND PAYED = 1
+		ORDER BY CONTEST.SHOW DESC, CONTEST.STARTDATE DESC
+	</select>
 	<select id="listProceeding" parameterType="com.kfq.fund.vo.Pagination" resultType="com.kfq.fund.vo.ContestVO">
 		SELECT CONTEST.ID, CONTEST.TITLE, CONTEST.CONTESTTYPE, MEMBER.NICKNAME, CONTEST.COMPANY,
 		CONTEST.SERVICEINFO, CONTEST.VIEWS, DATEDIFF(CONTEST.ENDDATE, CURDATE()),
@@ -103,6 +114,23 @@
 		FROM WORK
 		WHERE CONTEST_ID = #{value}
 	</select>
+	<select id="isworkexist" parameterType="Map" resultType="com.kfq.fund.vo.JoinVO">
+		SELECT ID, TITLE, CONTENT, THUMBNAILURL
+		FROM WORK
+		WHERE CONTEST_ID = #{id} AND EMAIL = #{email}
+	</select>
+	
+	<select id="allworkCnt" parameterType="Integer" resultType="Integer">
+		SELECT COUNT(*)
+		FROM WORK
+		WHERE CONTEST_ID = #{id}
+	</select>
+	<select id="showworks" parameterType="Map" resultType="com.kfq.fund.vo.JoinVO">
+		SELECT ID, TITLE, THUMBNAILURL
+		FROM WORK
+		WHERE CONTEST_ID = #{id}
+		LIMIT #{startList}, #{listSize}
+	</select>
 	<select id="imgurl" parameterType="Integer" resultType="String">
 		SELECT IMGURL
 		FROM CONTEST
@@ -136,7 +164,7 @@
 		VALUES(#{bno},#{filename},#{fileOriName},#{fileurl})
 	</insert>
 	<insert id="insertJoin" parameterType="com.kfq.fund.vo.JoinVO">
-		INSERT INTO WORK(CONTEST_ID, MEMBER_EMAIL,TITLE, CONTENT, THUMBNAILURL)
+		INSERT INTO WORK(CONTEST_ID, EMAIL,TITLE, CONTENT, THUMBNAILURL)
 		VALUES(#{contest_id},#{email},#{title},#{content},#{thumbnailurl})
 	</insert>
 	<!-- update -->

@@ -36,10 +36,11 @@
 	        }
 	        
 	    });
-	    $('#summernote').summernote('code', '${notice.content}');
+	    $('#summernote').summernote('code', '${work.content}');
 	    function uploadImageFile(file, editor){
 	    	data = new FormData();
 	    	data.append("file", file);
+	    	data.append("title",$('#title').val())
 	    	$.ajax({
 	    		data: data,
 	    		type: "POST",
@@ -56,11 +57,53 @@
 	    }
     });
     function submit(){
+    	$.ajax({
+    		type : "POST",
+			url : "../../../titleCheck.do",
+			data : $("#title").val(),
+			success : function(data){
+				if(data == "false"){
+    				alert("이미 같은 제목이 있습니다. 다른걸로 바꿔주세요.");
+				}
+			}
+    	});
     	var form = document.getElementById("content");
     	var content = form.content.value;
-    	alert(content);
     	form.submit();
     }
+    
+	$(document).ready(function(){
+		var myFile;
+		$("#file").on("change", function (e) {
+			var file = e.target.files[0];
+			if(!valideImageType(file)) { 
+			    alert("invalide image file type");
+			    return;
+			}
+			myfile = file;
+			$(".remove").remove();
+			$(".imageThumb").remove();
+			removeFile.bind(null, file);
+			$('<div class="pip">' + '<span class="remove">X</span>' +
+					'<img class="imageThumb" ' +
+					'src="' + URL.createObjectURL(file) + '" ' +
+					'title="' + file.name + '"/>' +
+					'<br/>' +
+					'</div>')
+					.insertAfter("#file")
+					.find(".remove").click(removeFile.bind(null, file));
+		});
+		function valideImageType(image) {
+			  const result = ([ 'image/jpeg',
+			                    'image/png',
+			                    'image/jpg' ].indexOf(image.type) > -1);
+			  return result;
+			}
+		function removeFile(file, evt) {
+			$(evt.target).parent(".pip").remove();
+		}
+	});
+	
     
     </script>
 </head>
@@ -77,34 +120,48 @@
 					<div class="col-lg-8">
 						<div class="row">
 							<div class="col-sm-2 brief_item_img">
-								<img class="img" src="img/thumbimg_logo.png" alt="">
+								<img src="<%=request.getContextPath()%>/${contest.imgurl}" style="width:80px;height:80px" alt="">
 							</div>
 							<div class="col-sm-3 brief_item_category">
-								<input type="text" class="item_categoty" readonly value="브랜드 SET |">
+								<div class="item_categoty">
+									${contest.contesttype}
+								</div>
 							</div>
 							<div class="col-sm-7 brief_item_title">
-								<input type="text" class="item_title" readonly value="홍성군 평생교육 브랜드 로고 공모전(홍성군평생학습센터) ">
+								<div class="item_title">
+									${contest.title}(${contest.company})
+								</div>
 							</div>
 						</div>
-
 						<div class="row">
 							<div class="col-sm-12 brief_item_content">
-								<textarea class="brief_content_item_text_4 form-control-join animated" readonly
-									id="brief_item_content_1">
-                                 </textarea>
+								<div class="brief_content_item_text_4 form-control animated" style="border:none" id="brief_item_content_1">
+									${contest.serviceinfo }
+                                 </div>
 							</div>
 						</div>
 					</div>
-
 					<div class="col-lg-4 item_box_tail">
 						<div class="item_price">
-							<input type="text" class="item_price_text" readonly value="1등: 500만원 / 2등: 100만원">
+							<div class="item_price_text">
+								1등: ${contest.firstprize}만원
+								<c:if test="${contest.secondprize ne 0}">
+									/ 2등: ${contest.secondprize}
+									<c:if test="${contest.thirdprize ne 0}">
+										/ 3등: ${contest.thirdprize}
+									</c:if>
+								</c:if>
+							</div>
 						</div>
 						<div class="item_period">
-							<input type="text" class="item_period_text" readonly value="남은기간: 13일(~07/14 24:00)">
+							<div class="item_period_text">
+							남은기간: ${contest.day}일(~${contest.enddate})
+							</div>
 						</div>
 						<div class="item_visitCount">
-							<input type="text" class="item_visitCount_text" readonly value="조회수 : 9000">
+							<div class="item_visitCount_text">
+								조회수 : ${contest.views}
+							</div>
 						</div>
 					</div>
 				</div>
@@ -114,9 +171,8 @@
 			<div class="join_step_2_top">
 				<div class="row">
 					<div class="col-lg-3"></div>
-
 					<div class="col-lg-6">
-						<img class="join_step_2_img img" src="img/img_step02.png" alt="">
+						<img class="join_step_2_img img" src="<%=request.getContextPath()%>/resource/img/contest/img_step02.png" alt="">
 					</div>
 					<div class="col-lg-3"></div>
 				</div>
@@ -125,11 +181,28 @@
 					<div class="row">
 						<div class="col-lg-1"></div>
 						<div class="col-lg-10">
-							<div id="join_editor">
-								<form id="content" method="post" action="viewjoininfo">
-									<textarea id="summernote" name="content"></textarea>
-								</form>
+							<form id="content" action="viewjoininfo" method="post" enctype="multipart/form-data">
+							<div class="join_title">
+								<div class="join_title_head">콘테스트 참여 작품</div>
+								<input type="text" id="title" class="join_title_input" placeholder="제목" name="title">
 							</div>
+							<div id="join_editor">
+								<textarea id="summernote" name="content"></textarea>
+							</div>
+							<div class="imgUP">
+								<div>
+									<span id="counter">썸네일 이미지</span>
+								</div>
+								<div class="row">
+									<div class="col-lg-2">
+										<div class="img_file_input">
+											<input type="file" id="file" name="file" accept="image/*" /><br>
+										</div>
+									</div>
+								</div>
+							</div>
+							</form>
+							
 						</div>
 						<div class="col-lg-1"></div>
 					</div>

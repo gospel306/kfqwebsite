@@ -76,7 +76,7 @@
 			</div>
 			<div class="mt-4">
 				<p class="text-center">
-					아직 FUNd 계정이 없나요?&emsp;
+					아직 <span>ㅇㅏㅇㅣㄷㅣㅇㅓ</span> 계정이 없나요?&emsp;
 					<a href="#" style="color:#3DB7CC">
 						<U>회원가입</U>
 					</a>

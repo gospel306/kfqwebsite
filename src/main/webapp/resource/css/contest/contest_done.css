@@ -118,8 +118,8 @@ figcaption {
 /*item_box*/
 /*add_item_box*/
 .last_item_size {
-	width: 100%;
-	height: 100%;
+	width: 100%!important;
+	height: 100%!important;
 }
 
 .contest_list_Doneitem {

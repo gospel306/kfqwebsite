@@ -34,6 +34,20 @@ public class MemberVO {
 		this.userclass = userclass;
 		this.nickname = nickname;
 	}
+	public MemberVO(String email, String userclass, String nickname, String imgurl,Integer win) {
+		this.email = email;
+		this.userclass = userclass;
+		this.nickname = nickname;
+		this.imgurl = imgurl;
+		this.win = win;
+	}
+	public MemberVO(String email,String nickname, Date date, String imgurl, Integer win) {
+		this.email = email;
+		this.nickname = nickname;
+		this.date = date;
+		this.imgurl = imgurl;
+		this.win = win;
+	}
 	public String getEmail() {
 		return email;
 	}

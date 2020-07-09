@@ -9,16 +9,16 @@
             <div class="row">
                 <div class="col-5 align-items-center">
                     <div>
-                        <div class="footer_title">FUNd 대표 고객센터</div>
+                        <div class="footer_title">ㅇㅏㅇㅣㄷㅣㅇㅓ 대표 고객센터</div>
                         <span class="footer_num">1661-9056</span>
-                        <span class="footer_content">카카오톡 채널@FUNd</span>
-                        <span class="footer_content">info@wadiz.kr</span>
+                        <span class="footer_content">카카오톡 채널@idea</span>
+                        <span class="footer_content">info@idea.kr</span>
                         <div class="footer_content">W9 멤버십 고객센터 1811-9090</div>
                     </div>
                 </div>
                 <div class="col-4">
                     <span class="footer_content">
-                        FUNd플랫폼 (주)
+                        	ㅇㅏㅇㅣㄷㅣㅇㅓ플랫폼 (주)
                     </span>
                     <span class="footer_content">
                     	대표이사 신희대

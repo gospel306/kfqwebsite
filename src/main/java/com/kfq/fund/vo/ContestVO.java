@@ -27,6 +27,7 @@ public class ContestVO {
 	private String imgurl;
 	private String paytype;
 	
+	private int winner;
 	private long people;
 	private int day;
 	
@@ -91,6 +92,12 @@ public class ContestVO {
 		this.title = title;
 		this.people = count;
 		this.day = day;
+	}
+	public ContestVO(Integer id, String title,String contesttype, String imgurl) {
+		this.id = id;
+		this.title = title;
+		this.contesttype = contesttype;
+		this.imgurl = imgurl;
 	}
 	public int getId() {
 		return id;
@@ -247,6 +254,12 @@ public class ContestVO {
 	}
 	public void setPaytype(String paytype) {
 		this.paytype = paytype;
+	}
+	public int getWinner() {
+		return winner;
+	}
+	public void setWinner(int winner) {
+		this.winner = winner;
 	}
 	
 }

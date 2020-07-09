@@ -20,6 +20,11 @@
 		FROM MEMBER
 		WHERE EMAIL = #{email} AND PASSWD = #{passwd}
 	</select>
+	<select id="findMember" parameterType="String" resultType="com.kfq.fund.vo.MemberVO">
+		SELECT EMAIL, NICKNAME, DATE, IMGURL, WIN
+		FROM MEMBER
+		WHERE EMAIL = #{value}
+	</select>
 	<select id="getMemberlistCnt" parameterType="Map" resultType="Integer">
 		SELECT COUNT(*) AS LISTCNT
 		FROM MEMBER

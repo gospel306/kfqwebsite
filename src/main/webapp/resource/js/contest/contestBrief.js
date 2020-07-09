@@ -251,32 +251,9 @@
 }(window.jQuery || window.$)); // jQuery or jQuery-like library, such as Zepto
 
 //custom
-/*$(document).ready(function () {
-
-    var categoryName = '브랜딩SET |'
-    var contestTitle = '홍성군 평생교육 브랜드 로고 공모전(홍성군평생학습센터)';
-    var userId = 'userId';
-    var userName = 'userName';
-    var contestContent = "* 공모주제 : 홍성군평생학습센터 브랜드 이미지 * 활용범위 : 홈페이지, 현수막, 배너, 안내판, 현판, 수료증 등 * 개발방향 : 평생교육사업 취지와 친근감을 주고 기억하기 쉬우며 학습 참여 동기를 유발할 수 있는 이미지, 온·오프라인 홍보에 응용이 가능하고 사업 현장에 적용할 수 있는 단순하고 간결한 디자인";
-    var item_box_contestReward = "contestReward";
-    var item_box_contestPeriod = "item_box_contestPeriod";
-    var item_box_joinCount = "item_box_joinCount";
-            //document.getElementById("brief_item_content_1").value = bci4;
-    $('#item_box_category').text(categoryName);
-    $('#item_box_contestTitle').text(contestTitle);
-    $('#item_box_userId').text(userId);
-    $('#item_box_userName').text(userName);
-    $('#item_box_contestContent').text(contestContent);
-    $('#item_box_contestReward').text(item_box_contestReward);
-    $('#item_box_contestPeriod').text(item_box_contestPeriod);
-    $('#item_box_joinCount').text(item_box_joinCount);
-    $('#item_box_optionImage').append("<img src='img/22_mimg.png'>");
+$(document).ready(function () {
 
     // $("#brief_content_item_4").text("60이츠는 간편하게 어린이 간식이나 안주, 식사대용으로 먹을 수 있는 닭고기 식품을 판매하는 홈페이지입니다.연예인 붐 님의 캐릭터로 대중에게 친근하게 다가갈 수 있도록 캐릭터 디자인을 의뢰합니다.");
-
-    $('#contest_brief_title').text(contestTitle);
-    $('#contest_brief_userName').text(userName);
-    $('#contest_brief_content').text(contestContent);
 
     function head_tap_initial() {
         $('#head_tap_content_1').removeAttr('style', 'display:block');
@@ -294,7 +271,6 @@
         $('#head_tap_content_1').attr('style', 'display:block');
         $('#head_tap_1').addClass('head_tap_click_st');
     })
-
 
     $("#head_tap_2").on('click', function () {
         head_tap_initial();
@@ -331,4 +307,4 @@
         $('.animated').autosize({ append: "\n" });
     });
     
-});*/
+});
