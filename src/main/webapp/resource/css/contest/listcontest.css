@@ -23,14 +23,7 @@ img {
 	vertical-align: middle;
 }
 
-#pills-Done 
-    
-
-
-
-
-
-        .top_width {
+#pills-Done .top_width {
 	background-color: #ebeff2;
 }
 
@@ -238,7 +231,6 @@ img {
 /*item_box*/
 .contest_list_item_roof {
 	margin: 5% auto 0 auto;
-	width: 75%;
 }
 
 .contest_list_item {

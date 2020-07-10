@@ -38,6 +38,7 @@ import com.kfq.fund.service.IMemberService;
 import com.kfq.fund.vo.ContestVO;
 import com.kfq.fund.vo.FileVO;
 import com.kfq.fund.vo.JoinVO;
+import com.kfq.fund.vo.MemberVO;
 import com.kfq.fund.vo.Pagination;
 
 @Controller
@@ -75,9 +76,12 @@ public class ContestController {
 		Pagination page = new Pagination();
 		List<ContestVO> list = new ArrayList<>();
 		if(!listtype.equals("endcontest")) {
-			mv.addObject("wins",contest_service.getTop5(1));
-			mv.addObject("costs",contest_service.getTop5(2));
-			mv.addObject("lasts",contest_service.getTop5(3));
+			Pagination top = new Pagination();
+			top.pageInfo(1, 5);
+			top.setListSize(5);
+			mv.addObject("wins",contest_service.getTop(top,1));
+			mv.addObject("costs",contest_service.getTop(top,2));
+			mv.addObject("lasts",contest_service.getTop(top,3));
 			mv.addObject("benners",contest_service.showbenner(10));
 			if(listtype.equals("proceeding")) {
 				listCnt = contest_service.listCnt(1);
@@ -148,7 +152,6 @@ public class ContestController {
 			contest.setIdea(idea);
 			contest.setBriefing(briefing);
 			contest_service.updateContest(contest);
-			
 		}else{
 			contest_service.insertContest(new ContestVO((String) session.getAttribute("useremail"), title, contesttype,company, service, sector, idea, briefing));
 		}
@@ -284,6 +287,15 @@ public class ContestController {
 		ContestVO contest = contest_service.ContestInfo(Integer.parseInt(contestidx));
 		mv.addObject("contest",contest);
 		if(contest_service.iscontestfinsh(Integer.parseInt(contestidx))) {
+			mv.addObject("member",memservice.findMember(contest_service.searchwork(contest.getWinner()).getEmail()));
+			Pagination page = new Pagination();
+			int index = 1;
+			if(idx != null)
+				Integer.parseInt(idx);
+			int listCnt = contest_service.allworkCnt(Integer.parseInt(contestidx));
+			page.pageInfo(index, listCnt);
+			List<JoinVO> works = contest_service.showworks(Integer.parseInt(contestidx), page.getStartList(), page.getListSize());
+			mv.addObject("works",works);
 			mv.setViewName("contest/contest_done");
 		}else {
 			mv.addObject("files",contest_service.getFiles(Integer.parseInt(contestidx)));
@@ -298,11 +310,13 @@ public class ContestController {
 					int index = 1;
 					if(idx != null)
 						index = Integer.parseInt(idx);
+					System.out.println(listCnt);
 					page.pageInfo(index, listCnt);
-					work = contest_service.showworks(Integer.parseInt(contestidx), index, page.getListSize());
+					work = contest_service.showworks(Integer.parseInt(contestidx), page.getStartList(), page.getListSize());
 					mv.addObject("works",work);
 					mv.addObject("pagination",page);
 				}else if(work.size() != 0) {
+					System.out.println(contest.getDay());
 					if(contest.getDay() < 0)
 						mv.addObject("works",work);
 					else {
@@ -408,5 +422,30 @@ public class ContestController {
 	public JSONObject uploadImageJoin(@RequestParam("file") MultipartFile file,@PathVariable int contestidx,HttpServletRequest request) {
 		System.out.println("success");
 		return contest_service.insertJoinImage(file, contestidx, request.getParameter("title"));
+	}
+	@RequestMapping(value = "showwinner.do", method=RequestMethod.POST)
+	@ResponseBody
+	public JSONObject showwinner(HttpServletRequest request,HttpSession session) {
+		JSONObject jsonobject = new JSONObject();
+		int id = Integer.parseInt(request.getParameter("id"));
+		JoinVO work = contest_service.searchwork(id);
+		MemberVO member = memservice.findMember(work.getEmail());
+		String requester = contest_service.whocontest(work.getContest_id());
+		if(session.getAttribute("useremail") != null&&session.getAttribute("useremail").equals(requester))
+			jsonobject.put("requester",true);
+		else
+			jsonobject.put("requester", false);
+		jsonobject.put("work", work);
+		jsonobject.put("member",member);
+		System.out.println(jsonobject);
+		return jsonobject;
+	}
+	@RequestMapping(value="makewinner.do")
+	public ModelAndView makewinner(HttpServletRequest request) {
+		int contestid = Integer.parseInt(request.getParameter("contestid"));
+		int workid = Integer.parseInt(request.getParameter("workid"));
+		contest_service.updateWinner(workid, contestid);
+		ModelAndView mv = new ModelAndView("redirect:/test/"+contestid);
+		return mv;
 	}
 }

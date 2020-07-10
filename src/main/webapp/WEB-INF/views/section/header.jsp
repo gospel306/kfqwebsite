@@ -64,7 +64,7 @@
             <p><a href="<%=request.getContextPath()%>/notice" target="blank">공지 사항</a></p>
             <p><a href="#" target="blank">문의하기</a></p>
             <p><a href="<%=request.getContextPath()%>/faq" target="blank">고객 센터</a></p>
-            <p><a href="#" target="blank">오시는 길</a></p>
+            <p><a href="<%=request.getContextPath()%>/come" target="blank">오시는 길</a></p>
         </div>
     </div>
 

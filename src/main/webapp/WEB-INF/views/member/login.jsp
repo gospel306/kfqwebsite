@@ -41,7 +41,7 @@
 			</div>
 			  
 			<button type="submit" class="btn btn-primary rounded-0 font-weight-bold w-100" style="background-color:#050099">
-				<img src="<%=request.getContextPath()%>/resource/img/login/facebook.png" alt="...">
+				<img class="social_icon" src="<%=request.getContextPath()%>/resource/img/login/facebook.png" alt="...">
 				  페이스북으로 로그인
 			</button>
 			    
@@ -49,13 +49,13 @@
 			<div class="row">
 				<div class="col">
 				    <button type="submit" class="btn btn-light bg-transparent rounded-0 w-100" style="border: 1px solid #c9c9c9">
-				    	<img src="<%=request.getContextPath()%>/resource/img/login/kakao.png" alt="...">
+				    	<img class="social_icon" src="<%=request.getContextPath()%>/resource/img/login/kakao.png" alt="...">
 				    	&ensp;카카오
 				    </button>
 				</div>
 				<div class="col">
 					<button type="submit" class="btn btn-light bg-transparent rounded-0 w-100" style="border: 1px solid #c9c9c9">
-						<img src="<%=request.getContextPath()%>/resource/img/login/naver.png" alt="..." style="width:35px; height:35px;">
+						<img class="social_icon" src="<%=request.getContextPath()%>/resource/img/login/naver.png" alt="..." style="width:35px; height:35px;">
 						네이버
 					</button>
 				</div>
@@ -63,13 +63,13 @@
 				<div class="my-2"></div>
 				<div class="col">
 				    <button type="submit" class="btn btn-light bg-transparent rounded-0 w-100" style="border: 1px solid #c9c9c9">
-				    	<img src="<%=request.getContextPath()%>/resource/img/login/google.png" alt="...">
+				    	<img class="social_icon" src="<%=request.getContextPath()%>/resource/img/login/google.png" alt="...">
 				    	&ensp;구글
 				    </button>
 				</div>
 				<div class="col">
 				    <button type="submit" class="btn btn-light bg-transparent rounded-0 w-100" style="border: 1px solid #c9c9c9">
-				    	<img src="<%=request.getContextPath()%>/resource/img/login/twitter.png" alt="...">
+				    	<img class="social_icon" src="<%=request.getContextPath()%>/resource/img/login/twitter.png" alt="...">
 				    	&ensp;트위터
 				    </button>
 				</div>
@@ -77,7 +77,7 @@
 			<div class="mt-4">
 				<p class="text-center">
 					아직 <span>ㅇㅏㅇㅣㄷㅣㅇㅓ</span> 계정이 없나요?&emsp;
-					<a href="#" style="color:#3DB7CC">
+					<a href="<%=request.getContextPath()%>/select" style="color:#3DB7CC">
 						<U>회원가입</U>
 					</a>
 				</p>

@@ -107,4 +107,9 @@ public class MemberServiceImpl implements IMemberService {
 	public String checkuserclass(String email) {
 		return dao.checkuserclass(email);
 	}
+
+	@Override
+	public MemberVO findMember(String email) {
+		return dao.findMember(email);
+	}
 }

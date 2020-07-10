@@ -167,8 +167,8 @@
 			</div>
 		</div>
 	
-		<c:if test="${listtype ne 'endcontest'}">
 		<div class="list_tab_content">
+		<c:if test="${listtype ne 'endcontest'}">
 			<div class="tab-content" id="pills-tabContent">
 
 				<!-- 진행중 콘테스트-->
@@ -296,7 +296,7 @@
 		</c:if>
 		<div class="contest_list_item_roof">
 			<c:forEach items="${lists}" var="list">
-			<div id="contestitem" class="contest_list_item" onclick="location.href='<%=request.getContextPath()%>/contest/${list.id}'">
+			<div id="contestitem" class="contest_list_item" onclick="show(${listtype},${list.id})">
 				<div id="highlight" class="highLight_check"style="display:none">${list.highlight}</div>
 				<div class="row">
                     <div class="col-lg-3 padding_zero">
@@ -396,6 +396,77 @@
 		</div>
 		<div style="margin: 5% 0%;"></div>
 	</div>
+	<script>
+		function show(listtype,id){
+			if(listtype != "endcontest"){
+				location.href="/contest/"+id;
+			}else{
+				$.ajax({
+					type : "POST",
+					url :"../../showwinner.do",
+					data : id,
+					success : function(data){
+						alert(data);
+					}
+				});
+				location.href="#exampleModal"
+			}
+		}
+	</script>
+	<c:if test="${listtype eq 'endcontest'}">
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="d-flex justify-content-center">
+                    <div class="modal-left">
+                        <div class="modal-left-header">
+                            <p>★ 콘테스트 우승작</p>
+                            <div class="modal-left-header-name">
+                                <a href="#" class="modal-left-header-contname">[캔들] 로고 디자인 의뢰</a>
+                                <button type="button" class="btn watch-contest">콘테스트 보기</button>
+                            </div>
+                        </div>
+                        <div class="contet-img">
+                            <img src="image/modalimg.jpg" class="modal-img">
+                        </div>
+                        <div>
+                            <p
+                                style="font-size: 15px; font-weight: bold; padding: 20px 0 4px 70px; border-bottom:2px solid black;">
+                                작품 댓글 (##건)</p>
+                        </div>
+                        <div style="padding-left: 70px;">
+                            <img src="image/pngwing.com.png" class="card-img-top" alt="..."
+                                style="width: 55px; height: 55px;float: left;  margin-right: 10px;">
+                            <form action="inputBook_check.jsp" method="post" style="float: left;">
+                                <textarea cols="50" rows="8" name="CONTENT"
+                                    style="height: 50px; float: left;"></textarea>
+                                <input type="submit"
+                                    style="float:left; background-color: black; color: white; width: 78px; height: 55px;"
+                                    value="글쓰기">
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="modal-right">
+                        <div class="modal-right-content">
+                            <div class="modal-right-content-header">
+                                <img src="image/pngwing.com.png" class="right-pic1">
+                                <p class="modal-right-id"><a href="#">design by</a><br>id값</p>
+                            </div>
+                            <div class="right-cust-info">
+                                <p><span class="font1">우승</span>1회 | <span class="font1">상금</span> 30만원</p>
+                                <div class="button-cover">
+                                    <button type="button" class="btn watch-contest-winner">우승작으로 선정하기</button>
+                                </div>   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </c:if>
 </body>
 <footer>
 	<jsp:include page="../section/footer.jsp"></jsp:include>

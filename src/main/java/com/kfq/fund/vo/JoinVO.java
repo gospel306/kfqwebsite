@@ -8,6 +8,16 @@ public class JoinVO {
 	private String content;
 	private String thumbnailurl;
 	
+	
+	public JoinVO(Integer id, Integer contest_id, String email, String title, String content, String thumbnailurl) {
+		super();
+		this.id = id;
+		this.contest_id = contest_id;
+		this.email = email;
+		this.title = title;
+		this.content = content;
+		this.thumbnailurl = thumbnailurl;
+	}
 	public JoinVO(Integer contest_id,String email,String title,String content,String thumbnailurl) {
 		this.contest_id = contest_id;
 		this.title = title;

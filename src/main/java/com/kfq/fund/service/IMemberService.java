@@ -15,6 +15,7 @@ public interface IMemberService {
 	public boolean memberCheck(MemberVO member);
 	public boolean loginCheck(MemberVO member,HttpSession session);
 	public MemberVO viewMember(MemberVO vo);
+	public MemberVO findMember(String email);
 	public void logout(HttpSession session);
 	public int updateUserkey(String email,String key);
 	public int getMemberlistCnt(HashMap<String, String> map);
