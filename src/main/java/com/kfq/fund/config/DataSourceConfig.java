@@ -17,7 +17,7 @@ public class DataSourceConfig implements WebMvcConfigurer{
 	
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/contest/**").addResourceLocations("file:///C://kfqproject/contest/");
-		registry.addResourceHandler("/join/**").addResourceLocations("file:///C://kfqproject/join/");
+		registry.addResourceHandler("/contest/**").addResourceLocations("file:///C:/kfqproject/contest/");
+		registry.addResourceHandler("/join/**").addResourceLocations("file:///C:/kfqproject/join/");
 	}
 }

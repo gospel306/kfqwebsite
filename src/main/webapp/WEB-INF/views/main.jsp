@@ -8,9 +8,9 @@
 <title>Insert title here</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!-- icon css -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -28,6 +28,21 @@
 	$(document).ready(function(){
 		$(".carousel-inner_top").children().first().addClass("active");
 	});
+	function show(id){
+		var data = {id: id}
+		$.ajax({
+			type : "POST",
+			url :"../../showwinner.do",
+			data : data,
+			success : function(data){
+				console.log(data.work);
+				$("#modaltitle").text(data.work.title);
+				$("#modalcontent").html(data.work.content);
+				$("#modelmeminfo").append("<a href='#'>design by</a><br>"+data.member.nickname);
+				$("#exampleModal").modal("toggle");
+			}
+		});
+	}
 	</script>
 </head>
 <header>
@@ -42,8 +57,8 @@
 				data-ride="carousel">
 				<div class="carousel-inner_top">
 					<c:forEach items="${benners1}" var="benner">
-					<div class="carousel-item" onclick="location.href='<%=request.getContextPath()%>/contest/${benner.id}'">
-						<img src="<%=request.getContextPath()%>/${benner.imgurl}" class="d-block w-100" alt="..." id="toptop">
+					<div class="carousel-item" onclick="show(${benner.id})" data-toggle="modal">
+						<img src="<%=request.getContextPath()%>/${benner.thumbnailurl}" class="d-block w-100" alt="..." id="toptop">
 					</div>
 					</c:forEach>
 				</div>
@@ -86,22 +101,22 @@
 	<!--활동중~~ 수치-->
 	<div id="about_number" class="d-flex justify-content-center">
 		<div id="about_number_content">
-			<img src="image/main_mid_img1.jpg" id="about_number_img">
+			<img src="<%=request.getContextPath()%>/resource/img/contest/ic-score-1.png" id="about_number_img">
 			<p id="about_number_txt">
 				활동중인<br>디자이너
 			</p>
 			<p id="about_number_txt_number">119,900</p>
-			<img src="image/main_mid_img2.jpg" id="about_number_img">
+			<img src="<%=request.getContextPath()%>/resource/img/contest/ic-score-2.png" id="about_number_img">
 			<p id="about_number_txt">
 				진행된<br>콘테스트
 			</p>
 			<p id="about_number_txt_number">14,310</p>
-			<img src="image/main_mid_img3.jpg" id="about_number_img">
+			<img src="<%=request.getContextPath()%>/resource/img/contest/ic-score-3.png" id="about_number_img">
 			<p id="about_number_txt">
 				등록된<br>포트폴리오
 			</p>
 			<p id="about_number_txt_number">586,697</p>
-			<img src="image/main_mid_img4.jpg" id="about_number_img"
+			<img src="<%=request.getContextPath()%>/resource/img/contest/ic-score-4.png" id="about_number_img"
 				style="padding-top: 3px;">
 			<p id="about_number_txt">
 				고객<br>만족도
@@ -116,22 +131,22 @@
 	<!--932픽셀 이하되면 이게 대신 생김.-->
 	<div id="change_about" class="d-flex justify-content-center">
 		<div id="change_about_number_content">
-			<img src="image/main_mid_img1.jpg" id="change_about_number_img">
+			<img src="<%=request.getContextPath()%>/resource/img/contest/ic-score-1.png" id="change_about_number_img">
 			<p id="change_about_number_txt">
 				활동중인<br>디자이너
 			</p>
 			<p id="change_about_number_txt_number">119,900</p>
-			<img src="image/main_mid_img2.jpg" id="change_about_number_img">
+			<img src="<%=request.getContextPath()%>/resource/img/contest/ic-score-2.png" id="change_about_number_img">
 			<p id="change_about_number_txt">
 				진행된<br>콘테스트
 			</p>
 			<p id="change_about_number_txt_number">14,310</p>
-			<img src="image/main_mid_img3.jpg" id="change_about_number_img">
+			<img src="<%=request.getContextPath()%>/resource/img/contest/ic-score-3.png" id="change_about_number_img">
 			<p id="change_about_number_txt">
 				등록된<br>포트폴리오
 			</p>
 			<p id="change_about_number_txt_number">586,697</p>
-			<img src="image/main_mid_img4.jpg" id="change_about_number_img"
+			<img src="<%=request.getContextPath()%>/resource/img/contest/ic-score-4.png" id="change_about_number_img"
 				style="padding-top: 3px;">
 			<p id="change_about_number_txt">
 				고객<br>만족도
@@ -170,20 +185,44 @@
 
 
 			<!--여기에 버튼 및 컨텐츠 들어간다.-->
-			<div id="under_button_white_img">
-				<img src="image/main_mid_img1.jpg" style="width: 30px; float: left;">
-				<p>따끈따끈한 콘테스트를 확인하세요!</p>
+			<div id="under_button_white_img" style="padding: 20px 19px 22px 25px;">
+				<p>
+					<img src="<%=request.getContextPath()%>/resource/img/contest/ic-w-gray.png" style="width: 12px;vertical-align: middle;margin-right: 7px; float: left;">
+					따끈따끈한 콘테스트를 확인하세요!
+				</p>
 				<div class="tab-content" id="nav-tabContent">
 					<div class="tab-pane fade show active" id="nav-home"
 						role="tabpanel" aria-labelledby="nav-home-tab">
 						<!--카드&하단부 글자-->
-						<div class="card" style="width: 18rem;">
-							<img src="image/maincarousel01.jpg" class="card-img-top"
+						<div class="card" style="width: 18rem;display:inline-block">
+							<img src="<%=request.getContextPath()%>/resource/img/contest/maincarousel01.jpg" class="card-img-top"
 								alt="..." id="mid_cont_img">
 							<div class="card-body">
 								<p class="card-text">
 									<span style="color: tomato;">로고</span> | 할로윈 특별상자
 								</p>
+							</div>
+						</div>
+						<div style="float:right">
+							<div class="cl_list">
+								<table>
+								<c:forEach items="${lastlists}" var="list" varStatus="status">
+								<tr>
+									<td>${status.count}</td>
+									<td style="width:200px;height:24px;overflow: hidden;"><a href="<%=request.getContextPath()%>/contest/${list.id}" style="text-overflow: ellipsis;">${list.title}</a></td>
+									<td style="text-align: left">
+										<div class="roundBox cl_inline" style="width:110px;font-size: 12px;">
+											<strong>${list.firstprize}만원
+											<span>&nbsp;|&nbsp;</span>
+											D-${list.day }
+											</strong>
+										</div>
+									</td>
+								</tr>
+								</c:forEach>
+								</table>
+								<button style="float: right;width: 100%;height: 25px;font-size: 12px;font-weight: bold;line-height: 25px;letter-spacing: -0.3px;text-align: center;color: #292a33;border: solid 1px #dddddd;background-color: #ffffff;"
+								onclick="location.href='contestlist/proceeding'">모든 콘테스트 보러가기</button>
 							</div>
 						</div>
 					</div>
@@ -253,8 +292,8 @@
 		<div class="horizontal-scroll-wrapper">
 			<c:forEach items="${benners2}" var="benner">
 			<div class="img-wrapper slower">
-				<a href="<%=request.getContextPath()%>/contest/${benner.id}" target="_blank" rel="noopener"><img
-					src="<%=request.getContextPath()%>/${benner.imgurl}" id="abc123" alt=""> </a>
+				<a href="" onclick="show(${benner.id})" data-toggle="modal" rel="noopener"><img
+					src="<%=request.getContextPath()%>/${benner.thumbnailurl}" id="abc123" alt=""> </a>
 			</div>
 			</c:forEach>
 		</div>
@@ -267,6 +306,56 @@
 		</p>
 
 	</div>
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="d-flex justify-content-center">
+                    <div class="modal-left">
+                        <div class="modal-left-header">
+                            <p>★ 콘테스트 우승작</p>
+                            <div class="modal-left-header-name">
+                                <a href="#" class="modal-left-header-contname" id="modaltitle"></a>
+                                <button type="button" class="btn watch-contest">콘테스트 보기</button>
+                            </div>
+                        </div>
+                        <div class="contet-img" id="modalcontent">
+                            
+                        </div>
+                        <div>
+                            <p
+                                style="font-size: 15px; font-weight: bold; padding: 20px 0 4px 70px; border-bottom:2px solid black;">
+                                작품 댓글 (##건)</p>
+                        </div>
+                        <div style="padding-left: 70px;">
+                            <img src="image/pngwing.com.png" class="card-img-top" alt="..."
+                                style="width: 55px; height: 55px;float: left;  margin-right: 10px;">
+                            <form action="inputBook_check.jsp" method="post" style="float: left;">
+                                <textarea cols="50" rows="8" name="CONTENT"
+                                    style="height: 50px; float: left;"></textarea>
+                                <input type="submit"
+                                    style="float:left; background-color: black; color: white; width: 78px; height: 55px;"
+                                    value="글쓰기">
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="modal-right">
+                        <div class="modal-right-content">
+                            <div class="modal-right-content-header">
+                                <img src="image/pngwing.com.png" class="right-pic1">
+                                <p class="modal-right-id" id="modelmeminfo"></p>
+                            </div>
+                            <div class="right-cust-info">
+                                <p><span class="font1">우승</span>1회 | <span class="font1">상금</span> 30만원</p>
+                                <div class="button-cover" id="modalmakewinner">
+                                </div>   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 <footer>
 	<jsp:include page="section/footer.jsp"></jsp:include>

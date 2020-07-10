@@ -26,11 +26,11 @@ public class ContestVO {
 	private int views;
 	private String imgurl;
 	private String paytype;
+	private String directory;
 	
 	private int winner;
 	private long people;
 	private int day;
-	
 	
 	public ContestVO(Integer id,String title,String contesttype,String company,String serviceinfo, String sector, String idea, String briefing) {
 		this.id = id;
@@ -41,6 +41,18 @@ public class ContestVO {
 		this.sector = sector;
 		this.idea = idea;
 		this.briefing = briefing;
+	}
+	
+	public ContestVO(Integer id,String title,String contesttype,String company,String serviceinfo, String sector, String idea, String briefing, String directory) {
+		this.id = id;
+		this.title = title;
+		this.contesttype = contesttype;
+		this.company = company;
+		this.serviceinfo = serviceinfo;
+		this.sector = sector;
+		this.idea = idea;
+		this.briefing = briefing;
+		this.directory = directory;
 	}
 	public ContestVO(String memberemail,String title, String contesttype,String company,String serviceinfo,String sector,String idea,String briefing) {
 		this.memberemail = memberemail;
@@ -53,7 +65,7 @@ public class ContestVO {
 		this.briefing = briefing;
 	}
 	
-	public ContestVO(Integer id,String title, String contesttype,String nickname, String company, String serviceinfo, Integer views, Integer day, Date enddate, Integer firstprize, Integer secondprize, Integer thirdprize, Integer hightlight,Integer fullprize,String paytype) {
+	public ContestVO(Integer id,String title, String contesttype,String nickname, String company, String serviceinfo, Integer views, Integer day, Date enddate, Integer firstprize, Integer secondprize, Integer thirdprize, Integer hightlight,Integer fullprize,String paytype,Integer winner) {
 		this.title = title;
 		this.contesttype = contesttype;
 		this.memberemail = nickname; //nickname 대체
@@ -69,6 +81,7 @@ public class ContestVO {
 		this.fullprize = fullprize;
 		this.paytype = paytype;
 		this.id = id;
+		this.winner = winner;
 	}
 	public ContestVO(Integer id,String title, String contesttype,String nickname, String company, String serviceinfo, Integer views, Long day, Date enddate, Integer firstprize, Integer secondprize, Integer thirdprize, Integer hightlight,Integer fullprize,String paytype) {
 		this.title = title;
@@ -87,17 +100,47 @@ public class ContestVO {
 		this.paytype = paytype;
 		this.id = id;
 	}
+	public ContestVO(Integer id,String title, String contesttype,String nickname, String company, String serviceinfo, Integer views, Long day, Date enddate, Integer firstprize, Integer secondprize, Integer thirdprize, Integer hightlight,Integer fullprize,String paytype,Integer winner) {
+		this.title = title;
+		this.contesttype = contesttype;
+		this.memberemail = nickname; //nickname 대체
+		this.company = company;
+		this.serviceinfo = serviceinfo;
+		this.views = views;
+		this.day = (int)(long)day;
+		this.enddate = enddate;
+		this.firstprize = firstprize;
+		this.secondprize = secondprize;
+		this.thirdprize = thirdprize;
+		this.highlight = hightlight;
+		this.fullprize = fullprize;
+		this.paytype = paytype;
+		this.id = id;
+		this.winner = winner;
+	}
 	public ContestVO(Integer id, String title, Long count, Integer day) {
 		this.id = id;
 		this.title = title;
 		this.people = count;
 		this.day = day;
 	}
+	public ContestVO(Integer id, String title, Long count, Integer day, Integer firstprize) {
+		this.id = id;
+		this.title = title;
+		this.people = count;
+		this.day = day;
+		this.firstprize = firstprize;
+	}
 	public ContestVO(Integer id, String title,String contesttype, String imgurl) {
 		this.id = id;
 		this.title = title;
 		this.contesttype = contesttype;
 		this.imgurl = imgurl;
+	}
+	public ContestVO(Integer id, Integer winner,String directory) {
+		this.id = id;
+		this.winner = winner;
+		this.directory = directory;
 	}
 	public int getId() {
 		return id;
@@ -260,6 +303,12 @@ public class ContestVO {
 	}
 	public void setWinner(int winner) {
 		this.winner = winner;
+	}
+	public String getDirectory() {
+		return directory;
+	}
+	public void setDirectory(String directory) {
+		this.directory = directory;
 	}
 	
 }

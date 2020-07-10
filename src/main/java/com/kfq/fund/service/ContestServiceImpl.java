@@ -46,6 +46,14 @@ public class ContestServiceImpl implements IContestService{
 	@Override
 	public void insertContest(ContestVO contest) {
 		String imgurl = memdao.findMember(contest.getMemberemail()).getImgurl();
+		String directory;
+		File directoryfile;
+		String fileUrl = "C://kfqproject/contest/";
+		do {
+			directory = RandomStringUtils.randomAlphabetic(32);
+			directoryfile = new File(fileUrl+directory);
+		}while(directoryfile.exists());
+		contest.setDirectory(directory);
 		if(imgurl != null)
 			contest.setImgurl(imgurl);
 		dao.insertContest(contest);
@@ -54,7 +62,6 @@ public class ContestServiceImpl implements IContestService{
 	public void insertContestFile(MultipartHttpServletRequest request,int contestnum) {
 		Iterator<String> itr = request.getFileNames();
 		String title = request.getParameter("title");
-		makedirectory("C://kfqproject/contest/"+title,contestnum);
 		if(itr.hasNext()) {
 			MultipartFile mpf = request.getFile(itr.next());
 			try {
@@ -81,10 +88,11 @@ public class ContestServiceImpl implements IContestService{
 	private boolean saveFile(MultipartFile mpf,String title,int contestnum) throws Exception{
 		String fileName = mpf.getOriginalFilename();
 		String fileNameExtension = FilenameUtils.getExtension(fileName).toLowerCase();
+		String directory = dao.ContestDirectory(contestnum);
+		String fileUrl = "C://kfqproject/contest/"+directory+"/";
 		File destinationFile;
 		String destinationFileName;
-		String fileUrl = "C://kfqproject/contest/"+title+"/";
-		String url = "/contest/"+title+"/";
+		String url = "/contest/"+directory+"/";
 		do {
 			destinationFileName = RandomStringUtils.randomAlphabetic(32)+"."+fileNameExtension;
 			destinationFile = new File(fileUrl+destinationFileName);
@@ -99,18 +107,7 @@ public class ContestServiceImpl implements IContestService{
 		dao.insertContestFile(file);
 		return true;
 	}
-	private void makedirectory(String dir,int id) {
-		File directory = new File(dir);
-		if(!directory.exists()) {
-			try {
-				directory.mkdirs();
-			} catch (Exception e) {
-				e.getStackTrace();
-			}
-		}else {
-			deleteAllFile(dir,id);
-		}
-	}
+
 	@Override
 	public ContestVO existContestInfo(String email) {
 		return dao.existContestInfo(email);
@@ -130,10 +127,17 @@ public class ContestServiceImpl implements IContestService{
 	@Override
 	public JSONObject insertJoinImage(MultipartFile mpf, int contestnum,String worktitle) {
 		JSONObject jsonobject = new JSONObject();
-		String title = dao.ContestName(contestnum);
+		String directory = dao.ContestDirectory(contestnum);
+		File workdirectory;
+		String workdirectoryname;
+		String fileUrl = "C://kfqproject/join/";
+		do {
+			workdirectoryname = RandomStringUtils.randomAlphabetic(32);
+			workdirectory = new File(fileUrl+workdirectoryname);
+		}while(workdirectory.exists());
 		try {
-			String destinationFileName = savejoinimage(mpf,title,worktitle);
-			jsonobject.put("url", "/join/"+title+"/"+worktitle+"/"+destinationFileName);
+			String destinationFileName = savejoinimage(mpf,directory,workdirectoryname);
+			jsonobject.put("url", "/join/"+directory+"/"+workdirectory+"/"+destinationFileName);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -146,8 +150,6 @@ public class ContestServiceImpl implements IContestService{
 		String extension = FilenameUtils.getExtension(originalFileName).toLowerCase();
 		File destinationFile;
 		String destinationFileName;
-		
-		
 		do {
 			destinationFileName = RandomStringUtils.randomAlphabetic(32)+"."+extension;
 			destinationFile = new File(fileroot+destinationFileName);
@@ -158,10 +160,16 @@ public class ContestServiceImpl implements IContestService{
 	}
 	@Override
 	public void insertJoin(JoinVO join,MultipartFile mpf) {
-		String imageurl = "";
-		String title = dao.ContestName(join.getContest_id());
+		String imageurl = "C://kfqproject/join/";
+		String directory = dao.ContestDirectory(join.getContest_id());
+		String workdirectory;
+		File workdirectoryfile;
+		do {
+			workdirectory = RandomStringUtils.randomAlphabetic(32);
+			workdirectoryfile = new File(imageurl+workdirectory);
+		}while(workdirectoryfile.exists());
 		try {
-			imageurl = savejoinimage(mpf, title,join.getTitle());
+			imageurl = savejoinimage(mpf, directory,workdirectory);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -170,8 +178,8 @@ public class ContestServiceImpl implements IContestService{
 		dao.insertJoin(join);//이미지 일부 삭제
 	}
 	@Override
-	public List<ContestVO> getTop5(int search) {
-		return dao.getTop5(search);
+	public List<ContestVO> getTop(Pagination page,int value) {
+		return dao.getTop(page,value);
 	}
 	@Override
 	public int listCnt(int num) {
@@ -315,9 +323,9 @@ public class ContestServiceImpl implements IContestService{
 	}
 	@Override
 	public List<JoinVO> showworks(int id, int startList,int listSize){
-		String name = dao.ContestName(id);
+		String name = dao.ContestDirectory(id);
 		List<JoinVO> list = dao.showworks(id, startList, listSize);
-		String root = "/contest/"+ name+"/";
+		String root = "join/"+name+"/";
 		for(int i = 0;i < list.size();i++)
 			list.get(i).setThumbnailurl(root+list.get(i).getThumbnailurl());
 		
@@ -347,5 +355,44 @@ public class ContestServiceImpl implements IContestService{
 			}
 		}
 		return showlist;
+	}
+	@Override
+	public List<JoinVO> showendbenner(int num){
+		List<ContestVO> list = dao.showendbenner();
+		List<JoinVO> showlist = new ArrayList<>();
+		if(list.size() <= num) {
+			for(int i =0;i < list.size();i++) {
+				showlist.add(dao.searchwork(list.get(i).getWinner()));
+				System.out.println(dao.searchwork(list.get(i).getWinner()).getThumbnailurl());
+				showlist.get(i).setThumbnailurl("join/"+list.get(i).getDirectory()+"/"+showlist.get(i).getThumbnailurl());
+			}
+			return showlist;
+		}
+		int[] a = new int[num];
+		Random r = new Random();
+		
+		out: 
+		for(int i=0;i < num;i++) { 
+			a[i] = r.nextInt(list.size()); 
+			for(int j = 0;j < i;j++) if(a[i] == a[j]) { 
+				i--; 
+				continue out; 
+			}
+			showlist.add(dao.searchwork(list.get(i).getWinner())); 
+			showlist.get(i).setThumbnailurl(list.get(i).getImgurl());
+		}
+		 
+		return showlist;
+	}
+	@Override
+	public JoinVO searchwork(int id) {
+		return dao.searchwork(id);
+	}
+	@Override
+	public void updateWinner(int winner, int id) {
+		JoinVO work = dao.searchwork(winner);
+		String directory = dao.ContestDirectory(id);
+		String imgurl = "join/"+directory+"/"+ work.getThumbnailurl();
+		dao.updateWinner(winner, imgurl, id);
 	}
 }

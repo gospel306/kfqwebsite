@@ -10,9 +10,9 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<!-- icon css -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -44,9 +44,9 @@
 					<div class="col-lg-1"></div>
 					<div class="col-lg-3"></div>
 
-					<div class="col-lg-2 done_category" id="done_category">
+					<div class="col-lg-2 done_category" id="done_category">${contest.contesttype }
 					</div>
-					<div class="col-lg-4 done_contestTitle" id="done_contestTitle">
+					<div class="col-lg-4 done_contestTitle" id="done_contestTitle">${contest.title }
 					</div>
 					<div class="col-lg-1"></div>
 					<div class="col-lg-1"></div>
@@ -155,7 +155,8 @@
 								<a href="#"><i class="ion-star"></i></a> <a href="#"> <i
 									class="ion-share"></i></a> <a href="#"> <i class="ion-search"></i></a>
 							</div>
-							<a href="#" class="add-to-cart">Open</a>
+							${work.id }
+							<a href="#" onclick="show(${work.id})" class="add-to-cart" data-toggle="modal">Open</a>
 						</div>
 						<figcaption>
 							<a href="#" class="userId_join">
@@ -172,6 +173,88 @@
 			</div>
 		</div>
 	</div>
+	<script>
+	function show(id){
+		var data = {id: id}
+		$.ajax({
+			type : "POST",
+			url :"../../showwinner.do",
+			data : data,
+			success : function(data){
+				console.log(data.work);
+				$("#modaltitle").text(data.work.title);
+				$("#modalcontent").html(data.work.content);
+				$("#modelmeminfo").append("<a href='#'>design by</a><br>"+data.member.nickname);
+				if(data.requester == true){
+					$("#modalmakewinner").append("<button type='button' class='btn watch-contest-winner' onclick='makewinner("+
+							data.work.contest_id+","+data.work.id+")'>우승작으로 선정하기</button>")
+				}
+				$("#exampleModal").modal("toggle");
+			}
+		});
+	}
+	function makewinner(contestid,winner){
+		var newForm = $('<form></form>');
+	  	newForm.attr("name","newForm");
+	  	newForm.attr("method","post");
+	  	newForm.attr("action","../../makewinner.do");
+	  	  
+	  	newForm.append($('<input/>',{type:'hidden',name:'contestid', value: contestid}));
+	  	newForm.append($('<input/>',{type:'hidden',name:'workid', value: winner}));
+	  	newForm.appendTo('body');
+		newForm.submit();
+	}
+	</script>
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="d-flex justify-content-center">
+                    <div class="modal-left">
+                        <div class="modal-left-header">
+                            <p>★ 콘테스트 우승작</p>
+                            <div class="modal-left-header-name">
+                                <a href="#" class="modal-left-header-contname" id="modaltitle"></a>
+                                <button type="button" class="btn watch-contest">콘테스트 보기</button>
+                            </div>
+                        </div>
+                        <div class="contet-img" id="modalcontent">
+                            
+                        </div>
+                        <div>
+                            <p
+                                style="font-size: 15px; font-weight: bold; padding: 20px 0 4px 70px; border-bottom:2px solid black;">
+                                작품 댓글 (##건)</p>
+                        </div>
+                        <div style="padding-left: 70px;">
+                            <img src="image/pngwing.com.png" class="card-img-top" alt="..."
+                                style="width: 55px; height: 55px;float: left;  margin-right: 10px;">
+                            <form action="inputBook_check.jsp" method="post" style="float: left;">
+                                <textarea cols="50" rows="8" name="CONTENT"
+                                    style="height: 50px; float: left;"></textarea>
+                                <input type="submit"
+                                    style="float:left; background-color: black; color: white; width: 78px; height: 55px;"
+                                    value="글쓰기">
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="modal-right">
+                        <div class="modal-right-content">
+                            <div class="modal-right-content-header">
+                                <img src="image/pngwing.com.png" class="right-pic1">
+                                <p class="modal-right-id" id="modelmeminfo"></p>
+                            </div>
+                            <div class="right-cust-info">
+                                <p><span class="font1">우승</span>1회 | <span class="font1">상금</span> 30만원</p>
+                                <div class="button-cover" id="modalmakewinner">
+                                </div>   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 <footer>
 	<jsp:include page="../section/footer.jsp"></jsp:include>

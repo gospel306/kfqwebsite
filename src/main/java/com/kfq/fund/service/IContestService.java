@@ -20,7 +20,7 @@ public interface IContestService {
 	public int insertlastContestid(String email);
 	public List<FileVO> getFiles(int id);
 	public FileVO getFile(int id);
-	public List<ContestVO> getTop5(int search);
+	public List<ContestVO> getTop(Pagination page,int value);
 	public int listCnt(int num);
 	public List<ContestVO> listProceeding(Pagination page);
 	public List<ContestVO> listDecision(Pagination page);
@@ -33,6 +33,8 @@ public interface IContestService {
 	public List<JoinVO> showworks(int id, int startList,int listSize);
 	public boolean jointitleCheck(String title);
 	public List<ContestVO> showbenner(int num);
+	public List<JoinVO> showendbenner(int num);
+	public JoinVO searchwork(int id);
 	//insert
 	public void insertContest(ContestVO contest);
 	public void insertContestFile(MultipartHttpServletRequest request,int contestnum);
@@ -45,6 +47,7 @@ public interface IContestService {
 	public void updateContestprize(ContestVO contest);
 	public void payed(int id);
 	public void viewincrease(int id);
+	public void updateWinner(int winner,int id);
 	
 	//delete
 	public void deleteContest(int id);

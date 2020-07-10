@@ -14,7 +14,8 @@ public interface IContestDAO {
 	public List<FileVO> getFiles(int id);
 	public FileVO getFile(int id);
 	public String ContestName(int id);
-	public List<ContestVO> getTop5(int search);
+	public String ContestDirectory(int id);
+	public List<ContestVO> getTop(Pagination page,int value);
 	public int listCnt(int num);
 	public List<ContestVO> listProceeding(Pagination page);
 	public List<ContestVO> listDecision(Pagination page);
@@ -29,6 +30,8 @@ public interface IContestDAO {
 	public List<JoinVO> showworks(int id, int startList,int listSize);
 	public int jointitleCheck(String title);
 	public List<ContestVO> showbenner();
+	public List<ContestVO> showendbenner();
+	public JoinVO searchwork(int id);
 	//insert
 	public void insertContest(ContestVO contest);
 	public void insertContestFile(FileVO file);
@@ -36,6 +39,7 @@ public interface IContestDAO {
 	//update
 	public void updateContest(ContestVO contest);
 	public void updateContestprize(ContestVO contest);
+	public void updateWinner(int winner,String imgurl,int id);
 	public void payed(int id);
 	public void viewincrease(int id);
 	//delete
