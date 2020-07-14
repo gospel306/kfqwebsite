@@ -1,13 +1,14 @@
-# Aidear
+# A.I dear
 
 ## 개요
-* 프로젝트 명: Aidear
+* 프로젝트 명: A.I dear
 
-* 일정: 20.06.15 ~ 20.07.09/유지보수:20.07.09 ~
+* 일정: 20.06.22 ~ 20.07.09/유지보수:20.07.09 ~
 
 * 팀 구성: 신희대, 김민우, 최원희, 고준형, 김동욱
 
-* 목적: 
+* 목적: 최근 급격히 성장하는 4차혁명과 더불어 COVID-19사태에 의해 대두되는 '언택트'시대에 알맞은 아이디어, 재능 오픈 플랫폼이다. 
+편견과 차별이 없는 공간에서 개인의 역량을 십 분 발휘하여 기업에는 만족을, 제공자에게는 기회를 주고자 한다.
 
 * 사용 기술 및 개발환경
   * O/S: Windows 10(개발환경)
@@ -15,7 +16,7 @@
   * DB: Mysql 8.0.15
   * Framework/flatform: Spring boot, bootstrap, jQuery, mybatis
   * Programming Language : JAVA, HTML, JavaScript
-  * Tool: STS, Github, Mysql Workbench
+  * Tool: Eclipse, Github, Mysql Workbench
   * API: KaKao Map, summernote
   
 ## 내용
@@ -23,6 +24,7 @@
   * 로그인
   * 회원가입
   * 커뮤니티(공모전 등록, 공모전 참가, summernote)
+  * 파일 다운/업로드
   * 보안(비밀번호 해싱)
   
 * 팀원별 역할
@@ -34,7 +36,8 @@
   * 공통: 기획
 
 * 설계의 주안점
-
+ * 공모전을 생성하여 
+ 
 * 산출물
   * ERD
   
