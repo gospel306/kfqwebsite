@@ -23,3 +23,21 @@
 #exampleInputPassword1::placeholder {
 	color: #BDBDBD;
 }
+
+h1{
+	margin-left:5px;
+	text-align:center;
+}
+
+.text-reset{
+	padding-left:25px;
+}
+
+.col-2{
+	padding-left:25px;
+}
+
+.text-center span{
+	color: tomato;
+	font-weight:bold;
+}

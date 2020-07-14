@@ -359,6 +359,20 @@ img {
 }
 
 /* carousel*/
+.img_index_z {
+	position: relative;
+	z-index: 0;
+}
+.text_index_z{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+transform: translate( -50%, -50% );
+	font-weight:bold;
+	font-size:2rem;
+	background-color: white
+}
+
 @media ( max-width : 768px) {
 	.carousel-inner .carousel-item>div {
 		display: none;
@@ -428,18 +442,7 @@ img {
 					<div class="row">
 						<div class="col-lg-3 list_maintitle">콘테스트 보기</div>
 						<div class="col-lg-3 list_subtitle">
-							<div class="List_ProceedingTap_subTitle">
-								<small>- 진행중인 콘테스트</small>
-							</div>
-
-
-							<div class="List_ScoringTap_subTitle">
-								<small>- 심사중인 콘테스트</small>
-							</div>
-
-							<div class="List_DoneTap_subTitle">
-								<small>- 종료된 콘테스트</small>
-							</div>
+							
 						</div>
 						<div class="col-lg-3"></div>
 						<div class="col-lg-3"></div>
@@ -545,7 +548,7 @@ img {
 							<input type="text" class="form-control input_Search"
 								placeholder="콘테스트 검색" aria-label="Username"
 								aria-describedby="addon-wrapping"
-								onkeydown="if (event.keyCode == 13) ">
+								>
 							<div class="input-icon">
 
 								<img src="img/bt_magnifying-glass.png" alt="" onclick="">
@@ -655,41 +658,46 @@ img {
 							<div id="recipeCarousel" class="carousel slide w-100"
 								data-ride="carousel">
 								<div class="carousel-inner w-100" role="listbox">
-									<div class="carousel-item active">
-										<div class="col-md-3">
+									<div class="carousel-item">
+										<div class="col-md-3">	
 											<div class="card card-body">
-												<img class="img-fluid" src="img/202006160550340616_HongSeong.png">
-											</div>
+                                                <div class="img_index_z"><img class="img-fluid " src="<%=request.getContextPath()%>/resource/img/contest/20200619052718bn_mhh.png"></div>
+                                                <div class= "text_index_z" >텍스트검열 </div>
+                                            </div>
+											
+											
 										</div>
 									</div>
 									<div class="carousel-item">
 										<div class="col-md-3">
 											<div class="card card-body">
-												<img class="img-fluid"
-													src="img/202006180209170618_Smetro.png">
-											</div>
+                                                <div class="img_index_z"><img class="img-fluid " src="<%=request.getContextPath()%>/resource/img/contest/20200619052718bn_mhh.png"></div>
+                                                <div class= "text_index_z" >텍스트검열 </div>
+                                            </div>
 										</div>
 									</div>
 									<div class="carousel-item">
 										<div class="col-md-3">
 											<div class="card card-body">
-												<img class="img-fluid" src="img/20200619052718bn_mhh.png">
-											</div>
+                                                <div class="img_index_z"><img class="img-fluid " src="<%=request.getContextPath()%>/resource/img/contest/20200619052718bn_mhh.png"></div>
+                                                <div class= "text_index_z" >텍스트검열 </div>
+                                            </div>
 										</div>
 									</div>
 									<div class="carousel-item">
 										<div class="col-md-3">
 											<div class="card card-body">
-												<img class="img-fluid"
-													src="img/202006290443410629_chicken.png">
-											</div>
+                                                <div class="img_index_z"><img class="img-fluid " src="<%=request.getContextPath()%>/resource/img/contest/20200619052718bn_mhh.png"></div>
+                                                <div class= "text_index_z" >텍스트검열 </div>
+                                            </div>
 										</div>
 									</div>
 									<div class="carousel-item">
 										<div class="col-md-3">
-											<div class="card card-body">
-												<img class="img-fluid" src="img/202006300204230630.png">
-											</div>
+										<div class="card card-body">
+                                                <div class="img_index_z"><img class="img-fluid " src="<%=request.getContextPath()%>/resource/img/contest/20200619052718bn_mhh.png"></div>
+                                                <div class= "text_index_z" >텍스트검열 </div>
+                                            </div>
 										</div>
 									</div>
 								</div>
@@ -858,7 +866,7 @@ img {
 						}else if(searchOption == "decision"){
 							$("#decision").addClass("active");
 						}else{
-							$("#endContest").addClass("active");
+							$("#endcontest").addClass("active");
 						}
 						function dropdown_initial() {
 							$("#dropdownKind1").attr('style', "display:none;");
@@ -879,7 +887,8 @@ img {
 						})
 
 						//carousel
-
+						 $(".carousel-inner").children().first().addClass("active");
+						
 						$('#recipeCarousel').carousel({
 							interval : 2000
 						})

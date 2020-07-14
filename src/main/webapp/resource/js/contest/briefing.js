@@ -1,5 +1,6 @@
 $(document).ready(function() {
 	var myFiles = [];
+	
 	$("#files").on("change",function(e) {
 		var files = e.target.files, file;
 		for (var i = 0; i < files.length; i++) {
@@ -18,6 +19,8 @@ $(document).ready(function() {
 		}
 		updateCounters();
 	});
+	
+
 
 	$('form').on('submit', upload);
 

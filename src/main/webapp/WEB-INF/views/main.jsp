@@ -248,7 +248,7 @@
 	<!--맨 아래 사진 스크롤효과-->
 	<div class="external">
 		<div id="bottom_txt_external">
-			<p>아이디어를 만나보세요!</p>
+			<p>더 많은 아이디어를 만나보세요!</p>
 		</div>
 		<div class="horizontal-scroll-wrapper">
 			<div class="img-wrapper slower">

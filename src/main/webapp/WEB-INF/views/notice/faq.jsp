@@ -68,9 +68,9 @@
 
 			<div class="contest_faq_tap">
 				<div class="row contest_faq_tap_size">
-					<div class="col-lg-2 faq_tap_1 tap_padding">FAQ</div>
-					<div class="col-lg-2 faq_tap_2 tap_padding">문의게시판</div>
-					<div class="col-lg-2 faq_tap_2 tap_padding">공지사항</div>
+					<div class="col-lg-2 faq_tap_1 tap_padding tap_margin">FAQ</div>
+					<div class="col-lg-2 faq_tap_2 tap_padding tap_margin">문의게시판</div>
+					<div class="col-lg-2 faq_tap_2 tap_padding tap_margin">공지사항</div>
 					<div class="col-lg-2 tap_padding"></div>
 					<div class="col-lg-2 tap_padding"></div>
 					<div class="col-lg-2 tap_padding"></div>
@@ -87,7 +87,7 @@
 
 					<div class="col-lg-4 sandwitch ">
 						<div class="faq_searchbox_brief">
-							자주하는 질문 검색<br> <small>서비스 이용시 궁금하신 내용을 입력해주세요.</small>
+							자주하는 질문 검색<br> <span class="faq_searchbox_brief_small">서비스 이용시 궁금하신 내용을 입력해주세요.</span>
 						</div>
 					</div>
 

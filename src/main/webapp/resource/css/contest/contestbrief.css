@@ -1,22 +1,15 @@
 @charset "UTF-8";
-
 body {
 	margin: 0px auto;
 	width: 100%;
 	background-color: #ebeff2;
 }
 
-img {
-	
-}
+img {}
 
-div {
-	
-}
+div {}
 
-textarea {
-	
-}
+textarea {}
 
 .display_open {
 	display: block;
@@ -27,17 +20,20 @@ textarea {
 }
 
 /*lay-out*/
+
 .padding_zero {
 	padding: 1px;
 }
 
 .first_layout {
+
 	padding-top: 50px;
 	width: 75%;
 	margin: 0px auto;
 }
 
 /*lay-out*/
+
 .brief_head {
 	background-color: white;
 	padding: 5% 1%;
@@ -47,9 +43,7 @@ textarea {
 	padding: 0% 0%;
 }
 
-.head_img_1 {
-	
-}
+.head_img_1 {}
 
 .head_title {
 	font-size: 24px;
@@ -68,21 +62,29 @@ textarea {
 }
 
 .head_tap_st:hover {
+
 	border: 1px solid #FF5D5D;
+
 }
 
 .head_tap_st:active {
+
 	background-color: #FF5D5D;
+
 }
 
 .head_tap_click_st {
+
 	background-color: #FF5D5D;
 	color: white;
+
 }
 
 .head_tap_content {
 	padding: 25px 30px;
+
 }
+
 
 .head_tap_content_title {
 	font-size: 18px;
@@ -93,24 +95,32 @@ textarea {
 	padding-top: 13px;
 }
 
+
 .span_st_1 {
 	color: #FF5D5D;
 	background-color: #eeeeee;
+
 }
 
 /*head*/
+
 .main {
 	margin-top: 50px;
 	background-color: white;
 	padding: 5% 2%;
 }
 
+
+
 /*item_box*/
 .contest_list_item_roof {
 	margin-top: 5%;
+
+
 }
 
 .contest_list_item {
+
 	border: 1px solid #cccccc;
 	border-radius: 5px;
 	padding: 10px;
@@ -124,10 +134,13 @@ textarea {
 }
 
 .item_box_contestTitle {
+
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+
 }
+
 
 .item_content_roof {
 	margin-top: 5%;
@@ -147,10 +160,14 @@ textarea {
 
 .item_box_joinCount {
 	text-align: center;
+
 }
+
 
 /*item_box*/
 /*breif-content*/
+
+
 .briefing {
 	margin: 5% 0%;
 }
@@ -172,6 +189,7 @@ textarea {
 }
 
 .brief_content {
+
 	padding: 5% 2%;
 	border: 1px solid #cccccc;
 }
@@ -195,6 +213,9 @@ textarea {
 	height: 150px;
 	border: 0px;
 	overflow-y: hidden;
+
+
+
 }
 
 .form-control {
@@ -209,7 +230,8 @@ textarea {
 	box-shadow: 0 0 0 0px rgba(0, 123, 255, .25);
 }
 
-.form-control:disabled, .form-control[readonly] {
+.form-control:disabled,
+.form-control[readonly] {
 	background-color: white;
 	opacity: 1;
 }
@@ -227,11 +249,40 @@ textarea {
 	padding: 5%;
 }
 
+
 .join_step1_checkbox {
 	width: 100%;
+
 }
 
 .brief_content_item_2 {
 	margin-top: 5%;
 	margin-bottom: 5%;
+}
+
+
+/* downBox*/
+.downTitle {
+	padding-top: 3.5%;
+	padding-bottom: 3.5%;
+	
+	text-align: center;
+}
+.downBox{
+	padding: 15px;
+}
+.downBtn {
+	border: 1px solid #DEDEDE;
+	border-radius: 5px;
+}
+
+.downBorder {
+
+	border: 1px solid #DEDEDE;
+
+}
+
+.downBoxTitle {
+	margin-top: 5%;
+	
 }

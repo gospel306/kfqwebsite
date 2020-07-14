@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>ㅇㅏㅇㅣㄷㅣㅇㅓ</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
@@ -89,11 +89,14 @@
                         <div id="checkbox">
                             <p>
                             <span style="font-weight: bold;">전체약관 동의</span><br>
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        	<label class="form-check-label" for="defaultCheck1" style="font-size:13px;">
                         	ㅇㅏㅇㅣㄷㅣㅇㅓ 서비스 이용약관(필수)
+                        	</label>
                              </p>
                         </div>
                     </div>
-                    <button type="submit">가입하기</button>
+                    <button type="submit" class="subtype1">가입하기</button>
                     </form>
                 </div>
             </div>

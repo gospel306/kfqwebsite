@@ -14,7 +14,14 @@ a:hover {
 	text-decoration: none;
 	color: black;
 }
+@font-face {
+            font-family: 'NanumGothic-Regular';
+            src: url('css/fonts/NamunGothic-Regular.ttf') format('truetype');
+        }
 
+        body {
+            font-family: NamunGothic-Regular;
+        }
 #top_botton {
 	margin-top: 20px;
 	background-color: white;
@@ -340,6 +347,7 @@ p {
 	color: black;
 	font-size: 30px;
 	padding-top: 50px;
+	padding-bottom:50px;
 	border-bottom: 1px solid black;
 }
 
@@ -357,9 +365,13 @@ p {
 	margin-right: 70px;
 }
 
+#nav-tab{
+	padding-left : 60px;
+}
 #nav-home-tab {
 	border-top: 1px solid black;
 	margin-right: 5px;
+	font-size:15px;
 }
 
 #nav-profile-tab {
@@ -367,6 +379,7 @@ p {
 	margin-right: 5px;
 	background-color: black;
 	color: white;
+	font-size:15px;
 }
 
 #nav-contact-tab {
@@ -374,6 +387,7 @@ p {
 	margin-right: 5px;
 	background-color: black;
 	color: white;
+	font-size:15px;
 }
 
 #nav-tabContent {
@@ -385,7 +399,7 @@ p {
 	display: none;
 }
 
-@media screen and (max-width: 932px) {
+@media screen and (max-width: 950px) {
 	#top_carousel {
 		width: 100%;
 		height: auto;
@@ -411,6 +425,7 @@ p {
 		font-size: 2vw;
 	}
 	#nav-home-tab, #nav-profile-tab, #nav-contact-tab {
+	text-align:center;
 		width: 30%;
 	}
 	#idea_txt_content {
