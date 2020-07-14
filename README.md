@@ -17,26 +17,28 @@
   * Framework/flatform: Spring boot, bootstrap, jQuery, mybatis
   * Programming Language : JAVA, HTML, JavaScript
   * Tool: Eclipse, Github, Mysql Workbench
-  * API: KaKao Map, summernote
+  * API: KaKao Map, summernote, Google Mail
   
 ## 내용
 * 구현 기능
   * 로그인
-  * 회원가입
+  * 회원가입(이메일 인증)
   * 커뮤니티(공모전 등록, 공모전 참가, summernote)
   * 파일 다운/업로드
   * 보안(비밀번호 해싱)
   
 * 팀원별 역할
-  * 신희대: 
-  * 김민우: Header, Footer
-  * 최원희: 
-  * 고준형: 메인페이지
-  * 김동욱: DB설계, 벡엔드 전체
+  * 신희대: Frontend(공모전 리스트, 공모전 상세페이지, 공모전 입력페이지, 공모전 견적서, FAQ)
+  * 김민우: Frontend(Footer, goTop)
+  * 최원희: Frontend(공모전 정보입력 및 결제, 로그인, 마이페이지, 게시판 입력(문의, 공지))
+  * 고준형: Frontend(Header, 메인페이지, 회원가입, 이메일인증, 컨텐츠모달창, 회원정보, 오시는 길)
+  * 김동욱: DB설계, Backend 전체
   * 공통: 기획
 
 * 설계의 주안점
- * 공모전을 생성하여 
+ * 공모전을 생성하여 참가자들은 손쉽게 참가할 수 있다
+ * 공모전 개최자는 개최기간 이후 심사기간동안 참가작들의 목록및 상세정보를 볼수 있고 우승작을 뽑을수 있다.
+ * 심사기간 이후 우승작은 공개되고 나머지는 비공개 처리가 된다.
  
 * 산출물
   * ERD ![ERD](/img/ERD.PNG)
