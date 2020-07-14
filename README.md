@@ -39,5 +39,6 @@
  * 공모전을 생성하여 
  
 * 산출물
-  * ERD
-  
+  * ERD ![ERD](/img/ERD.PNG)
+  * Usecase diagram ![Usecase diagram](/img/Usecase.PNG)
+  * WBS ![WBS](/img/WBS.PNG)
