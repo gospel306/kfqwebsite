@@ -96,7 +96,7 @@
 		FROM CONTEST, MEMBER
 		WHERE CONTEST.MEMBEREMAIL = MEMBER.EMAIL AND 
 		CONTEST.ENDDATE > CURDATE() AND PAYED = 1
-		ORDER BY CONTEST.SHOW DESC, CONTEST.STARTDATE DESC
+		ORDER BY CONTEST.SHOW DESC, CONTEST.STARTDATE DESC, CONTEST.ID DESC
 		LIMIT #{startList}, #{listSize}
 	</select>
 	<select id="listDecision" parameterType="com.kfq.fund.vo.Pagination" resultType="com.kfq.fund.vo.ContestVO">
@@ -107,7 +107,7 @@
 		FROM CONTEST, MEMBER
 		WHERE CONTEST.MEMBEREMAIL = MEMBER.EMAIL AND 
 		CURDATE() > CONTEST.ENDDATE AND WINNER = 0 AND PAYED = 1
-		ORDER BY CONTEST.SHOW DESC, CONTEST.ENDDATE DESC
+		ORDER BY CONTEST.SHOW DESC, CONTEST.ENDDATE DESC, CONTEST.ID DESC
 		LIMIT #{startList}, #{listSize}
 	</select>
 	<select id="listEndContest" parameterType="com.kfq.fund.vo.Pagination" resultType="com.kfq.fund.vo.ContestVO">
@@ -117,7 +117,7 @@
 		CONTEST.HIGHLIGHT, CONTEST.FULLPRIZE, CONTEST.PAYTYPE
 		FROM CONTEST, MEMBER
 		WHERE CONTEST.MEMBEREMAIL = MEMBER.EMAIL AND WINNER != 0 AND PAYED = 1
-		ORDER BY CONTEST.STARTDATE DESC
+		ORDER BY CONTEST.STARTDATE DESC, CONTEST.ID DESC
 		LIMIT #{startList}, #{listSize}
 	</select>
 	<select id="searchworknum" parameterType="Integer" resultType="Integer">

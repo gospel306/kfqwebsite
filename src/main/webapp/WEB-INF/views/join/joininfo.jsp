@@ -49,6 +49,7 @@
 	    		processData: false,
 	    		success: function(data){
 	    			$(editor).summernote('editor.insertImage',data.url);
+	    			$('#imageBoard > ul').append('<div class="summernoteimg"><img src="'+data.url+'" width="50%" height="auto"/></div>');
 	    		}
 	    	});
 	    }

@@ -30,7 +30,7 @@
                     	경기도 성남시 분당구 판교로 242 (삼평동) 판교디지털센터 A동 4층 402호
                     </div>
                     <div class="footer_content">
-                        © FUNd Platform Co., Ltd.
+                        © I D E A Platform Co., Ltd.
                     </div>
                 </div>
                 <div class="col-3 d-flex align-items-center text-left">
@@ -48,7 +48,7 @@
                 </div>
                 <div class="footer_content text-white-50">
                 	비상장기업 투자는 원금 손실의 가능성이 크니 투자 위험 안내를 꼭 확인하세요. 
-                	FUNd플랫폼 (주)는 크라우드 펀딩 플랫폼을 제공하는 중개자로 자금을 모집하는 당사자가 아니며,
+                	IDEA플랫폼 (주)는 크라우드 펀딩 플랫폼을 제공하는 중개자로 자금을 모집하는 당사자가 아니며,
                 	투자손실의 위험을 보전하거나 보상품 제공을 보장해 드리지 못합니다.
                 </div>
             </div>
