@@ -1,5 +1,5 @@
 @charset "UTF-8";
-.social_icon{
+.logincontainer .social_icon{
 	width: 24px!important;
 	height: 24px!important;
 }
@@ -7,7 +7,7 @@
 	width: 100%;
 }
 
-.btn_login {
+.logincontainer .btn_login {
 	padding-top: 6px;
 	padding-left: 12px;
 	padding-right: 12px;
@@ -15,32 +15,32 @@
 	height: 50px;
 }
 
-.btn {
+.logincontainer .btn {
 	height: 50px;
 }
 
-#exampleInputEmail1::placeholder {
+.logincontainer #exampleInputEmail1::placeholder {
 	color: #BDBDBD;
 }
 
-#exampleInputPassword1::placeholder {
+.logincontainer #exampleInputPassword1::placeholder {
 	color: #BDBDBD;
 }
 
-h1{
+.logincontainer h1{
 	margin-left:5px;
 	text-align:center;
 }
 
-.text-reset{
+.logincontainer .text-reset{
 	padding-left:25px;
 }
 
-.col-2{
+.logincontainer .col-2{
 	padding-left:25px;
 }
 
-.text-center span{
+.logincontainer .text-center span{
 	color: tomato;
 	font-weight:bold;
 }

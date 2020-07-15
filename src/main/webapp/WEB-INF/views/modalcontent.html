@@ -17,7 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <style>
-        .div123 {
+    .idea_modal .div123 {
             display: -webkit-box;
             display: -ms-flexbox;
             display: flex;
@@ -32,7 +32,7 @@
             ;
         }
 
-        i {
+      .idea_modal   i {
             opacity: 0;
             font-size: 28px;
             color: #1F1E1E;
@@ -43,7 +43,7 @@
             transition: all .3s ease;
         }
 
-        .btn_wrap {
+      .idea_modal   .btn_wrap {
             position: relative;
             display: -webkit-box;
             display: -ms-flexbox;
@@ -66,13 +66,13 @@
             transition: all .2s ease-in-out;
         }
 
-        .btn_wrap:hover {
+       .idea_modal  .btn_wrap:hover {
             /* transition-delay: .4s; */
             -webkit-transform: scale(1.1);
             transform: scale(1.1)
         }
 
-        .span123 {
+      .idea_modal   .span123 {
             position: absolute;
             z-index: 99;
             width: 200px;
@@ -90,7 +90,7 @@
             transition: all 1.2s ease;
         }
 
-        .container {
+      .idea_modal   .container {
             display: -webkit-box;
             display: -ms-flexbox;
             display: flex;
@@ -104,77 +104,77 @@
             border-radius: 80px;
         }
 
-        .container i:nth-of-type(1) {
+     .idea_modal    .container i:nth-of-type(1) {
             -webkit-transition-delay: 1.1s;
             transition-delay: 1.1s;
         }
 
-        .container i:nth-of-type(2) {
+     .idea_modal    .container i:nth-of-type(2) {
             -webkit-transition-delay: .9s;
             transition-delay: .9s;
         }
 
-        .container i:nth-of-type(3) {
+    .idea_modal     .container i:nth-of-type(3) {
             -webkit-transition-delay: .7s;
             transition-delay: .7s;
         }
 
-        .container i:nth-of-type(4) {
+   .idea_modal      .container i:nth-of-type(4) {
             -webkit-transition-delay: .4s;
             transition-delay: .4s;
         }
 
-        .btn_wrap:hover span {
+     .idea_modal    .btn_wrap:hover span {
             -webkit-transition-delay: .25s;
             transition-delay: .25s;
             -webkit-transform: translateX(-280px);
             transform: translateX(-280px)
         }
 
-        .btn_wrap:hover i {
+      .idea_modal s  .btn_wrap:hover i {
             opacity: 1;
             -webkit-transform: scale(1);
             transform: scale(1);
         }
 
 
-        .dr {
+      .idea_modal   .dr {
             position: absolute;
             bottom: 16px;
             right: 16px;
             width: 100px;
         }
 
-        .imgimg {
+      .idea_modal   .imgimg {
             width: 30px;
 
         }
 
-        .imgimg1 {
+      .idea_modal   .imgimg1 {
             width: 60px;
             margin-right: -10px;
         }
 
-        a:link {
+     .idea_modal    a:link {
             text-decoration: none;
             color: black;
         }
 
-        a:visited {
+    .idea_modal     a:visited {
             text-decoration: none;
             color: black;
         }
 
-        a:hover {
+   .idea_modal      a:hover {
             text-decoration: none;
             color: black;
         }
 
-        .modal-dialog {
+   .idea_modal      .modal-dialog {
             position: relative;
         }
 
-        .modal-content {
+    .idea_modal     .modal-content {
             width: 1300px;
             position: absolute;
             left: -80%;
@@ -183,24 +183,24 @@
 
        
 
-        .modal-left {
+   .idea_modal      .modal-left {
             width: 1000px;
         }
 
-        .modal-right {
+     .idea_modal    .modal-right {
             width: 300px;
             background-color: #ebeff2;
 
         }
 
-        .modal-left-header {
+    .idea_modal     .modal-left-header {
             height: 100px;
             margin-top: 50px;
             margin-left: 30px;
             font-size: 13px;
         }
 
-        .watch-contest {
+     .idea_modal    .watch-contest {
             border: 1px solid black;
             font-weight: bold;
             font-size: 13px;
@@ -208,35 +208,35 @@
             margin-right: 20px;
         }
 
-        .modal-left-header-contname {
+      .idea_modal   .modal-left-header-contname {
             font-size: 20px;
             font-weight: bold;
         }
 
-        .modal-img {
+    .idea_modal     .modal-img {
             width: 1000px;
             margin-top: 50px;
         }
 
-        .modal-right-content {
+    .idea_modal    .modal-right-content {
             margin-top: 50px;
             margin-left: 20px;
             position: sticky;
             top: 0px;
         }
 
-        .right-pic1 {
+    .idea_modal     .right-pic1 {
             width: 60px;
             float: left;
             margin-right: 5px;
         }
 
-        .modal-right-id {
+    .idea_modal     .modal-right-id {
             font-weight: bold;
             margin-top: 6px;
         }
 
-        .right-cust-info {
+    .idea_modal     .right-cust-info {
             background-color: white;
             width: 250px;
             height: 30px;
@@ -245,11 +245,11 @@
             margin-top: 5px;
         }
 
-        .font1 {
+     .idea_modal    .font1 {
             font-weight: bold;
         }
 
-        .watch-contest-winner {
+    .idea_modal     .watch-contest-winner {
             border: 1px solid black;
             width: 200px;
             height: 50px;
@@ -257,7 +257,7 @@
             color: white;
             font-weight: bold;
         }
-        .button-cover{
+     .idea_modal    .button-cover{
             border-top: 1px solid black;
             border-bottom: 1px solid black;
             padding : 30px 0 30px 0;
@@ -267,6 +267,8 @@
 </head>
 
 <body>
+
+<div class="idea_modal">
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
         여기에 이미지를 넣을거에용
@@ -344,6 +346,7 @@
             </div>
         </div>
     </div>
+</div>
 </body>
 
 </html>

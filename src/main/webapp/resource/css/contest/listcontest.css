@@ -330,8 +330,12 @@ img {
 	left: 50%;
 transform: translate( -50%, -50% );
 	font-weight:bold;
-	font-size:2rem;
-	background-color: white
+	font-size:1rem;
+	background-color: white;
+	border-radius: 5px;
+}
+.text_index_z:hover{
+		background-color:  #FF5D5D;
 }
 
 @media ( max-width : 768px) {

@@ -193,6 +193,7 @@
 			}
 		});
 	}
+	$(document).ready(function() { $( "div.add-to-cart" ).click(function() { $('div.contet-img img').css({'width' : '100%'}); $('div.contet-img iframe').css({'width' : '100%'}); }); });
 	function makewinner(contestid,winner){
 		var newForm = $('<form></form>');
 	  	newForm.attr("name","newForm");
@@ -205,6 +206,7 @@
 		newForm.submit();
 	}
 	</script>
+	<div class="idea_modal">
 	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -254,6 +256,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </body>
 <footer>

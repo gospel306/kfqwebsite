@@ -131,13 +131,14 @@ public class ContestServiceImpl implements IContestService{
 		File workdirectory;
 		String workdirectoryname;
 		String fileUrl = "C://kfqproject/join/";
+		System.out.println(directory);
 		do {
 			workdirectoryname = RandomStringUtils.randomAlphabetic(32);
 			workdirectory = new File(fileUrl+workdirectoryname);
 		}while(workdirectory.exists());
 		try {
 			String destinationFileName = savejoinimage(mpf,directory,workdirectoryname);
-			jsonobject.put("url", "/join/"+directory+"/"+workdirectory+"/"+destinationFileName);
+			jsonobject.put("url", "/join/"+directory+"/"+destinationFileName);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -156,7 +157,7 @@ public class ContestServiceImpl implements IContestService{
 		}while(destinationFile.exists());
 		destinationFile.getParentFile().mkdirs();
 		mpf.transferTo(destinationFile);
-		return destinationFileName;
+		return worktitle+"/"+destinationFileName;
 	}
 	@Override
 	public void insertJoin(JoinVO join,MultipartFile mpf) {
@@ -378,8 +379,8 @@ public class ContestServiceImpl implements IContestService{
 				i--; 
 				continue out; 
 			}
-			showlist.add(dao.searchwork(list.get(i).getWinner())); 
-			showlist.get(i).setThumbnailurl(list.get(i).getImgurl());
+			showlist.add(dao.searchwork(list.get(i).getWinner()));
+			showlist.get(i).setThumbnailurl("join/"+list.get(i).getDirectory()+"/"+showlist.get(i).getThumbnailurl());
 		}
 		 
 		return showlist;
